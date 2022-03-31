@@ -6,7 +6,8 @@
   "scripts": {
     "webpack-dev-server": "webpack-dev-server",
     "build": "webpack --mode production",
-    "start-dev": "webpack-dev-server --mode=development"
+    "start-dev": "webpack-dev-server --mode=development",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,13 +25,14 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
-    "html-webpack-plugin": "^5.5.0",
     "babel-loader": "^8.2.4",
     "css-loader": "^6.7.1",
     "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^27.5.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.70.0",
