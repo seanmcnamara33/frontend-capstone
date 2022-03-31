@@ -1,6 +1,7 @@
 import React from 'react';
 
-const App = () =>(
+// eslint-disable-next-line react/function-component-definition
+const App = () => (
   <h1 className="title">Kids Next Door</h1>
 );
 
