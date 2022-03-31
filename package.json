@@ -4,9 +4,9 @@
   "description": "FEC",
   "main": "index.js",
   "scripts": {
-    "webpack-dev-server": "webpack-dev-server",
-    "build": "webpack --mode production",
-    "start-dev": "webpack-dev-server --mode=development"
+    "server": "npx nodemon --watch server",
+    "client": "npx webpack --watch",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,17 +19,28 @@
   },
   "homepage": "https://github.com/fec-kidsnextdoor/frontend-capstone#readme",
   "dependencies": {
-    "html-webpack-plugin": "^5.5.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "webpack-dev-server": "^4.7.4"
+    "react": "^17.0.2",
+    "express": "^4.17.1",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
+    "@testing-library/jest-dom": "^5.16.3",
+    "@testing-library/react": "^12.1.4",
     "babel-loader": "^8.2.4",
     "css-loader": "^6.7.1",
+    "dotenv-webpack": "^7.1.0",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.4.0",
     "file-loader": "^6.2.0",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.7",
     "style-loader": "^3.3.1",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2"
