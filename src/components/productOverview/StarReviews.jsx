@@ -40,8 +40,10 @@ const StarReviews = ({ currentItem, onReviewLinkClick }) => {
   };
 
   useEffect(() => {
-    getStars(currentItem.id);
-  });
+    if (Object.keys(currentItem).length) {
+      getStars(currentItem.id);
+    }
+  }, []);
 
   if (reviewNum > 0) {
     return (

@@ -40,7 +40,10 @@ const Overview = (props) => {
   }, []);
 
   useEffect(() => {
-    getFirstStyle(currentItem.id);
+    if (Object.keys(currentItem).length) {
+      console.log(currentItem);
+      getFirstStyle(currentItem.id);
+    }
   }, [currentItem]);
 
   return (
