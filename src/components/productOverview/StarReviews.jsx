@@ -43,7 +43,7 @@ const StarReviews = ({ currentItem, onReviewLinkClick }) => {
     if (Object.keys(currentItem).length) {
       getStars(currentItem.id);
     }
-  }, []);
+  }, [currentItem]);
 
   if (reviewNum > 0) {
     return (
