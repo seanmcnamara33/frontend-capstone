@@ -1,5 +1,6 @@
 /* eslint-disable react/function-component-definition */
 import React, { useState, useEffect, useRef } from 'react';
+import ImageGallery from './ImageGallery.jsx';
 import StarReviews from './StarReviews.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import IconList from './IconList.jsx';
@@ -9,8 +10,19 @@ import SelectSize from './SelectSize.jsx';
 import SelectQuantity from './SelectQuantity.jsx';
 import AddToCart from './AddToCart.jsx';
 import Select from 'react-select';
+import styled from 'styled-components';
 
-// state variables inside function?
+const ProductOverview = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const ProductInformation = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  width: 70%;
+`;
 const Overview = () => {
   const [currentItem, setCurrentItem] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
@@ -98,32 +110,35 @@ const Overview = () => {
   }, [currentItem]);
 
   return (
-    <>
-      <h1>Product Overview</h1>
-      <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
-      <p>
-        Category:
-        {currentItem.category}
-      </p>
-      <h4>
-        Product Name:
-        {currentItem.name}
-      </h4>
-      <p>
-        Price:
-        {currentStyle.original_price}
-      </p>
-      <ProductInfo currentItem={currentItem} />
-      <IconList />
-      <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
-      <StylesView allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
-      <div className='cart-features'>
-        <SelectSize selectRef={selectRef} openMenuOnFocus={Select.openMenuOnFocus} currentStyle={currentStyle} onSizeChange={onSizeChange} />
-        <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />
-      </div>
-      <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
-      <button className='star'>IM A STAR</button>
-    </>
+    <ProductOverview>
+      <ImageGallery />
+      <ProductInformation>
+        <h1>Product Overview</h1>
+        <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
+        <p>
+          Category:
+          {currentItem.category}
+        </p>
+        <h4>
+          Product Name:
+          {currentItem.name}
+        </h4>
+        <p>
+          Price:
+          {currentStyle.original_price}
+        </p>
+        <ProductInfo currentItem={currentItem} />
+        <IconList />
+        <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
+        <StylesView allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
+        <div className='cart-features'>
+          <SelectSize selectRef={selectRef} openMenuOnFocus={Select.openMenuOnFocus} currentStyle={currentStyle} onSizeChange={onSizeChange} />
+          <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />
+        </div>
+        <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
+        <button className='star'>IM A STAR</button>
+      </ProductInformation>
+    </ProductOverview>
   );
 };
 

@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <>
-      <div>Some</div>
+      {/* <div>Some</div> */}
       <Overview />
       <QuestionsAnswers />
     </>
