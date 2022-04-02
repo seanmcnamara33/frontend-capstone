@@ -1,7 +1,14 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import Search from './Search.jsx';
 import QuestionsList from './QuestionList.jsx';
-/* eslint-disable */
+
+const Main = styled.div`
+  margin: 1em;
+  padding: 1em;
+`;
+
 const QuestionsAnswers = () => {
   const [questions, setQuestions] = useState([]);
 
@@ -20,15 +27,17 @@ const QuestionsAnswers = () => {
     }
   }
 
+
   useEffect(()=>{
     loadQuestions();
   }, [])
 
+
   return (
-    <div>
+    <Main>
       <Search />
       <QuestionsList questions={questions}/>
-    </div>
+    </Main>
   )
 }
 
