@@ -2,12 +2,11 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: path.join(__dirname, 'src/index.jsx'),
   mode: 'development',
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'dist'),
-    publicPath: '/',
   },
   module: {
     rules: [
