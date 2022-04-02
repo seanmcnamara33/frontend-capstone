@@ -5,14 +5,20 @@ import ProductInfo from './ProductInfo.jsx';
 import IconList from './IconList.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import StylesView from './StylesView.jsx';
+import SelectSize from './SelectSize.jsx';
+import SelectQuantity from './SelectQuantity.jsx';
+import AddToCart from './AddToCart.jsx';
+
 // state variables inside function?
 const Overview = (props) => {
   const [currentItem, setCurrentItem] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
   const [allStyles, setAllStyles] = useState([]);
+  const [currentSize, setSize] = useState({});
+  const [currentAmount, setAmount] = useState(0);
+  const [cart, setCart] = useState([]);
 
   const getFirstItem = () => {
-    console.log(process.env.API_URI);
     fetch(`${process.env.API_URI}/products`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
       .then((response) => {
         response.json().then((results) => setCurrentItem(results[0]));
@@ -41,6 +47,41 @@ const Overview = (props) => {
     // OR, have TIM add an id to the review parent div, which you can then referene with document.getElementById(), and then you can call [element].scrollIntoView() on that element
     // you can also make it scroll smoothly, with scrollIntoView({behavior: 'smooth'})
     console.log('onReviewLinkClick not ready yet!');
+  };
+
+  const onStyleCircleClick = (event, index) => {
+    // should change styling of clicked circle - should highlight it/add a floating checkmark
+    // on click, they should also change the current image in the image gallery/carousel
+    const newStyle = allStyles[index];
+    setCurrentStyle(newStyle);
+  };
+
+  const onSizeChange = (event) => {
+    const size = event.target.value;
+    let currentSku;
+    for (let sku in currentStyle.skus) {
+      if (currentStyle.skus[sku].size === size) {
+        currentSku = currentStyle.skus[sku];
+      }
+    }
+    setSize(currentSku);
+    setAmount(1);
+  };
+
+  const onQuantityChange = (event) => {
+    setAmount(event.target.value);
+  };
+
+  const onAddToCartClick = () => {
+    for (let i = 0; i < currentAmount; i++) {
+      cart.push(currentStyle);
+    }
+    setCart(cart);
+  };
+
+  const onAddToCartClickNoSize = () => {
+
+    console.log('we are in onAddToCartClickNoSize');
   };
 
   useEffect(() => {
@@ -72,7 +113,13 @@ const Overview = (props) => {
       <ProductInfo currentItem={currentItem} />
       <IconList />
       <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
-      <StylesView allStyles={allStyles} />
+      <StylesView allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
+      <div className='cart-features'>
+        <SelectSize currentStyle={currentStyle} onSizeChange={onSizeChange} />
+        <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />
+      </div>
+      <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
+      <button className='star'>IM A STAR</button>
     </>
   );
 };
