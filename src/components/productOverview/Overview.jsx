@@ -1,5 +1,5 @@
 /* eslint-disable react/function-component-definition */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import StarReviews from './StarReviews.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import IconList from './IconList.jsx';
@@ -8,6 +8,7 @@ import StylesView from './StylesView.jsx';
 import SelectSize from './SelectSize.jsx';
 import SelectQuantity from './SelectQuantity.jsx';
 import AddToCart from './AddToCart.jsx';
+import Select from 'react-select';
 
 // state variables inside function?
 const Overview = () => {
@@ -17,13 +18,10 @@ const Overview = () => {
   const [currentSize, setSize] = useState({});
   const [currentAmount, setAmount] = useState(0);
   const [cart, setCart] = useState([]);
+  const selectRef = useRef();
 
   const getFirstItem = () => {
-<<<<<<< HEAD
-    console.log(process.env.API_URI);
 
-=======
->>>>>>> 734b2b4 (add functionality for select size/select quantity, and addToCart buttons. addToCart needs to toggle size dropdown on click if no size is selected)
     fetch(`${process.env.API_URI}/products`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
       .then((response) => {
         response.json().then((results) => setCurrentItem(results[0]));
@@ -62,7 +60,7 @@ const Overview = () => {
   };
 
   const onSizeChange = (event) => {
-    const size = event.target.value;
+    const size = event.value;
     let currentSku;
     for (let sku in currentStyle.skus) {
       if (currentStyle.skus[sku].size === size) {
@@ -81,12 +79,12 @@ const Overview = () => {
     for (let i = 0; i < currentAmount; i++) {
       cart.push(currentStyle);
     }
+    console.log(cart);
     setCart(cart);
   };
 
   const onAddToCartClickNoSize = () => {
-
-    console.log('we are in onAddToCartClickNoSize');
+    selectRef.current.focus();
   };
 
   useEffect(() => {
@@ -120,7 +118,7 @@ const Overview = () => {
       <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
       <StylesView allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
       <div className='cart-features'>
-        <SelectSize currentStyle={currentStyle} onSizeChange={onSizeChange} />
+        <SelectSize selectRef={selectRef} openMenuOnFocus={Select.openMenuOnFocus} currentStyle={currentStyle} onSizeChange={onSizeChange} />
         <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />
       </div>
       <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
