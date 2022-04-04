@@ -1,4 +1,4 @@
-/* eslint-disable react/function-component-definition */
+/* eslint-disable */
 import React, { useState, useEffect, useRef } from 'react';
 import ImageGallery from './ImageGallery.jsx';
 import StarReviews from './StarReviews.jsx';
@@ -11,6 +11,7 @@ import SelectQuantity from './SelectQuantity.jsx';
 import AddToCart from './AddToCart.jsx';
 import Select from 'react-select';
 import styled from 'styled-components';
+import 'whatwg-fetch';
 
 const ProductOverview = styled.div`
   display: flex;
@@ -111,7 +112,7 @@ const Overview = () => {
 
   return (
     <ProductOverview>
-      <ImageGallery />
+      <ImageGallery currentStyle={currentStyle}/>
       <ProductInformation>
         <h1>Product Overview</h1>
         <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />

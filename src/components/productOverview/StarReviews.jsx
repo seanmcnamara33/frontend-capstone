@@ -1,6 +1,6 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable react/function-component-definition */
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import 'whatwg-fetch';
 
 const StarReviews = ({ currentItem, onReviewLinkClick }) => {
   const [rating, setRating] = useState(0);
