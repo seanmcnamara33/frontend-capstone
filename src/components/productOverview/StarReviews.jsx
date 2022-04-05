@@ -1,6 +1,6 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable react/function-component-definition */
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import 'whatwg-fetch';
 
 const StarReviews = ({ currentItem, onReviewLinkClick }) => {
   const [rating, setRating] = useState(0);
@@ -43,7 +43,7 @@ const StarReviews = ({ currentItem, onReviewLinkClick }) => {
     if (Object.keys(currentItem).length) {
       getStars(currentItem.id);
     }
-  }, []);
+  }, [currentItem]);
 
   if (reviewNum > 0) {
     return (
