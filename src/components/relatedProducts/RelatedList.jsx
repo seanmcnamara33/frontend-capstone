@@ -1,6 +1,14 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import RelatedProductCard from './RelatedProductCard.jsx';
+
+const RelatedListStyle = styled.ul`
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+`;
 
 const RelatedList = () => {
   const [relatedProds, setRelatedProds] = useState([]);
@@ -23,7 +31,7 @@ const RelatedList = () => {
   return (
     <div>
       <h3>Related Products</h3>
-      <ol>
+      <RelatedListStyle>
         {relatedProds.map(prod => {
           return (
             <li key={prod}>
@@ -31,7 +39,7 @@ const RelatedList = () => {
             </li>
           );
         })}
-      </ol>
+      </RelatedListStyle>
     </div>
   );
 }
