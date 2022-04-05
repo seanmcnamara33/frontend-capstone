@@ -3,7 +3,7 @@ import React from 'react';
 
 
 const Reviews = (props) => {
-  console.log(props.data)
+  // console.log(props.data)
   return(
 
     props.data.map((review) => {
