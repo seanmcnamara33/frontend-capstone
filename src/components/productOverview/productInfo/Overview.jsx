@@ -32,6 +32,7 @@ const Overview = ({currentItem}) => {
   const [currentSize, setSize] = useState({});
   const [currentAmount, setAmount] = useState(0);
   const [cart, setCart] = useState([]);
+  const [currentImage, setCurrentImage] = useState('');
   const selectRef = useRef();
 
   const getFirstStyle = (productId) => {
@@ -88,10 +89,15 @@ const Overview = ({currentItem}) => {
     selectRef.current.focus();
   };
 
-  const onImageClick = () => {
-    // try to pass current styles image index, so that you can start at that image when you enter the expanded view
+  const onImageClick = (image) => {
+    setCurrentImage(image);
     setView('expanded');
   }
+
+  const onRestoreDefaultClick = (image) => {
+    setCurrentImage(image);
+    setView('default');
+  };
 
   useEffect(() => {
     if (Object.keys(currentItem).length) {
@@ -102,7 +108,7 @@ const Overview = ({currentItem}) => {
   if (currentView === 'default') {
     return (
       <ProductOverview>
-      <ImageGallery currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
+      <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
       <ProductInformation>
         <h1>Product Overview</h1>
         <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
@@ -133,7 +139,7 @@ const Overview = ({currentItem}) => {
     );
   }
   return (
-    <ExpandedView currentStyle={currentStyle}/>
+    <ExpandedView currentStyle={currentStyle} currentImage={currentImage} onRestoreDefaultClick={onRestoreDefaultClick}/>
   );
 };
 

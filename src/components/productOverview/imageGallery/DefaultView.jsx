@@ -15,7 +15,7 @@ const DefaultView = ({image, onGalleryButtonClick, currentView, onImageClick}) =
     return (
       <DefaultGallery>
         <button className='image-left' onClick={(event) => onGalleryButtonClick(event)}>Left</button>
-        <Image src={image.url} onClick={() => onImageClick()}></Image>
+        <Image src={image.url} onClick={() => onImageClick(image)}></Image>
         <button className='image-right' onClick={(event) => onGalleryButtonClick(event)}>Right</button>
       </DefaultGallery>
     )
