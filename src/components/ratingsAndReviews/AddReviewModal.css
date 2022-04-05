@@ -1,0 +1,16 @@
+.modal-styles {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: orangered;
+  padding: 50%;
+  z-index: 1000;
+}
+
+.reccomend-style {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: blue;
+}

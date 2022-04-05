@@ -23,18 +23,12 @@ const RatingsDisplay = (props) => {
 
 
   let arr = [];
-  for (var key in ratingsData) {
-    let temp = {}
-    temp.key =ratingsData[key]
-    arr.push(temp)
-  }
+  Object.keys(ratingsData).forEach((key) => {
+    arr.push({key : ratingsData[key]})
+  })
 
-//   Object.entries(ratingsData).map(([key, value]) => (
-//     <div key={key}>
-//     {key} {JSON.stringify(value)}
-//     </div>
-//   )
-//  )
+  console.log('here',arr)
+
 
   return (
     <React.Fragment>
@@ -46,3 +40,11 @@ const RatingsDisplay = (props) => {
 };
 
 export default RatingsDisplay;
+
+
+//   Object.entries(ratingsData).map(([key, value]) => (
+//     <div key={key}>
+//     {key} {JSON.stringify(value)}
+//     </div>
+//   )
+//  )

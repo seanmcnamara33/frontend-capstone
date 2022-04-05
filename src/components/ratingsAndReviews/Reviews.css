@@ -1,14 +1,16 @@
 .review-tile {
-  margin: 50px;
-  border-radius: 12px;
+  margin: 20px;
+  border-radius: 8px;
   border-color:black;
-  height: 150px;
+  border-width: 1px;
+  border-style: solid;
+  height: 170px;
   width: 500px;
 }
 
 .review-summary {
   font-weight: bold;
-  margin: 0 0 5px;
+  margin: 10px;
 }
 
 .review-body {
@@ -19,11 +21,11 @@
 }
 
 .review-name {
-  margin: 0 10px 0 0;
+  margin: 0 10px 0 5px;
 }
 
 .review-date {
-   margin: 10px 0 10px 0;
+   margin: 0 0 10px 5px;
    height: 20px;
    width: 500px;
 }
