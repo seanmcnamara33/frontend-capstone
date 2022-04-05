@@ -31,8 +31,8 @@ const App = () => {
 
   return (
     <>
-      <NavBar>Kids Next Door</NavBar>
-      {/* <Overview />
+      {/* <NavBar>Kids Next Door</NavBar>
+      <Overview />
       <RelatedList />
       <QuestionsAnswers /> */}
       <ReviewList />

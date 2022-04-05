@@ -9,9 +9,8 @@ const AddReview = (props) => {
     <div>
       <button onClick={() => setIsOpen(true)}> Add A Review</button>
 
-      <AddReviewModal open={isOpen} onClose={() => setIsOpen(false)}>
+      <AddReviewModal open={isOpen} onClose={() => setIsOpen(false)} />
 
-      </AddReviewModal>
     </div>
 
   )

@@ -4,6 +4,7 @@ import Reviews from './Reviews.jsx';
 import AddReview from './AddReview.jsx';
 import RatingsDisplay from './RatingsDisplay.jsx';
 import SortBar from './SortBar.jsx';
+import './ReviewList.css';
 
 
 const ReviewList = (props) => {
@@ -83,7 +84,9 @@ const ReviewList = (props) => {
     <div>
       <label>Ratings & Reviews</label>
       <SortBar />
+      <div className='review-list'>
       <Reviews data={currentReviews}/>
+      </div>
       <button type='button' onClick={handleClick}> More Reviews</button>
       <AddReview />
       <RatingsDisplay />

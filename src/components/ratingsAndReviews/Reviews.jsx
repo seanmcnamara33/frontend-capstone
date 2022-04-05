@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import './Reviews.css'
+import {formatDate} from '../common/helpers.js';
 
 
 const Reviews = (props) => {
@@ -8,13 +9,12 @@ const Reviews = (props) => {
   return (
 
     props.data.map((review) => {
-      let date = new Date(review.date)
       return (
         <div className='review-tile' key={review.review_id}>
           <div className='review-summary'>{review.summary}</div>
           <div className ='review-body'>{review.body}</div>
           <div className='review-name'>{review.reviewer_name}</div>
-          <div className='review-date'>{review.date}</div>
+          <div className='review-date'>{formatDate(review.date)}</div>
 
           {review.helpfulness}
           {review.photos}
