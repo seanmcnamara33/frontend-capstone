@@ -24,25 +24,13 @@ const ProductInformation = styled.div`
   height: 60vh;
   width: 70%;
 `;
-const Overview = () => {
-  const [currentItem, setCurrentItem] = useState({});
+const Overview = ({currentItem}) => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [allStyles, setAllStyles] = useState([]);
   const [currentSize, setSize] = useState({});
   const [currentAmount, setAmount] = useState(0);
   const [cart, setCart] = useState([]);
   const selectRef = useRef();
-
-  const getFirstItem = () => {
-
-    fetch(`${process.env.API_URI}/products`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
-      .then((response) => {
-        response.json().then((results) => setCurrentItem(results[0]));
-      })
-      .catch((err) => {
-        console.log(`Error found in getFirstItem: ${err}`);
-      });
-  };
 
   const getFirstStyle = (productId) => {
     fetch(`${process.env.API_URI}/products/${productId}/styles`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
@@ -56,7 +44,6 @@ const Overview = () => {
         console.log(`Error found in getFirstStyle: ${err}`);
       });
   };
-
 
   const onReviewLinkClick = () => {
     // either have TIM add a ref using useRef to the reviews header, so that you can use scrollIntoView on the ref to get to it on click
@@ -100,12 +87,7 @@ const Overview = () => {
   };
 
   useEffect(() => {
-    getFirstItem();
-  }, []);
-
-  useEffect(() => {
     if (Object.keys(currentItem).length) {
-      // console.log(currentItem);
       getFirstStyle(currentItem.id);
     }
   }, [currentItem]);
