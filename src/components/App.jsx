@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Overview from './productOverview/Overview.jsx';
 import RelatedList from './relatedProducts/RelatedList.jsx';
 import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
+import 'whatwg-fetch';
 import ReviewList from './ratingsAndReviews/ReviewList.jsx';
 
 const NavBar = styled.div`
