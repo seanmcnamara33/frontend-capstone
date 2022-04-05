@@ -1,8 +1,9 @@
-/* eslint-disable react/function-component-definition */
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import StarReviews from './StarReviews.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import IconList from './IconList.jsx';
+
 // state variables inside function?
 const Overview = () => {
   const [currentItem, setCurrentItem] = useState({});
@@ -54,7 +55,10 @@ const Overview = () => {
   return (
     <>
       <h1>Product Overview</h1>
-      <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
+      <StarReviews
+        currentItem={currentItem}
+        onReviewLinkClick={onReviewLinkClick}
+      />
       <p>
         Category:
         {currentItem.category}

@@ -1,13 +1,9 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import Search from './Search.jsx';
-import QuestionsList from './QuestionList.jsx';
-
-const Main = styled.div`
-  margin: 1em;
-  padding: 1em;
-`;
+import QuestionsList from './QuestionList';
+import 'whatwg-fetch';
+import { Main } from './QuestionsStyles';
 
 const QuestionsAnswers = () => {
   const [questions, setQuestions] = useState([]);
@@ -26,7 +22,6 @@ const QuestionsAnswers = () => {
       console.log('LOAD', error)
     }
   }
-
 
   useEffect(()=>{
     loadQuestions();
