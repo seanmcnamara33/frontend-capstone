@@ -1,8 +1,8 @@
 /* eslint-disable */
 import React from 'react';
 import Overview from './productOverview/Overview.jsx';
+import RelatedList from './relatedProducts/RelatedList.jsx';
 import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
-
 
 const App = () => {
   // ! things we need to make overall state
@@ -15,6 +15,7 @@ const App = () => {
     <>
       <div>Some</div>
       <Overview />
+      <RelatedList />
       <QuestionsAnswers />
     </>
   )
