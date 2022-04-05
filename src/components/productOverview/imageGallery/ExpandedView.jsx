@@ -107,9 +107,9 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
           return <Icon onClick={(event) => onIconClick(event)} key={`icon${index}`}>{icon}</Icon>
         })}
       </IconList>
-      <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>Left</button>
+      <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2190)}</button>
       <ExpandedImage src={expandedPhotosArray[currentStyleExpandedIndex].url} onClick={(event) => onExpandedImageClick(event)}></ExpandedImage>
-      <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>Right</button>
+      <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2192)}</button>
       <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>Restore</button>
     </ExpandedContainer>
     );

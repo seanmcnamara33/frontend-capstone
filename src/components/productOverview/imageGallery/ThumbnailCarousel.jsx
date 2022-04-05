@@ -35,14 +35,14 @@ const ThumbnailCarousel = ({photosArray, onThumbnailImageClick, currentStylePhot
 
   return (
     <ThumbnailContainer className='thumbnail-carousel'>
-      <button className='image-up' onClick={(event) => onThumbnailButtonClick(event)}>Up</button>
+      <button className='image-up' onClick={(event) => onThumbnailButtonClick(event)}>{String.fromCharCode(0x2303)}</button>
       {currentThumbnails.map((photo, i) => {
         if (photo.thumbnail_url === photosArray[currentStylePhotoIndex].thumbnail_url) {
           return <SelectedThumbnail id={i + count} key={`thumb${i}`} src={photo.thumbnail_url} onClick={(event) => onThumbnailImageClick(event)}></SelectedThumbnail>
         }
         return <Thumbnail id={i + count} src={photo.thumbnail_url} key={`thumb${i}`} onClick={(event) => onThumbnailImageClick(event)}></Thumbnail>
       })}
-      <button className='image-down' onClick={(event) => onThumbnailButtonClick(event)}>Down</button>
+      <button className='image-down' onClick={(event) => onThumbnailButtonClick(event)}>{String.fromCharCode(0x2304)}</button>
     </ThumbnailContainer>
   );
 }
