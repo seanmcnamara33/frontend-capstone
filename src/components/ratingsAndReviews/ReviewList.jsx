@@ -20,7 +20,7 @@ const ReviewList = (props) => {
       response.json().then((results) => {
         // console.log(results.results)
         setCurrentReviews(results.results);
-        setCount(reviewCount + 2)
+        setCount(reviewCount + 2);
       });
     })
     .catch((err) => {
@@ -71,7 +71,6 @@ const ReviewList = (props) => {
         console.log(results.results)
         setCount(reviewCount + 2)
         setCurrentReviews(results.results);
-
       });
     })
     .catch((err) => {

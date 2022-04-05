@@ -1,0 +1,30 @@
+.review-tile {
+  margin: 50px;
+  border-radius: 12px;
+  border-color:black;
+  height: 150px;
+  width: 500px;
+}
+
+.review-summary {
+  font-weight: bold;
+  margin: 0 0 5px;
+}
+
+.review-body {
+ margin: 10px;
+ height: 40px;
+ width: 500px;
+
+}
+
+.review-name {
+  margin: 0 10px 0 0;
+}
+
+.review-date {
+   margin: 10px 0 10px 0;
+   height: 20px;
+   width: 500px;
+}
+
