@@ -1,10 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-<<<<<<< HEAD
-
-=======
 import Select from 'react-select';
->>>>>>> solo
 const SelectQuantity = ({ currentSize, currentStyle, onQuantityChange }) => {
   if (Object.keys(currentSize).length) {
     let quantityList = [];
@@ -24,13 +20,7 @@ const SelectQuantity = ({ currentSize, currentStyle, onQuantityChange }) => {
     )
   }
   return(
-<<<<<<< HEAD
-    <select className='select-quantity'>
-      <option value='' disabled={true}>-</option>
-    </select>
-=======
     <Select options={{value: '-', label: '-'}} className='select-quantity' isDisabled placeholder='-' ></Select>
->>>>>>> solo
   );
 };
 

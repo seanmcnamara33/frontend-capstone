@@ -9,11 +9,6 @@ import StylesView from './StylesView.jsx';
 import SelectSize from './SelectSize.jsx';
 import SelectQuantity from './SelectQuantity.jsx';
 import AddToCart from './AddToCart.jsx';
-<<<<<<< HEAD
-
-// state variables inside function?
-const Overview = (props) => {
-=======
 import Select from 'react-select';
 import styled from 'styled-components';
 import 'whatwg-fetch';
@@ -30,17 +25,13 @@ const ProductInformation = styled.div`
   width: 70%;
 `;
 const Overview = () => {
->>>>>>> solo
   const [currentItem, setCurrentItem] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
   const [allStyles, setAllStyles] = useState([]);
   const [currentSize, setSize] = useState({});
   const [currentAmount, setAmount] = useState(0);
   const [cart, setCart] = useState([]);
-<<<<<<< HEAD
-=======
   const selectRef = useRef();
->>>>>>> solo
 
   const getFirstItem = () => {
 
@@ -82,11 +73,7 @@ const Overview = () => {
   };
 
   const onSizeChange = (event) => {
-<<<<<<< HEAD
-    const size = event.target.value;
-=======
     const size = event.value;
->>>>>>> solo
     let currentSku;
     for (let sku in currentStyle.skus) {
       if (currentStyle.skus[sku].size === size) {
@@ -109,12 +96,7 @@ const Overview = () => {
   };
 
   const onAddToCartClickNoSize = () => {
-<<<<<<< HEAD
-
-    console.log('we are in onAddToCartClickNoSize');
-=======
     selectRef.current.focus();
->>>>>>> solo
   };
 
   useEffect(() => {
@@ -128,34 +110,6 @@ const Overview = () => {
   }, [currentItem]);
 
   return (
-<<<<<<< HEAD
-    <>
-      <h1>Product Overview</h1>
-      <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
-      <p>
-        Category:
-        {currentItem.category}
-      </p>
-      <h4>
-        Product Name:
-        {currentItem.name}
-      </h4>
-      <p>
-        Price:
-        {currentStyle.original_price}
-      </p>
-      <ProductInfo currentItem={currentItem} />
-      <IconList />
-      <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
-      <StylesView allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
-      <div className='cart-features'>
-        <SelectSize currentStyle={currentStyle} onSizeChange={onSizeChange} />
-        <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />
-      </div>
-      <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
-      <button className='star'>IM A STAR</button>
-    </>
-=======
     <ProductOverview>
       <ImageGallery currentStyle={currentStyle}/>
       <ProductInformation>
@@ -185,7 +139,6 @@ const Overview = () => {
         <button className='star'>IM A STAR</button>
       </ProductInformation>
     </ProductOverview>
->>>>>>> solo
   );
 };
 
