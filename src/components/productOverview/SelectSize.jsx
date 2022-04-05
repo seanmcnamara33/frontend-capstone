@@ -1,7 +1,8 @@
 /* eslint-disable */
 import React, { useState } from 'react';
+import Select from 'react-select';
 
-const SelectSize = ({ currentStyle, onSizeChange }) => {
+const SelectSize = ({ openMenuOnFocus, selectRef, currentStyle, onSizeChange }) => {
   let sizes = new Set();
   for (let sku in currentStyle.skus) {
     if (currentStyle.skus[sku].quantity > 0) {
@@ -9,21 +10,24 @@ const SelectSize = ({ currentStyle, onSizeChange }) => {
     }
   }
   sizes = Array.from(sizes);
+  var options = [];
+  for (var i = 0; i < sizes.length; i++) {
+    options.push({value: sizes[i], label: sizes[i]});
+  }
   if (sizes.length) {
     return (
-      <select id='size' className='sizes-select' onChange={(event) => onSizeChange(event)}>
-        <option value=''>Select Size</option>
-        {sizes.map((size, index) => {
-          return <option value={size} key={`size${index}`}>{size}</option>
-        })}
-      </select>
+      <Select options={options} style={{all: 'unset'}} ref={selectRef} openMenuOnFocus={true} className='sizes-select' onChange={(event) => onSizeChange(event)} placeholder='Select Size'>
+      </Select>
     );
   }
   return(
-    <select className='sizes-select'>
-      <option value='' disabled={true}>OUT OF STOCK</option>
-    </select>
+    <Select options={{value: '', label: ''}} className='sizes-select' placeholder='Select Size'></Select>
   )
 };
 
 export default SelectSize;
+
+{/* <option value=''>Select Size</option>
+{sizes.map((size, index) => {
+  return <option value={size} key={`size${index}`}>{size}</option>
+})} */}

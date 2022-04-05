@@ -1,4 +1,4 @@
-/* eslint-disable react/function-component-definition */
+/* eslint-disable */
 import React, { useState } from 'react';
 
 const ProductInfo = ({ currentItem }) => {

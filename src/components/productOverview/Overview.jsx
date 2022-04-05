@@ -1,5 +1,6 @@
-/* eslint-disable react/function-component-definition */
-import React, { useState, useEffect } from 'react';
+/* eslint-disable */
+import React, { useState, useEffect, useRef } from 'react';
+import ImageGallery from './ImageGallery.jsx';
 import StarReviews from './StarReviews.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import IconList from './IconList.jsx';
@@ -8,17 +9,41 @@ import StylesView from './StylesView.jsx';
 import SelectSize from './SelectSize.jsx';
 import SelectQuantity from './SelectQuantity.jsx';
 import AddToCart from './AddToCart.jsx';
+<<<<<<< HEAD
 
 // state variables inside function?
 const Overview = (props) => {
+=======
+import Select from 'react-select';
+import styled from 'styled-components';
+import 'whatwg-fetch';
+
+const ProductOverview = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const ProductInformation = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  width: 70%;
+`;
+const Overview = () => {
+>>>>>>> solo
   const [currentItem, setCurrentItem] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
   const [allStyles, setAllStyles] = useState([]);
   const [currentSize, setSize] = useState({});
   const [currentAmount, setAmount] = useState(0);
   const [cart, setCart] = useState([]);
+<<<<<<< HEAD
+=======
+  const selectRef = useRef();
+>>>>>>> solo
 
   const getFirstItem = () => {
+
     fetch(`${process.env.API_URI}/products`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
       .then((response) => {
         response.json().then((results) => setCurrentItem(results[0]));
@@ -57,7 +82,11 @@ const Overview = (props) => {
   };
 
   const onSizeChange = (event) => {
+<<<<<<< HEAD
     const size = event.target.value;
+=======
+    const size = event.value;
+>>>>>>> solo
     let currentSku;
     for (let sku in currentStyle.skus) {
       if (currentStyle.skus[sku].size === size) {
@@ -80,8 +109,12 @@ const Overview = (props) => {
   };
 
   const onAddToCartClickNoSize = () => {
+<<<<<<< HEAD
 
     console.log('we are in onAddToCartClickNoSize');
+=======
+    selectRef.current.focus();
+>>>>>>> solo
   };
 
   useEffect(() => {
@@ -95,6 +128,7 @@ const Overview = (props) => {
   }, [currentItem]);
 
   return (
+<<<<<<< HEAD
     <>
       <h1>Product Overview</h1>
       <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
@@ -121,6 +155,37 @@ const Overview = (props) => {
       <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
       <button className='star'>IM A STAR</button>
     </>
+=======
+    <ProductOverview>
+      <ImageGallery currentStyle={currentStyle}/>
+      <ProductInformation>
+        <h1>Product Overview</h1>
+        <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
+        <p>
+          Category:
+          {currentItem.category}
+        </p>
+        <h4>
+          Product Name:
+          {currentItem.name}
+        </h4>
+        <p>
+          Price:
+          {currentStyle.original_price}
+        </p>
+        <ProductInfo currentItem={currentItem} />
+        <IconList />
+        <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
+        <StylesView allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
+        <div className='cart-features'>
+          <SelectSize selectRef={selectRef} openMenuOnFocus={Select.openMenuOnFocus} currentStyle={currentStyle} onSizeChange={onSizeChange} />
+          <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />
+        </div>
+        <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
+        <button className='star'>IM A STAR</button>
+      </ProductInformation>
+    </ProductOverview>
+>>>>>>> solo
   );
 };
 
