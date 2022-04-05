@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, {useState, useEffect} from 'react';
-import Overview from './productOverview/Overview.jsx';
+import Overview from './productOverview/productInfo/Overview.jsx';
 import RelatedList from './relatedProducts/RelatedList.jsx';
 import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
 import styled from 'styled-components';

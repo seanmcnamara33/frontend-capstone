@@ -1,14 +1,14 @@
 /* eslint-disable */
 import React, { useState, useEffect, useRef } from 'react';
-import ImageGallery from './ImageGallery.jsx';
+import ImageGallery from '../imageGallery/ImageGallery.jsx';
 import StarReviews from './StarReviews.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import IconList from './IconList.jsx';
-import StyleSelector from './StyleSelector.jsx';
-import StylesView from './StylesView.jsx';
-import SelectSize from './SelectSize.jsx';
-import SelectQuantity from './SelectQuantity.jsx';
-import AddToCart from './AddToCart.jsx';
+import StyleSelector from '../styleSelector/StyleSelector.jsx';
+import StylesView from '../styleSelector/StylesView.jsx';
+import SelectSize from '../styleSelector/SelectSize.jsx';
+import SelectQuantity from '../styleSelector/SelectQuantity.jsx';
+import AddToCart from '../AddToCart/AddToCart.jsx';
 import Select from 'react-select';
 import styled from 'styled-components';
 import 'whatwg-fetch';
