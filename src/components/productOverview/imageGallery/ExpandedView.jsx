@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const ExpandedContainer = styled.div`
   display: flex;
   flex-direction: columns;
-  width:90%;
+  width: 90%;
   height: 50%;
 `;
 
@@ -14,9 +14,23 @@ const ExpandedImage = styled.img`
   height: 100%;
 `;
 
+const IconList  = styled.div`
+  display: flex;
+`;
+
+const Icon = styled.div`
+  height: 20px;
+  width: 20px;
+`;
+const SelectedIcon = styled.div`
+  height: 20px;
+  width: 20px;
+  color: yellow;
+`;
+
+
 const ExpandedView = ({currentStyle}) => {
   const expandedPhotosArray = currentStyle.photos;
-  console.log(expandedPhotosArray);
   const [currentStyleExpandedIndex, setExpandedStyleIndex] = useState(0);
 
   const onExpandedButtonClick = (event) => {
@@ -27,8 +41,30 @@ const ExpandedView = ({currentStyle}) => {
     }
   }
 
+  const onExpandedImageHover = () => {
+
+  }
+
+  const onIconClick = (event) => {
+    console.log(event.target.innerText);
+    setExpandedStyleIndex(Number(event.target.innerText) - 1);
+  }
+
+  let icons = [];
+  for (var i = 0; i < expandedPhotosArray.length; i++) {
+    icons.push(i + 1);
+  };
+
   return (
     <ExpandedContainer>
+      <IconList>
+        {icons.map((icon, index) => {
+          if (index === currentStyleExpandedIndex) {
+            return <SelectedIcon onClick={(event) => onIconClick(event)} key={`icon${index}`}>{icon}</SelectedIcon>
+          }
+          return <Icon onClick={(event) => onIconClick(event)} key={`icon${index}`}>{icon}</Icon>
+        })}
+      </IconList>
       <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>Left</button>
       <ExpandedImage src={expandedPhotosArray[currentStyleExpandedIndex].url}></ExpandedImage>
       <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>Right</button>
