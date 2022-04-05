@@ -8,7 +8,7 @@ export const calculateAverage = (object) => {
     sum += parseInt((prop * object[prop]));
     count += parseInt(object[prop]);
   }
-  return Math.round((sum / count) * 10) / 10;
+  return (Math.round((sum / count) * 4) / 4).toFixed(2);
 };
 
 export const calculateTotalReviewNumber = (object) => {
