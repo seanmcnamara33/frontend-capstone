@@ -9,6 +9,7 @@ import StylesView from '../styleSelector/StylesView.jsx';
 import SelectSize from '../styleSelector/SelectSize.jsx';
 import SelectQuantity from '../styleSelector/SelectQuantity.jsx';
 import AddToCart from '../AddToCart/AddToCart.jsx';
+import ExpandedView from '../imageGallery/ExpandedView.jsx';
 import Select from 'react-select';
 import styled from 'styled-components';
 import 'whatwg-fetch';
@@ -25,6 +26,7 @@ const ProductInformation = styled.div`
   width: 70%;
 `;
 const Overview = ({currentItem}) => {
+  const [currentView, setView] = useState('default');
   const [currentStyle, setCurrentStyle] = useState({});
   const [allStyles, setAllStyles] = useState([]);
   const [currentSize, setSize] = useState({});
@@ -86,15 +88,21 @@ const Overview = ({currentItem}) => {
     selectRef.current.focus();
   };
 
+  const onImageClick = () => {
+    // try to pass current styles image index, so that you can start at that image when you enter the expanded view
+    setView('expanded');
+  }
+
   useEffect(() => {
     if (Object.keys(currentItem).length) {
       getFirstStyle(currentItem.id);
     }
   }, [currentItem]);
 
-  return (
-    <ProductOverview>
-      <ImageGallery currentStyle={currentStyle}/>
+  if (currentView === 'default') {
+    return (
+      <ProductOverview>
+      <ImageGallery currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
       <ProductInformation>
         <h1>Product Overview</h1>
         <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
@@ -122,6 +130,10 @@ const Overview = ({currentItem}) => {
         <button className='star'>IM A STAR</button>
       </ProductInformation>
     </ProductOverview>
+    );
+  }
+  return (
+    <ExpandedView currentStyle={currentStyle}/>
   );
 };
 
