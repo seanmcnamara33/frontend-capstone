@@ -5,10 +5,7 @@ import RelatedList from './relatedProducts/RelatedList.jsx';
 import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
 import styled from 'styled-components';
 import 'whatwg-fetch';
-<<<<<<< HEAD
 // import RelatedList from './relatedProducts/RelatedList.jsx';
-=======
->>>>>>> 5a8b2220356f72d688c7ae17c963e75669d71a97
 import ReviewList from './ratingsAndReviews/ReviewList.jsx';
 // eslint-disable-next-line react/function-component-definition
 
