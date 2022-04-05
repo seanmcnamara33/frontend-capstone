@@ -4,11 +4,13 @@ import StarReviews from './StarReviews.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import IconList from './IconList.jsx';
 // state variables inside function?
-const Overview = (props) => {
+const Overview = () => {
   const [currentItem, setCurrentItem] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
 
   const getFirstItem = () => {
+    console.log(process.env.API_URI);
+
     fetch(`${process.env.API_URI}/products`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
       .then((response) => {
         response.json().then((results) => setCurrentItem(results[0]));
@@ -29,8 +31,11 @@ const Overview = (props) => {
   };
 
   const onReviewLinkClick = () => {
-    // either have Varun add a ref using useRef to the reviews header, so that you can use scrollIntoView on the ref to get to it on click
-    // OR, have Varun add an id to the review parent div, which you can then referene with document.getElementById(), and then you can call [element].scrollIntoView() on that element
+    // either have Varun add a ref using useRef to the reviews header,
+    // so that you can use scrollIntoView on the ref to get to it on click
+    // OR, have Varun add an id to the review parent div,
+    // which you can then referene with document.getElementById(),
+    // and then you can call [element].scrollIntoView() on that element
     // you can also make it scroll smoothly, with scrollIntoView({behavior: 'smooth'})
     console.log('onReviewLinkClick not ready yet!');
   };
