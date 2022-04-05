@@ -1,11 +1,13 @@
 /* eslint-disable */
 import React from 'react';
 import Overview from './productOverview/Overview.jsx';
+import RelatedList from './relatedProducts/RelatedList.jsx';
 import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
 import styled from 'styled-components';
 import 'whatwg-fetch';
 import RelatedList from './relatedProducts/RelatedList.jsx';
 // eslint-disable-next-line react/function-component-definition
+
 
 const NavBar = styled.div`
 width: 100%;
@@ -18,6 +20,7 @@ display: flex;
 align-items: center;
 font-size: 24px;
 `;
+
 
 const App = () => {
   // ! things we need to make overall state
