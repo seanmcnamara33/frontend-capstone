@@ -20,7 +20,6 @@ const SelectedThumbnail = styled.img `
 `;
 
 const ThumbnailCarousel = ({photosArray, onThumbnailImageClick, currentStylePhotoIndex}) => {
-  console.log(currentStylePhotoIndex);
   const [count, setCount] = useState(0);
   var currentThumbnails = photosArray.slice(count, count + 7);
 

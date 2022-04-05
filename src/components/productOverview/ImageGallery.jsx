@@ -19,11 +19,9 @@ const ImageGallery = ({currentStyle, allStyles}) => {
     let onGalleryButtonClick = (event) => {
       var direction = event.target.classList[0];
       if (direction === 'image-left' && currentStylePhotoIndex !== 0) {
-        console.log(currentStylePhotoIndex);
         setStyleIndex(currentStylePhotoIndex - 1);
       }
       else if (direction === 'image-right' && currentStylePhotoIndex !== photosArray.length - 1) {
-        console.log(currentStylePhotoIndex);
         setStyleIndex(currentStylePhotoIndex + 1);
       }
     }

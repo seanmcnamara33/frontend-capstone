@@ -92,7 +92,6 @@ const Overview = () => {
     for (let i = 0; i < currentAmount; i++) {
       cart.push(currentStyle);
     }
-    console.log(cart);
     setCart(cart);
   };
 
