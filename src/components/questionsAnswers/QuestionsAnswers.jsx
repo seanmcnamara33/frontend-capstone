@@ -1,7 +1,10 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import Search from './Search.jsx';
-import QuestionsList from './QuestionList.jsx';
-/* eslint-disable */
+import QuestionsList from './QuestionList';
+import 'whatwg-fetch';
+import { Main } from './QuestionsStyles';
+
 const QuestionsAnswers = () => {
   const [questions, setQuestions] = useState([]);
 
@@ -24,11 +27,12 @@ const QuestionsAnswers = () => {
     loadQuestions();
   }, [])
 
+
   return (
-    <div>
+    <Main>
       <Search />
       <QuestionsList questions={questions}/>
-    </div>
+    </Main>
   )
 }
 

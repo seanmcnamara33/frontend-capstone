@@ -105,6 +105,7 @@ const Overview = () => {
 
   useEffect(() => {
     if (Object.keys(currentItem).length) {
+      // console.log(currentItem);
       getFirstStyle(currentItem.id);
     }
   }, [currentItem]);
