@@ -15,7 +15,7 @@ const RelatedProductCard = ({ prod }) => {
   };
 
   const getStyle = () => {
-    fetch(`${[process.env.API_URI]}/products/${prod}/styles`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
+    fetch(`${process.env.API_URI}/products/${prod}/styles`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
       .then((response) => {
         response.json().then(result => {
           setStyle(result.results[0]);
