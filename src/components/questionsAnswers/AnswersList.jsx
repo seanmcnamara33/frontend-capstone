@@ -28,7 +28,7 @@ const AnswersList = ({id, answers}) => {
             ))}
         </AnswerList>
         {answers.length > 2 &&
-          <button onClick={()=>setDisplay(!display)}>Show More</button>
+          <a onClick={()=>setDisplay(!display)}>Show More</a>
         }
       </>
       }
