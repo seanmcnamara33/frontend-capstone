@@ -17,7 +17,9 @@ const Reviews = (props) => {
           <div className='review-date'>{formatDate(review.date)}</div>
 
           {review.helpfulness}
-          {review.photos}
+          {/* photos array breaking when review loads with comments */}
+          {/* {review.photos}
+          map to array */}
           {review.rating}
           {review.recommend}
           {review.response}

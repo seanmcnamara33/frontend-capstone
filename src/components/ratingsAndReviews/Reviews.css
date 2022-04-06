@@ -4,7 +4,7 @@
   border-color:black;
   border-width: 1px;
   border-style: solid;
-  height: 170px;
+  min-height: 170px;
   width: auto;
 }
 
@@ -15,7 +15,7 @@
 
 .review-body {
  margin: 10px;
- height: 40px;
+ min-height: 40px;
  width: 500px;
 
 }
@@ -26,7 +26,7 @@
 
 .review-date {
    margin: 0 0 10px 5px;
-   height: 20px;
+   min-height: 20px;
    width: 500px;
 }
 

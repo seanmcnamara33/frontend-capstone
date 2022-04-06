@@ -47,10 +47,10 @@ const App = () => {
 
   return (
     <>
-      <NavBar>Kids Next Door</NavBar>
+      {/* <NavBar>Kids Next Door</NavBar>
       <Overview currentItem={currentItem}/>
       <RelatedList />
-      <QuestionsAnswers />
+      <QuestionsAnswers /> */}
       <ReviewList />
     </>
   )
