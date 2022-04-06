@@ -20,3 +20,21 @@ body {
   font-size: large;
   font-weight: bold;
 }
+
+.expanded-image-left {
+  all: unset;
+  position: absolute;
+  top: 330px;
+  left: 30px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.expanded-image-right {
+  all: unset;
+  position: absolute;
+  top: 330px;
+  right: 200px;
+  font-size: large;
+  font-weight: bold;
+}

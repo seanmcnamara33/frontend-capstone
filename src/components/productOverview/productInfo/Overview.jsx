@@ -17,14 +17,17 @@ import 'whatwg-fetch';
 const ProductOverview = styled.div`
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   box-sizing: border-box;
 `;
 
 const ProductInformation = styled.div`
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
+  margin-left: 10px;
+  justify-content: space-between;
 `;
 const Overview = ({currentItem}) => {
   const [currentView, setView] = useState('default');

@@ -32,17 +32,22 @@ const ZoomedImage = styled.img`
 
 const IconList  = styled.div`
   display: flex;
+  position: absolute;
+  top: 525px;
+  left: 50px;
 `;
 
 const Icon = styled.div`
-  height: 20px;
-  width: 20px;
+  font-size: large;
+  font-weight: bold;
+  margin: 5px;
 `;
 
 const SelectedIcon = styled.div`
-  height: 20px;
-  width: 20px;
+  font-size: large;
+  font-weight: bold;
   color: yellow;
+  margin: 5px;
 `;
 
 const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
@@ -98,7 +103,7 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
 
   if (!zoomed) {
     return(
-      <ExpandedContainer>
+    <ExpandedContainer>
       <IconList>
         {icons.map((icon, index) => {
           if (index === currentStyleExpandedIndex) {

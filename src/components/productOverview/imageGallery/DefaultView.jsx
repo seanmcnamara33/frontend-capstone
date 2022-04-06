@@ -5,12 +5,14 @@ import styled from 'styled-components';
 const DefaultGallery = styled.div`
   display: flex;
   overflow: hidden;
+  height: 100%;
   width: 100%;
 `;
 const Image = styled.img `
-  height: 80%;
-  width: 100%;
-  overflow: hidden;
+  min-height: 100%;
+  min-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
   cursor: zoom-in;
 `;
 
