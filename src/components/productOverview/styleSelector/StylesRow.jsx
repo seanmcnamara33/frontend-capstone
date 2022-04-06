@@ -25,7 +25,6 @@ const StylesRow = ({ index, styleGroup, onStyleCircleClick }) => {
   } else {
     trueStyleIndex = (index * 4);
   }
-  console.log(styleGroup);
   return (
     <StyleCircleRow className='styles-row'>
       {styleGroup.map((style, i) => {
