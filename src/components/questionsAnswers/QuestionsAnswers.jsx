@@ -1,16 +1,16 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
-import Search from './Search.jsx';
-import QuestionsList from './QuestionList';
+import Search from './search/Search';
+import QuestionsList from './questions/QuestionList';
 import 'whatwg-fetch';
-import { Main } from './QuestionsStyles.jsx';
+import { Main } from './Styles';
 
-const QuestionsAnswers = () => {
+const QuestionsAnswers = ({id}) => {
   const [questions, setQuestions] = useState([]);
   const [filtered, setFiltered] = useState([])
-  const loadQuestions = async () =>{
+  const loadQuestions = async product_id =>{
     try {
-      let data = await fetch(`${process.env.API_URI}/qa/questions?product_id=65631`, {
+      let data = await fetch(`${process.env.API_URI}/qa/questions?product_id=${product_id}`, {
         method: 'GET',
         headers: { Authorization: process.env.API_KEY }
       });
@@ -24,8 +24,10 @@ const QuestionsAnswers = () => {
   }
 
   useEffect(()=>{
-    loadQuestions();
-  }, [])
+    if (id) {
+      loadQuestions(id);
+    }
+  }, [id])
 
   const filterQuestions = input => {
     if (input.length > 2 ) {

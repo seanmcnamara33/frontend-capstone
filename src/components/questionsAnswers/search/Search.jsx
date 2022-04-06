@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import {SearchInput} from './QuestionsStyles';
+import {SearchInput} from './Styles';
 
 const Search = ({filterQuestions}) => (
   <SearchInput

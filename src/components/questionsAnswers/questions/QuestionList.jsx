@@ -1,7 +1,9 @@
 /* eslint-disable */
 import React, {useState, useEffect} from 'react';
-import AnswersList from './AnswersList'
-import { Question, List, Modal, Content, Header } from './QuestionsStyles';
+import {AiOutlineClose} from 'react-icons/ai';
+import AnswersList from '../answers/AnswersList'
+import { Question, List } from './Styles';
+import { Modal, Content, Header } from '../../AppStyles'
 import AddQuestion from './AddQuestion';
 
 const QuestionList = ({questions}) => {
@@ -9,6 +11,7 @@ const QuestionList = ({questions}) => {
   const [height, setHeight] = useState(false);
 
   const handleModal = () => setShow(!show)
+
   return (
     <>
       <div>
@@ -35,8 +38,9 @@ const QuestionList = ({questions}) => {
       <Modal onClose={handleModal} show={show}>
         <Content>
           <Header>
-            <h1>Add A Question</h1>
-            <button onClick={handleModal} >Close</button>
+            <h2>Aask A Question</h2>
+            <button onClick={handleModal}><AiOutlineClose/></button>
+            <h3>About the {'product name'}</h3>
           </Header>
           <AddQuestion />
         </Content>

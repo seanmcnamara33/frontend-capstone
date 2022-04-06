@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, {useState, useEffect} from 'react';
-import { AnswerList } from './QuestionsStyles';
-import { formatDate } from '../common/helpers';
+import { AnswerList } from './Styles';
+import { formatDate } from '../../common/helpers';
 
 const Answer = ({id, answer}) => {
   return(
