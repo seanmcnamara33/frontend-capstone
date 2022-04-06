@@ -7,17 +7,35 @@ const ExpandedContainer = styled.div`
   flex-direction: columns;
   justify-content: center;
   align-items: center;
+  align-self: center;
   box-sizing: border-box;
+  background-color: grey;
   padding: 60px;
+  margin: 20px;
   width: 100%;
   height: 90vh;
 `;
 
+const ZoomedImage = styled.img`
+  transform: scale(2.5);
+  object-fit: fill;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+  cursor: zoom-out;
+`;
+
 const ZoomedContainer = styled.div`
-  width: 90%;
+  display: flex;
+  flex-direction: columns;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: grey;
+  padding: 60px;
+  margin: 20px;
+  width: 100%;
   height: 90vh;
-  margin: 60px;
-  transition: transform 1s ease-in-out;
   overflow: hidden;
 `;
 
@@ -25,22 +43,16 @@ const ExpandedImage = styled.img`
   object-fit: fill;
   width: 50%;
   height: 100%;
+  overflow: hidden;
   cursor: crosshair;
 `;
 
-const ZoomedImage = styled.img`
-  transform: scale(2.5);
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  cursor: zoom-out;
-`;
 
 const IconList  = styled.div`
   display: flex;
   position: absolute;
-  top: 525px;
-  left: 50px;
+  top: 575px;
+  left: 365px;
 `;
 
 const Icon = styled.div`

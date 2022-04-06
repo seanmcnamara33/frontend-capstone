@@ -26,8 +26,13 @@ const ProductInformation = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  margin-left: 10px;
+  padding: 20px;
   justify-content: space-between;
+`;
+
+const CategoryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const Overview = ({currentItem}) => {
@@ -115,20 +120,12 @@ const Overview = ({currentItem}) => {
     <ProductOverview>
       <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
       <ProductInformation>
-        <h1>Product Overview</h1>
         <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
-        <p>
-          Category:
-          {currentItem.category}
-        </p>
-        <h4>
-          Product Name:
-          {currentItem.name}
-        </h4>
-        <p>
-          Price:
-          {currentStyle.original_price}
-        </p>
+        <CategoryContainer>
+          <p className='category'>{currentItem.category}</p>
+          <h2 className='product-name'>{currentItem.name}</h2>
+        </CategoryContainer>
+        <p className='price'>${Math.round(currentStyle.original_price)}</p>
         <ProductInfo currentItem={currentItem} />
         <IconList />
         <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />

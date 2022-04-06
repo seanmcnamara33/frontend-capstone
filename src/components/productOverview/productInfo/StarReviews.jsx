@@ -2,6 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import 'whatwg-fetch';
 import { getStars, calculateTotalReviewNumber, calculateAverage } from '../../common/helpers.js';
+import styled from 'styled-components';
+
+const StarsAndReviews = styled.div`
+  display: flex;
+`;
 
 const StarReviews = ({ currentItem, onReviewLinkClick }) => {
   const [rating, setRating] = useState(0);
@@ -19,17 +24,16 @@ const StarReviews = ({ currentItem, onReviewLinkClick }) => {
 
   if (reviewNum > 0) {
     return (
-      <>
-        <div>
-          STARS:
+      <StarsAndReviews>
+        <span>
           {rating}
-        </div>
-        <div onClick={() =>  onReviewLinkClick() }>
+        </span>
+        <span onClick={() =>  onReviewLinkClick() }>
           Read All
           {reviewNum}
           Reviews
-        </div>
-      </>
+        </span>
+      </StarsAndReviews>
     );
   }
   return (null);

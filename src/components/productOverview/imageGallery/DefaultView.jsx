@@ -8,6 +8,8 @@ const DefaultGallery = styled.div`
   align-items: center;
   overflow: hidden;
   padding: 60px;
+  margin: 20px;
+  background-color: grey;
   height: 80vh;
   width: 100%;
 `;

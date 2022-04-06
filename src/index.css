@@ -25,7 +25,7 @@ body {
   all: unset;
   position: absolute;
   top: 425px;
-  left: 30px;
+  left: 375px;
   font-size: large;
   font-weight: bold;
 }
@@ -34,14 +34,25 @@ body {
   all: unset;
   position: absolute;
   top: 425px;
-  right: 200px;
+  right: 375px;
   font-size: large;
   font-weight: bold;
 }
 
+.category {
+  margin-bottom: 0;
+}
+
+.product-name {
+  margin-top: 0;
+}
+
+.price {
+  font-weight: bold;
+}
 .restore-default {
   all: unset;
   position: absolute;
   top: 165px;
-  right: 100px;
+  right: 375px;
 }
