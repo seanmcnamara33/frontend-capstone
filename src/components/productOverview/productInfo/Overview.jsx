@@ -57,7 +57,7 @@ const StarButton = styled.button`
   padding:0.35em 1.2em;
   border:0.1em solid black;
   margin:0 0.3em 0.3em 0;
-  border-radius:0.12em;
+  border-radius: 3px;
   box-sizing: border-box;
   text-decoration:none;
   font-family:'Roboto',sans-serif;
@@ -160,7 +160,7 @@ const Overview = ({currentItem}) => {
         <ProductInfo currentItem={currentItem} />
         <IconList />
         <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
-        <StylesView allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
+        <StylesView currentStyle={currentStyle} allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
         <CartFeatures>
           <SelectSize selectRef={selectRef} openMenuOnFocus={Select.openMenuOnFocus} currentStyle={currentStyle} onSizeChange={onSizeChange} />
           <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />

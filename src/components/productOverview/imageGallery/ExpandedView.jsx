@@ -9,6 +9,7 @@ const ExpandedContainer = styled.div`
   align-items: center;
   align-self: center;
   box-sizing: border-box;
+  border-radius: 3px;
   background-color: grey;
   padding: 60px;
   margin: 20px;
@@ -21,6 +22,7 @@ const ZoomedImage = styled.img`
   object-fit: fill;
   height: 100%;
   width: 50%;
+  border-radius: 3px;
   overflow: hidden;
   cursor: zoom-out;
 `;
@@ -31,6 +33,7 @@ const ZoomedContainer = styled.div`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  border-radius: 3px;
   background-color: grey;
   padding: 60px;
   margin: 20px;
@@ -43,6 +46,7 @@ const ExpandedImage = styled.img`
   object-fit: fill;
   width: 50%;
   height: 100%;
+  border-radius: 3px;
   overflow: hidden;
   cursor: crosshair;
 `;
@@ -50,9 +54,9 @@ const ExpandedImage = styled.img`
 
 const IconList  = styled.div`
   display: flex;
-  position: absolute;
-  top: 575px;
-  left: 365px;
+  position: relative;
+  top: 270px;
+  left: 355px;
 `;
 
 const Icon = styled.div`
@@ -64,7 +68,8 @@ const Icon = styled.div`
 const SelectedIcon = styled.div`
   font-size: large;
   font-weight: bold;
-  color: yellow;
+  border-bottom: 3px solid black;
+  border-radius: 3px;
   margin: 5px;
 `;
 

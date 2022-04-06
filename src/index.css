@@ -5,36 +5,32 @@ body {
 
 .image-left {
   all: unset;
-  position: absolute;
-  left: 150px;
-  top: 425px;
+  position: relative;
+  left: 90px;
   font-size: large;
   font-weight: bold;
 }
 
 .image-right {
   all: unset;
-  position: absolute;
-  top: 425px;
-  left: 575px;
+  position: relative;
+  left: -35px;
   font-size: large;
   font-weight: bold;
 }
 
 .expanded-image-left {
   all: unset;
-  position: absolute;
-  top: 425px;
-  left: 375px;
+  position: relative;
+  left: 30px;
   font-size: large;
   font-weight: bold;
 }
 
 .expanded-image-right {
   all: unset;
-  position: absolute;
-  top: 425px;
-  right: 375px;
+  position: relative;
+  right: 30px;
   font-size: large;
   font-weight: bold;
 }
@@ -53,9 +49,9 @@ body {
 
 .restore-default {
   all: unset;
-  position: absolute;
-  top: 165px;
-  right: 375px;
+  position: relative;
+  top: -210px;
+  left: -60px;
 }
 
 .partly-filled-star {
@@ -68,5 +64,12 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
+}
+
+.circle-check {
+  height: 0;
+  width: 0;
+  position: relative;
+  left: -20px;
 }
 

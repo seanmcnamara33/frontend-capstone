@@ -2,7 +2,7 @@
 import React from 'react';
 import StylesRow from './StylesRow.jsx';
 
-const StylesView = ({ allStyles, onStyleCircleClick }) => {
+const StylesView = ({ allStyles, onStyleCircleClick, currentStyle}) => {
   let styleGroups = [];
   for (let i = 0; i < allStyles.length; i = i + 4) {
     let len = allStyles.length - i;
@@ -17,7 +17,7 @@ const StylesView = ({ allStyles, onStyleCircleClick }) => {
   if (allStyles.length > 0) {
     return (
       styleGroups.map((styleGroup, index) => {
-        return <StylesRow key={index} index={index} styleGroup={styleGroup} onStyleCircleClick={onStyleCircleClick}/>
+        return <StylesRow key={index} index={index} styleGroup={styleGroup} onStyleCircleClick={onStyleCircleClick} currentStyle={currentStyle}/>
       })
     );
   }

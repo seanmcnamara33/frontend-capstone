@@ -10,12 +10,16 @@ const DefaultGallery = styled.div`
   padding: 60px;
   margin: 20px;
   background-color: grey;
+  border-radius: 3px;
   height: 80vh;
   width: 100%;
 `;
 const Image = styled.img `
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 3px;
   cursor: zoom-in;
 `;
 

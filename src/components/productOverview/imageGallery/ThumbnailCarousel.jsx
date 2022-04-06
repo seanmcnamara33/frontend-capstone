@@ -3,19 +3,24 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 
 const ThumbnailContainer = styled.div `
+  height: 0;
+  width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
-  left: 75px;
-  top: 150px;
+  position: relative;
+  top: -250px;
+  left: 115px;
 `;
 
 const Thumbnail = styled.img `
-  height: 50px;
-  width: 50px;
+  min-height: 50px;
+  min-width: 50px;
+  max-height: 50px;
+  max-width: 50px;
   border: 1px solid black;
+  border-radius: 3px;
   margin: 5px;
 `;
 const SelectedContainer = styled.div`
@@ -25,9 +30,12 @@ const SelectedContainer = styled.div`
 `;
 
 const SelectedThumbnail = styled.img `
-  height: 50px;
-  width: 50px;
+  min-height: 50px;
+  min-width: 50px;
+  max-height: 50px;
+  max-width: 50px;
   border: 1px solid black;
+  border-radius: 3px;
   margin: 5px;
   margin-bottom: 2px;
 `;
@@ -36,6 +44,7 @@ const SelectedThumbnailUnderline = styled.div `
   height: 3px;
   width: 50px;
   border-bottom: 3px solid black;
+  border-radius: 3px;
   margin-bottom: 5px;
 `;
 
