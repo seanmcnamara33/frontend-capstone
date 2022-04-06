@@ -18,7 +18,7 @@ const ProductOverview = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
-  width: 100vw;
+  width: 100%;
   box-sizing: border-box;
 `;
 
@@ -29,6 +29,7 @@ const ProductInformation = styled.div`
   margin-left: 10px;
   justify-content: space-between;
 `;
+
 const Overview = ({currentItem}) => {
   const [currentView, setView] = useState('default');
   const [currentStyle, setCurrentStyle] = useState({});

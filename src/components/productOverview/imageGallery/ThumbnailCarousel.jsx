@@ -8,8 +8,8 @@ const ThumbnailContainer = styled.div `
   align-items: center;
   justify-content: space-between;
   position: absolute;
-  left: 50px;
-  top: 100px;
+  left: 75px;
+  top: 150px;
 `;
 
 const Thumbnail = styled.img `
@@ -17,6 +17,11 @@ const Thumbnail = styled.img `
   width: 50px;
   border: 1px solid black;
   margin: 5px;
+`;
+const SelectedContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const SelectedThumbnail = styled.img `
@@ -54,10 +59,10 @@ const ThumbnailCarousel = ({photosArray, onThumbnailImageClick, currentStylePhot
       {currentThumbnails.map((photo, i) => {
         if (photo.thumbnail_url === photosArray[currentStylePhotoIndex].thumbnail_url) {
           return (
-          <div key={i}>
+          <SelectedContainer key={i} className>
             <SelectedThumbnail id={i + count} key={`selectedThumb${i}`} src={photo.thumbnail_url} onClick={(event) => onThumbnailImageClick(event)}></SelectedThumbnail>
-            <SelectedThumbnailUnderline key={`thumbUnderline${i}`}></SelectedThumbnailUnderline>
-          </div>
+            <SelectedThumbnailUnderline></SelectedThumbnailUnderline>
+          </SelectedContainer>
           );
         }
         return <Thumbnail id={i + count} src={photo.thumbnail_url} key={`thumb${i}`} onClick={(event) => onThumbnailImageClick(event)}></Thumbnail>

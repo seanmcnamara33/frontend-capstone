@@ -6,8 +6,8 @@ body {
 .image-left {
   all: unset;
   position: absolute;
-  left: 130px;
-  top: 330px;
+  left: 150px;
+  top: 425px;
   font-size: large;
   font-weight: bold;
 }
@@ -15,8 +15,8 @@ body {
 .image-right {
   all: unset;
   position: absolute;
-  top: 330px;
-  left: 475px;
+  top: 425px;
+  left: 575px;
   font-size: large;
   font-weight: bold;
 }
@@ -24,7 +24,7 @@ body {
 .expanded-image-left {
   all: unset;
   position: absolute;
-  top: 330px;
+  top: 425px;
   left: 30px;
   font-size: large;
   font-weight: bold;
@@ -33,8 +33,15 @@ body {
 .expanded-image-right {
   all: unset;
   position: absolute;
-  top: 330px;
+  top: 425px;
   right: 200px;
   font-size: large;
   font-weight: bold;
+}
+
+.restore-default {
+  all: unset;
+  position: absolute;
+  top: 165px;
+  right: 100px;
 }

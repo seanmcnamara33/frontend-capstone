@@ -7,9 +7,11 @@ import ThumbnailCarousel from './ThumbnailCarousel.jsx';
 
 const ImageGalleryComponent = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
   height: 100%;
   width: 100%;
-  border: 1px solid black;
 `;
 
 const ImageGallery = ({currentStyle, allStyles, currentView, onImageClick, currentImage}) => {

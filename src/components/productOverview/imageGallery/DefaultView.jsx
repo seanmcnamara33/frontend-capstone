@@ -4,15 +4,16 @@ import styled from 'styled-components';
 
 const DefaultGallery = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
-  height: 100%;
+  padding: 60px;
+  height: 80vh;
   width: 100%;
 `;
 const Image = styled.img `
-  min-height: 100%;
-  min-width: 100%;
-  max-height: 100%;
-  max-width: 100%;
+  height: 100%;
+  width: 100%;
   cursor: zoom-in;
 `;
 

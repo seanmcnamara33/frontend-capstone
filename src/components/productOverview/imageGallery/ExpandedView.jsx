@@ -5,19 +5,25 @@ import styled from 'styled-components';
 const ExpandedContainer = styled.div`
   display: flex;
   flex-direction: columns;
-  width: 90%;
-  height: 500px;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 60px;
+  width: 100%;
+  height: 90vh;
 `;
 
 const ZoomedContainer = styled.div`
   width: 90%;
-  height: 500px;
+  height: 90vh;
+  margin: 60px;
   transition: transform 1s ease-in-out;
   overflow: hidden;
 `;
 
 const ExpandedImage = styled.img`
-  width: 100%;
+  object-fit: fill;
+  width: 50%;
   height: 100%;
   cursor: crosshair;
 `;
@@ -115,7 +121,7 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
       <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2190)}</button>
       <ExpandedImage src={expandedPhotosArray[currentStyleExpandedIndex].url} onClick={(event) => onExpandedImageClick(event)}></ExpandedImage>
       <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2192)}</button>
-      <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>Restore</button>
+      <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>{String.fromCharCode(0x2311)}</button>
     </ExpandedContainer>
     );
   } else {
