@@ -27,7 +27,7 @@ const SelectedContainer = styled.div`
 const SelectedThumbnail = styled.img `
   height: 50px;
   width: 50px;
-  border: 1px solid yellow;
+  border: 1px solid black;
   margin: 5px;
   margin-bottom: 2px;
 `;
@@ -35,7 +35,7 @@ const SelectedThumbnail = styled.img `
 const SelectedThumbnailUnderline = styled.div `
   height: 3px;
   width: 50px;
-  border-bottom: 3px solid yellow;
+  border-bottom: 3px solid black;
   margin-bottom: 5px;
 `;
 

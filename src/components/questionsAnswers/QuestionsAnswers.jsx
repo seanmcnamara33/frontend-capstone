@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Search from './Search.jsx';
 import QuestionsList from './QuestionList';
 import 'whatwg-fetch';
-import { Main } from './QuestionsStyles';
+import { Main } from './QuestionsStyles.jsx';
 
 const QuestionsAnswers = () => {
   const [questions, setQuestions] = useState([]);

@@ -5,7 +5,7 @@ import Overview from './productOverview/productInfo/Overview.jsx';
 import RelatedList from './relatedProducts/RelatedList.jsx';
 import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
 import ReviewList from './ratingsAndReviews/ReviewList.jsx';
-import { NavBar } from './AppStyles';
+import { NavBar } from './AppStyles.jsx';
 
 const App = () => {
   const [currentItem, setCurrentItem] = useState({});

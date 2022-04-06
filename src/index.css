@@ -50,9 +50,23 @@ body {
 .price {
   font-weight: bold;
 }
+
 .restore-default {
   all: unset;
   position: absolute;
   top: 165px;
   right: 375px;
 }
+
+.partly-filled-star {
+  overflow: hidden;
+  background-clip: text;
+  -webkit-background-clip: text;
+};
+
+.cart-features {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+

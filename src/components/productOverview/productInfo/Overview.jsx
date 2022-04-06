@@ -35,6 +35,37 @@ const CategoryContainer = styled.div`
   flex-direction: column;
 `;
 
+
+const CartFeatures = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const AddToCartFeatures = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const StarButton = styled.button`
+  all: unset;
+  width: 15%;
+  background-color: white;
+  padding:0.35em 1.2em;
+  border:0.1em solid black;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  text-align: center;
+  height: 100%;
+`;
+
 const Overview = ({currentItem}) => {
   const [currentView, setView] = useState('default');
   const [currentStyle, setCurrentStyle] = useState({});
@@ -130,12 +161,14 @@ const Overview = ({currentItem}) => {
         <IconList />
         <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
         <StylesView allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
-        <div className='cart-features'>
+        <CartFeatures>
           <SelectSize selectRef={selectRef} openMenuOnFocus={Select.openMenuOnFocus} currentStyle={currentStyle} onSizeChange={onSizeChange} />
           <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />
-        </div>
-        <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
-        <button className='star'>IM A STAR</button>
+        </CartFeatures>
+        <AddToCartFeatures>
+          <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
+          <StarButton>{String.fromCharCode(0x2606)}</StarButton>
+        </AddToCartFeatures>
       </ProductInformation>
     </ProductOverview>
     );
