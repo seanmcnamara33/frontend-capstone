@@ -93,8 +93,8 @@ module.exports = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
-
+  // preset: 'react-env',
+  verbose: true,
   // Run tests from one or more projects
   // projects: undefined,
 
@@ -172,12 +172,17 @@ module.exports = {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  // transform: undefined,
-
+  // transform: {
+  //   '\\.(js|jsx)?$': 'babel-jest',
+  // },
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
+    '.+\\.(css|styl|less|sass|scss)$': 'jest-css-modules-transform',
+  },
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "/node_modules/",
-  //   "\\.pnp\\.[^\\/]+$"
+  //   "\\.+"
   // ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them

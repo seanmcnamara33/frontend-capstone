@@ -5,9 +5,10 @@ import { Question, List, Modal, Content, Header } from './QuestionsStyles';
 import AddQuestion from './AddQuestion';
 
 const QuestionList = ({questions}) => {
-  const [display, setDisplay] = useState(false);
+  const [show, setShow] = useState(false);
   const [height, setHeight] = useState(false);
 
+  const handleModal = () => setShow(!show)
   return (
     <>
       <div>
@@ -29,12 +30,13 @@ const QuestionList = ({questions}) => {
           questions.length > 0 &&
           <button onClick={()=>setHeight(!height)}>Show More Questions</button>
         }
-        <button onClick={()=>setDisplay(!display)}>Add A Question</button>
+        <button onClick={handleModal}>Add A Question</button>
       </div>
-      <Modal display={display ? 'block' : 'none'}>
+      <Modal onClose={handleModal} show={show}>
         <Content>
           <Header>
             <h1>Add A Question</h1>
+            <button onClick={handleModal} >Close</button>
           </Header>
           <AddQuestion />
         </Content>

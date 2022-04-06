@@ -31,15 +31,16 @@ export const Question = styled.div`
 `
 
 export const Modal = styled.div(props=>({
-  display: props.display,
-  posititon: 'fixed',
-  'z-index': '2000',
+  'z-index': 'auto',
+  position: 'fixed',
   left: 0,
   top: 0,
-  width: '100%',
-  hieght: '100%',
+  width: '100vw',
+  height: '100vh',
   overflow: 'auto',
-  'background-color': 'rba(0,0,0,0.4)'
+  'align-content': 'center',
+  display: props.show ? 'block' : 'none',
+  'background': 'rgba(0,0,0,0.4)'
 }))
 
 export const Header = styled.div`
@@ -48,9 +49,11 @@ export const Header = styled.div`
 `
 
 export const Content = styled.div`
-  posistion: relative;
+  background: red;
+  width: 500px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
   margin: auto;
-  border: 2px solid #000;
-  width: 80%;
-  boder-radius: 20px;
 `

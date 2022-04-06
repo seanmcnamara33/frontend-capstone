@@ -1,18 +1,13 @@
 /* eslint-disable */
 import React, {useState, useEffect} from 'react';
 import 'whatwg-fetch';
-import Overview from './productOverview/Overview.jsx';
+import Overview from './productOverview/productInfo/Overview.jsx';
 import RelatedList from './relatedProducts/RelatedList.jsx';
 import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
 import ReviewList from './ratingsAndReviews/ReviewList.jsx';
 import { NavBar } from './AppStyles';
 
 const App = () => {
-  // ! things we need to make overall state
-
-  // load the data
-  // pass the whole product to overview
-  // then pass only ids to the rest of the componentes
   const [currentItem, setCurrentItem] = useState({});
 
   const getFirstItem = () => {

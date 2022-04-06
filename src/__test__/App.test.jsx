@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import { screen, render } from '@testing-library/react';
 import App from '../components/App.jsx';
 
