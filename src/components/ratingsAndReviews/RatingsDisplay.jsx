@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import RatingsDisplayChart from './RatingsDisplayChart.jsx';
 
 const RatingsDisplay = (props) => {
 
@@ -21,30 +22,14 @@ const RatingsDisplay = (props) => {
       });
   }, [])
 
-
-  let arr = [];
-  Object.keys(ratingsData).forEach((key) => {
-    arr.push({key : ratingsData[key]})
-  })
-
-  console.log('here',arr)
-
+  // console.log(ratingsData)
 
   return (
-    <React.Fragment>
-      {
-
-      }
-    </React.Fragment>
+    <>
+    <RatingsDisplayChart ratingsData={ratingsData.ratings}/>
+    </>
   );
 };
 
 export default RatingsDisplay;
 
-
-//   Object.entries(ratingsData).map(([key, value]) => (
-//     <div key={key}>
-//     {key} {JSON.stringify(value)}
-//     </div>
-//   )
-//  )

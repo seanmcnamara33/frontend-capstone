@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import './AddReviewModal.css';
+import AddCharacteristics from './AddCharacteristics.jsx';
 
 
 const AddReviewModal = (props) => {
@@ -20,10 +21,11 @@ const AddReviewModal = (props) => {
             <input type='radio' name='reccomend' value='no'></input>
             <label>No</label>
           </div>
+          <AddCharacteristics />
           <input placeholder='Nickname'></input>
           <input placeholder='Email'></input>
-          <input placeholder='Summary'></input>
-          <input placeholder='Body'></input>
+          <input placeholder='Example: Best purchase ever!' className='summary-style'></input>
+          <input placeholder='Body' className='body-style'></input>
           <input type='file' accept='image/jpeg, image/png' multiple></input>
 
               <button type='submit'>Submit</button>

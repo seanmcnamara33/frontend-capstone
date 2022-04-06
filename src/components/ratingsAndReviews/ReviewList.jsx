@@ -12,6 +12,7 @@ const ReviewList = (props) => {
   const [currentReviews, setCurrentReviews] = useState([]);
   const [metaData, setMetaData] = useState([]);
   const [reviewCount, setCount] = useState(2);
+  const [totalReviews, setTotalReviews] = useState(0);
 
   useEffect(() => {
     fetch(`${process.env.API_URI}/reviews/?product_id=65631&count=${reviewCount}`, {
@@ -29,19 +30,19 @@ const ReviewList = (props) => {
       console.log('failed load GET');
     });
 
-    // fetch(`${process.env.API_URI}/reviews/meta/?product_id=65631`, {
-    //   method: 'GET',
-    //   headers: {Authorization: process.env.API_KEY}
-    // })
-    // .then((response) => {
-    //   response.json().then((results) => {
-    //     console.log(results)
-    //     setMetaData(results);
-    //   });
-    // })
-    // .catch((err) => {
-    //   console.log('failed load Meta GET');
-    // });
+    fetch(`${process.env.API_URI}/reviews/meta/?product_id=65631`, {
+      method: 'GET',
+      headers: {Authorization: process.env.API_KEY}
+    })
+    .then((response) => {
+      response.json().then((results) => {
+        // console.log(results)
+        setMetaData(results);
+      });
+    })
+    .catch((err) => {
+      console.log('failed load Meta GET');
+    });
 
   }, [])
 
@@ -89,6 +90,7 @@ const ReviewList = (props) => {
       </div>
       <button type='button' onClick={handleClick}> More Reviews</button>
       <AddReview />
+      <label>Ratings Breakdown</label>
       <RatingsDisplay />
     </div>
   )

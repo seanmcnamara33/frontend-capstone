@@ -6,6 +6,7 @@
   background-color: orangered;
   padding: 50%;
   z-index: 1000;
+  min-width: 400px;
 }
 
 .reccomend-style {
@@ -13,4 +14,13 @@
   border-style: solid;
   border-width: 2px;
   border-color: blue;
+}
+
+.summary-style {
+  min-width:22.5em;
+}
+
+.body-style {
+  min-width: 22.4em;
+  min-height: 6em;
 }
