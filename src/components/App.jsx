@@ -32,9 +32,9 @@ const App = () => {
   return (
     <>
       <NavBar>Kids Next Door</NavBar>
-      {/* <Overview />
+      <Overview />
       <RelatedList />
-      <QuestionsAnswers /> */}
+      <QuestionsAnswers />
       <ReviewList />
     </>
   )
