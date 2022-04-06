@@ -4,12 +4,17 @@ import styled from 'styled-components';
 
 const DefaultGallery = styled.div`
   display: flex;
+  overflow: hidden;
+  width: 100%;
 `;
 const Image = styled.img `
   height: 80%;
-  width: 80%;
+  width: 100%;
+  overflow: hidden;
   cursor: zoom-in;
 `;
+
+
 const DefaultView = ({image, onGalleryButtonClick, currentView, onImageClick}) => {
   if (currentView === 'default') {
     return (
@@ -24,3 +29,4 @@ const DefaultView = ({image, onGalleryButtonClick, currentView, onImageClick}) =
 }
 
 export default DefaultView;
+// style={{all: 'unset'}}

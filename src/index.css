@@ -2,3 +2,21 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.image-left {
+  all: unset;
+  position: absolute;
+  left: 130px;
+  top: 330px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.image-right {
+  all: unset;
+  position: absolute;
+  top: 330px;
+  left: 475px;
+  font-size: large;
+  font-weight: bold;
+}

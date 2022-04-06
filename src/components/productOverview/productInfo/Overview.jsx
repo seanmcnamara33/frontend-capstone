@@ -17,13 +17,14 @@ import 'whatwg-fetch';
 const ProductOverview = styled.div`
   display: flex;
   flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
 `;
 
 const ProductInformation = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 60vh;
-  width: 70%;
+  display: inline-block;
+  box-sizing: border-box;
 `;
 const Overview = ({currentItem}) => {
   const [currentView, setView] = useState('default');
@@ -107,7 +108,7 @@ const Overview = ({currentItem}) => {
 
   if (currentView === 'default') {
     return (
-      <ProductOverview>
+    <ProductOverview>
       <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
       <ProductInformation>
         <h1>Product Overview</h1>
