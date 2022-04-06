@@ -7,7 +7,7 @@ import { Main } from './QuestionsStyles';
 
 const QuestionsAnswers = () => {
   const [questions, setQuestions] = useState([]);
-
+  const [filtered, setFiltered] = useState([])
   const loadQuestions = async () =>{
     try {
       let data = await fetch(`${process.env.API_URI}/qa/questions?product_id=65631`, {
@@ -27,11 +27,18 @@ const QuestionsAnswers = () => {
     loadQuestions();
   }, [])
 
+  const filterQuestions = input => {
+    if (input.length > 2 ) {
+      setFiltered(questions.filter(item=>item.question_body.includes(input)))
+    } else {
+      setFiltered([])
+    }
+  }
 
   return (
     <Main>
-      <Search />
-      <QuestionsList questions={questions}/>
+      <Search filterQuestions={filterQuestions} />
+      <QuestionsList questions={filtered.length > 0 ? filtered : questions}/>
     </Main>
   )
 }
