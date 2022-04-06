@@ -1,14 +1,15 @@
 /* eslint-disable */
 import React, { useState, useEffect, useRef } from 'react';
-import ImageGallery from './ImageGallery.jsx';
+import ImageGallery from '../imageGallery/ImageGallery.jsx';
 import StarReviews from './StarReviews.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import IconList from './IconList.jsx';
-import StyleSelector from './StyleSelector.jsx';
-import StylesView from './StylesView.jsx';
-import SelectSize from './SelectSize.jsx';
-import SelectQuantity from './SelectQuantity.jsx';
-import AddToCart from './AddToCart.jsx';
+import StyleSelector from '../styleSelector/StyleSelector.jsx';
+import StylesView from '../styleSelector/StylesView.jsx';
+import SelectSize from '../styleSelector/SelectSize.jsx';
+import SelectQuantity from '../styleSelector/SelectQuantity.jsx';
+import AddToCart from '../AddToCart/AddToCart.jsx';
+import ExpandedView from '../imageGallery/ExpandedView.jsx';
 import Select from 'react-select';
 import styled from 'styled-components';
 import 'whatwg-fetch';
@@ -16,33 +17,27 @@ import 'whatwg-fetch';
 const ProductOverview = styled.div`
   display: flex;
   flex-direction: row;
+  height: 100%;
+  width: 100vw;
+  box-sizing: border-box;
 `;
 
 const ProductInformation = styled.div`
   display: flex;
   flex-direction: column;
-  height: 60vh;
-  width: 70%;
+  box-sizing: border-box;
+  margin-left: 10px;
+  justify-content: space-between;
 `;
-const Overview = () => {
-  const [currentItem, setCurrentItem] = useState({});
+const Overview = ({currentItem}) => {
+  const [currentView, setView] = useState('default');
   const [currentStyle, setCurrentStyle] = useState({});
   const [allStyles, setAllStyles] = useState([]);
   const [currentSize, setSize] = useState({});
   const [currentAmount, setAmount] = useState(0);
   const [cart, setCart] = useState([]);
+  const [currentImage, setCurrentImage] = useState('');
   const selectRef = useRef();
-
-  const getFirstItem = () => {
-
-    fetch(`${process.env.API_URI}/products`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
-      .then((response) => {
-        response.json().then((results) => setCurrentItem(results[0]));
-      })
-      .catch((err) => {
-        console.log(`Error found in getFirstItem: ${err}`);
-      });
-  };
 
   const getFirstStyle = (productId) => {
     fetch(`${process.env.API_URI}/products/${productId}/styles`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
@@ -56,7 +51,6 @@ const Overview = () => {
         console.log(`Error found in getFirstStyle: ${err}`);
       });
   };
-
 
   const onReviewLinkClick = () => {
     // either have TIM add a ref using useRef to the reviews header, so that you can use scrollIntoView on the ref to get to it on click
@@ -99,20 +93,26 @@ const Overview = () => {
     selectRef.current.focus();
   };
 
-  useEffect(() => {
-    getFirstItem();
-  }, []);
+  const onImageClick = (image) => {
+    setCurrentImage(image);
+    setView('expanded');
+  }
+
+  const onRestoreDefaultClick = (image) => {
+    setCurrentImage(image);
+    setView('default');
+  };
 
   useEffect(() => {
     if (Object.keys(currentItem).length) {
-      // console.log(currentItem);
       getFirstStyle(currentItem.id);
     }
   }, [currentItem]);
 
-  return (
+  if (currentView === 'default') {
+    return (
     <ProductOverview>
-      <ImageGallery currentStyle={currentStyle}/>
+      <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
       <ProductInformation>
         <h1>Product Overview</h1>
         <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
@@ -140,6 +140,10 @@ const Overview = () => {
         <button className='star'>IM A STAR</button>
       </ProductInformation>
     </ProductOverview>
+    );
+  }
+  return (
+    <ExpandedView currentStyle={currentStyle} currentImage={currentImage} onRestoreDefaultClick={onRestoreDefaultClick}/>
   );
 };
 
