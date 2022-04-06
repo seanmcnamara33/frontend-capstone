@@ -2,6 +2,7 @@
 import React from 'react';
 import './Reviews.css';
 import {formatDate} from '../common/helpers.js';
+import ReviewPhotos from './ReviewPhotos.jsx';
 
 
 const Reviews = (props) => {
@@ -16,9 +17,7 @@ const Reviews = (props) => {
           <div className='review-name'>{review.reviewer_name}</div>
           <div className='review-date'>{formatDate(review.date)}</div>
           {review.helpfulness}
-          {/* photos array breaking when review loads with comments */}
-          {/* {review.photos}
-          map to array */}
+          <ReviewPhotos data={review.photos}/>
           {review.rating}
           {review.recommend}
           {review.response}

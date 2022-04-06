@@ -26,8 +26,8 @@ const App = () => {
 
   return (
     <>
-      {/* <NavBar>Kids Next Door</NavBar>
-      <Overview currentItem={currentItem}/>
+      <NavBar>Kids Next Door</NavBar>
+      {/* <Overview currentItem={currentItem}/>
       <RelatedList />
       <QuestionsAnswers /> */}
       <ReviewList />
