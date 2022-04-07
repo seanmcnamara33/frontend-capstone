@@ -11,19 +11,20 @@ const ReviewList = (props) => {
   //state
   const [currentReviews, setCurrentReviews] = useState([]);
   const [metaData, setMetaData] = useState([]);
-  const [reviewCount, setCount] = useState(2);
   const [totalReviews, setTotalReviews] = useState(0);
+  const [pageCount, setPageCount] = useState(1);
+  const reviewCount = 2;
 
   useEffect(() => {
-    fetch(`${process.env.API_URI}/reviews/?product_id=65631&count=${reviewCount}`, {
+    fetch(`${process.env.API_URI}/reviews/?product_id=65631&count=${reviewCount}&page=${pageCount}`, {
       method: 'GET',
       headers: {Authorization: process.env.API_KEY}
     })
     .then((response) => {
       response.json().then((results) => {
         // console.log(results.results)
-        setCurrentReviews(results.results);
-        setCount(reviewCount + 2);
+        setCurrentReviews([...currentReviews, ...results.results]);
+        setPageCount(pageCount + 1);
       });
     })
     .catch((err) => {
@@ -65,15 +66,16 @@ const ReviewList = (props) => {
 
   const handleClick = () => {
     //load 2 more reviews
-    fetch(`${process.env.API_URI}/reviews/?product_id=65631&count=${reviewCount}`, {
+    fetch(`${process.env.API_URI}/reviews/?product_id=65631&count=${reviewCount}&page=${pageCount}`, {
       method: 'GET',
       headers: {Authorization: process.env.API_KEY}
     })
     .then((response) => {
       response.json().then((results) => {
-        console.log(results.results)
-        setCount(reviewCount + 2)
-        setCurrentReviews(results.results);
+        //if results empty, hide button
+        // console.log(results.results)
+        setPageCount(pageCount + 1);
+        setCurrentReviews([...currentReviews, ...results.results]);
       });
     })
     .catch((err) => {
