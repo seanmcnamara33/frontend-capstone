@@ -23,23 +23,20 @@ export const getStars = async (productId) => {
   let body = await fetch(`${process.env.API_URI}/reviews/meta?product_id=${productId}`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
   let res = await body.json();
   if (res) {
-    console.log(res);
     const average = calculateAverage(res.ratings);
     const reviews = calculateTotalReviewNumber(res.ratings);
     let values = [average, reviews]
     return values;
   }
-
-    // .then((response) => {
-    //   return response.json().then((result) => {
-    //     const average = calculateAverage(result.ratings);
-    //     const reviews = calculateTotalReviewNumber(result.ratings);
-    //     let values = [average, reviews]
-    //     return values;
-    //   });
-    // })
-    // .catch((err) => {
-    //   console.log(`Error found in getStars: ${err}`);
-    // });
-
 };
+
+// nums 48 - 57, caps 65-90, lower 97-122
+const random = n => Math.floor((Math.random() * n)+1);
+const rangeRandom = (min, max) => Math.floor(((Math.random() * (max-min))+1)+min);
+export const fakeSession = () =>
+  [...Array(14).fill(0)].map(item=>{
+     let r = random(3);
+     if (r === 1) return String.fromCharCode(rangeRandom(48, 57))
+     else if (r === 2) return String.fromCharCode(rangeRandom(65, 90))
+     else if (r === 3) return String.fromCharCode(rangeRandom(97, 122))
+   }).join('')

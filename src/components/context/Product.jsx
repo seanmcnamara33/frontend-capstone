@@ -9,8 +9,7 @@ const ProductContext = createContext({
 const ProductProvider = props => {
   const [product, setProduct] = useState({});
   const [productId, setProductId] = useState('');
-  const [expanded, setExapanded] = useState(false);
-  const load = () => {}
+
 
   const value = {}
 
