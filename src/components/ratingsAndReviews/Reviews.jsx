@@ -12,13 +12,13 @@ const Reviews = (props) => {
     props.data.map((review) => {
       return (
         <div className='review-tile' key={review.review_id}>
+           {review.rating}
           <div className='review-summary'>{review.summary}</div>
           <div className ='review-body'>{review.body}</div>
-          <div className='review-name'>{review.reviewer_name}</div>
-          <div className='review-date'>{formatDate(review.date)}</div>
-          {review.helpfulness}
+          <div className='review-name'>By {review.reviewer_name}, {formatDate(review.date)} | Helpful? Yes({review.helpfulness})</div>
+
           <ReviewPhotos data={review.photos}/>
-          {review.rating}
+
           {review.recommend}
           {review.response}
         </div>

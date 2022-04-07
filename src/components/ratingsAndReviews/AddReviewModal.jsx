@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AddReviewModal.css';
 import AddCharacteristics from './AddCharacteristics.jsx';
 
@@ -9,57 +9,37 @@ const AddReviewModal = (props) => {
     return null;
   }
 
-  const [bodyCount, setBodyCount] = useState(0);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [summary, setSummary] = useState('');
-  const [body, setBody] = useState('');
-  const [rating, setRating] = useState(null);
-  const [reccomend, setReccomend] = useState(null);
-  const [photos, setPhotos] = useState(['']);
-  const [characteristics, setCharacteristics] = useState({});
+
+  const [reviewForm, setReviewForm] = useState({ body: '', photos: [], photosUrl: [] });
 
 
-  const handleBodyChange = (event) => {
-    setBodyCount(event.target.value.length);
-    setBody(event.target.value);
-  };
-
-  const handleNameChange = (event) => {
-    setName(event.target.value);
+  const handleCharacteristicsChange = (key, value) => {
+    setReviewForm({ ...reviewForm, characteristics: { ...reviewForm.characteristics, [key]: value } })
   }
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  }
-
-  const handleSummaryChange = (event) => {
-    setSummary(event.target.value);
-  }
-
-  const handleRatingChange = (event) => {
-    //code
-  }
-
-  const handleReccomendChange = (event) => {
-    event.target.value === 'yes' ? setReccomend(true) : setReccomend(false)
-  }
-
-  const handleCharacteristicsChange = (event) => {
-    //code
+  const handleReviewFormChange = (key, value) => {
+    setReviewForm({ ...reviewForm, [key]: value })
   }
 
   const onSubmit = () => {
     //handlesubmit
   }
 
+  useEffect(() => {
+    const lastAddedPhoto = reviewForm.photos[reviewForm.photos.length - 1];
+    if (lastAddedPhoto) {
+      handleReviewFormChange('photosUrl', [...reviewForm.photosUrl, URL.createObjectURL(lastAddedPhoto)]);
+    }
+  }, [reviewForm.photos.length]);
+
+  console.log(reviewForm.photosUrl, reviewForm.photos)
 
   return (
     <>
       <div className='modal-styles'>
         <form type='submit'>
           <label>Add New Review!</label>
-          <div className='reccomend-style' onChange={handleReccomendChange}>
+          <div className='reccomend-style' onChange={(event) => { event.target.value === 'yes' ? handleReviewFormChange('recommend', true) : handleReviewFormChange('recommend', false) }}>
             <p>Do you reccomend this product?</p>
             <input type='radio' name='reccomend' value='yes'></input>
             <label>Yes</label>
@@ -67,18 +47,22 @@ const AddReviewModal = (props) => {
             <label>No</label>
           </div>
 
-          <AddCharacteristics onSubmit={onSubmit}/>
+          <AddCharacteristics onSubmit={onSubmit} handleCharacteristicsChange={handleCharacteristicsChange} />
 
-          <input placeholder='Nickname'></input>
-          <input placeholder='Email'></input>
-          <input placeholder='Example: Best purchase ever!' className='summary-style'></input>
+          <input placeholder='Nickname' onChange={(event) => { handleReviewFormChange('name', event.target.value) }}></input>
+          <input placeholder='Email' onChange={(event) => { handleReviewFormChange('email', event.target.value) }}></input>
+          <input placeholder='Example: Best purchase ever!' className='summary-style' onChange={(event) => { handleReviewFormChange('summary', event.target.value) }}></input>
 
           <div>
-            <input type='text' minLength='50' maxLength='1000' max placeholder='Body' className='body-style' onChange={handleBodyChange}></input>
-            <label>Character Count: {bodyCount}</label>
+            <input type='text' minLength='50' maxLength='1000' max placeholder='Body' className='body-style' onChange={(event) => { handleReviewFormChange('body', event.target.value) }}></input>
+            <label>Character Count: {reviewForm.body.length}</label>
           </div>
+          {reviewForm.photos.length > 4 ? null : <input type='file' accept='image/jpeg, image/png' onChange={(event) => {
+            handleReviewFormChange('photos', [...reviewForm.photos, event.target.files[0]]);
+          }}></input>}
+          {reviewForm.photosUrl.map((photo) => (<img src={photo}></img>))}
 
-          <input type='file' accept='image/jpeg, image/png' multiple></input>
+
           <button type='submit'>Submit</button>
           <button onClick={props.onClose}> Close </button>
         </form>

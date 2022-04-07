@@ -5,29 +5,28 @@ import AddCharacteristicsRadioBtn from './AddCharacteristicsRadioBtn.jsx';
 const AddCharacteristics = (props) => {
   return (
       <div className='review-list'>
-        {/* <label>Characteristics</label> */}
         <label>Size
-          <AddCharacteristicsRadioBtn />
+          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type="Size" />
         </label>
 
         <label>Width
-          <AddCharacteristicsRadioBtn />
+          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type="Width"/>
         </label>
 
         <label>Comfort
-          <AddCharacteristicsRadioBtn />
+          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type="Comfort"/>
         </label>
 
         <label>Quality
-          <AddCharacteristicsRadioBtn />
+          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type="Quality"/>
         </label>
 
         <label>Length
-          <AddCharacteristicsRadioBtn />
+          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type="Length"/>
         </label>
 
         <label>Fit
-          <AddCharacteristicsRadioBtn />
+          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type="Fit"/>
         </label>
       </div>
 
