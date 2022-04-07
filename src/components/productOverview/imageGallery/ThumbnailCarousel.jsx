@@ -1,56 +1,7 @@
 /* eslint-disable */
 import React, {useState} from 'react';
 import styled from 'styled-components';
-
-const ThumbnailContainer = styled.div `
-  height: 0;
-  width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  top: -240px;
-  left: 85px;
-`;
-
-const Thumbnail = styled.img `
-  min-height: 60px;
-  min-width: 60px;
-  max-height: 60px;
-  max-width: 60px;
-  opacity: 70%;
-  border: 1px solid black;
-  box-shadow: -0px 0px 3px black;
-  border-radius: 3px;
-  margin: 5px;
-`;
-const SelectedContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const SelectedThumbnail = styled.img `
-  min-height: 60px;
-  min-width: 60px;
-  max-height: 60px;
-  max-width: 60px;
-  border: 1px solid rgb(222, 99, 23);
-  box-shadow: -0px 0px 3px rgb(222, 99, 23);
-  border-radius: 3px;
-  margin: 5px;
-  margin-bottom: 2px;
-`;
-
-const SelectedThumbnailUnderline = styled.div `
-  height: 3px;
-  width: 60px;
-  border-bottom: 3px solid rgb(222, 99, 23);
-  box-shadow: -1px 1px 1px rgb(222, 99, 23);
-  border-radius: 3px;
-  margin-bottom: 5px;
-`;
+import {ThumbnailContainer, Thumbnail, SelectedContainer, SelectedThumbnail, SelectedThumbnailUnderline} from './ImageGalleryStyles.jsx';
 
 const ThumbnailCarousel = ({photosArray, onThumbnailImageClick, currentStylePhotoIndex}) => {
   const [count, setCount] = useState(0);
