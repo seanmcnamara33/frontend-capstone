@@ -1,95 +1,7 @@
 /* eslint-disable */
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import {BsCircleFill} from 'react-icons/bs';
-
-const EntireExpandedView = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  background-color: grey;
-  justify-content: center;
-  box-sizing: border-box;
-  border-radius: 3px;
-  box-shadow: 0 0 5px black;
-  margin: 20px 60px 40px 60px;
-`;
-
-const ExpandedContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  box-sizing: border-box;
-  padding-top: 10px;
-  padding-left: 60px;
-  padding-right: 60px;
-  width: 100%;
-  height: 90vh;
-`;
-
-const ZoomedImage = styled.img`
-  transform: scale(2.5);
-  object-fit: fill;
-  box-sizing: border-box;
-  border-radius: 3px;
-  box-shadow: 0 0 5px black;
-  height: 100%;
-  width: 50%;
-  border-radius: 3px;
-  overflow: hidden;
-  cursor: zoom-out;
-`;
-
-const ZoomedContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  border-radius: 3px;
-  background-color: grey;
-  padding: 60px;
-  margin: 20px 60px 40px 60px;
-  width: 100%;
-  height: 90vh;
-  overflow: hidden;
-`;
-
-const ExpandedImage = styled.img`
-  object-fit: fill;
-  width: 50%;
-  height: 100%;
-  border-radius: 3px;
-  box-shadow: 0 0 5px black;
-  overflow: hidden;
-  cursor: crosshair;
-`;
-
-const Icons = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 0;
-  width: 100%;
-  box-sizing: border-box;
-`;
-
-const Icon = styled.div`
-  color: white;
-  margin: 5px;
-  text-shadow: 0px 0px 2px rgb(222, 99, 23);
-  opacity: 50%;
-  &:hover {
-    opacity: 100%;
-    text-shadow: 0px 0px 5px rgb(222, 99, 23);
-  }
-`;
-
-const SelectedIcon = styled.div`
-  color: rgb(222, 99, 23);
-  margin: 5px;
-  text-shadow: 0px 0px 2px white;
-  &:hover {
-    text-shadow: 0px 0px 5px white;
-  }
-`;
+import {EntireExpandedView, ExpandedContainer, ZoomedImage, ZoomedContainer, ExpandedImage, Icons, Icon, SelectedIcon} from './ImageGalleryStyles.jsx';
 
 const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
   const expandedPhotosArray = currentStyle.photos;
@@ -171,12 +83,3 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
 }
 
 export default ExpandedView;
-
-{/* <Icons>
-{icons.map((icon, index) => {
-  if (index === currentStyleExpandedIndex) {
-    return <SelectedIcon data-index={index} onClick={(event) => onIconClick(event)} key={`icon${index}`}>{String.fromCharCode(0x2B24)}</SelectedIcon>
-  }
-  return <Icon data-index={index} onClick={(event) => onIconClick(event)} key={`icon${index}`}>{String.fromCharCode(0x2B24)}</Icon>
-})}
-</Icons> */}
