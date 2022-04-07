@@ -24,10 +24,11 @@ const ProductOverview = styled.div`
 
 const ProductInformation = styled.div`
   display: flex;
-  width: 50%;
+  width: 35%;
+  height 83vh;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 20px;
+  margin: 20px 40px 20px 20px;
   justify-content: space-between;
 `;
 
@@ -166,7 +167,6 @@ const Overview = ({currentItem}) => {
               <h2 className='product-name'>{currentItem.name}</h2>
             </CategoryContainer>
             <p className='price'>${Math.round(currentStyle.original_price)}</p>
-            <IconList />
             <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
             <StylesView currentStyle={currentStyle} allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
             <CartFeatures>
