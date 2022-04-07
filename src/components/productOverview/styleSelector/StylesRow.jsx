@@ -1,7 +1,7 @@
 /* eslint-disable */
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-
+import {BsCheck2Circle} from 'react-icons/bs';
 const StyleCircleRow = styled.div`
   display: flex;
   flex-direction: row;
@@ -12,13 +12,24 @@ const StyleCircleRow = styled.div`
 const StyleCircle = styled.img`
   height: 60px;
   width: 60px;
+  opacity: 70%;
   margin-left: 5px;
   margin-right: 5px;
   border: 1px solid black;
   border-radius: 50%;
 `;
 
-const StylesRow = ({ index, styleGroup, onStyleCircleClick }) => {
+const StyleCircleSelected = styled.img`
+  height: 60px;
+  width: 60px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid black;
+  border-radius: 50%;
+`;
+
+const StylesRow = ({ index, styleGroup, onStyleCircleClick, currentStyle }) => {
+  console.log(currentStyle);
   let trueStyleIndex;
   if (index === 0) {
     trueStyleIndex = 0;
@@ -28,7 +39,16 @@ const StylesRow = ({ index, styleGroup, onStyleCircleClick }) => {
   return (
     <StyleCircleRow className='styles-row'>
       {styleGroup.map((style, i) => {
-        return <StyleCircle onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} key={i} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircle>
+        if (currentStyle.style_id === style.style_id) {
+          return (
+            <>
+              <StyleCircleSelected onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} key={i} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircleSelected>
+              <div className='circle-check'><BsCheck2Circle/></div>
+            </>
+          )
+        } else {
+          return <StyleCircle onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} key={i} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircle>
+        }
       })}
     </StyleCircleRow>
   );

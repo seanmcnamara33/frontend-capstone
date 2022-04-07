@@ -5,26 +5,23 @@ body {
 
 .image-left {
   all: unset;
-  position: absolute;
-  left: 130px;
-  top: 330px;
+  position: relative;
+  left: 90px;
   font-size: large;
   font-weight: bold;
 }
 
 .image-right {
   all: unset;
-  position: absolute;
-  top: 330px;
-  left: 475px;
+  position: relative;
+  left: -35px;
   font-size: large;
   font-weight: bold;
 }
 
 .expanded-image-left {
   all: unset;
-  position: absolute;
-  top: 330px;
+  position: relative;
   left: 30px;
   font-size: large;
   font-weight: bold;
@@ -32,10 +29,47 @@ body {
 
 .expanded-image-right {
   all: unset;
-  position: absolute;
-  top: 330px;
-  right: 200px;
+  position: relative;
+  right: 30px;
   font-size: large;
   font-weight: bold;
-
 }
+
+.category {
+  margin-bottom: 0;
+}
+
+.product-name {
+  margin-top: 0;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.restore-default {
+  all: unset;
+  position: relative;
+  top: -210px;
+  left: -60px;
+}
+
+.partly-filled-star {
+  overflow: hidden;
+  background-clip: text;
+  -webkit-background-clip: text;
+};
+
+.cart-features {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.circle-check {
+  height: 0;
+  width: 0;
+  position: relative;
+  left: -20px;
+}
+

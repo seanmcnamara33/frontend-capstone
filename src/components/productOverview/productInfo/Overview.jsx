@@ -18,17 +18,55 @@ const ProductOverview = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
-  width: 100vw;
+  width: 100%;
   box-sizing: border-box;
 `;
 
 const ProductInformation = styled.div`
   display: flex;
+  width: 50%;
   flex-direction: column;
   box-sizing: border-box;
-  margin-left: 10px;
+  padding: 20px;
   justify-content: space-between;
 `;
+
+const CategoryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+
+const CartFeatures = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const AddToCartFeatures = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const StarButton = styled.button`
+  all: unset;
+  width: 15%;
+  background-color: white;
+  padding:0.35em 1.2em;
+  border:0.1em solid black;
+  margin:0 0.3em 0.3em 0;
+  border-radius: 3px;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  text-align: center;
+  height: 100%;
+`;
+
 const Overview = ({currentItem}) => {
   const [currentView, setView] = useState('default');
   const [currentStyle, setCurrentStyle] = useState({});
@@ -114,36 +152,32 @@ const Overview = ({currentItem}) => {
     <ProductOverview>
       <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
       <ProductInformation>
-        <h1>Product Overview</h1>
         <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
-        <p>
-          Category:
-          {currentItem.category}
-        </p>
-        <h4>
-          Product Name:
-          {currentItem.name}
-        </h4>
-        <p>
-          Price:
-          {currentStyle.original_price}
-        </p>
+        <CategoryContainer>
+          <p className='category'>{currentItem.category}</p>
+          <h2 className='product-name'>{currentItem.name}</h2>
+        </CategoryContainer>
+        <p className='price'>${Math.round(currentStyle.original_price)}</p>
         <ProductInfo currentItem={currentItem} />
         <IconList />
         <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
-        <StylesView allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
-        <div className='cart-features'>
+        <StylesView currentStyle={currentStyle} allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
+        <CartFeatures>
           <SelectSize selectRef={selectRef} openMenuOnFocus={Select.openMenuOnFocus} currentStyle={currentStyle} onSizeChange={onSizeChange} />
           <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />
-        </div>
-        <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
-        <button className='star'>IM A STAR</button>
+        </CartFeatures>
+        <AddToCartFeatures>
+          <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
+          <StarButton>{String.fromCharCode(0x2606)}</StarButton>
+        </AddToCartFeatures>
       </ProductInformation>
     </ProductOverview>
     );
   }
   return (
-    <ExpandedView currentStyle={currentStyle} currentImage={currentImage} onRestoreDefaultClick={onRestoreDefaultClick}/>
+    <ProductOverview>
+      <ExpandedView currentStyle={currentStyle} currentImage={currentImage} onRestoreDefaultClick={onRestoreDefaultClick}/>
+    </ProductOverview>
   );
 };
 

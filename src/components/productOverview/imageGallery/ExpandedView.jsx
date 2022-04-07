@@ -4,37 +4,57 @@ import styled from 'styled-components';
 
 const ExpandedContainer = styled.div`
   display: flex;
-  flex-direction: columns;
-  width: 90%;
-  height: 500px;
-`;
-
-const ZoomedContainer = styled.div`
-  width: 90%;
-  height: 500px;
-  transition: transform 1s ease-in-out;
-  overflow: hidden;
-`;
-
-const ExpandedImage = styled.img`
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  box-sizing: border-box;
+  border-radius: 3px;
+  background-color: grey;
+  padding: 60px;
+  margin: 20px;
   width: 100%;
-  height: 100%;
-  cursor: crosshair;
+  height: 90vh;
 `;
 
 const ZoomedImage = styled.img`
   transform: scale(2.5);
+  object-fit: fill;
   height: 100%;
-  width: 100%;
+  width: 50%;
+  border-radius: 3px;
   overflow: hidden;
   cursor: zoom-out;
 `;
 
+const ZoomedContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 3px;
+  background-color: grey;
+  padding: 60px;
+  margin: 20px;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+`;
+
+const ExpandedImage = styled.img`
+  object-fit: fill;
+  align-self: center;
+  width: 50%;
+  height: 100%;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: crosshair;
+`;
+
 const IconList  = styled.div`
   display: flex;
-  position: absolute;
-  top: 525px;
-  left: 50px;
+  position: relative;
+  top: 270px;
+  left: 355px;
 `;
 
 const Icon = styled.div`
@@ -46,7 +66,8 @@ const Icon = styled.div`
 const SelectedIcon = styled.div`
   font-size: large;
   font-weight: bold;
-  color: yellow;
+  border-bottom: 3px solid black;
+  border-radius: 3px;
   margin: 5px;
 `;
 
@@ -115,7 +136,7 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
       <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2190)}</button>
       <ExpandedImage src={expandedPhotosArray[currentStyleExpandedIndex].url} onClick={(event) => onExpandedImageClick(event)}></ExpandedImage>
       <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2192)}</button>
-      <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>Restore</button>
+      <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>{String.fromCharCode(0x2311)}</button>
     </ExpandedContainer>
     );
   } else {

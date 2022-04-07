@@ -4,8 +4,17 @@ import styled from 'styled-components';
 
 const DefaultGallery = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
-  height: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin: 20px;
+  background-color: grey;
+  border-radius: 3px;
+  height: 80vh;
   width: 100%;
 `;
 const Image = styled.img `
@@ -13,6 +22,7 @@ const Image = styled.img `
   min-width: 100%;
   max-height: 100%;
   max-width: 100%;
+  border-radius: 3px;
   cursor: zoom-in;
 `;
 
