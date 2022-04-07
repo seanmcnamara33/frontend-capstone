@@ -12,6 +12,16 @@ const StyleCircleRow = styled.div`
 const StyleCircle = styled.img`
   height: 60px;
   width: 60px;
+  opacity: 70%;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid black;
+  border-radius: 50%;
+`;
+
+const StyleCircleSelected = styled.img`
+  height: 60px;
+  width: 60px;
   margin-left: 5px;
   margin-right: 5px;
   border: 1px solid black;
@@ -32,7 +42,7 @@ const StylesRow = ({ index, styleGroup, onStyleCircleClick, currentStyle }) => {
         if (currentStyle.style_id === style.style_id) {
           return (
             <>
-              <StyleCircle onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} key={i} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircle>
+              <StyleCircleSelected onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} key={i} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircleSelected>
               <div className='circle-check'><BsCheck2Circle/></div>
             </>
           )

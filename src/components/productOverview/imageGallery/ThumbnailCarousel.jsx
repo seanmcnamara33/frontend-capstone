@@ -19,6 +19,7 @@ const Thumbnail = styled.img `
   min-width: 50px;
   max-height: 50px;
   max-width: 50px;
+  opacity: 70%;
   border: 1px solid black;
   border-radius: 3px;
   margin: 5px;
