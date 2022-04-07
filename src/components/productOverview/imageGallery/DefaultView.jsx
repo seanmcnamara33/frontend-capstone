@@ -11,7 +11,6 @@ const DefaultGallery = styled.div`
   padding-bottom: 10px;
   padding-left: 60px;
   padding-right: 60px;
-  margin: 20px;
   background-color: grey;
   border-radius: 3px;
   height: 80vh;
