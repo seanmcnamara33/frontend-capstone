@@ -2,24 +2,7 @@
 import React from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
-
-const QuantityDiv = styled.div`
-  align-self: end;
-  width: 25%;
-  padding:0.35em 1.2em;
-  border:0.1em solid black;
-  margin:0 0.3em 0.3em 0;
-  border-radius: 3px;
-  box-sizing: border-box;
-  box-shadow: 0 0 2px black;
-  text-decoration:none;
-  font-family:'Roboto',sans-serif;
-  font-weight:300;
-  &:hover {
-    box-shadow: 0 0 5px rgb(222, 99, 23);
-    color: rgb(222, 99, 23);
-  }
-`;
+import {QuantityDiv} from './StyleSelectorStyles.jsx';
 
 const customStyles = {
   option: () => ({}),
@@ -27,7 +10,6 @@ const customStyles = {
     textAlign: 'center'
   }),
 }
-
 
 const SelectQuantity = ({ currentSize, currentStyle, onQuantityChange }) => {
   if (Object.keys(currentSize).length) {
