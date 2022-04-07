@@ -91,7 +91,7 @@ const OutfitList = ({ currentItem }) => {
       <AddOutfitCard addOutfit={addOutfit}/>
       {begin > 0 && <ButtonLeft onClick={leftClick}>&laquo;</ButtonLeft>}
       <OutfitListStyle>
-        {outfits.length > 0 && outfits.slice(begin, end).map((outfit, index) => {
+        {outfits.length > 0 && display.slice(begin, end).map((outfit, index) => {
           return (
             <li key={index}>
               <OutfitCard outfit={outfit}/>
