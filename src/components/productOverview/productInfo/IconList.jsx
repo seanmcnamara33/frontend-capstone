@@ -3,17 +3,8 @@
 import React from 'react';
 import { FaFacebook, FaPinterest, FaTwitter } from 'react-icons/fa';
 import styled from 'styled-components';
+import {IconListContainer, Icon} from './ProductInfoStyles.jsx';
 
-const IconListContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 20px;
-`;
-
-const Icon = styled.div`
-  margin: 5px;
-`;
 const IconList = () => {
   return (
     <IconListContainer>
