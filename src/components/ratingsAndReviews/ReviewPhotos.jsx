@@ -6,7 +6,7 @@ const ReviewPhotos = (props) => {
     props.data.map((photo) => {
       return(
         <div key={photo}>
-          <img src={photo}></img>
+          <img src={photo.url}></img>
         </div>
       )
     })
