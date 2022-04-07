@@ -12,7 +12,7 @@ const QuestionsAnswers = ({id}) => {
 
   const loadQuestions = async product_id =>{
     try {
-      let data = await fetch(`${process.env.API_URI}/qa/questions?product_id=${product_id}&count=${questionCount}`, {
+      let data = await fetch(`${process.env.API_URI}/qa/questions?product_id=${product_id}&page=1&count=${questionCount}`, {
         method: 'GET',
         headers: { Authorization: process.env.API_KEY }
       });
@@ -42,7 +42,7 @@ const QuestionsAnswers = ({id}) => {
       setFiltered([])
     }
   }
-
+  console.log(questions)
   return (
     <Main>
       <Search filterQuestions={filterQuestions} />
