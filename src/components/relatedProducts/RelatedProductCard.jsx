@@ -11,8 +11,12 @@ const CardStyle = styled.div`
   justify-content: end;
   align-items: center;
   border: solid;
-  margin-right: 2px;
-  margin-left: 2px;
+  border-image: linear-gradient(45deg, rgb(207, 106, 48) , blue);
+  border-image-slice: 1;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-image-width: 2px;
+  font-family:'Roboto',sans-serif;
 `;
 
 
@@ -20,6 +24,8 @@ const ImageStyle = styled.img`
   height: 350px;
   max-width: 300px;
   min-width: 300px;
+  /* border-top-left-radius: 18px;
+  border-top-right-radius: 18px; */
   object-fit: cover;
 `;
 
@@ -42,7 +48,6 @@ const RelatedProductCard = ({ prod }) => {
       .then((response) => {
         response.json().then(result => {
           setStyle(result.results[0]);
-          console.log(style);
           setImage(result.results[0].photos[0].thumbnail_url);
         })
       })
