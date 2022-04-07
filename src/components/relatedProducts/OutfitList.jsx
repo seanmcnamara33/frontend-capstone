@@ -23,6 +23,7 @@ const OutfitListStyle = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   height: 400px;
   width: auto;
   padding-left: 5px;
@@ -88,9 +89,9 @@ const OutfitList = ({ currentItem }) => {
     <div>
     <HeaderStyle>Your Outfits</HeaderStyle>
     <WidgetStyle>
+      <OutfitListStyle>
       <AddOutfitCard addOutfit={addOutfit}/>
       {begin > 0 && <ButtonLeft onClick={leftClick}>&laquo;</ButtonLeft>}
-      <OutfitListStyle>
         {outfits.length > 0 && display.slice(begin, end).map((outfit, index) => {
           return (
             <li key={index}>
