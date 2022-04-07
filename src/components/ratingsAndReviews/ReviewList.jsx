@@ -13,7 +13,7 @@ const ReviewList = (props) => {
   const [metaData, setMetaData] = useState([]);
   const [totalReviews, setTotalReviews] = useState(0);
   const [pageCount, setPageCount] = useState(1);
-  const reviewCount = 2000;
+  const reviewCount = 2;
 
   useEffect(() => {
     fetch(`${process.env.API_URI}/reviews/?product_id=65631&count=${reviewCount}&page=${pageCount}`, {
