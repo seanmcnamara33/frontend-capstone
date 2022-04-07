@@ -1,21 +1,24 @@
 /* eslint-disable */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import RelatedProductCard from './RelatedProductCard.jsx';
+import AddOutfitCard from './AddOutfitCard.jsx';
+import OutfitCard from './OutfitCard.jsx';
 
 const HeaderStyle = styled.h2`
   display: flex;
   justify-content: center;
-  font-family:'Roboto',sans-serif;
+  font-family: 'Roboto', sans-serif;
+  margin: none;
 `;
 
 const WidgetStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 30px;
 `;
 
-const RelatedListStyle = styled.ul`
+const OutfitListStyle = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: row;
@@ -42,32 +45,29 @@ const ButtonRight = styled.button`
   border-radius: 100%;
 `;
 
-const RelatedList = ({ currentItem, id }) => {
-  const [relatedProds, setRelatedProds] = useState([]);
+const OutfitList = ({ currentItem }) => {
+  const [outfits, setOutfits] = useState([]);
   const [begin, setBegin] = useState(0);
   const [end, setEnd] = useState(3);
   const [display, setDisplay] = useState([]);
-  const productId = 65631;
-  
-  const getRelatedProductsID = () => {
-    fetch(`${process.env.API_URI}/products/${productId}/related`, { method: 'GET', headers: { Authorization: process.env.API_KEY }})
-      .then((response) => {
-        response.json().then((results) => {
-          setRelatedProds([...new Set(results)]);
-          setDisplay([...new Set(results)]);
-        })
+
+  const addOutfit = () => {
+    if (!outfits.includes(currentItem)) {
+      setOutfits(outfits => {
+        let temp = [...outfits, currentItem];
+        return temp;
       })
-      .catch((err) => console.log(`Error getting related products: ${err}`))
+      setDisplay(display => {
+        let temp = [...display, currentItem];
+        return temp;
+      })
+    }
   }
 
-  useEffect(() => {
-    getRelatedProductsID();
-  }, [])
-
   const rightClick = () => {
-    if (begin === relatedProds.length - 3) {
-      setBegin(relatedProds.length - 3);
-      setEnd(relatedProds.length);
+    if (begin === outfits.length - 3) {
+      setBegin(outfits.length - 3);
+      setEnd(outfits.length);
     } else {
       setBegin(begin + 1);
       setEnd(end + 1);
@@ -86,22 +86,23 @@ const RelatedList = ({ currentItem, id }) => {
 
   return (
     <div>
-    <HeaderStyle>Related Products</HeaderStyle>
+    <HeaderStyle>Your Outfits</HeaderStyle>
     <WidgetStyle>
+      <AddOutfitCard addOutfit={addOutfit}/>
       {begin > 0 && <ButtonLeft onClick={leftClick}>&laquo;</ButtonLeft>}
-      <RelatedListStyle>
-        {display.slice(begin, end).map((prod, index) => {
+      <OutfitListStyle>
+        {outfits.length > 0 && outfits.slice(begin, end).map((outfit, index) => {
           return (
-            <li key={prod}>
-              <RelatedProductCard prod={prod}/>
+            <li key={index}>
+              <OutfitCard outfit={outfit}/>
             </li>
-          );
+          )
         })}
-      </RelatedListStyle>
-      {end < relatedProds.length && <ButtonRight onClick={rightClick}>&#187;</ButtonRight>}
+      </OutfitListStyle>
+      {end < outfits.length && <ButtonRight onClick={rightClick}>&#187;</ButtonRight>}
     </WidgetStyle>
     </div>
-  );
-}
+  )
+};
 
-export default RelatedList;
+export default OutfitList;
