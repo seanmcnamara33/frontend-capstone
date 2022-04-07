@@ -29,7 +29,6 @@ const StyleCircleSelected = styled.img`
 `;
 
 const StylesRow = ({ index, styleGroup, onStyleCircleClick, currentStyle }) => {
-  console.log(currentStyle);
   let trueStyleIndex;
   if (index === 0) {
     trueStyleIndex = 0;
@@ -41,13 +40,13 @@ const StylesRow = ({ index, styleGroup, onStyleCircleClick, currentStyle }) => {
       {styleGroup.map((style, i) => {
         if (currentStyle.style_id === style.style_id) {
           return (
-            <>
-              <StyleCircleSelected onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} key={i} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircleSelected>
+            <div key={`selected-style${i}`}>
+              <StyleCircleSelected onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircleSelected>
               <div className='circle-check'><BsCheck2Circle/></div>
-            </>
+            </div>
           )
         } else {
-          return <StyleCircle onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} key={i} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircle>
+          return <StyleCircle  key={`style${i}`} onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircle>
         }
       })}
     </StyleCircleRow>
