@@ -7,7 +7,11 @@ const RelatedListStyle = styled.ul`
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  height: 100%;
+  justify-content: center;
+  height: 400px;
+  width: auto;
+  padding-left: 5px;
+  padding-right: 5px;
 `;
 
 const RelatedList = () => {
