@@ -11,9 +11,14 @@ const QuantityDiv = styled.div`
   margin:0 0.3em 0.3em 0;
   border-radius: 3px;
   box-sizing: border-box;
+  box-shadow: 0 0 2px black;
   text-decoration:none;
   font-family:'Roboto',sans-serif;
   font-weight:300;
+  &:hover {
+    box-shadow: 0 0 5px rgb(222, 99, 23);
+    color: rgb(222, 99, 23);
+  }
 `;
 
 const customStyles = {
@@ -27,7 +32,7 @@ const customStyles = {
 const SelectQuantity = ({ currentSize, currentStyle, onQuantityChange }) => {
   if (Object.keys(currentSize).length) {
     let quantityList = [];
-    for (let i = 1; i < currentSize.quantity; i++) {
+    for (let i = 0; i < currentSize.quantity; i++) {
       if (i >= 15) {
         break;
       }
@@ -35,13 +40,7 @@ const SelectQuantity = ({ currentSize, currentStyle, onQuantityChange }) => {
     }
     return (
       <QuantityDiv>
-        {/* <select className='select-quantity' style={{all: 'unset'}}onChange={(event) => onQuantityChange(event)}>
-          <option value='1'>1</option>
-          {quantityList.map((amount, index) => {
-            return <option value={amount} key={`amount${index}`}>{amount}</option>
-          })}
-        </select> */}
-        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={quantityList} styles={customStyles} placeholder='Quantity'></Select>
+        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={quantityList} styles={customStyles} placeholder='1'></Select>
       </QuantityDiv>
     )
   }

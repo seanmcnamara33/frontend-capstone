@@ -24,10 +24,11 @@ const ProductOverview = styled.div`
 
 const ProductInformation = styled.div`
   display: flex;
-  width: 50%;
+  width: 35%;
+  height 83vh;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 20px;
+  margin: 20px 40px 20px 0px;
   justify-content: space-between;
 `;
 
@@ -60,11 +61,23 @@ const StarButton = styled.button`
   margin:0 0.3em 0.3em 0;
   border-radius: 3px;
   box-sizing: border-box;
+  box-shadow: 0 0 2px black;
   text-decoration:none;
   font-family:'Roboto',sans-serif;
   font-weight:300;
   text-align: center;
   height: 100%;
+  &:hover {
+    box-shadow: 0 0 5px rgb(222, 99, 23);
+    color: rgb(222, 99, 23);
+  }
+`;
+
+const DescriptionContainer = styled.div`
+  display: flex;
+  width: 100%;
+  margin-left: 80px;
+  margin-right: 80px;
 `;
 
 const Overview = ({currentItem}) => {
@@ -149,29 +162,33 @@ const Overview = ({currentItem}) => {
 
   if (currentView === 'default') {
     return (
-    <ProductOverview>
-      <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
-      <ProductInformation>
-        <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
-        <CategoryContainer>
-          <p className='category'>{currentItem.category}</p>
-          <h2 className='product-name'>{currentItem.name}</h2>
-        </CategoryContainer>
-        <p className='price'>${Math.round(currentStyle.original_price)}</p>
-        <ProductInfo currentItem={currentItem} />
-        <IconList />
-        <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
-        <StylesView currentStyle={currentStyle} allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
-        <CartFeatures>
-          <SelectSize selectRef={selectRef} openMenuOnFocus={Select.openMenuOnFocus} currentStyle={currentStyle} onSizeChange={onSizeChange} />
-          <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />
-        </CartFeatures>
-        <AddToCartFeatures>
-          <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
-          <StarButton>{String.fromCharCode(0x2606)}</StarButton>
-        </AddToCartFeatures>
-      </ProductInformation>
-    </ProductOverview>
+      <>
+        <ProductOverview>
+          <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
+          <ProductInformation>
+            <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
+            <CategoryContainer>
+              <p className='category'>{currentItem.category}</p>
+              <h2 className='product-name'>{currentItem.name}</h2>
+            </CategoryContainer>
+            <p className='price'>${Math.round(currentStyle.original_price)}</p>
+            <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
+            <StylesView currentStyle={currentStyle} allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
+            <CartFeatures>
+              <SelectSize selectRef={selectRef} openMenuOnFocus={Select.openMenuOnFocus} currentStyle={currentStyle} onSizeChange={onSizeChange} />
+              <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />
+            </CartFeatures>
+            <AddToCartFeatures>
+              <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
+              <StarButton>{String.fromCharCode(0x2606)}</StarButton>
+            </AddToCartFeatures>
+          </ProductInformation>
+        </ProductOverview>
+        <DescriptionContainer>
+          <ProductInfo currentItem={currentItem} />
+          <IconList />
+        </DescriptionContainer>
+      </>
     );
   }
   return (
