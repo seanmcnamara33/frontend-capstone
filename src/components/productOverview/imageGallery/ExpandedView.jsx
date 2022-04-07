@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import {BsCircleFill} from 'react-icons/bs';
 
 const ExpandedContainer = styled.div`
   display: flex;
@@ -9,9 +10,13 @@ const ExpandedContainer = styled.div`
   align-self: center;
   box-sizing: border-box;
   border-radius: 3px;
+  box-shadow: 0 0 5px black;
   background-color: grey;
-  padding: 60px;
-  margin: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin: 20px 40px 40px 40px;
   width: 100%;
   height: 90vh;
 `;
@@ -46,11 +51,12 @@ const ExpandedImage = styled.img`
   width: 50%;
   height: 100%;
   border-radius: 3px;
+  box-shadow: 0 0 5px black;
   overflow: hidden;
   cursor: crosshair;
 `;
 
-const IconList  = styled.div`
+const Icons = styled.div`
   display: flex;
   position: relative;
   top: 270px;
@@ -58,17 +64,23 @@ const IconList  = styled.div`
 `;
 
 const Icon = styled.div`
-  font-size: large;
-  font-weight: bold;
+  color: white;
   margin: 5px;
+  text-shadow: 0px 0px 2px rgb(222, 99, 23);
+  opacity: 50%;
+  &:hover {
+    opacity: 100%;
+    text-shadow: 0px 0px 5px rgb(222, 99, 23);
+  }
 `;
 
 const SelectedIcon = styled.div`
-  font-size: large;
-  font-weight: bold;
-  border-bottom: 3px solid rgb(222, 99, 23);
-  border-radius: 3px;
+  color: rgb(222, 99, 23);
   margin: 5px;
+  text-shadow: 0px 0px 2px white;
+  &:hover {
+    text-shadow: 0px 0px 5px white;
+  }
 `;
 
 const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
@@ -105,7 +117,7 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
   }
 
   const onIconClick = (event) => {
-    setExpandedStyleIndex(Number(event.target.innerText) - 1);
+    setExpandedStyleIndex(Number(event.target.dataset.index));
   }
 
   const onImageOver = (event) => {
@@ -125,14 +137,14 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
   if (!zoomed) {
     return(
     <ExpandedContainer>
-      <IconList>
+      <Icons>
         {icons.map((icon, index) => {
           if (index === currentStyleExpandedIndex) {
-            return <SelectedIcon onClick={(event) => onIconClick(event)} key={`icon${index}`}>{icon}</SelectedIcon>
+            return <SelectedIcon data-index={index} onClick={(event) => onIconClick(event)} key={`icon${index}`}>{String.fromCharCode(0x2B24)}</SelectedIcon>
           }
-          return <Icon onClick={(event) => onIconClick(event)} key={`icon${index}`}>{icon}</Icon>
+          return <Icon data-index={index} onClick={(event) => onIconClick(event)} key={`icon${index}`}>{String.fromCharCode(0x2B24)}</Icon>
         })}
-      </IconList>
+      </Icons>
       <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B05)}</button>
       <ExpandedImage src={expandedPhotosArray[currentStyleExpandedIndex].url} onClick={(event) => onExpandedImageClick(event)}></ExpandedImage>
       <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B95)}</button>
