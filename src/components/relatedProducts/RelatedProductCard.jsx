@@ -1,15 +1,25 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+// import Image from './Image.jsx';
+
+const placeholder = 'https://images.unsplash.com/photo-1546213290-e1b492ab3eee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80';
 
 const CardStyle = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
   justify-content: end;
   align-items: center;
-  padding-left: 3px;
-  padding-right: 3px;
+  border: solid;
+`;
+
+
+const ImageStyle = styled.img`
+  height: 350px;
+  max-width: 300px;
+  min-width: 300px;
+  object-fit: cover;
 `;
 
 const RelatedProductCard = ({ prod }) => {
@@ -43,9 +53,9 @@ const RelatedProductCard = ({ prod }) => {
 
   return (
     <CardStyle>
-      <img src={image}/>
-      <p>{product.name}</p>
-      <p>${style.original_price}</p>
+      { image ? <ImageStyle src={image}></ImageStyle> : <ImageStyle src={placeholder}></ImageStyle>}
+      <div>{product.name}</div>
+      <div>${style.original_price}</div>
     </CardStyle>
   );
 }
@@ -53,3 +63,5 @@ const RelatedProductCard = ({ prod }) => {
 export default RelatedProductCard;
 
 //style.results[0].sale_price ? style.results[0].sale_price:
+
+// {image ? <img src={image}/> : <img src='https://images.unsplash.com/photo-1546213290-e1b492ab3eee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80'/>}

@@ -2,23 +2,34 @@
 import React from 'react';
 import AddCharacteristicsRadioBtn from './AddCharacteristicsRadioBtn.jsx';
 
-const AddCharacteristics = () => {
+const AddCharacteristics = (props) => {
   return (
-    <div className='review-list'>
-      {/* <label>Characteristics</label> */}
-      <label>Size</label>
-      <AddCharacteristicsRadioBtn />
-      <label>Width</label>
-      <AddCharacteristicsRadioBtn />
-      <label>Comfort</label>
-      <AddCharacteristicsRadioBtn />
-      <label>Quality</label>
-      <AddCharacteristicsRadioBtn />
-      <label>Length</label>
-      <AddCharacteristicsRadioBtn />
-      <label>Fit</label>
-      <AddCharacteristicsRadioBtn />
-    </div>
+      <div className='review-list'>
+        {/* <label>Characteristics</label> */}
+        <label>Size
+          <AddCharacteristicsRadioBtn />
+        </label>
+
+        <label>Width
+          <AddCharacteristicsRadioBtn />
+        </label>
+
+        <label>Comfort
+          <AddCharacteristicsRadioBtn />
+        </label>
+
+        <label>Quality
+          <AddCharacteristicsRadioBtn />
+        </label>
+
+        <label>Length
+          <AddCharacteristicsRadioBtn />
+        </label>
+
+        <label>Fit
+          <AddCharacteristicsRadioBtn />
+        </label>
+      </div>
 
   )
 }
