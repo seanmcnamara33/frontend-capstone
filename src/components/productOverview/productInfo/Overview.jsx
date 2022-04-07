@@ -28,7 +28,7 @@ const ProductInformation = styled.div`
   height 83vh;
   flex-direction: column;
   box-sizing: border-box;
-  margin: 20px 40px 20px 20px;
+  margin: 20px 40px 20px 0px;
   justify-content: space-between;
 `;
 
@@ -61,11 +61,16 @@ const StarButton = styled.button`
   margin:0 0.3em 0.3em 0;
   border-radius: 3px;
   box-sizing: border-box;
+  box-shadow: 0 0 2px black;
   text-decoration:none;
   font-family:'Roboto',sans-serif;
   font-weight:300;
   text-align: center;
   height: 100%;
+  &:hover {
+    box-shadow: 0 0 5px rgb(222, 99, 23);
+    color: rgb(222, 99, 23);
+  }
 `;
 
 const DescriptionContainer = styled.div`

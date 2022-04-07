@@ -7,24 +7,25 @@ const StyleCircleRow = styled.div`
   flex-direction: row;
   height: 60px;
   margin: 10px;
+  margin-left: 0px;
 `;
 
 const StyleCircle = styled.img`
   height: 60px;
   width: 60px;
   opacity: 70%;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 10px;
   border: 1px solid black;
+  box-shadow: 0 0 3px black;
   border-radius: 50%;
 `;
 
 const StyleCircleSelected = styled.img`
   height: 60px;
   width: 60px;
-  margin-left: 5px;
-  margin-right: 5px;
-  border: 1px solid black;
+  margin-right: 10px;
+  border: 1px solid rgb(222, 99, 23);
+  box-shadow: 0 0 3px rgb(222, 99, 23);
   border-radius: 50%;
 `;
 

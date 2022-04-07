@@ -21,6 +21,7 @@ const Thumbnail = styled.img `
   max-width: 60px;
   opacity: 70%;
   border: 1px solid black;
+  box-shadow: -0px 0px 3px black;
   border-radius: 3px;
   margin: 5px;
 `;
@@ -35,7 +36,8 @@ const SelectedThumbnail = styled.img `
   min-width: 60px;
   max-height: 60px;
   max-width: 60px;
-  border: 1px solid black;
+  border: 1px solid rgb(222, 99, 23);
+  box-shadow: -0px 0px 3px rgb(222, 99, 23);
   border-radius: 3px;
   margin: 5px;
   margin-bottom: 2px;
@@ -45,6 +47,7 @@ const SelectedThumbnailUnderline = styled.div `
   height: 3px;
   width: 60px;
   border-bottom: 3px solid rgb(222, 99, 23);
+  box-shadow: -1px 1px 1px rgb(222, 99, 23);
   border-radius: 3px;
   margin-bottom: 5px;
 `;

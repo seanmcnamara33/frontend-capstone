@@ -16,6 +16,7 @@ const ProductDescriptionContainer = styled.div`
 const ProductDescriptionTitle = styled.h4`
   margin-top: 0;
   margin-bottom: 0;
+  text-decoration: underline;
 `;
 
 const ProductInfo = ({ currentItem }) => {
