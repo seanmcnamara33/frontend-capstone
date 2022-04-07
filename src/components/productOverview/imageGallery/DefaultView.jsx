@@ -7,7 +7,10 @@ const DefaultGallery = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 60px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 60px;
+  padding-right: 60px;
   margin: 20px;
   background-color: grey;
   border-radius: 3px;

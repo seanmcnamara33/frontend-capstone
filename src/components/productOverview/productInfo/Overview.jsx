@@ -24,6 +24,7 @@ const ProductOverview = styled.div`
 
 const ProductInformation = styled.div`
   display: flex;
+  width: 50%;
   flex-direction: column;
   box-sizing: border-box;
   padding: 20px;
@@ -174,7 +175,9 @@ const Overview = ({currentItem}) => {
     );
   }
   return (
-    <ExpandedView currentStyle={currentStyle} currentImage={currentImage} onRestoreDefaultClick={onRestoreDefaultClick}/>
+    <ProductOverview>
+      <ExpandedView currentStyle={currentStyle} currentImage={currentImage} onRestoreDefaultClick={onRestoreDefaultClick}/>
+    </ProductOverview>
   );
 };
 

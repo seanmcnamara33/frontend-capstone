@@ -31,7 +31,7 @@ const StarReviews = ({ currentItem, onReviewLinkClick }) => {
           } else if (rating - i < 1 && rating - i > 0) {
             var amt = (i - rating) * -100;
             console.log(amt);
-            return <span className='partly-filled-star' style={{background: `linear-gradient(to right, black ${amt}%, white ${100 - amt}%)`}}><span className='partly-filled-star'>{String.fromCharCode(0x2606)}</span></span>
+            return <span className='partly-filled-star' style={{background: `linear-gradient(to left, white ${amt}%, black ${100 - amt}%)`, backgroundClip: 'text', webkitBackgroundClip: 'text', webkitTextFillColor: 'transparent'}}>{String.fromCharCode(0x2605)}</span>
           } else {
             return <span>{String.fromCharCode(0x2606)}</span>
           }

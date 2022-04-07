@@ -11,7 +11,7 @@ const ImageGalleryComponent = styled.div`
   align-items: center;
   box-sizing: border-box;
   height: 100%;
-  width: 100%;
+  width: 50%;
 `;
 
 const ImageGallery = ({currentStyle, allStyles, currentView, onImageClick, currentImage}) => {

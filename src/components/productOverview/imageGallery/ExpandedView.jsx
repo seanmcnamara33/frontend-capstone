@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 const ExpandedContainer = styled.div`
   display: flex;
-  flex-direction: columns;
   justify-content: center;
   align-items: center;
   align-self: center;
@@ -29,7 +28,6 @@ const ZoomedImage = styled.img`
 
 const ZoomedContainer = styled.div`
   display: flex;
-  flex-direction: columns;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
@@ -44,13 +42,13 @@ const ZoomedContainer = styled.div`
 
 const ExpandedImage = styled.img`
   object-fit: fill;
+  align-self: center;
   width: 50%;
   height: 100%;
   border-radius: 3px;
   overflow: hidden;
   cursor: crosshair;
 `;
-
 
 const IconList  = styled.div`
   display: flex;
