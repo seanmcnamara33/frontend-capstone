@@ -10,15 +10,15 @@ const ThumbnailContainer = styled.div `
   align-items: center;
   justify-content: space-between;
   position: relative;
-  top: -250px;
-  left: 115px;
+  top: -240px;
+  left: 85px;
 `;
 
 const Thumbnail = styled.img `
-  min-height: 50px;
-  min-width: 50px;
-  max-height: 50px;
-  max-width: 50px;
+  min-height: 60px;
+  min-width: 60px;
+  max-height: 60px;
+  max-width: 60px;
   opacity: 70%;
   border: 1px solid black;
   border-radius: 3px;
@@ -31,10 +31,10 @@ const SelectedContainer = styled.div`
 `;
 
 const SelectedThumbnail = styled.img `
-  min-height: 50px;
-  min-width: 50px;
-  max-height: 50px;
-  max-width: 50px;
+  min-height: 60px;
+  min-width: 60px;
+  max-height: 60px;
+  max-width: 60px;
   border: 1px solid black;
   border-radius: 3px;
   margin: 5px;
@@ -43,8 +43,8 @@ const SelectedThumbnail = styled.img `
 
 const SelectedThumbnailUnderline = styled.div `
   height: 3px;
-  width: 50px;
-  border-bottom: 3px solid black;
+  width: 60px;
+  border-bottom: 3px solid rgb(222, 99, 23);
   border-radius: 3px;
   margin-bottom: 5px;
 `;

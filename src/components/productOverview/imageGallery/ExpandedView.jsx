@@ -66,7 +66,7 @@ const Icon = styled.div`
 const SelectedIcon = styled.div`
   font-size: large;
   font-weight: bold;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid rgb(222, 99, 23);
   border-radius: 3px;
   margin: 5px;
 `;
@@ -133,9 +133,9 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
           return <Icon onClick={(event) => onIconClick(event)} key={`icon${index}`}>{icon}</Icon>
         })}
       </IconList>
-      <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2190)}</button>
+      <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B05)}</button>
       <ExpandedImage src={expandedPhotosArray[currentStyleExpandedIndex].url} onClick={(event) => onExpandedImageClick(event)}></ExpandedImage>
-      <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2192)}</button>
+      <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B95)}</button>
       <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>{String.fromCharCode(0x2311)}</button>
     </ExpandedContainer>
     );
