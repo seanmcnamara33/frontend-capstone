@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-// import Image from './Image.jsx';
 
 const placeholder = 'https://images.unsplash.com/photo-1546213290-e1b492ab3eee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80';
 
@@ -12,6 +11,8 @@ const CardStyle = styled.div`
   justify-content: end;
   align-items: center;
   border: solid;
+  margin-right: 2px;
+  margin-left: 2px;
 `;
 
 
@@ -41,6 +42,7 @@ const RelatedProductCard = ({ prod }) => {
       .then((response) => {
         response.json().then(result => {
           setStyle(result.results[0]);
+          console.log(style);
           setImage(result.results[0].photos[0].thumbnail_url);
         })
       })
@@ -54,8 +56,8 @@ const RelatedProductCard = ({ prod }) => {
   return (
     <CardStyle>
       { image ? <ImageStyle src={image}></ImageStyle> : <ImageStyle src={placeholder}></ImageStyle>}
-      <div>{product.name}</div>
-      <div>${style.original_price}</div>
+      <div className="product-name">{product.name}</div>
+      { style.sale_price ? <div className="price">was ${style.original_price} now ${style.sale_price}</div> : <div className="price">${style.original_price}</div>}
     </CardStyle>
   );
 }

@@ -14,15 +14,19 @@ const RelatedListStyle = styled.ul`
   padding-right: 5px;
 `;
 
+const WidgetStyle = styled.div`
+  display: flex;
+`;
+
 const RelatedList = () => {
   const [relatedProds, setRelatedProds] = useState([]);
-  const productId = 65631;
+  const productId = 65635;
 
   const getRelatedProductsID = () => {
     fetch(`${process.env.API_URI}/products/${productId}/related`, { method: 'GET', headers: { Authorization: process.env.API_KEY }})
       .then((response) => {
         response.json().then((results) => {
-          setRelatedProds(results);
+          setRelatedProds([...new Set(results)]);
         })
       })
       .catch((err) => console.log(`Error getting related products: ${err}`))
@@ -34,7 +38,8 @@ const RelatedList = () => {
 
   return (
     <div>
-      <h3>Related Products</h3>
+    <h3>Related Products</h3>
+    <WidgetStyle>
       <RelatedListStyle>
         {relatedProds.map(prod => {
           return (
@@ -44,6 +49,7 @@ const RelatedList = () => {
           );
         })}
       </RelatedListStyle>
+    </WidgetStyle>
     </div>
   );
 }
