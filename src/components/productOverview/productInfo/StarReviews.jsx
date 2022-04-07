@@ -8,6 +8,18 @@ const StarsAndReviews = styled.div`
   display: flex;
 `;
 
+const Star = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ReviewLink = styled.p`
+  margin: 10px;
+  text-decoration: underline;
+  font-size: .75rem;
+`;
+
 const StarReviews = ({ currentItem, onReviewLinkClick }) => {
   const [rating, setRating] = useState(0);
   const [reviewNum, setReviewNum] = useState(0);
@@ -27,19 +39,15 @@ const StarReviews = ({ currentItem, onReviewLinkClick }) => {
       <StarsAndReviews>
         {stars.map((star, i) => {
           if (rating - i >= 1) {
-            return <span key={`star${i}`}>{String.fromCharCode(0x2605)}</span>
+            return <Star key={`star${i}`}>{String.fromCharCode(0x2605)}</Star>
           } else if (rating - i < 1 && rating - i > 0) {
             var amt = (i - rating) * -100;
-            return <span key={`star${i}`} className='partly-filled-star' style={{background: `linear-gradient(to left, white ${amt}%, black ${100 - amt}%)`, backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>{String.fromCharCode(0x2605)}</span>
+            return <Star key={`star${i}`} className='partly-filled-star' style={{background: `linear-gradient(to left, white ${amt}%, black ${100 - amt}%)`, backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>{String.fromCharCode(0x2605)}</Star>
           } else {
-            return <span key={`star${i}`}>{String.fromCharCode(0x2606)}</span>
+            return <Star key={`star${i}`}>{String.fromCharCode(0x2606)}</Star>
           }
         })}
-        <span onClick={() =>  onReviewLinkClick() }>
-          Read All
-          {reviewNum}
-          Reviews
-        </span>
+        <ReviewLink onClick={() =>  onReviewLinkClick() }>Read All {reviewNum} Reviews</ReviewLink>
       </StarsAndReviews>
     );
   }
