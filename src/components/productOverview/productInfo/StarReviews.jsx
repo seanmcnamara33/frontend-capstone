@@ -3,42 +3,7 @@ import React, { useState, useEffect } from 'react';
 import 'whatwg-fetch';
 import { getStars, calculateTotalReviewNumber, calculateAverage } from '../../common/helpers.js';
 import styled from 'styled-components';
-
-const StarsAndReviews = styled.div`
-  display: flex;
-`;
-
-const Star = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-shadow: .5px .5px 1px rgb(222, 99, 23);
-  color: rgb(222, 99, 23);
-`;
-
-const ReviewLink = styled.p`
-  margin: 10px;
-  text-decoration: underline;
-  font-size: .75rem;
-`;
-
-const MergeStar = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const FirstStarPortion = styled.div`
-  text-shadow: .5px .5px 1px rgb(222, 99, 23);
-`;
-
-const SecondStarPortion = styled.div`
-  position: relative;
-  right: 16px;
-  margin-right: -16px;
-  color: rgb(222, 99, 23);
-  text-shadow: .5px .5px 1px rgb(222, 99, 23);
-`;
+import {StarsAndReviews, Star, ReviewLink, MergeStar, FirstStarPortion, SecondStarPortion} from './ProductInfoStyles.jsx';
 
 const StarReviews = ({ currentItem, onReviewLinkClick }) => {
   const [rating, setRating] = useState(0);
