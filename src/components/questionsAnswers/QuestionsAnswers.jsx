@@ -5,7 +5,7 @@ import QuestionsList from './questions/QuestionList';
 import 'whatwg-fetch';
 import { Main } from './Styles';
 
-const QuestionsAnswers = ({id, checkSession}) => {
+const QuestionsAnswers = ({id}) => {
   const [questions, setQuestions] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [questionCount, setQuestionCount] = useState(6);
@@ -24,7 +24,7 @@ const QuestionsAnswers = ({id, checkSession}) => {
       console.log('LOAD', error);
     }
   }
-  console.log('Session',checkSession())
+
   useEffect(()=>{
     if (id) {
       loadQuestions(id);
