@@ -2,24 +2,25 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
+import {SizeDiv} from './StyleSelectorStyles.jsx';
 
-const SizeDiv = styled.div`
-  -webkit-appearance: none;
-  width: 50%;
-  padding:0.35em 1.2em;
-  border:0.1em solid black;
-  margin:0 0.3em 0.3em 0;
-  border-radius: 3px;
-  box-sizing: border-box;
-  box-shadow: 0 0 2px black;
-  text-decoration:none;
-  font-family:'Roboto',sans-serif;
-  font-weight:300;
-  &:hover {
-    box-shadow: 0 0 5px rgb(222, 99, 23);
-    color: rgb(222, 99, 23);
-  }
-`;
+// const SizeDiv = styled.div`
+//   -webkit-appearance: none;
+//   width: 50%;
+//   padding:0.35em 1.2em;
+//   border:0.1em solid black;
+//   margin:0 0.3em 0.3em 0;
+//   border-radius: 3px;
+//   box-sizing: border-box;
+//   box-shadow: 0 0 2px black;
+//   text-decoration:none;
+//   font-family:'Roboto',sans-serif;
+//   font-weight:300;
+//   &:hover {
+//     box-shadow: 0 0 5px rgb(222, 99, 23);
+//     color: rgb(222, 99, 23);
+//   }
+// `;
 
 const customStyles = {
   option: () => ({}),
