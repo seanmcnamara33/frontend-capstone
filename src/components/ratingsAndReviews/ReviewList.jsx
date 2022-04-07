@@ -73,7 +73,7 @@ const ReviewList = (props) => {
     .then((response) => {
       response.json().then((results) => {
         //if results empty, hide button
-        console.log(results.results)
+        // console.log(results.results)
         setPageCount(pageCount + 1);
         setCurrentReviews([...currentReviews, ...results.results]);
       });
