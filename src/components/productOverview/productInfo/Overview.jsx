@@ -67,6 +67,13 @@ const StarButton = styled.button`
   height: 100%;
 `;
 
+const DescriptionContainer = styled.div`
+  display: flex;
+  width: 100%;
+  margin-left: 80px;
+  margin-right: 80px;
+`;
+
 const Overview = ({currentItem}) => {
   const [currentView, setView] = useState('default');
   const [currentStyle, setCurrentStyle] = useState({});
@@ -149,29 +156,34 @@ const Overview = ({currentItem}) => {
 
   if (currentView === 'default') {
     return (
-    <ProductOverview>
-      <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
-      <ProductInformation>
-        <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
-        <CategoryContainer>
-          <p className='category'>{currentItem.category}</p>
-          <h2 className='product-name'>{currentItem.name}</h2>
-        </CategoryContainer>
-        <p className='price'>${Math.round(currentStyle.original_price)}</p>
-        <ProductInfo currentItem={currentItem} />
-        <IconList />
-        <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
-        <StylesView currentStyle={currentStyle} allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
-        <CartFeatures>
-          <SelectSize selectRef={selectRef} openMenuOnFocus={Select.openMenuOnFocus} currentStyle={currentStyle} onSizeChange={onSizeChange} />
-          <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />
-        </CartFeatures>
-        <AddToCartFeatures>
-          <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
-          <StarButton>{String.fromCharCode(0x2606)}</StarButton>
-        </AddToCartFeatures>
-      </ProductInformation>
-    </ProductOverview>
+      <>
+        <ProductOverview>
+          <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
+          <ProductInformation>
+            <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
+            <CategoryContainer>
+              <p className='category'>{currentItem.category}</p>
+              <h2 className='product-name'>{currentItem.name}</h2>
+            </CategoryContainer>
+            <p className='price'>${Math.round(currentStyle.original_price)}</p>
+            <IconList />
+            <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
+            <StylesView currentStyle={currentStyle} allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
+            <CartFeatures>
+              <SelectSize selectRef={selectRef} openMenuOnFocus={Select.openMenuOnFocus} currentStyle={currentStyle} onSizeChange={onSizeChange} />
+              <SelectQuantity currentSize={currentSize} currentStyle={currentStyle} onQuantityChange={onQuantityChange} />
+            </CartFeatures>
+            <AddToCartFeatures>
+              <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
+              <StarButton>{String.fromCharCode(0x2606)}</StarButton>
+            </AddToCartFeatures>
+          </ProductInformation>
+        </ProductOverview>
+        <DescriptionContainer>
+          <ProductInfo currentItem={currentItem} />
+          <IconList />
+        </DescriptionContainer>
+      </>
     );
   }
   return (
