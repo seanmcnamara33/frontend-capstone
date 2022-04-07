@@ -11,7 +11,7 @@ const Answer = ({id, answer}) => {
         by {answer.answerer_name}, {formatDate(answer.date)} | Helpful? <a href="#">Yes</a> ({answer.helpfulness}) | <a href="#">{answer.reported ? 'NO':'report'}</a>
       </div>
       <PhotoList>
-        {answer.photos.length > 0&&answer.photos.map((photo, i)=>(
+        {answer.photos.length > 0 && answer.photos.map((photo, i)=>(
           <Thumbnail key={i} photo={photo} />
         ))}
       </PhotoList>
