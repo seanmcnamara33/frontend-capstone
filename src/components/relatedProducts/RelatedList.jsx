@@ -48,7 +48,7 @@ const RelatedList = ({ currentItem, id }) => {
   const [end, setEnd] = useState(3);
   const [display, setDisplay] = useState([]);
   const productId = 65631;
-
+  
   const getRelatedProductsID = () => {
     fetch(`${process.env.API_URI}/products/${productId}/related`, { method: 'GET', headers: { Authorization: process.env.API_KEY }})
       .then((response) => {
@@ -65,7 +65,6 @@ const RelatedList = ({ currentItem, id }) => {
   }, [])
 
   const rightClick = () => {
-    console.log(id)
     if (begin === relatedProds.length - 3) {
       setBegin(relatedProds.length - 3);
       setEnd(relatedProds.length);

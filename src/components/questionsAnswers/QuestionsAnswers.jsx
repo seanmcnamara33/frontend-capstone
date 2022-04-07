@@ -12,7 +12,6 @@ const QuestionsAnswers = ({id}) => {
 
   const loadQuestions = async product_id =>{
     try {
-      console.log(questionCount)
       let data = await fetch(`${process.env.API_URI}/qa/questions?product_id=${product_id}&count=${questionCount}`, {
         method: 'GET',
         headers: { Authorization: process.env.API_KEY }
