@@ -19,6 +19,30 @@ const CardStyle = styled.div`
   font-family:'Roboto',sans-serif;
 `;
 
+// const TextStyle = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   font-family: 'Roboto',sans-serif;
+// `;
+
+const NameStyle = styled.p`
+  display: flex;
+  align-self: center;
+  font-family:'Roboto',sans-serif;
+  font-weight: bold;
+`;
+
+const CategoryStyle = styled.div`
+  display: flex;
+  padding-left: 5px;
+  padding-top: 5px;
+  align-self: start;
+  font-family:'Roboto',sans-serif;
+  font-weight: small;
+`;
+
 
 const ImageStyle = styled.img`
   height: 350px;
@@ -30,7 +54,8 @@ const ImageStyle = styled.img`
 `;
 
 const RelatedProductCard = ({ prod }) => {
-  const [product, setProduct] = useState({});
+  const [name, setName] = useState('');
+  const [category, setCategory] = useState('');
   const [style, setStyle] = useState([]);
   const [image, setImage] = useState('');
 
@@ -38,7 +63,8 @@ const RelatedProductCard = ({ prod }) => {
     fetch(`${process.env.API_URI}/products/${prod}`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
       .then((response) => {
         response.json().then(result => {
-          setProduct(result);
+          setName(result.name);
+          setCategory(result.category);
         })
       })
   };
@@ -61,7 +87,8 @@ const RelatedProductCard = ({ prod }) => {
   return (
     <CardStyle>
       { image ? <ImageStyle src={image}></ImageStyle> : <ImageStyle src={placeholder}></ImageStyle>}
-      <div className="product-name">{product.name}</div>
+      <CategoryStyle className="product-category">{category.toUpperCase()}</CategoryStyle>
+      <NameStyle className="product-name">{name}</NameStyle>
       { style.sale_price ? <div className="price">was ${style.original_price} now ${style.sale_price}</div> : <div className="price">${style.original_price}</div>}
     </CardStyle>
   );
