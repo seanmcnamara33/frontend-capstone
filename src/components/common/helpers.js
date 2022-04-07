@@ -20,16 +20,26 @@ export const calculateTotalReviewNumber = (object) => {
 };
 
 export const getStars = async (productId) => {
-  return await fetch(`${process.env.API_URI}/reviews/meta?product_id=${productId}`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
-    .then((response) => {
-      return response.json().then((result) => {
-        const average = calculateAverage(result.ratings);
-        const reviews = calculateTotalReviewNumber(result.ratings);
-        let values = [average, reviews]
-        return values;
-      });
-    })
-    .catch((err) => {
-      console.log(`Error found in getStars: ${err}`);
-    });
+  let body = await fetch(`${process.env.API_URI}/reviews/meta?product_id=${productId}`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
+  let res = await body.json();
+  if (res) {
+    console.log(res);
+    const average = calculateAverage(res.ratings);
+    const reviews = calculateTotalReviewNumber(res.ratings);
+    let values = [average, reviews]
+    return values;
+  }
+
+    // .then((response) => {
+    //   return response.json().then((result) => {
+    //     const average = calculateAverage(result.ratings);
+    //     const reviews = calculateTotalReviewNumber(result.ratings);
+    //     let values = [average, reviews]
+    //     return values;
+    //   });
+    // })
+    // .catch((err) => {
+    //   console.log(`Error found in getStars: ${err}`);
+    // });
+
 };
