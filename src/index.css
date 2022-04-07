@@ -11,6 +11,11 @@ body {
   color: rgb(222, 99, 23);
   font-size: large;
   font-weight: bold;
+  text-shadow: 0px 0px 1px black;
+}
+
+.image-left:hover {
+  text-shadow: 0px 0px 2px black;
 }
 
 .image-right {
@@ -20,6 +25,11 @@ body {
   color: rgb(222, 99, 23);
   font-size: large;
   font-weight: bold;
+  text-shadow: 0px 0px 1px black;
+}
+
+.image-right:hover {
+  text-shadow: 0px 0px 2px black;
 }
 
 .expanded-image-left {
@@ -29,6 +39,11 @@ body {
   color: rgb(222, 99, 23);
   font-size: large;
   font-weight: bold;
+  text-shadow: 0px 0px 1px black;
+}
+
+.expanded-image-left:hover {
+  text-shadow: 0px 0px 2px black;
 }
 
 .expanded-image-right {
@@ -38,6 +53,11 @@ body {
   color: rgb(222, 99, 23);
   font-size: large;
   font-weight: bold;
+  text-shadow: 0px 0px 1px black;
+}
+
+.expanded-image-right:hover {
+  text-shadow: 0px 0px 2px black;
 }
 
 .category {
@@ -56,11 +76,16 @@ body {
   all: unset;
   position: relative;
   color: rgb(222, 99, 23);
-  top: -210px;
+  top: -265px;
   left: -60px;
   font-size: large;
   font-weight: bold;
+  text-shadow: 0px 0px 1px black;
 }
+
+.restore-default:hover {
+  text-shadow: 0px 0px 2px black;
+};
 
 .partly-filled-star {
   overflow: hidden;
