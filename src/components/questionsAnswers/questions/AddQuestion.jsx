@@ -4,17 +4,12 @@ import useForm from '../../common/useForm';
 import validateQuestion from './ValidateQuestion';
 import {FormInner} from './Styles';
 
-const AddQuestion = () => {
+const AddQuestion = ({addQuestion}) => {
   const [values, setValues] = useState({
-    question: '', nickname: '', email: ''
+    body: '', name: '', email: ''
   });
 
-  const sendQuestion = () =>{
-    console.log('MAKE CALL', values);
-    console.log('Errors', errors);
-  }
-
-  const {handleChange, handleSubmit, errors} = useForm(values, setValues, sendQuestion, validateQuestion);
+  const {handleChange, handleSubmit, errors} = useForm(values, setValues, addQuestion, validateQuestion);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -22,17 +17,19 @@ const AddQuestion = () => {
         <label htmlFor="">Question</label>
         <input
           type="text"
-          name="question"
-          value={values.question}
+          name="body"
+          value={values.body}
           onChange={handleChange}
         />
+        {errors.body && <h5>{errors.body}</h5>}
         <label htmlFor="">Nickname</label>
         <input
           type="text"
-          name="nickname"
-          value={values.nickname}
+          name="name"
+          value={values.name}
           onChange={handleChange}
         />
+        {errors.name && <h5>{errors.name}</h5>}
         <label htmlFor="">Email</label>
         <input
           type="email"
@@ -40,6 +37,7 @@ const AddQuestion = () => {
           value={values.email}
           onChange={handleChange}
         />
+        {errors.email && <h5>{errors.email}</h5>}
         <button type="submit">Add</button>
       </FormInner>
     </form>

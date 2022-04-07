@@ -7,10 +7,13 @@ import { Main } from './Styles';
 
 const QuestionsAnswers = ({id}) => {
   const [questions, setQuestions] = useState([]);
-  const [filtered, setFiltered] = useState([])
+  const [filtered, setFiltered] = useState([]);
+  const [questionCount, setQuestionCount] = useState(6);
+
   const loadQuestions = async product_id =>{
     try {
-      let data = await fetch(`${process.env.API_URI}/qa/questions?product_id=${product_id}`, {
+      console.log(questionCount)
+      let data = await fetch(`${process.env.API_URI}/qa/questions?product_id=${product_id}&count=${questionCount}`, {
         method: 'GET',
         headers: { Authorization: process.env.API_KEY }
       });
@@ -19,7 +22,7 @@ const QuestionsAnswers = ({id}) => {
         setQuestions(res.results);
       }
     } catch (error) {
-      console.log('LOAD', error)
+      console.log('LOAD', error);
     }
   }
 
@@ -27,7 +30,11 @@ const QuestionsAnswers = ({id}) => {
     if (id) {
       loadQuestions(id);
     }
-  }, [id])
+  }, [id, questionCount])
+
+  const handleQuestionCount = () => {
+    setQuestionCount(questionCount + 2);
+  }
 
   const filterQuestions = input => {
     if (input.length > 2 ) {
@@ -40,7 +47,11 @@ const QuestionsAnswers = ({id}) => {
   return (
     <Main>
       <Search filterQuestions={filterQuestions} />
-      <QuestionsList questions={filtered.length > 0 ? filtered : questions}/>
+      <QuestionsList
+        productId={id}
+        questions={filtered.length > 0 ? filtered : questions}
+        handleQuestionCount={handleQuestionCount}
+      />
     </Main>
   )
 }

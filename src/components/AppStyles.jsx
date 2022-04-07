@@ -32,6 +32,7 @@ export const Header = styled.div`
   color: white;
   width: 100%;
   border-radius: 20px 20px 0 0;
+  text-align: center;
 `
 
 export const Content = styled.div`

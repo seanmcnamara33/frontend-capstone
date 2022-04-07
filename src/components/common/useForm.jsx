@@ -16,13 +16,15 @@ const useForm = (values, setValues, callback, validate) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setSendIt(true);
+    console.log(validate(values))
+    console.log(values, errors);
     setErrors(validate(values))
+    setSendIt(true);
   }
 
   useEffect(()=>{
     if(Object.keys(errors).length === 0 && sendIt) {
-      callback();
+      callback(values);
     }
   }, [errors])
 

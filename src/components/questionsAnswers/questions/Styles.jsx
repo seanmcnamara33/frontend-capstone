@@ -22,3 +22,8 @@ export const FormInner = styled.div`
   margin: auto;
   padding: 0.5em;
 `
+export const FlexHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
