@@ -19,11 +19,19 @@ const CardStyle = styled.div`
   font-family:'Roboto',sans-serif;
 `;
 
-const ImageStyle = styled.img`
-  height: 350px;
-  max-width: 300px;
-  min-width: 300px;
-  object-fit: cover;
+// const TextStyle = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   font-family: 'Roboto',sans-serif;
+// `;
+
+const NameStyle = styled.p`
+  display: flex;
+  align-self: center;
+  font-family:'Roboto',sans-serif;
+  font-weight: bold;
 `;
 
 const CategoryStyle = styled.div`
@@ -35,11 +43,14 @@ const CategoryStyle = styled.div`
   font-weight: small;
 `;
 
-const NameStyle = styled.div`
-  display: flex;
-  align-self: center;
-  font-family:'Roboto',sans-serif;
-  font-weight: bold;
+
+const ImageStyle = styled.img`
+  height: 350px;
+  max-width: 300px;
+  min-width: 300px;
+  /* border-top-left-radius: 18px;
+  border-top-right-radius: 18px; */
+  object-fit: cover;
 `;
 
 const RelatedProductCard = ({ prod }) => {
@@ -84,3 +95,7 @@ const RelatedProductCard = ({ prod }) => {
 }
 
 export default RelatedProductCard;
+
+//style.results[0].sale_price ? style.results[0].sale_price:
+
+// {image ? <img src={image}/> : <img src='https://images.unsplash.com/photo-1546213290-e1b492ab3eee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80'/>}
