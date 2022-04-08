@@ -4,6 +4,9 @@ import { AnswerList, Thumbnail, PhotoList } from './Styles';
 import { formatDate } from '../../common/helpers';
 
 const Answer = ({id, answer}) => {
+  const checkPhotoUrl = url =>
+    /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(url)
+
   return(
     <li key={id}>
       <h4>A: {answer.body}</h4>
@@ -11,8 +14,9 @@ const Answer = ({id, answer}) => {
         by {answer.answerer_name}, {formatDate(answer.date)} | Helpful? <a href="#">Yes</a> ({answer.helpfulness}) | <a href="#">{answer.reported ? 'NO':'report'}</a>
       </div>
       <PhotoList>
-        {answer.photos.length > 0&&answer.photos.map((photo, i)=>(
-          <Thumbnail key={i} photo={photo} />
+        {answer.photos.length > 0 && answer.photos.map((photo, i)=>(
+          checkPhotoUrl(photo) ?
+            <Thumbnail key={i} photo={photo} /> : ''
         ))}
       </PhotoList>
     </li>

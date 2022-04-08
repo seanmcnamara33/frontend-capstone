@@ -2,18 +2,8 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import DefaultView from './DefaultView.jsx';
-// import ExpandedView from './ExpandedView.jsx';
 import ThumbnailCarousel from './ThumbnailCarousel.jsx';
-
-const ImageGalleryComponent = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  margin: 20px 0px 40px 20px;
-  height: 100%;
-  width: 65%;
-`;
+import {ImageGalleryComponent} from './ImageGalleryStyles.jsx';
 
 const ImageGallery = ({currentStyle, allStyles, currentView, onImageClick, currentImage}) => {
   if (Object.keys(currentStyle).length) {
