@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useState, useEffect, useRef } from 'react';
 import ImageGallery from '../imageGallery/ImageGallery.jsx';
-import StarReviews from './StarReviews.jsx';
+import StarsContainer from '../../common/StarsContainer.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import IconList from './IconList.jsx';
 import StyleSelector from '../styleSelector/StyleSelector.jsx';
@@ -102,7 +102,7 @@ const Overview = ({currentItem}) => {
         <ProductOverview>
           <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
           <ProductInformation>
-            <StarReviews currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} />
+            <StarsContainer currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} starsAndReviews={true}/>
             <CategoryContainer>
               <p className='category'>{currentItem.category}</p>
               <h2 className='product-name'>{currentItem.name}</h2>
