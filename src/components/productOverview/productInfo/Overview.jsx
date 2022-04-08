@@ -95,6 +95,7 @@ const Overview = ({currentItem}) => {
     }
   }, [currentItem]);
 
+
   if (currentView === 'default') {
     return (
       <>
