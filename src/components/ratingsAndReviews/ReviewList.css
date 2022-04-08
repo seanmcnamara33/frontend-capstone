@@ -1,6 +1,6 @@
 .review-list {
   scroll-behavior: smooth;
-  max-height: fit-content;
+  max-height: 500px;
   overflow: hidden;
   overflow-y: scroll;
 }

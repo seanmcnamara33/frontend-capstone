@@ -2,13 +2,22 @@
 import React from 'react';
 
 const SortBar = (props) => {
+
+  const handleClick = async (event) => {
+    console.log(event.target.value)
+    if(event.target.value) {
+      props.getSortData(event.target.value);
+    }
+  }
+
   return (
     <div>
-      <label> {'0'} reviews, sorted by </label>
-      <select>
-        <option>Helpful</option>
-        <option>Newest</option>
-        <option>Relevant</option>
+      <label> {props.data.length} reviews, sorted by </label>
+      <select onClick={handleClick} >
+        <option ></option>
+        <option value="helpful">Helpful</option>
+        <option value="newest">Newest</option>
+        <option value="relevant">Relevant</option>
       </select>
     </div>
 

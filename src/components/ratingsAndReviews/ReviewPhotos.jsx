@@ -5,14 +5,9 @@ import './ReviewPhotos.css';
 const ReviewPhotos = (props) => {
   return (
     props.data.map((photo) => {
-      return(
-<<<<<<< HEAD
-        <div  key={photo}>
-          <img className='photos' src={photo.url}></img>
-=======
+      return (
         <div key={photo}>
-          <img src={photo.url}></img>
->>>>>>> 171b992fb2c8c0e2268a6b9b420f1db7802b2abb
+          <img className='photos' src={photo.url}></img>
         </div>
       )
     })

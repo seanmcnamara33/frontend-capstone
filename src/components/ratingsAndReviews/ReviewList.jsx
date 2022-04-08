@@ -8,7 +8,6 @@ import './ReviewList.css';
 
 
 const ReviewList = (props) => {
-  //state
   const [currentReviews, setCurrentReviews] = useState([]);
   const [metaData, setMetaData] = useState([]);
   const [totalReviews, setTotalReviews] = useState(0);
@@ -45,6 +44,7 @@ const ReviewList = (props) => {
     } catch(err) {console.log(err)}
   };
 
+
   useEffect(() => {
     if(props.id !== '') {
       getReviewData(props.id);
@@ -52,6 +52,22 @@ const ReviewList = (props) => {
     }
 
   }, [props.id])
+
+
+  const getSortData = (sortFactor) => {
+    fetch(`${process.env.API_URI}/reviews/?product_id=${props.id}&count=${currentReviews.length}&page=${pageCount}&sort=${sortFactor}`, {
+      method: 'GET',
+      headers: {Authorization: process.env.API_KEY}
+    })
+    .then((response) => {
+      response.json().then((results) => {
+        setCurrentReviews([...currentReviews, ...results.results]);
+      });
+    })
+    .catch((err) => {
+      console.log('failed load GET');
+    });
+  }
 
 
   const handleClick = () => {
@@ -62,7 +78,6 @@ const ReviewList = (props) => {
     .then((response) => {
       response.json().then((results) => {
         //if results empty, hide button
-        // console.log(results.results)
         setPageCount(pageCount + 1);
         setCurrentReviews([...currentReviews, ...results.results]);
       });
@@ -75,7 +90,7 @@ const ReviewList = (props) => {
   return(
     <div>
       <label>Ratings & Reviews</label>
-      <SortBar />
+      <SortBar data={currentReviews} getSortData={getSortData}/>
       <div className='review-list'>
       <Reviews data={currentReviews}/>
       </div>
