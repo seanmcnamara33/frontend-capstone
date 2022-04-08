@@ -1,75 +1,7 @@
 /* eslint-disable */
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-
-const ExpandedContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  box-sizing: border-box;
-  border-radius: 3px;
-  background-color: grey;
-  padding: 60px;
-  margin: 20px;
-  width: 100%;
-  height: 90vh;
-`;
-
-const ZoomedImage = styled.img`
-  transform: scale(2.5);
-  object-fit: fill;
-  height: 100%;
-  width: 50%;
-  border-radius: 3px;
-  overflow: hidden;
-  cursor: zoom-out;
-`;
-
-const ZoomedContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  border-radius: 3px;
-  background-color: grey;
-  padding: 60px;
-  margin: 20px;
-  width: 100%;
-  height: 90vh;
-  overflow: hidden;
-`;
-
-const ExpandedImage = styled.img`
-  object-fit: fill;
-  align-self: center;
-  width: 50%;
-  height: 100%;
-  border-radius: 3px;
-  overflow: hidden;
-  cursor: crosshair;
-`;
-
-const IconList  = styled.div`
-  display: flex;
-  position: relative;
-  top: 270px;
-  left: 355px;
-`;
-
-const Icon = styled.div`
-  font-size: large;
-  font-weight: bold;
-  margin: 5px;
-`;
-
-const SelectedIcon = styled.div`
-  font-size: large;
-  font-weight: bold;
-  border-bottom: 3px solid rgb(222, 99, 23);
-  border-radius: 3px;
-  margin: 5px;
-`;
+import {EntireExpandedView, ExpandedContainer, ZoomedImage, ZoomedContainer, ExpandedImage, Icons, Icon, SelectedIcon} from './ImageGalleryStyles.jsx';
 
 const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
   const expandedPhotosArray = currentStyle.photos;
@@ -105,7 +37,7 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
   }
 
   const onIconClick = (event) => {
-    setExpandedStyleIndex(Number(event.target.innerText) - 1);
+    setExpandedStyleIndex(Number(event.target.dataset.index));
   }
 
   const onImageOver = (event) => {
@@ -124,20 +56,22 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
 
   if (!zoomed) {
     return(
-    <ExpandedContainer>
-      <IconList>
-        {icons.map((icon, index) => {
-          if (index === currentStyleExpandedIndex) {
-            return <SelectedIcon onClick={(event) => onIconClick(event)} key={`icon${index}`}>{icon}</SelectedIcon>
-          }
-          return <Icon onClick={(event) => onIconClick(event)} key={`icon${index}`}>{icon}</Icon>
-        })}
-      </IconList>
-      <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B05)}</button>
-      <ExpandedImage src={expandedPhotosArray[currentStyleExpandedIndex].url} onClick={(event) => onExpandedImageClick(event)}></ExpandedImage>
-      <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B95)}</button>
-      <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>{String.fromCharCode(0x2311)}</button>
-    </ExpandedContainer>
+      <EntireExpandedView>
+        <ExpandedContainer>
+          <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B05)}</button>
+          <ExpandedImage src={expandedPhotosArray[currentStyleExpandedIndex].url} onClick={(event) => onExpandedImageClick(event)}></ExpandedImage>
+          <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B95)}</button>
+          <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>{String.fromCharCode(0x2311)}</button>
+        </ExpandedContainer>
+        <Icons>
+          {icons.map((icon, index) => {
+            if (index === currentStyleExpandedIndex) {
+              return <SelectedIcon data-index={index} onClick={(event) => onIconClick(event)} key={`icon${index}`}>{String.fromCharCode(0x2B24)}</SelectedIcon>
+            }
+            return <Icon data-index={index} onClick={(event) => onIconClick(event)} key={`icon${index}`}>{String.fromCharCode(0x2B24)}</Icon>
+          })}
+        </Icons>
+      </EntireExpandedView>
     );
   } else {
     return (
