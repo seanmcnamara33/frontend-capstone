@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 // Image Gallery Styles
 export const ImageGalleryComponent = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-box-sizing: border-box;
-margin: 20px 0px 40px 20px;
-height: 100%;
-width: 65%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 20px 0px 40px 20px;
+  height: 100%;
+  width: 65%;
 `;
 
 // Default View Styles
@@ -113,7 +113,7 @@ export const ExpandedContainer = styled.div`
   padding-left: 60px;
   padding-right: 60px;
   width: 100%;
-  height: 90vh;
+  height: 80vh;
 `;
 
 export const ZoomedImage = styled.img`
@@ -134,12 +134,13 @@ export const ZoomedContainer = styled.div`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  box-shadow: 0 0 5px black;
   border-radius: 3px;
   background-color: grey;
   padding: 60px;
-  margin: 20px 60px 40px 60px;
+  margin: 20px 60px 20px 60px;
   width: 100%;
-  height: 90vh;
+  height: 85vh;
   overflow: hidden;
 `;
 

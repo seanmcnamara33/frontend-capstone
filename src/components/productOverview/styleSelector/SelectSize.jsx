@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
 import {SizeDiv} from './StyleSelectorStyles.jsx';
+import {IoIosArrowDown} from 'react-icons/io';
 
 const customStyles = {
   option: () => ({}),
@@ -28,19 +29,16 @@ const SelectSize = ({ openMenuOnFocus, selectRef, currentStyle, onSizeChange }) 
   if (sizes.length) {
     return (
       <SizeDiv>
-        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={options} ref={selectRef} openMenuOnFocus={true} styles={customStyles} onChange={(event) => onSizeChange(event)} placeholder='Select Size'>
+        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={options} ref={selectRef} openMenuOnFocus={true} styles={customStyles} onChange={(event) => onSizeChange(event)} placeholder={<div style={{color: 'black'}}>Select Size</div>}>
         </Select>
+        <div><IoIosArrowDown/></div>
       </SizeDiv>
     );
   }
   return(
-    <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={{value: '', label: ''}}  styles={customStyles} placeholder='Select Size'></Select>
+    <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={{value: '', label: ''}}  styles={customStyles} placeholder={<div style={{color: 'black'}}>Select Size</div>}></Select>
   )
 };
 
 export default SelectSize;
 
-{/* <option value=''>Select Size</option>
-{sizes.map((size, index) => {
-  return <option value={size} key={`size${index}`}>{size}</option>
-})} */}
