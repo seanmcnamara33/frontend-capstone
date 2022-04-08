@@ -10,17 +10,17 @@ const AddCharacteristicsRadioBtn = (props) => {
 
   return (
     <div onChange={handleValueChange}>
-      <p> None</p>
+      <label> None</label>
       <input type='radio' name={props.type}></input>
-      <p>1</p>
+      <label>1</label>
       <input type='radio' value='1' name={props.type}></input>
-      <p>2</p>
+      <label>2</label>
       <input type='radio' value='2' name={props.type}></input>
-      <p>3</p>
+      <label>3</label>
       <input type='radio' value='3' name={props.type}></input>
-      <p>4</p>
+      <label>4</label>
       <input type='radio' value='4' name={props.type}></input>
-      <p>5</p>
+      <label>5</label>
       <input type='radio' value='5' name={props.type}></input>
     </div>
   )
