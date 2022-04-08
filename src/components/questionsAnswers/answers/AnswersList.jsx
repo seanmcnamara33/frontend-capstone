@@ -7,6 +7,14 @@ const Answer = ({id, answer}) => {
   const checkPhotoUrl = url =>
     /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(url)
 
+  const reportAnswer = () => {
+    // PUT /qa/answers/:answer_id/report
+  }
+
+  const upVoteAnswer = () => {
+    // PUT /qa/answers/:answer_id/helpful
+  }
+
   return(
     <li key={id}>
       <h4>A: {answer.body}</h4>

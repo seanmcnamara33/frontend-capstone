@@ -1,8 +1,25 @@
 /* eslint-disable */
 import React, {useState, useRef, useEffect} from 'react';
 import useForm from '../../common/useForm';
-import {validateAnswer} from './ValidateAnswer';
-import {FormInner} from './Styles';
+import { validateAnswer } from './ValidateAnswer';
+import {FormInner, Thumbnail} from './Styles';
+
+
+const AddPhotos = ({handlePhotos}) => {
+  const [photo, setPhoto] = useState('');
+
+  const handleChange = e =>{
+    setPhoto(e.target.value);
+  }
+  console.log(photo)
+  return (
+    <div>
+      <input type="text" name="photo" value={photo} onChange={handleChange} />
+      <button type="button" onClick={()=>handlePhotos(photo)}>Upload</button>
+    </div>
+  )
+}
+
 
 const AddAnswer = () =>{
   const [values, setValues] = useState({
@@ -11,21 +28,22 @@ const AddAnswer = () =>{
     email: '',
     photos: []
   });
-  const fileInput = useRef();
+  const [toggle, setToggle] = useState(false);
 
-  const sub = () => {
-    console.log(values);
+  const handlePhotos = photo => {
+    if (/(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(photo)) {
+      setValues({
+        ...values,
+        photos: [...values.photos, photo]
+      })
+    }
   }
 
-  const fileUploads = () =>{
-    console.log(fileInput)
+  const finalSubmit = values => {
+
   }
 
-  useEffect(()=>{
-    fileUploads();
-  },[fileInput])
-
-  const {handleChange, handleSubmit, errors} = useForm(values, setValues, sub, validateAnswer);
+  const {handleChange, handleSubmit, errors} = useForm(values, setValues, finalSubmit, validateAnswer);
   // /qa/questions/:question_id/answers
   return (
     <form onSubmit={handleSubmit}>
@@ -52,10 +70,13 @@ const AddAnswer = () =>{
           onChange={handleChange}
         />
         <label htmlFor="">Upload Photos</label>
-        <input
-          type="file"
-          ref={fileInput}
-        />
+
+        {toggle ? <AddPhotos handlePhotos={handlePhotos}/> :
+          <button type="button" onClick={()=>setToggle(!toggle)}>Add Photos</button>
+        }
+        {values.photos.length && values.photos.map(photo=>(
+          <Thumbnail key={photo} photo={photo} />
+        ))}
         <button>Add</button>
       </FormInner>
     </form>

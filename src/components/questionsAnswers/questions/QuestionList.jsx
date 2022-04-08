@@ -7,7 +7,7 @@ import { Question, List, FlexHeader } from './Styles';
 import { Modal, Content, Header } from '../../AppStyles'
 import AddQuestion from './AddQuestion';
 import AddAnswer from '../answers/AddAnswer';
-import {ProductContext} from '../../context/Product';
+import { ProductContext } from '../../context/Product';
 
 
 const AnswerModal = ({handleAnswerModal, answerModal, name}) => (
@@ -15,7 +15,7 @@ const AnswerModal = ({handleAnswerModal, answerModal, name}) => (
     <Content>
       <Header>
         <FlexHeader>
-          <h2>Add A Answer</h2>
+          <h2>Add An Answer</h2>
           <button onClick={handleAnswerModal}><AiOutlineClose/></button>
         </FlexHeader>
         <h3>About the {name}</h3>
@@ -24,6 +24,21 @@ const AnswerModal = ({handleAnswerModal, answerModal, name}) => (
     </Content>
   </Modal>
 )
+
+const QuestionModal = ({handleQuestionModal, questionModal, name, addQuestion}) => (
+  <Modal onClose={handleQuestionModal} show={questionModal}>
+    <Content>
+      <Header>
+        <FlexHeader>
+          <h2>Ask A Question</h2>
+          <button onClick={handleQuestionModal}><AiOutlineClose/></button>
+        </FlexHeader>
+        <h3>About the {name}</h3>
+      </Header>
+      <AddQuestion addQuestion={addQuestion}/>
+    </Content>
+  </Modal>
+);
 
 const Accordion = ({questions, height}) => {
   const {currentItem, productId} = useContext(ProductContext);
@@ -61,17 +76,11 @@ const AccordionItem = ({question, handleAnswerModal}) => {
     setDisableYes(false)
   }
 
-  const upVoteAnswer = () => {
-    // PUT /qa/answers/:answer_id/helpful
-  }
-
   const reportQuestion = () => {
     // PUT /qa/questions/:question_id/report
   }
 
-  const reportAnswer = () => {
-    // PUT /qa/answers/:answer_id/report
-  }
+
   return (
     <div>
       <div >
@@ -82,7 +91,7 @@ const AccordionItem = ({question, handleAnswerModal}) => {
           </FlexHeader>
           <div>
             Helpful? {disableYes && <a onClick={upVoteQuestion}>Yes</a>}
-            <span>({question.question_helpfulness})</span> | <a onClick={handleAnswerModal}>Add Answer</a> | <a>Report</a>
+            <span>({question.question_helpfulness})</span> | <a onClick={handleAnswerModal}>Add Answer</a> | <a onClick={reportQuestion}>Report</a>
           </div>
         </Question>
       </div>
@@ -128,7 +137,6 @@ const QuestionList = ({questions, handleQuestionCount}) => {
     }
   }
 
-
   return (
     <>
       <div>
@@ -139,18 +147,12 @@ const QuestionList = ({questions, handleQuestionCount}) => {
         }
         <button onClick={handleQuestionModal}>Add A Question</button>
       </div>
-      <Modal onClose={handleQuestionModal} show={questionModal}>
-        <Content>
-          <Header>
-            <FlexHeader>
-              <h2>Ask A Question</h2>
-              <button onClick={handleQuestionModal}><AiOutlineClose/></button>
-            </FlexHeader>
-            <h3>About the {currentItem.name}</h3>
-          </Header>
-          <AddQuestion addQuestion={addQuestion}/>
-        </Content>
-      </Modal>
+      <QuestionModal
+        handleQuestionModal={handleQuestionModal}
+        questionModal={questionModal}
+        name={currentItem.name}
+        addQuestion={addQuestion}
+      />
     </>
   )
 }

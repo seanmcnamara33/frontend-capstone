@@ -28,6 +28,7 @@ const AddQuestion = ({addQuestion}) => {
           name="name"
           value={values.name}
           onChange={handleChange}
+          placeholder="Example: jackson11!"
         />
         {errors.name && <h5>{errors.name}</h5>}
         <label htmlFor="">Email</label>
@@ -36,7 +37,9 @@ const AddQuestion = ({addQuestion}) => {
           name="email"
           value={values.email}
           onChange={handleChange}
+          placeholder="Why did you like the product or not?"
         />
+        <p>For authentication reasons, you will not be emailed</p>
         {errors.email && <h5>{errors.email}</h5>}
         <button type="submit">Add</button>
       </FormInner>

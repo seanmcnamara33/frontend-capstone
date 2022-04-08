@@ -23,7 +23,7 @@ export const ProductProvider = props => {
   const createSession = () => {
     let s = sessionStorage.getItem('session');
     session.current = s;
-    console.log(session)
+
     if (!s) {
       session.current = fakeSession();
       sessionStorage.setItem('session', session.current);

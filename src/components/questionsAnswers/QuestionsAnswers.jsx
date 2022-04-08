@@ -8,7 +8,7 @@ import { Main } from './Styles';
 const QuestionsAnswers = ({id}) => {
   const [questions, setQuestions] = useState([]);
   const [filtered, setFiltered] = useState([]);
-  const [questionCount, setQuestionCount] = useState(6);
+  const [questionCount, setQuestionCount] = useState(100);
 
   const loadQuestions = async product_id =>{
     try {
