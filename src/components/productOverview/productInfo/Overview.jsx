@@ -42,12 +42,12 @@ const Overview = ({currentItem}) => {
     // either have TIM add a ref using useRef to the reviews header, so that you can use scrollIntoView on the ref to get to it on click
     // OR, have TIM add an id to the review parent div, which you can then referene with document.getElementById(), and then you can call [element].scrollIntoView() on that element
     // you can also make it scroll smoothly, with scrollIntoView({behavior: 'smooth'})
-    console.log('onReviewLinkClick not ready yet!');
+    let ratingsAndReviews = document.getElementById('ratings-and-reviews');
+    ratingsAndReviews.scrollIntoView({behavior: 'smooth'});
+    // console.log('onReviewLinkClick not ready yet!');
   };
 
   const onStyleCircleClick = (event, index) => {
-    // should change styling of clicked circle - should highlight it/add a floating checkmark
-    // on click, they should also change the current image in the image gallery/carousel
     const newStyle = allStyles[index];
     setCurrentStyle(newStyle);
   };

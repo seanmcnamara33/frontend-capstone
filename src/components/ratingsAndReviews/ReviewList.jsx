@@ -84,7 +84,7 @@ const ReviewList = (props) => {
   }
 
   return(
-    <div>
+    <div id='ratings-and-reviews'>
       <label>Ratings & Reviews</label>
       <SortBar />
       <div className='review-list'>
