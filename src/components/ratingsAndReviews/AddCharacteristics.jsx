@@ -14,7 +14,7 @@ const AddCharacteristics = (props) => {
   return (
     data.map((item) => {
       return (
-        <div>
+        <div key={item.name}>
           <label>{item.name}</label>
           <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type={item.id} />
         </div>

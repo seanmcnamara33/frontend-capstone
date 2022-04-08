@@ -50,7 +50,7 @@ const AddReviewModal = (props) => {
           'recommend': reviewForm.recommend,
           'name': reviewForm.name,
           'email': reviewForm.email,
-          'photos': ['https://unsplash.com/photos/Y3qbZDYpIfE'],
+          'photos': ['https://images.unsplash.com/photo-1585144860106-998ca0f2922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1208&q=80'],
           //API requires array of text URLS
           'characteristics': newCharacteristics(reviewForm.characteristics)
         }
