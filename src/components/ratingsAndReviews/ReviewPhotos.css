@@ -1,0 +1,7 @@
+.photos {
+  height: 5em;
+  width: 5em;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  margin: 5px;
+}

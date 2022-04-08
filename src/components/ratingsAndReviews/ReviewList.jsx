@@ -16,7 +16,7 @@ const ReviewList = (props) => {
   const reviewCount = 2;
 
   useEffect(() => {
-    fetch(`${process.env.API_URI}/reviews/?product_id=65631&count=${reviewCount}&page=${pageCount}`, {
+    fetch(`${process.env.API_URI}/reviews/?product_id=${props.id}count=2&page=${pageCount}`, {
       method: 'GET',
       headers: {Authorization: process.env.API_KEY}
     })
@@ -31,7 +31,7 @@ const ReviewList = (props) => {
       console.log('failed load GET');
     });
 
-    fetch(`${process.env.API_URI}/reviews/meta/?product_id=65631`, {
+    fetch(`${process.env.API_URI}/reviews/meta/?product_id=${props.id}`, {
       method: 'GET',
       headers: {Authorization: process.env.API_KEY}
     })
@@ -48,25 +48,9 @@ const ReviewList = (props) => {
   }, [])
 
 
-  // const getReviews = () => {
-  //   fetch(`${process.env.API_URI}/reviews`, {
-  //     method: 'GET',
-  //     headers: {Authorization: process.env.API_KEY}
-  //   })
-  //   .then((response) => {
-  //     response.json().then((results) => {
-  //       console.log(results)
-  //       setCurrentReviews(results)
-  //     })
-  //   })
-  //   .catch((err) => {
-  //     console.log('failed load GET', err)
-  //   })
-  // }
-
   const handleClick = () => {
     //load 2 more reviews
-    fetch(`${process.env.API_URI}/reviews/?product_id=65631&count=${reviewCount}&page=${pageCount}`, {
+    fetch(`${process.env.API_URI}/reviews/?product_id=${props.id}&count=2&page=${pageCount}`, {
       method: 'GET',
       headers: {Authorization: process.env.API_KEY}
     })

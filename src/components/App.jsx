@@ -36,7 +36,7 @@ const App = () => {
       <RelatedList currentItem={currentItem} id={productId}/>
       <OutfitList currentItem={currentItem}/>
       <QuestionsAnswers id={productId} />
-      <ReviewList />
+      <ReviewList id={productId}/>
     </>
   )
 }
