@@ -89,12 +89,12 @@ const AddReviewModal = (props) => {
 
           <AddCharacteristics handleCharacteristicsChange={handleCharacteristicsChange} metaData={props.metaData} />
 
-          <input placeholder='Nickname' onChange={(event) => { handleReviewFormChange('name', event.target.value) }}></input>
-          <input placeholder='Email' onChange={(event) => { handleReviewFormChange('email', event.target.value) }}></input>
-          <input placeholder='Example: Best purchase ever!' className='summary-style' maxLength='60' value={reviewForm.summary} onChange={(event) => { handleReviewFormChange('summary', event.target.value) }}></input>
+          <input required placeholder='Nickname' onChange={(event) => { handleReviewFormChange('name', event.target.value) }}></input>
+          <input required type='email' placeholder='Email' onChange={(event) => { handleReviewFormChange('email', event.target.value) }}></input>
+          <input required placeholder='Example: Best purchase ever!' className='summary-style' maxLength='60' value={reviewForm.summary} onChange={(event) => { handleReviewFormChange('summary', event.target.value) }}></input>
 
           <div>
-            <input type='text' minLength='50' maxLength='1000' max placeholder='Body' className='body-style' value={reviewForm.body} onChange={(event) => { handleReviewFormChange('body', event.target.value) }}></input>
+            <input required type='text' minLength='50' maxLength='1000' max placeholder='Body' className='body-style' value={reviewForm.body} onChange={(event) => { handleReviewFormChange('body', event.target.value) }}></input>
             <label>Character Count: {reviewForm.body.length}</label>
           </div>
           {reviewForm.photos.length > 4 ? null : <input type='file' accept='image/jpeg, image/png' onChange={(event) => {
