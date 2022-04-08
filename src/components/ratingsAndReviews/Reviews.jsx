@@ -10,6 +10,7 @@ const Reviews = (props) => {
   return (
 
     props.data.map((review) => {
+
       return (
         <div className='review-tile' key={review.review_id}>
            {review.rating}

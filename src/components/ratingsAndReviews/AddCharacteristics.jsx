@@ -3,33 +3,23 @@ import React from 'react';
 import AddCharacteristicsRadioBtn from './AddCharacteristicsRadioBtn.jsx';
 
 const AddCharacteristics = (props) => {
+  let data = [];
+  for (let key in props.metaData.characteristics) {
+    let temp = {};
+    temp['name'] = key;
+    temp['id'] = props.metaData.characteristics[key].id;
+    data.push(temp)
+  }
+
   return (
-      <div className='review-list'>
-        <label>Size
-          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type="Size" />
-        </label>
-
-        <label>Width
-          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type="Width"/>
-        </label>
-
-        <label>Comfort
-          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type="Comfort"/>
-        </label>
-
-        <label>Quality
-          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type="Quality"/>
-        </label>
-
-        <label>Length
-          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type="Length"/>
-        </label>
-
-        <label>Fit
-          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type="Fit"/>
-        </label>
-      </div>
-
+    data.map((item) => {
+      return (
+        <div>
+          <label>{item.name}</label>
+          <AddCharacteristicsRadioBtn handleCharacteristicsChange={props.handleCharacteristicsChange} type={item.id} />
+        </div>
+      )
+    })
   )
 }
 

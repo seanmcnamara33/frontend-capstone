@@ -15,41 +15,46 @@ const ReviewList = (props) => {
   const [pageCount, setPageCount] = useState(1);
   const reviewCount = 2;
 
+
+
+  const getReviewData = async (id) => {
+    try {
+      let body =  await fetch(`${process.env.API_URI}/reviews/?product_id=${id}&count=2&page=${pageCount}`, {
+        method: 'GET',
+        headers: {Authorization: process.env.API_KEY}
+      })
+      let response = await body.json();
+
+      if(response) {
+        setCurrentReviews([...currentReviews, ...response.results]);
+          setPageCount(pageCount + 1);
+      };
+    } catch (err) {console.log(err)}
+  };
+
+  const getMetaData = async (id) => {
+    try {
+      let body = await fetch(`${process.env.API_URI}/reviews/meta/?product_id=${id}`, {
+        method: 'GET',
+        headers: {Authorization: process.env.API_KEY}
+      })
+      let response = await body.json();
+      if(response) {
+        setMetaData(response);
+      }
+    } catch(err) {console.log(err)}
+  };
+
   useEffect(() => {
-    fetch(`${process.env.API_URI}/reviews/?product_id=${props.id}count=2&page=${pageCount}`, {
-      method: 'GET',
-      headers: {Authorization: process.env.API_KEY}
-    })
-    .then((response) => {
-      response.json().then((results) => {
-        // console.log(results.results)
-        setCurrentReviews([...currentReviews, ...results.results]);
-        setPageCount(pageCount + 1);
-      });
-    })
-    .catch((err) => {
-      console.log('failed load GET');
-    });
+    if(props.id !== '') {
+      getReviewData(props.id);
+      getMetaData(props.id)
+    }
 
-    fetch(`${process.env.API_URI}/reviews/meta/?product_id=${props.id}`, {
-      method: 'GET',
-      headers: {Authorization: process.env.API_KEY}
-    })
-    .then((response) => {
-      response.json().then((results) => {
-        // console.log(results)
-        setMetaData(results);
-      });
-    })
-    .catch((err) => {
-      console.log('failed load Meta GET');
-    });
-
-  }, [])
+  }, [props.id])
 
 
   const handleClick = () => {
-    //load 2 more reviews
     fetch(`${process.env.API_URI}/reviews/?product_id=${props.id}&count=2&page=${pageCount}`, {
       method: 'GET',
       headers: {Authorization: process.env.API_KEY}
@@ -75,7 +80,7 @@ const ReviewList = (props) => {
       <Reviews data={currentReviews}/>
       </div>
       <button type='button' onClick={handleClick}> More Reviews</button>
-      <AddReview />
+      <AddReview id={props.id} metaData={metaData}/>
       <label>Ratings Breakdown</label>
       <RatingsDisplay />
     </div>

@@ -17,15 +17,50 @@ const AddReviewModal = (props) => {
   }
 
   const handleRatingChange = (key, value) => {
-    setReviewForm({...reviewForm, [key]: value})
+    setReviewForm({ ...reviewForm, [key]: value })
   }
 
   const handleReviewFormChange = (key, value) => {
     setReviewForm({ ...reviewForm, [key]: value })
   }
 
-  const onSubmit = () => {
-    //handlesubmit
+  const newCharacteristics = (obj) => {
+    let newobj = {};
+    for (let key in obj) {
+      newobj[key] = +obj[key];
+    }
+    return newobj;
+  }
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch(`${process.env.API_URI}/reviews`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: process.env.API_KEY
+      },
+      body: JSON.stringify(
+        {
+          'product_id': props.id,
+          'rating': +reviewForm.starRatings,
+          'summary': reviewForm.summary,
+          'body': reviewForm.body,
+          'recommend': reviewForm.recommend,
+          'name': reviewForm.name,
+          'email': reviewForm.email,
+          'photos': ['https://unsplash.com/photos/Y3qbZDYpIfE'],
+          //API requires array of text URLS
+          'characteristics': newCharacteristics(reviewForm.characteristics)
+        }
+      )
+    }).then((response) => {
+      console.log('success post')
+
+    }).catch((err) => {
+      console.log('failed post', err);
+    })
   }
 
   useEffect(() => {
@@ -35,32 +70,31 @@ const AddReviewModal = (props) => {
     }
   }, [reviewForm.photos.length]);
 
-  console.log(reviewForm)
 
   return (
     <>
       <div className='modal-styles'>
-        <form type='submit'>
+        <form type='submit' onSubmit={handleSubmit}>
           <label>Add New Review!</label>
 
-          <AddStarRating handleRatingChange={handleRatingChange}/>
+          <AddStarRating handleRatingChange={handleRatingChange} />
 
           <div className='reccomend-style' onChange={(event) => { event.target.value === 'yes' ? handleReviewFormChange('recommend', true) : handleReviewFormChange('recommend', false) }}>
             <p>Do you reccomend this product?</p>
-            <input type='radio' name='reccomend' value='yes'></input>
+            <input type='radio' name='recommend' value='yes'></input>
             <label>Yes</label>
-            <input type='radio' name='reccomend' value='no'></input>
+            <input type='radio' name='recommend' value='no'></input>
             <label>No</label>
           </div>
 
-          <AddCharacteristics onSubmit={onSubmit} handleCharacteristicsChange={handleCharacteristicsChange} />
+          <AddCharacteristics handleCharacteristicsChange={handleCharacteristicsChange} metaData={props.metaData} />
 
           <input placeholder='Nickname' onChange={(event) => { handleReviewFormChange('name', event.target.value) }}></input>
           <input placeholder='Email' onChange={(event) => { handleReviewFormChange('email', event.target.value) }}></input>
-          <input placeholder='Example: Best purchase ever!' className='summary-style' maxLength='60' onChange={(event) => { handleReviewFormChange('summary', event.target.value) }}></input>
+          <input placeholder='Example: Best purchase ever!' className='summary-style' maxLength='60' value={reviewForm.summary} onChange={(event) => { handleReviewFormChange('summary', event.target.value) }}></input>
 
           <div>
-            <input type='text' minLength='50' maxLength='1000' max placeholder='Body' className='body-style' onChange={(event) => { handleReviewFormChange('body', event.target.value) }}></input>
+            <input type='text' minLength='50' maxLength='1000' max placeholder='Body' className='body-style' value={reviewForm.body} onChange={(event) => { handleReviewFormChange('body', event.target.value) }}></input>
             <label>Character Count: {reviewForm.body.length}</label>
           </div>
           {reviewForm.photos.length > 4 ? null : <input type='file' accept='image/jpeg, image/png' onChange={(event) => {
