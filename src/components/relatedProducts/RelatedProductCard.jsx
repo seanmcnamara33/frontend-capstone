@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Comparison from './Comparison.jsx';
 
 const placeholder = 'https://images.unsplash.com/photo-1546213290-e1b492ab3eee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80';
 
@@ -28,6 +29,11 @@ const ImageStyle = styled.img`
   object-fit: cover;
 `;
 
+const IconStyle = styled.i`
+  position: absolute;
+  font-size: 30px;
+`;
+
 const CategoryStyle = styled.div`
   display: flex;
   padding-left: 5px;
@@ -44,11 +50,20 @@ const NameStyle = styled.div`
   font-weight: bold;
 `;
 
+const SalePrice = styled.div`
+  color: #b50000;
+`;
+
+const OriginalPrice = styled.div`
+  text-decoration: line-through;
+`;
+
 const RelatedProductCard = ({ prod }) => {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [style, setStyle] = useState([]);
   const [image, setImage] = useState('');
+  const [comparisonModal, setComparisonModal] = useState(false);
 
   const getProduct = () => {
     fetch(`${process.env.API_URI}/products/${prod}`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
@@ -75,12 +90,27 @@ const RelatedProductCard = ({ prod }) => {
     getStyle();
   }, [])
 
+  const starClick = () => {
+    setComparisonModal(true);
+  }
+
   return (
     <CardStyle>
-      { image ? <ImageStyle src={image}></ImageStyle> : <ImageStyle src={placeholder}></ImageStyle>}
+      {
+        image ?
+        <div>
+          <IconStyle onClick={starClick}>&#11088;</IconStyle>
+          <ImageStyle src={image}></ImageStyle>
+        </div> :
+        <div>
+          <IconStyle onClick={starClick}>&#11088;</IconStyle>
+          <ImageStyle src={placeholder}></ImageStyle>
+        </div>
+      }
+      {comparisonModal && <Comparison/>}
       <CategoryStyle className="product-category">{category.toUpperCase()}</CategoryStyle>
       <NameStyle className="product-name">{name}</NameStyle>
-      { style.sale_price ? <div className="price">was ${style.original_price} now ${style.sale_price}</div> : <div className="price">${style.original_price}</div>}
+      { style.sale_price ? <><SalePrice className="price">SALE ${style.sale_price}</SalePrice><OriginalPrice className="price">${style.original_price}</OriginalPrice></> : <div className="price">${style.original_price}</div>}
     </CardStyle>
   );
 }
