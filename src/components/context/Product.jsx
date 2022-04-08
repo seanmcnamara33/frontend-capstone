@@ -15,14 +15,19 @@ export const ProductProvider = props => {
   const [productId, setProductId] = useState('');
   const session = useRef();
 
-  const checkSession = () => {
-    let s = localStorage.getItem('session');
+  const checkSession = (s) => {
+    // let s = sessionStorage.getItem('session');
     return s === session.current;
   }
 
   const createSession = () => {
-    session.current = fakeSession();
-    localStorage.setItem('session', session.current);
+    let s = sessionStorage.getItem('session');
+    session.current = s;
+    console.log(session)
+    if (!s) {
+      session.current = fakeSession();
+      sessionStorage.setItem('session', session.current);
+    }
   }
 
   const getFirstItem = () => {
@@ -37,7 +42,6 @@ export const ProductProvider = props => {
         console.log(`Error found in getFirstItem: ${err}`);
       });
   };
-
 
   const value = {
     currentItem,

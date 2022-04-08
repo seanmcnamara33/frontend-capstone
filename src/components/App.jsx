@@ -13,10 +13,9 @@ const App = () => {
   const {currentItem, productId, getFirstItem, createSession} = useContext(ProductContext);
 
   useEffect(() => {
-    console.log('MOUNTED');
     getFirstItem();
     createSession();
-    return () => localStorage.clear();
+    return () => sessionStorage.clear();
   }, []);
 
   return (

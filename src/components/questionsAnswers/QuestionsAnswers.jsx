@@ -42,7 +42,7 @@ const QuestionsAnswers = ({id}) => {
       setFiltered([])
     }
   }
-  console.log(questions)
+
   return (
     <Main>
       <Search filterQuestions={filterQuestions} />
