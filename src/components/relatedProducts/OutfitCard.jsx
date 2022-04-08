@@ -9,7 +9,7 @@ const CardStyle = styled.div`
   justify-content: end;
   align-items: center;
   border: solid;
-  border-image: linear-gradient(45deg, rgb(207, 106, 48) , blue);
+  border-image: linear-gradient(45deg, rgb(207, 106, 48) , rgb(59, 167, 184));
   border-image-slice: 1;
   margin-right: 10px;
   margin-left: 10px;

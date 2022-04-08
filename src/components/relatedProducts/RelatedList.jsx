@@ -93,7 +93,7 @@ const RelatedList = ({ currentItem, id }) => {
         {display.slice(begin, end).map((prod, index) => {
           return (
             <li key={prod}>
-              <RelatedProductCard prod={prod}/>
+              <RelatedProductCard prod={prod} currentItem={currentItem} id={id}/>
             </li>
           );
         })}
