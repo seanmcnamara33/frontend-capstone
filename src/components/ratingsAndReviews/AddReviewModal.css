@@ -6,8 +6,10 @@
   background-color: orangered;
   padding: 50%;
   z-index: 1000;
-  min-width: auto;
   overflow: auto;
+  /* justify-content: center;
+  align-items: center;
+  margin: auto; */
 }
 
 .reccomend-style {
