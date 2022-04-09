@@ -2,8 +2,8 @@
 import React, {useState, useEffect, useRef, useContext} from 'react';
 import 'whatwg-fetch';
 import Overview from './productOverview/productInfo/Overview.jsx';
-import RelatedList from './relatedProducts/RelatedList.jsx';
-import OutfitList from './relatedProducts/OutfitList.jsx';
+import RelatedList from './relatedProducts/related/RelatedList.jsx';
+import OutfitList from './relatedProducts/outfit/OutfitList.jsx';
 import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
 import ReviewList from './ratingsAndReviews/ReviewList.jsx';
 import { NavBar } from './AppStyles.jsx';
@@ -23,7 +23,7 @@ const App = () => {
       <NavBar>Kids Next Door</NavBar>
       <Overview currentItem={currentItem}/>
       <RelatedList currentItem={currentItem} id={productId}/>
-      <OutfitList currentItem={currentItem}/>
+      <OutfitList currentItem={currentItem} id={productId}/>
       <QuestionsAnswers id={productId} />
       <ReviewList />
     </>
