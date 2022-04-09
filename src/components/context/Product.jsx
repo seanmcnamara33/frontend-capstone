@@ -45,7 +45,7 @@ export const ProductProvider = props => {
   };
 
   const handleQuestionId = id =>{
-    id ? setQuestionId(id) : setQuestionId(0);
+    setQuestionId(id)
   }
 
   const value = {

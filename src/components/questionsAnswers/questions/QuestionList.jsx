@@ -4,43 +4,12 @@ import {AiOutlineClose} from 'react-icons/ai';
 import {IoMdArrowDropdown, IoMdArrowDropup} from 'react-icons/io';
 import AnswersList from '../answers/AnswersList'
 import { Question, List, FlexHeader } from './Styles';
-import { Modal, Content, Header } from '../../AppStyles'
-import AddQuestion from './AddQuestion';
-import AddAnswer from '../answers/AddAnswer';
-import {ProductContext} from '../../context/Product';
-
-const AnswerModal = ({handleAnswerModal, answerModal, name}) => (
-  <Modal onClose={handleAnswerModal} show={answerModal}>
-    <Content>
-      <Header>
-        <FlexHeader>
-          <h2>Add An Answer</h2>
-          <button onClick={handleAnswerModal}><AiOutlineClose/></button>
-        </FlexHeader>
-        <h3>About the {name}</h3>
-      </Header>
-      <AddAnswer />
-    </Content>
-  </Modal>
-)
-
-const QuestionModal = ({handleQuestionModal, questionModal, name, addQuestion}) => (
-  <Modal onClose={handleQuestionModal} show={questionModal}>
-    <Content>
-      <Header>
-        <FlexHeader>
-          <h2>Ask A Question</h2>
-          <button onClick={handleQuestionModal}><AiOutlineClose/></button>
-        </FlexHeader>
-        <h3>About the {name}</h3>
-      </Header>
-      <AddQuestion addQuestion={addQuestion}/>
-    </Content>
-  </Modal>
-);
+import { ProductContext } from '../../context/Product';
+import AnswerModal from '../modals/AnswerModal';
+import QuestionModal from '../modals/QuestionModal';
 
 const Accordion = ({questions, height}) => {
-  const {currentItem, productId} = useContext(ProductContext);
+  const {currentItem, productId, handleQuestionId} = useContext(ProductContext);
   const [answerModal, setAnswerModal] = useState(false);
   const [filterableQuestions, setFilterableQuestions] = useState([]);
 
@@ -50,7 +19,10 @@ const Accordion = ({questions, height}) => {
     }
   },[questions, filterableQuestions])
 
-  const handleAnswerModal = () => setAnswerModal(!answerModal)
+  const handleAnswerModal = id => {
+    setAnswerModal(!answerModal)
+    handleQuestionId(id);
+  }
   const filterReported = id => {
     let filtered = filterableQuestions.filter(q=>q.question_id!==id);
     setFilterableQuestions(filtered);
@@ -78,8 +50,8 @@ const Accordion = ({questions, height}) => {
   )
 }
 
-const AccordionItem = ({question, handleAnswerModal, filterReported, setQuestionId}) => {
-  const {checkSession, productId, handleQuestionId} = useContext(ProductContext);
+const AccordionItem = ({question, handleAnswerModal, filterReported}) => {
+  const {checkSession, productId} = useContext(ProductContext);
   const [isActive, setIsActive] = useState(false);
   const [disableYes, setDisableYes] = useState(true);
   const [helpful, setHelpful] = useState(question.question_helpfulness)
@@ -88,7 +60,6 @@ const AccordionItem = ({question, handleAnswerModal, filterReported, setQuestion
   Object.entries(answers).sort((a,b)=>b[1].helpfulness-a[1].helpfulness);
 
   const upVoteQuestion = async () =>{
-    console.log(checkSession(sessionStorage.getItem('session')))
     // PUT /qa/questions/:question_id/helpful
     try {
       await fetch(`${process.env.API_URI}/qa/questions/${question.question_id}/helpful`, {
@@ -115,10 +86,6 @@ const AccordionItem = ({question, handleAnswerModal, filterReported, setQuestion
     }
   }
 
-  useEffect(()=>{
-    handleQuestionId(question.question_id);
-  }, [question])
-
   return (
     <div>
       <div >
@@ -129,7 +96,7 @@ const AccordionItem = ({question, handleAnswerModal, filterReported, setQuestion
           </FlexHeader>
           <div>
             Helpful? {disableYes && <a onClick={upVoteQuestion}>Yes</a>}
-            <span>({helpful})</span> | <a onClick={handleAnswerModal}>Add Answer</a> | <a onClick={reportQuestion}>Report</a>
+            <span>({helpful})</span> | <a onClick={()=>handleAnswerModal(question.question_id)}>Add Answer</a> | <a onClick={reportQuestion}>Report</a>
           </div>
         </Question>
       </div>

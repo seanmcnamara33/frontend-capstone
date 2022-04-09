@@ -47,7 +47,7 @@ const AddAnswer = () =>{
   }
 
   const finalSubmit = async () => {
-    console.log(values)
+    console.log(values, questionId)
     // POST /qa/questions/:question_id/answers
     try {
       if (questionId) {
