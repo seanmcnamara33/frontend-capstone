@@ -43,43 +43,77 @@ const QuestionModal = ({handleQuestionModal, questionModal, name, addQuestion}) 
 const Accordion = ({questions, height}) => {
   const {currentItem, productId} = useContext(ProductContext);
   const [answerModal, setAnswerModal] = useState(false);
+  const [filterableQuestions, setFilterableQuestions] = useState([]);
 
+  useEffect(()=>{
+    if (filterableQuestions.length === 0 && questions) {
+      setFilterableQuestions(questions);
+    }
+  },[questions, filterableQuestions])
   const handleAnswerModal = () => setAnswerModal(!answerModal)
+  const filterReported = id => {
+    let filtered = filterableQuestions.filter(q=>q.question_id!==id);
+    setFilterableQuestions(filtered);
+  }
 
   return (
     <>
       <List height={height ? '50vh' : '90%'}>
-        {questions.map(question=>(
-          <AccordionItem key={question.question_id} question={question} handleAnswerModal={handleAnswerModal}/>
+        {filterableQuestions.length &&
+          filterableQuestions.map(question=>(
+            <AccordionItem
+              key={question.question_id}
+              question={question}
+              handleAnswerModal={handleAnswerModal}
+              filterReported={filterReported}
+            />
         ))}
       </List>
       <AnswerModal
         answerModal={answerModal}
         handleAnswerModal={handleAnswerModal}
+        name={currentItem.name}
       />
     </>
   )
 }
 
-const AccordionItem = ({question, handleAnswerModal}) => {
-  const {checkSession} = useContext(ProductContext);
-
+const AccordionItem = ({question, handleAnswerModal, filterReported}) => {
+  const {checkSession, productId} = useContext(ProductContext);
   const [isActive, setIsActive] = useState(false);
   const [disableYes, setDisableYes] = useState(true);
+  const [helpful, setHelpful] = useState(question.question_helpfulness)
 
   const sortAnswers = answers =>
   Object.entries(answers).sort((a,b)=>b[1].helpfulness-a[1].helpfulness);
 
-  const upVoteQuestion = () =>{
+  const upVoteQuestion = async () =>{
     console.log(checkSession(sessionStorage.getItem('session')))
     // PUT /qa/questions/:question_id/helpful
+    try {
+      await fetch(`${process.env.API_URI}/qa/questions/${question.question_id}/helpful`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY }
+      })
+      setHelpful(helpful + 1);
+    } catch (err) {
+      console.log('UPVOTE QUESTION', err);
+    }
     setDisableYes(false)
   }
 
-  const reportQuestion = () => {
+  const reportQuestion = async() => {
     // PUT /qa/questions/:question_id/report
+    try {
+      await fetch(`${process.env.API_URI}/qa/questions/${question.question_id}/report`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY }
+      });
+      filterReported(question.question_id);
+    } catch (err) {
+      console.log('REPORT QUESTION', err);
+    }
   }
-
 
   return (
     <div>
@@ -91,7 +125,7 @@ const AccordionItem = ({question, handleAnswerModal}) => {
           </FlexHeader>
           <div>
             Helpful? {disableYes && <a onClick={upVoteQuestion}>Yes</a>}
-            <span>({question.question_helpfulness})</span> | <a onClick={handleAnswerModal}>Add Answer</a> | <a onClick={reportQuestion}>Report</a>
+            <span>({helpful})</span> | <a onClick={handleAnswerModal}>Add Answer</a> | <a onClick={reportQuestion}>Report</a>
           </div>
         </Question>
       </div>

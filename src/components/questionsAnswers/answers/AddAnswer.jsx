@@ -55,6 +55,7 @@ const AddAnswer = () =>{
           value={values.body}
           onChange={handleChange}
         />
+        {errors.body && <p>{errors.body}</p>}
         <label htmlFor="">Nickname</label>
         <input
           type="text"
@@ -62,6 +63,7 @@ const AddAnswer = () =>{
           value={values.name}
           onChange={handleChange}
         />
+        {errors.name && <p>{errors.name}</p>}
         <label htmlFor="">Email</label>
         <input
           type="text"
@@ -69,12 +71,13 @@ const AddAnswer = () =>{
           values={values.email}
           onChange={handleChange}
         />
-        <label htmlFor="">Upload Photos</label>
+        {errors.email && <p>{errors.email}</p>}
 
+        <label htmlFor="">Upload Photos</label>
         {toggle ? <AddPhotos handlePhotos={handlePhotos}/> :
           <button type="button" onClick={()=>setToggle(!toggle)}>Add Photos</button>
         }
-        {values.photos.length && values.photos.map(photo=>(
+        {values.photos.length>0 && values.photos.map(photo=>(
           <Thumbnail key={photo} photo={photo} />
         ))}
         <button>Add</button>

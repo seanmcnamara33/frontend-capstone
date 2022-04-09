@@ -8,7 +8,7 @@ export const validateAnswer = values => {
   }
   if (values.name === '') {
     errors.name = 'Please enter a nickname';
-  } else if (values.nickname.length > 60) {
+  } else if (values.name.length > 60) {
     errors.name = 'Sorry that is is to long';
   }
   if (values.email === '') {
