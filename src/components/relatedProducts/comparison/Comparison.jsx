@@ -4,29 +4,7 @@ import styled from 'styled-components';
 import { Modal, Content, Header } from '../../AppStyles';
 import FeaturesList from './FeaturesList.jsx';
 
-const Comparison = ({ show, close, name, currentItem, id, relatedFeatures }) => {
-  const [features, setFeatures] = useState([]);
-
-  const getFeatures = (id) => {
-    fetch(`${process.env.API_URI}/products/${id}`, {
-      method: 'GET',
-      headers: {
-        Authorization: process.env.API_KEY
-      }
-    })
-      .then(response => response.json())
-      .then(results => {
-        setFeatures(results.features);
-      })
-      .catch(err => console.log(`Error getting features: ${err}`))
-  }
-
-  useEffect(() => {
-    if (id) {
-      getFeatures(id);
-    }
-  }, [id])
-
+const Comparison = ({ show, close, name, currentItem, id, relatedFeatures, mainFeatures }) => {
   return (
     <Modal show={show}>
       <Content>
@@ -35,7 +13,7 @@ const Comparison = ({ show, close, name, currentItem, id, relatedFeatures }) => 
           <h3>Comparing</h3>
           <p>{currentItem.name} &nbsp; Features &nbsp; {name}</p>
         </Header>
-        <FeaturesList features={features} relatedFeatures={relatedFeatures}/>
+        <FeaturesList features={mainFeatures} relatedFeatures={relatedFeatures}/>
       </Content>
     </Modal>
   )
