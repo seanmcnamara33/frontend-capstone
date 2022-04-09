@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components'
 
-const closet = 'https://images.unsplash.com/photo-1560443794-1333caf35d20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80';
+const plus = 'https://images.unsplash.com/photo-1560443794-1333caf35d20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80';
 
 const CardStyle = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const CardStyle = styled.div`
   justify-content: end;
   align-items: center;
   border: solid;
-  border-image: linear-gradient(45deg, rgb(207, 106, 48) , blue);
+  border-image: linear-gradient(45deg, rgb(207, 106, 48) , rgb(59, 167, 184));
   border-image-slice: 1;
   margin-right: 10px;
   margin-left: 10px;
@@ -32,7 +32,7 @@ const AddOutfitCard = ({ addOutfit }) => {
   return (
     <div>
       <CardStyle onClick={addOutfit}>
-        <ImageStyle src={closet}></ImageStyle>
+        <ImageStyle src={plus}></ImageStyle>
         <p>Add current item to your outfits</p>
       </CardStyle>
     </div>
