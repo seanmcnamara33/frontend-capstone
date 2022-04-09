@@ -7,8 +7,7 @@ import { Question, List, FlexHeader } from './Styles';
 import { Modal, Content, Header } from '../../AppStyles'
 import AddQuestion from './AddQuestion';
 import AddAnswer from '../answers/AddAnswer';
-import { ProductContext } from '../../context/Product';
-
+import {ProductContext} from '../../context/Product';
 
 const AnswerModal = ({handleAnswerModal, answerModal, name}) => (
   <Modal onClose={handleAnswerModal} show={answerModal}>
@@ -50,6 +49,7 @@ const Accordion = ({questions, height}) => {
       setFilterableQuestions(questions);
     }
   },[questions, filterableQuestions])
+
   const handleAnswerModal = () => setAnswerModal(!answerModal)
   const filterReported = id => {
     let filtered = filterableQuestions.filter(q=>q.question_id!==id);
@@ -78,8 +78,8 @@ const Accordion = ({questions, height}) => {
   )
 }
 
-const AccordionItem = ({question, handleAnswerModal, filterReported}) => {
-  const {checkSession, productId} = useContext(ProductContext);
+const AccordionItem = ({question, handleAnswerModal, filterReported, setQuestionId}) => {
+  const {checkSession, productId, handleQuestionId} = useContext(ProductContext);
   const [isActive, setIsActive] = useState(false);
   const [disableYes, setDisableYes] = useState(true);
   const [helpful, setHelpful] = useState(question.question_helpfulness)
@@ -114,6 +114,10 @@ const AccordionItem = ({question, handleAnswerModal, filterReported}) => {
       console.log('REPORT QUESTION', err);
     }
   }
+
+  useEffect(()=>{
+    handleQuestionId(question.question_id);
+  }, [question])
 
   return (
     <div>

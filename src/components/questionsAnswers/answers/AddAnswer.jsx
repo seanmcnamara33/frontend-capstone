@@ -1,8 +1,9 @@
 /* eslint-disable */
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect, useContext} from 'react';
 import useForm from '../../common/useForm';
 import { validateAnswer } from './ValidateAnswer';
-import {FormInner, Thumbnail} from './Styles';
+import {FormInner, Thumbnail, PhotoList} from './Styles';
+import { ProductContext } from '../../context/Product';
 
 
 const AddPhotos = ({handlePhotos}) => {
@@ -11,11 +12,16 @@ const AddPhotos = ({handlePhotos}) => {
   const handleChange = e =>{
     setPhoto(e.target.value);
   }
-  console.log(photo)
+
+  const addPhoto = () => {
+    handlePhotos(photo);
+    setPhoto('');
+  }
+
   return (
     <div>
       <input type="text" name="photo" value={photo} onChange={handleChange} />
-      <button type="button" onClick={()=>handlePhotos(photo)}>Upload</button>
+      <button type="button" onClick={addPhoto}>Upload</button>
     </div>
   )
 }
@@ -29,9 +35,10 @@ const AddAnswer = () =>{
     photos: []
   });
   const [toggle, setToggle] = useState(false);
+  const { questionId } = useContext(ProductContext);
 
   const handlePhotos = photo => {
-    if (/(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/.test(photo)) {
+    if (photo!==''&& values.photos.length < 5) {
       setValues({
         ...values,
         photos: [...values.photos, photo]
@@ -39,12 +46,24 @@ const AddAnswer = () =>{
     }
   }
 
-  const finalSubmit = values => {
-
+  const finalSubmit = async () => {
+    console.log(values)
+    // POST /qa/questions/:question_id/answers
+    try {
+      if (questionId) {
+        await fetch(`${process.env.API_URI}/qa/questions/${questionId}/answers`,{
+          method: 'POST',
+          body: JSON.stringify(values),
+          headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY }
+        });
+      }
+    } catch (err) {
+      console.log('POST ANSWER', err);
+    }
   }
 
   const {handleChange, handleSubmit, errors} = useForm(values, setValues, finalSubmit, validateAnswer);
-  // /qa/questions/:question_id/answers
+
   return (
     <form onSubmit={handleSubmit}>
       <FormInner>
@@ -77,9 +96,13 @@ const AddAnswer = () =>{
         {toggle ? <AddPhotos handlePhotos={handlePhotos}/> :
           <button type="button" onClick={()=>setToggle(!toggle)}>Add Photos</button>
         }
-        {values.photos.length>0 && values.photos.map(photo=>(
-          <Thumbnail key={photo} photo={photo} />
-        ))}
+        <PhotoList>
+          {
+            values.photos.length>0 && values.photos.map(photo=>(
+              <Thumbnail key={photo} photo={photo} />
+            ))
+          }
+        </PhotoList>
         <button>Add</button>
       </FormInner>
     </form>

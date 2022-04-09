@@ -13,6 +13,7 @@ export const ProductContext = createContext({
 export const ProductProvider = props => {
   const [currentItem, setCurrentItem] = useState({});
   const [productId, setProductId] = useState('');
+  const [questionId, setQuestionId] = useState(0);
   const session = useRef();
 
   const checkSession = (s) => {
@@ -43,12 +44,18 @@ export const ProductProvider = props => {
       });
   };
 
+  const handleQuestionId = id =>{
+    id ? setQuestionId(id) : setQuestionId(0);
+  }
+
   const value = {
     currentItem,
     productId,
     checkSession,
     createSession,
-    getFirstItem
+    getFirstItem,
+    questionId,
+    handleQuestionId
   }
 
   return (
