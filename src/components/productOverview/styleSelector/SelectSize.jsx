@@ -36,7 +36,10 @@ const SelectSize = ({ openMenuOnFocus, selectRef, currentStyle, onSizeChange }) 
     );
   }
   return(
-    <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={{value: '', label: ''}}  styles={customStyles} placeholder={<div style={{color: 'black'}}>Select Size</div>}></Select>
+    <SizeDiv>
+      <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={{value: '', label: ''}}  styles={customStyles} isDisabled placeholder={<div style={{color: 'black'}}>Out of Stock</div>}></Select>
+      <div><IoIosArrowDown/></div>
+    </SizeDiv>
   )
 };
 
