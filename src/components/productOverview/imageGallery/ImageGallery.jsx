@@ -5,7 +5,7 @@ import DefaultView from './DefaultView.jsx';
 import ThumbnailCarousel from './ThumbnailCarousel.jsx';
 import {ImageGalleryComponent} from './ImageGalleryStyles.jsx';
 
-const ImageGallery = ({currentStyle, allStyles, currentView, onImageClick, currentImage}) => {
+const ImageGallery = ({currentStyle, currentView, onImageClick, currentImage}) => {
   if (Object.keys(currentStyle).length) {
     const photosArray = currentStyle.photos;
     const [currentStylePhotoIndex, setStyleIndex] = useState(0);

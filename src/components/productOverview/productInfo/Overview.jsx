@@ -39,12 +39,8 @@ const Overview = ({currentItem}) => {
   };
 
   const onReviewLinkClick = () => {
-    // either have TIM add a ref using useRef to the reviews header, so that you can use scrollIntoView on the ref to get to it on click
-    // OR, have TIM add an id to the review parent div, which you can then referene with document.getElementById(), and then you can call [element].scrollIntoView() on that element
-    // you can also make it scroll smoothly, with scrollIntoView({behavior: 'smooth'})
     let ratingsAndReviews = document.getElementById('ratings-and-reviews');
     ratingsAndReviews.scrollIntoView({behavior: 'smooth'});
-    // console.log('onReviewLinkClick not ready yet!');
   };
 
   const onStyleCircleClick = (event, index) => {
@@ -90,13 +86,13 @@ const Overview = ({currentItem}) => {
   };
 
   useEffect(() => {
-    if (Object.keys(currentItem).length) {
+    if (currentItem !== undefined && Object.keys(currentItem).length) {
       getFirstStyle(currentItem.id);
     }
   }, [currentItem]);
 
 
-  if (currentView === 'default') {
+  if (currentItem !== undefined && currentView === 'default' && Object.keys(currentItem).length) {
     return (
       <>
         <ProductOverview>
@@ -126,12 +122,13 @@ const Overview = ({currentItem}) => {
         </DescriptionContainer>
       </>
     );
-  }
+  } else if (currentView === 'expanded' && Object.keys(currentItem).length)
   return (
     <ProductOverview>
       <ExpandedView currentStyle={currentStyle} currentImage={currentImage} onRestoreDefaultClick={onRestoreDefaultClick}/>
     </ProductOverview>
-  );
+  )
+  return null;
 };
 
 export default Overview;
