@@ -1,23 +1,36 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
-import Feature from './Feature';
-import MainValue from './MainValue';
-import RelatedValue from './RelatedValue';
 import styled from 'styled-components';
 
-const ListStyle = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
 
 const FeaturesList = ({ features, relatedFeatures }) => {
   const [allFeatures, setAllFeatures] = useState([]);
   const [uniq, setUniq] = useState([]);
+  const [total, setTotal] = useState({});
   const featNames = [];
+  const shared = {};
 
   const unique = () => {
     allFeatures.forEach(feature => featNames.push(feature.feature))
   }
+
+  const buildShared = () => {
+    features.forEach(feature => {
+      shared[feature.feature] = [feature.value, null];
+    })
+    relatedFeatures.forEach(feature => {
+      if (shared[feature.feature]) {
+        shared[feature.feature][1] = feature.value;
+      } else {
+        shared[feature.feature] = [null, feature.value];
+      }
+    })
+    setTotal(shared);
+  }
+
+  useEffect(() => {
+    buildShared()
+  }, [features])
 
   useEffect(() => {
     setAllFeatures([...features, ...relatedFeatures])
@@ -28,32 +41,20 @@ const FeaturesList = ({ features, relatedFeatures }) => {
     setUniq([...new Set(featNames)]);
   }, [allFeatures])
 
-
   return (
-    <ListStyle>
-      <ul>
-        {features.map(feature => {
-              return (
-                <MainValue feature={feature}/>
-              )
-        })}
-      </ul>
-      <ul>
-        {console.log(allFeatures, 'all')}
+    <div>
+      <table>
         {uniq.map(feature => {
           return (
-            <Feature main={features} related={relatedFeatures} feature={feature}/>
+              <tr>
+                {total[feature][0] ? <td>{total[feature][0]}</td> : <td>null</td>}
+                <td>{feature}</td>
+                {total[feature][1] ? <td>{total[feature][1]}</td> : <td>null</td>}
+              </tr>
           )
         })}
-      </ul>
-      <ul>
-        {relatedFeatures.map(feature => {
-            return (
-              <RelatedValue feature={feature}/>
-            )
-        })}
-      </ul>
-    </ListStyle>
+      </table>
+    </div>
   )
 }
 

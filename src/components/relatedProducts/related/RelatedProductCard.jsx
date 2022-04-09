@@ -69,6 +69,7 @@ const RelatedProductCard = ({ prod, currentItem, id }) => {
   const [style, setStyle] = useState([]);
   const [image, setImage] = useState('');
   const [features, setFeatures] = useState([]);
+  const [mainFeatures, setMainFeatures] = useState([]);
   const [comparisonModal, setComparisonModal] = useState(false);
 
   const getProduct = () => {
@@ -92,10 +93,28 @@ const RelatedProductCard = ({ prod, currentItem, id }) => {
       })
   }
 
+  const getFeatures = (id) => {
+    fetch(`${process.env.API_URI}/products/${id}`, {
+      method: 'GET',
+      headers: {
+        Authorization: process.env.API_KEY
+      }
+    })
+      .then(response => response.json())
+      .then(results => {
+        setMainFeatures(results.features);
+      })
+      .catch(err => console.log(`Error getting features: ${err}`))
+  }
+
+
   useEffect(() => {
     getProduct();
     getStyle();
-  }, [])
+    if (id) {
+      getFeatures(id);
+    }
+  }, [id])
 
   const starClick = () => {
     setComparisonModal(true);
@@ -121,7 +140,10 @@ const RelatedProductCard = ({ prod, currentItem, id }) => {
           </ImageStyle>
         </div>
       }
-      {comparisonModal && <Comparison show={comparisonModal} close={close} name={name} currentItem={currentItem} id={id} relatedFeatures={features}/>}
+      {
+        comparisonModal &&
+        <Comparison show={comparisonModal} close={close} name={name} currentItem={currentItem} id={id} relatedFeatures={features} mainFeatures={mainFeatures}/>
+      }
       <CategoryStyle className="product-category">{category.toUpperCase()}</CategoryStyle>
       <NameStyle className="product-name">{name}</NameStyle>
       { style.sale_price ? <><SalePrice className="price">SALE ${style.sale_price}</SalePrice><OriginalPrice className="price">${style.original_price}</OriginalPrice></> : <div className="price">${style.original_price}</div>}
