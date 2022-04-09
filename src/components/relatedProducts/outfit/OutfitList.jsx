@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import AddOutfitCard from './AddOutfitCard.jsx';
 import OutfitCard from './OutfitCard.jsx';
 
+
+// -------------------STYLES------------------- //
+
 const HeaderStyle = styled.h2`
   display: flex;
   justify-content: center;
@@ -46,10 +49,13 @@ const ButtonRight = styled.button`
   border-radius: 100%;
 `;
 
+
+// ------------------COMPONENT------------------ //
+
 const OutfitList = ({ currentItem }) => {
   const [outfits, setOutfits] = useState([]);
   const [begin, setBegin] = useState(0);
-  const [end, setEnd] = useState(3);
+  const [end, setEnd] = useState(2);
   const [display, setDisplay] = useState([]);
 
   const addOutfit = () => {
@@ -66,8 +72,8 @@ const OutfitList = ({ currentItem }) => {
   }
 
   const rightClick = () => {
-    if (begin === outfits.length - 3) {
-      setBegin(outfits.length - 3);
+    if (begin === outfits.length - 2) {
+      setBegin(outfits.length - 2);
       setEnd(outfits.length);
     } else {
       setBegin(begin + 1);
@@ -78,11 +84,17 @@ const OutfitList = ({ currentItem }) => {
   const leftClick = () => {
     if (begin === 0) {
       setBegin(0);
-      setEnd(3);
+      setEnd(2);
     } else {
       setBegin(begin - 1);
       setEnd(end - 1);
     }
+  }
+
+  const deleteClick = (outfitId) => {
+    let newOutfits = outfits.filter(outfit => outfit.id !== outfitId)
+    setOutfits(newOutfits)
+    setDisplay(newOutfits)
   }
 
   return (
@@ -95,7 +107,7 @@ const OutfitList = ({ currentItem }) => {
         {outfits.length > 0 && display.slice(begin, end).map((outfit, index) => {
           return (
             <li key={index}>
-              <OutfitCard outfit={outfit}/>
+              <OutfitCard outfit={outfit} deleteClick={deleteClick}/>
             </li>
           )
         })}

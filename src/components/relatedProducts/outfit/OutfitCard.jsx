@@ -9,7 +9,7 @@ const CardStyle = styled.div`
   justify-content: end;
   align-items: center;
   border: solid;
-  border-image: linear-gradient(45deg, rgb(207, 106, 48) , blue);
+  border-image: linear-gradient(45deg, rgb(207, 106, 48) , rgb(59, 167, 184));
   border-image-slice: 1;
   margin-right: 10px;
   margin-left: 10px;
@@ -24,6 +24,21 @@ const ImageStyle = styled.img`
   object-fit: cover;
 `;
 
+const InnerDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  min-width: 300px;
+  justify-content: space-between;
+`;
+
+const IconStyle = styled.i`
+  /* position: absolute; */
+  align-self: end;
+  /* justify-content: end; */
+  margin-right: 0.3em;
+  /* font-size: 30px; */
+`;
+
 const CategoryStyle = styled.div`
   display: flex;
   padding-left: 5px;
@@ -33,6 +48,8 @@ const CategoryStyle = styled.div`
   font-weight: small;
 `;
 
+
+
 const NameStyle = styled.div`
   display: flex;
   align-self: center;
@@ -40,7 +57,7 @@ const NameStyle = styled.div`
   font-weight: bold;
 `;
 
-const OutfitCard = ({ outfit }) => {
+const OutfitCard = ({ outfit, deleteClick }) => {
   const [style, setStyle] = useState([]);
   const [image, setImage] = useState('');
 
@@ -61,7 +78,11 @@ const OutfitCard = ({ outfit }) => {
   return (
     <CardStyle>
       <ImageStyle src={image}></ImageStyle>
-      <CategoryStyle className="outfit-category">{outfit.category.toUpperCase()}</CategoryStyle>
+      <InnerDiv>
+        <CategoryStyle className="outfit-category">{outfit.category.toUpperCase()}
+        </CategoryStyle>
+        <IconStyle onClick={() => deleteClick(outfit.id)}>&#10060;</IconStyle>
+      </InnerDiv>
       <NameStyle className="outfit-name">{outfit.name}</NameStyle>
       { style.sale_price ? <div className="price">was ${style.original_price} now ${style.sale_price}</div> : <div className="price">${style.original_price}</div>}
     </CardStyle>

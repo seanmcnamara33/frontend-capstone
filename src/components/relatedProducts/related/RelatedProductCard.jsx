@@ -1,7 +1,8 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Comparison from './Comparison.jsx';
+import Comparison from '../comparison/Comparison.jsx';
+
 
 const placeholder = 'https://images.unsplash.com/photo-1546213290-e1b492ab3eee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80';
 
@@ -12,7 +13,7 @@ const CardStyle = styled.div`
   justify-content: end;
   align-items: center;
   border: solid;
-  border-image: linear-gradient(45deg, rgb(207, 106, 48) , blue);
+  border-image: linear-gradient(45deg, rgb(207, 106, 48) , rgb(59, 167, 184));
   border-image-slice: 1;
   margin-right: 10px;
   margin-left: 10px;
@@ -20,17 +21,21 @@ const CardStyle = styled.div`
   font-family:'Roboto',sans-serif;
 `;
 
-const ImageStyle = styled.img`
+const ImageStyle = styled.div`
+  background-image: url(${props => props.src});
   height: 350px;
   max-width: 300px;
   min-width: 300px;
   /* border-top-left-radius: 18px;
   border-top-right-radius: 18px; */
-  object-fit: cover;
+  background-position: center;
+  background-size: cover;
 `;
 
 const IconStyle = styled.i`
-  position: absolute;
+  display: flex;
+  justify-content: end;
+  margin-right: 0.3em;
   font-size: 30px;
 `;
 
@@ -58,11 +63,13 @@ const OriginalPrice = styled.div`
   text-decoration: line-through;
 `;
 
-const RelatedProductCard = ({ prod }) => {
+const RelatedProductCard = ({ prod, currentItem, id }) => {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [style, setStyle] = useState([]);
   const [image, setImage] = useState('');
+  const [features, setFeatures] = useState([]);
+  const [mainFeatures, setMainFeatures] = useState([]);
   const [comparisonModal, setComparisonModal] = useState(false);
 
   const getProduct = () => {
@@ -71,6 +78,7 @@ const RelatedProductCard = ({ prod }) => {
         response.json().then(result => {
           setName(result.name);
           setCategory(result.category);
+          setFeatures(result.features);
         })
       })
   };
@@ -85,29 +93,57 @@ const RelatedProductCard = ({ prod }) => {
       })
   }
 
+  const getFeatures = (id) => {
+    fetch(`${process.env.API_URI}/products/${id}`, {
+      method: 'GET',
+      headers: {
+        Authorization: process.env.API_KEY
+      }
+    })
+      .then(response => response.json())
+      .then(results => {
+        setMainFeatures(results.features);
+      })
+      .catch(err => console.log(`Error getting features: ${err}`))
+  }
+
+
   useEffect(() => {
     getProduct();
     getStyle();
-  }, [])
+    if (id) {
+      getFeatures(id);
+    }
+  }, [id])
 
   const starClick = () => {
     setComparisonModal(true);
   }
+
+  const close = () => {
+    setComparisonModal(false);
+  }
+
 
   return (
     <CardStyle>
       {
         image ?
         <div>
-          <IconStyle onClick={starClick}>&#11088;</IconStyle>
-          <ImageStyle src={image}></ImageStyle>
+          <ImageStyle src={image}>
+            <IconStyle onClick={starClick}>&#11088;</IconStyle>
+          </ImageStyle>
         </div> :
         <div>
-          <IconStyle onClick={starClick}>&#11088;</IconStyle>
-          <ImageStyle src={placeholder}></ImageStyle>
+          <ImageStyle src={placeholder}>
+            <IconStyle onClick={starClick}>&#11088;</IconStyle>
+          </ImageStyle>
         </div>
       }
-      {comparisonModal && <Comparison/>}
+      {
+        comparisonModal &&
+        <Comparison show={comparisonModal} close={close} name={name} currentItem={currentItem} id={id} relatedFeatures={features} mainFeatures={mainFeatures}/>
+      }
       <CategoryStyle className="product-category">{category.toUpperCase()}</CategoryStyle>
       <NameStyle className="product-name">{name}</NameStyle>
       { style.sale_price ? <><SalePrice className="price">SALE ${style.sale_price}</SalePrice><OriginalPrice className="price">${style.original_price}</OriginalPrice></> : <div className="price">${style.original_price}</div>}
