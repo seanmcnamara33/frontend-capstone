@@ -4,29 +4,22 @@ import RatingsDisplayChart from './RatingsDisplayChart.jsx';
 
 const RatingsDisplay = (props) => {
 
-  const [ratingsData, setRatingsData] = useState([]);
 
-  useEffect(() => {
-    fetch(`${process.env.API_URI}/reviews/meta/?product_id=65631`, {
-      method: 'GET',
-      headers: { Authorization: process.env.API_KEY }
-    })
-      .then((response) => {
-        response.json().then((results) => {
-          // console.log('success', results)
-          setRatingsData(results);
-        });
-      })
-      .catch((err) => {
-        console.log('failed load Ratings GET');
-      });
-  }, [])
 
-  // console.log(ratingsData)
+  console.log(props.metaData.recommended);
+
+    // let rec = props.metaData.recommended;
+    // let recValue = Math.abs((+rec.false / +rec.true) * 100 -100);
+
+
+
 
   return (
     <>
-    <RatingsDisplayChart ratingsData={ratingsData.ratings}/>
+    <div>
+      {/* {revalue}% of reviews recommend this product */}
+    </div>
+    <RatingsDisplayChart metaData={props.metaData.ratings}/>
     </>
   );
 };

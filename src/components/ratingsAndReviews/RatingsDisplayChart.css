@@ -1,0 +1,14 @@
+.ratings-bar {
+  position: relative;
+  height: 15px;
+  width: 150px;
+  border: 1px solid
+}
+
+.ratings-innerbar {
+  position: relative;
+  background-color: green;
+  height: 15px;
+  width: 100%;
+  border: 1px solid
+}

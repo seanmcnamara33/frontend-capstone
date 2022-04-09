@@ -16,6 +16,7 @@ const ReviewList = (props) => {
 
 
 
+
   const getReviewData = async (id) => {
     try {
       let body =  await fetch(`${process.env.API_URI}/reviews/?product_id=${id}&count=2&page=${pageCount}`, {
@@ -87,6 +88,8 @@ const ReviewList = (props) => {
     });
   }
 
+
+
   return(
     <div>
       <label>Ratings & Reviews</label>
@@ -97,7 +100,7 @@ const ReviewList = (props) => {
       <button type='button' onClick={handleClick}> More Reviews</button>
       <AddReview id={props.id} metaData={metaData}/>
       <label>Ratings Breakdown</label>
-      <RatingsDisplay />
+      <RatingsDisplay metaData={metaData}/>
     </div>
   )
 };

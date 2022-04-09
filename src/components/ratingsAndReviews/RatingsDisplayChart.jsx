@@ -1,24 +1,35 @@
 /* eslint-disable */
 import React from 'react';
+import './RatingsDisplayChart.css';
 
 const RatingsDisplayChart = (props) => {
 
   let ratings = []
-  let totalReviews = 0
-  for (let i in props.ratingsData) {
-    ratings.push(props.ratingsData[i]);
-    totalReviews += Number(props.ratingsData[i]);
+  for (let i in props.metaData) {
+    ratings.push(+props.metaData[i]);
   }
 
 
+  const getTotalRating = (arr) => {
+    return arr.reduce((a, b) => {
+      return (a + b);
+    })
+  }
+
 
   return (
-    //need to return total reviews
+
     ratings.map((value, index) => {
-      return(
-        <div key={index}>
-          {index +1} Stars {value}
-        </div>
+      console.log(ratings, getTotalRating(ratings))
+      return (
+        <>
+          <label> {index + 1} Stars</label>
+          <div className='ratings-bar' key={index}>
+            <div className='ratings-innerbar' style={{}}>
+              {Math.round(value / getTotalRating(ratings) * 100) + '%'}
+            </div>
+          </div>
+        </>
       )
     })
   )
