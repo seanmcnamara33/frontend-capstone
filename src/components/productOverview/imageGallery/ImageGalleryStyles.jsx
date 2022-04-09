@@ -30,6 +30,7 @@ export const DefaultGallery = styled.div`
 `;
 
 export const Image = styled.img `
+  object-fit: contain;
   min-height: 100%;
   min-width: 75%;
   max-height: 100%;
@@ -145,7 +146,7 @@ export const ZoomedContainer = styled.div`
 `;
 
 export const ExpandedImage = styled.img`
-  object-fit: fill;
+  object-fit: contain;
   width: 50%;
   height: 100%;
   border-radius: 3px;

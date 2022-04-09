@@ -5,6 +5,7 @@ import {BsCheck2Circle} from 'react-icons/bs';
 import {StyleCircleRow, StyleCircle, StyleCircleSelected} from './StyleSelectorStyles.jsx';
 
 const StylesRow = ({ index, styleGroup, onStyleCircleClick, currentStyle }) => {
+  console.log(styleGroup);
   let trueStyleIndex;
   if (index === 0) {
     trueStyleIndex = 0;

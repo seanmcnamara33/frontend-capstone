@@ -7,7 +7,7 @@ const ProductInfo = ({ currentItem }) => {
   if (currentItem.description) {
     return (
       <ProductDescriptionContainer>
-        <ProductDescriptionTitle>Product Description</ProductDescriptionTitle>
+        <ProductDescriptionTitle>{currentItem.slogan}</ProductDescriptionTitle>
         <p>{currentItem.description}</p>
       </ProductDescriptionContainer>
     );
