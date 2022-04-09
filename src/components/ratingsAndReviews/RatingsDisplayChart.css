@@ -2,13 +2,21 @@
   position: relative;
   height: 15px;
   width: 150px;
-  border: 1px solid
+  border: 1px solid;
+  background-color: gray;
 }
 
 .ratings-innerbar {
   position: relative;
   background-color: green;
-  height: 15px;
+  height: 14px;
   width: 100%;
   border: 1px solid
 }
+
+.ratings {
+ padding-left: 3em;
+ font-size: small;
+
+}
+

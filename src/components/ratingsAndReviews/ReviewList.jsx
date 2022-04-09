@@ -71,6 +71,7 @@ const ReviewList = (props) => {
   }
 
 
+
   const handleClick = () => {
     fetch(`${process.env.API_URI}/reviews/?product_id=${props.id}&count=2&page=${pageCount}`, {
       method: 'GET',
@@ -88,6 +89,9 @@ const ReviewList = (props) => {
     });
   }
 
+  const getTotalReviews = (num) => {
+    setTotalReviews(num)
+  };
 
 
   return(

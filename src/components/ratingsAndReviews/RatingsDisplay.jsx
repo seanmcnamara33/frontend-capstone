@@ -4,12 +4,14 @@ import RatingsDisplayChart from './RatingsDisplayChart.jsx';
 
 const RatingsDisplay = (props) => {
 
-
-
   console.log(props.metaData.recommended);
 
-    // let rec = props.metaData.recommended;
-    // let recValue = Math.abs((+rec.false / +rec.true) * 100 -100);
+    const getRecValue = (props) => {
+      let rec = props.metaData.recommended;
+      let recValue = Math.abs((+rec.false / +rec.true) * 100 -100);
+      return recValue;
+    }
+
 
 
 
