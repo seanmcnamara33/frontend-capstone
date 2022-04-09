@@ -17,7 +17,9 @@ const StylesView = ({ allStyles, onStyleCircleClick, currentStyle}) => {
   if (allStyles.length > 0) {
     return (
       styleGroups.map((styleGroup, index) => {
-        return <StylesRow key={index} index={index} styleGroup={styleGroup} onStyleCircleClick={onStyleCircleClick} currentStyle={currentStyle}/>
+        if (styleGroup.length > 0) {
+          return <StylesRow key={index} index={index} styleGroup={styleGroup} onStyleCircleClick={onStyleCircleClick} currentStyle={currentStyle}/>
+        }
       })
     );
   }
