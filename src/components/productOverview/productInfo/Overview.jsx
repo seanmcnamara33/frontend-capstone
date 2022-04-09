@@ -56,8 +56,13 @@ const Overview = ({currentItem}) => {
         currentSku = currentStyle.skus[sku];
       }
     }
-    setSize(currentSku);
-    setAmount(1);
+    if (currentSku === undefined) {
+      setSize('out-of-stock')
+      setAmount(0)
+    } else {
+      setSize(currentSku);
+      setAmount(1);
+    }
   };
 
   const onQuantityChange = (event) => {
@@ -68,11 +73,14 @@ const Overview = ({currentItem}) => {
     for (let i = 0; i < currentAmount; i++) {
       cart.push(currentStyle);
     }
+    console.log(cart);
     setCart(cart);
   };
 
-  const onAddToCartClickNoSize = () => {
-    selectRef.current.focus();
+  const onAddToCartClickNoSize = (sizes) => {
+    if (sizes.length) {
+      selectRef.current.focus();
+    }
   };
 
   const onImageClick = (image) => {
