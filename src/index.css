@@ -68,10 +68,6 @@ body {
   margin-top: 0;
 }
 
-.price {
-  font-weight: bold;
-}
-
 .restore-default {
   all: unset;
   position: relative;
@@ -108,3 +104,23 @@ body {
   top: -68px
 }
 
+.price {
+  display: flex;
+}
+
+.sale-price {
+  color: red;
+  font-weight: bold;
+  font-family:'Roboto', sans-serif;
+}
+
+.original-price {
+  text-decoration: line-through;
+  font-family: 'Roboto', sans-serif;
+  margin-right: 5px;
+}
+
+.original-price-no-sale {
+  font-weight: bold;
+  font-family:'Roboto', sans-serif;
+}

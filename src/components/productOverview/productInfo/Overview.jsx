@@ -23,6 +23,7 @@ const Overview = ({currentItem}) => {
   const [currentAmount, setAmount] = useState(0);
   const [cart, setCart] = useState([]);
   const [currentImage, setCurrentImage] = useState('');
+  const [currentPrice, setCurrentPrice] = useState(0);
   const selectRef = useRef();
 
   const getFirstStyle = (productId) => {
@@ -99,6 +100,15 @@ const Overview = ({currentItem}) => {
     }
   }, [currentItem]);
 
+  useEffect(() => {
+    if (currentStyle !== undefined && Object.keys(currentStyle).length) {
+      if (Number(currentStyle.sale_price > 0)) {
+        setCurrentPrice(Number(currentStyle.sale_price));
+      } else {
+        setCurrentPrice(Number(currentStyle.original_price));
+      }
+    }
+  }, [currentStyle])
 
   if (currentItem !== undefined && currentView === 'default' && Object.keys(currentItem).length) {
     return (
@@ -111,7 +121,13 @@ const Overview = ({currentItem}) => {
               <p className='category'>{currentItem.category}</p>
               <h2 className='product-name'>{currentItem.name}</h2>
             </CategoryContainer>
-            <p className='price'>${Math.round(currentStyle.original_price)}</p>
+            <div>{Number(currentStyle.sale_price) > 0 ?
+              <div className='price'>
+                <p className='original-price'>${Math.round(Number(currentStyle.original_price)).toString()}</p>
+                <p className='sale-price'>${Math.round(Number(currentStyle.sale_price)).toString()}</p>
+              </div> :
+              <p className='original-price-no-sale'>${Math.round(Number(currentStyle.original_price)).toString()}</p>}
+            </div>
             <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
             <StylesView currentStyle={currentStyle} allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
             <CartFeatures>
