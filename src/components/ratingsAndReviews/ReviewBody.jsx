@@ -37,7 +37,7 @@ const ReviewBody = (props) => {
       <div>
         {Body + '...'}
         {/* showless not functioning as expected */}
-        <button type='button' onClick={handleClick}>{showBody === false ? 'Show Moreee' : 'Show Less'}</button>
+        <button type='button' onClick={handleClick}>{showBody === false ? 'Show More' : 'Show Less'}</button>
       </div>
     )
   }

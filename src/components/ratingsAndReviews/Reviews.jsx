@@ -7,11 +7,6 @@ import ReviewBody from './ReviewBody.jsx';
 
 
 const Reviews = (props) => {
-  // console.log(props.data)
-
-
-
-
 
   return (
 
@@ -20,10 +15,7 @@ const Reviews = (props) => {
         <div className='review-tile' key={review.review_id}>
           {review.rating}
           <div className='review-summary'>{review.summary}</div>
-            {/* need to refactor body to show only 250 and add more button */}
-            <ReviewBody body={review.body}/>
-          {/* <div className='review-body'>{review.body.length > 250 ? review.body : 'too long'}</div> */}
-
+          <ReviewBody body={review.body} />
           <div className='review-name'>By {review.reviewer_name}, {formatDate(review.date)} | Helpful? Yes({review.helpfulness})</div>
           <div>{review.email ? 'verified purchaser' : null}</div>
 
