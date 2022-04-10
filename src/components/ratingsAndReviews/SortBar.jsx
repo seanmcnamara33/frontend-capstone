@@ -12,7 +12,7 @@ const SortBar = (props) => {
 
   return (
     <div>
-      <label> {props.data.length} reviews, sorted by </label>
+      <label> {props.totalReviews} reviews, sorted by </label>
       <select onClick={handleClick} >
         <option value="relevant">Relevant</option>
         <option value="helpful">Helpful</option>

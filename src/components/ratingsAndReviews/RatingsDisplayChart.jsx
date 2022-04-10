@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useEffect } from 'react';
 import './RatingsDisplayChart.css';
 
 const RatingsDisplayChart = (props) => {
@@ -15,6 +15,11 @@ const RatingsDisplayChart = (props) => {
       return (a + b);
     })
   }
+
+  useEffect(() => {
+    if(ratings.length > 0)
+    props.setTotalReviews(getTotalRating(ratings))
+  }, [ratings])
 
 
   return (

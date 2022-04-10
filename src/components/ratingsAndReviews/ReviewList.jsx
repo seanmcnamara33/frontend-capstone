@@ -15,8 +15,6 @@ const ReviewList = (props) => {
   const reviewCount = 2;
 
 
-
-
   const getReviewData = async (id) => {
     try {
       let body =  await fetch(`${process.env.API_URI}/reviews/?product_id=${id}&count=2&page=${pageCount}`, {
@@ -89,22 +87,20 @@ const ReviewList = (props) => {
     });
   }
 
-  const getTotalReviews = (num) => {
-    setTotalReviews(num)
-  };
+
 
 
   return(
     <div>
       <label>Ratings & Reviews</label>
-      <SortBar data={currentReviews} getSortData={getSortData}/>
+      <SortBar totalReviews={totalReviews} getSortData={getSortData}/>
       <div className='review-list'>
       <Reviews data={currentReviews}/>
       </div>
       <button type='button' onClick={handleClick}> More Reviews</button>
       <AddReview id={props.id} metaData={metaData}/>
       <label>Ratings Breakdown</label>
-      <RatingsDisplay metaData={metaData}/>
+      <RatingsDisplay setTotalReviews={setTotalReviews} metaData={metaData}/>
     </div>
   )
 };

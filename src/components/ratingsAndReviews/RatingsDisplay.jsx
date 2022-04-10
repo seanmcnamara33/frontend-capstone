@@ -6,8 +6,6 @@ import './RatingsDisplay.css';
 
 const RatingsDisplay = (props) => {
 
-  console.log(props.metaData);
-
     const getRecValue = (props) => {
       let rec = props.metaData.recommended;
       let fval = 0;
@@ -34,7 +32,7 @@ const RatingsDisplay = (props) => {
     <div className='review-recommend'>
       {Math.round(getRecValue(props))}% of reviews recommend this product
     </div>
-    <RatingsDisplayChart metaData={props.metaData.ratings}/>
+    <RatingsDisplayChart setTotalReviews={props.setTotalReviews} metaData={props.metaData.ratings}/>
     </>
   );
 };
