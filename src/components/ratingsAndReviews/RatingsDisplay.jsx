@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import RatingsDisplayChart from './RatingsDisplayChart.jsx';
+import StarsContainer from '../common/StarsContainer.jsx';
 import './RatingsDisplay.css';
 
 const RatingsDisplay = (props) => {
@@ -25,12 +26,10 @@ const RatingsDisplay = (props) => {
 
 
 
-
-
   return (
     <>
     <div>
-      {/* //need average opf rating score here long with stars */}
+      {/* <StarsContainer /> */}
     </div>
     <div className='review-recommend'>
       {Math.round(getRecValue(props))}% of reviews recommend this product
