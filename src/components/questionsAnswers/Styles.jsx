@@ -8,3 +8,9 @@ export const Main = styled.div`
   display: flex;
   flex-flow: column;
 `;
+
+export const FlexHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

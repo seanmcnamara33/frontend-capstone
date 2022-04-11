@@ -4,7 +4,8 @@ import styled from 'styled-components';
 export const List = styled.div(props => ({
   border: '2px solid #000',
   height: props.height,
-  overflow: 'auto'
+  overflow: 'auto',
+  'max-height': '50vh'
 }))
 
 export const Question = styled.div`

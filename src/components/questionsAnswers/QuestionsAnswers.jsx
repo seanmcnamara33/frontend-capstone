@@ -8,11 +8,11 @@ import { Main } from './Styles';
 const QuestionsAnswers = ({id}) => {
   const [questions, setQuestions] = useState([]);
   const [filtered, setFiltered] = useState([]);
-  const [questionCount, setQuestionCount] = useState(6);
+  const [questionCount, setQuestionCount] = useState(100);
 
   const loadQuestions = async product_id =>{
     try {
-      let data = await fetch(`${process.env.API_URI}/qa/questions?product_id=${product_id}&count=${questionCount}`, {
+      let data = await fetch(`${process.env.API_URI}/qa/questions?product_id=${product_id}&page=1&count=${questionCount}`, {
         method: 'GET',
         headers: { Authorization: process.env.API_KEY }
       });

@@ -1,14 +1,15 @@
-export default function val(values) {
-  const errors = {};
+/* eslint-disable */
+export const validateForm = values => {
+  let errors = {};
   if (values.body === '') {
-    errors.body = 'Please Enter A body';
+    errors.body = 'Please enter a answer';
   } else if (values.body.length > 1000) {
-    errors.body = 'Your body is way to long';
+    errors.body = 'That is to long of an answer';
   }
   if (values.name === '') {
-    errors.name = 'Please Enter A Nickname';
+    errors.name = 'Please enter a nickname';
   } else if (values.name.length > 60) {
-    errors.name = 'Your nickname is way to long';
+    errors.name = 'Sorry that is is to long';
   }
   if (values.email === '') {
     errors.email = 'Please enter a email';

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import styled from 'styled-components';
-
+// blue rgb(59, 167, 184)
 export const NavBar = styled.div`
   width: 100%;
   height: 3em;
@@ -28,7 +28,7 @@ export const Modal = styled.div(props=>({
 }))
 
 export const Header = styled.div`
-  background: red;
+  background: rgb(222, 99, 23);
   color: white;
   width: 100%;
   border-radius: 20px 20px 0 0;
