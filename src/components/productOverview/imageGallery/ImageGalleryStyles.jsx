@@ -31,8 +31,6 @@ export const DefaultGallery = styled.div`
 
 export const Image = styled.img `
   object-fit: contain;
-  min-height: 100%;
-  min-width: 75%;
   max-height: 100%;
   max-width: 75%;
   position: relative;
@@ -109,6 +107,7 @@ export const EntireExpandedView = styled.div`
 export const ExpandedContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   padding-top: 10px;
   padding-left: 60px;
@@ -147,8 +146,8 @@ export const ZoomedContainer = styled.div`
 
 export const ExpandedImage = styled.img`
   object-fit: contain;
-  width: 50%;
-  height: 100%;
+  max-width: 75%;
+  max-height: 95%;
   border-radius: 3px;
   box-shadow: 0 0 5px black;
   overflow: hidden;
