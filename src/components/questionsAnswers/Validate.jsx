@@ -1,5 +1,5 @@
 /* eslint-disable */
-export const validateAnswer = values => {
+export const validateForm = values => {
   let errors = {};
   if (values.body === '') {
     errors.body = 'Please enter a answer';

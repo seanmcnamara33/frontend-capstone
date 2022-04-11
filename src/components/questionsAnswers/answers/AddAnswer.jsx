@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, {useState, useRef, useEffect, useContext} from 'react';
 import useForm from '../../common/useForm';
-import { validateAnswer } from './ValidateAnswer';
+import { validateForm } from '../Validate';
 import {FormInner, Thumbnail, PhotoList} from './Styles';
 import { ProductContext } from '../../context/Product';
 
@@ -62,7 +62,7 @@ const AddAnswer = () =>{
     }
   }
 
-  const {handleChange, handleSubmit, errors} = useForm(values, setValues, finalSubmit, validateAnswer);
+  const {handleChange, handleSubmit, errors} = useForm(values, setValues, finalSubmit, validateForm);
 
   return (
     <form onSubmit={handleSubmit}>

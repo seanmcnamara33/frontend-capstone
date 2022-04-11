@@ -3,7 +3,7 @@ import React from 'react';
 import { FlexHeader } from '../Styles';
 import { Modal, Content, Header } from '../../AppStyles';
 import { AiOutlineClose } from 'react-icons/ai';
-import AddQuestion from '../questions/AddQuestion';
+import AddQuestion from './AddQuestion';
 
 const QuestionModal = ({handleQuestionModal, questionModal, name, addQuestion}) => (
   <Modal onClose={handleQuestionModal} show={questionModal}>

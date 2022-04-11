@@ -19,6 +19,7 @@ export const Thumbnail = styled.img.attrs(props=>({
   border-radius: 20px;
   margin: 5px;
 `;
+
 export const FormInner = styled.div`
   display: flex;
   flex-flow: column;

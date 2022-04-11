@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, {useState} from 'react';
 import useForm from '../../common/useForm';
-import validateQuestion from './ValidateQuestion';
+import {validateForm} from '../Validate';
 import {FormInner} from './Styles';
 
 const AddQuestion = ({addQuestion}) => {
@@ -9,7 +9,7 @@ const AddQuestion = ({addQuestion}) => {
     body: '', name: '', email: ''
   });
 
-  const {handleChange, handleSubmit, errors} = useForm(values, setValues, addQuestion, validateQuestion);
+  const {handleChange, handleSubmit, errors} = useForm(values, setValues, addQuestion, validateForm);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -39,8 +39,8 @@ const AddQuestion = ({addQuestion}) => {
           onChange={handleChange}
           placeholder="Why did you like the product or not?"
         />
-        <p>For authentication reasons, you will not be emailed</p>
         {errors.email && <h5>{errors.email}</h5>}
+        <p>For authentication reasons, you will not be emailed</p>
         <button type="submit">Add</button>
       </FormInner>
     </form>
