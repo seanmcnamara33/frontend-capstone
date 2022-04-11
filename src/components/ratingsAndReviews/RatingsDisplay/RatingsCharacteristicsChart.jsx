@@ -18,7 +18,7 @@ const RatingsCharacteristicsChart = (props) => {
     getCharacteristics(props).map((item) => {
       for (let key in item) {
         return (
-          <div className='characteristics-chart'>
+          <div className='characteristics-chart' key={key}>
             {key}
             <div>
               <a className='poor'>Poor</a> <a className='great'>Great</a>
