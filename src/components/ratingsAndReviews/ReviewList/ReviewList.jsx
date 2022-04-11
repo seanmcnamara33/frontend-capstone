@@ -62,6 +62,7 @@ const ReviewList = (props) => {
       .then((response) => {
         response.json().then((results) => {
           setCurrentReviews([...currentReviews, ...results.results]);
+          console.log(currentReviews)
         });
       })
       .catch((err) => {
@@ -78,6 +79,7 @@ const ReviewList = (props) => {
     })
       .then((response) => {
         response.json().then((results) => {
+          //if results is the same or empty need ot hide button
           Object.values(currentReviews) === Object.values(results.results) ? setShowMoreReviewsBtn(false) : setShowMoreReviewsBtn(true);
 
           setPageCount(pageCount + 1);
@@ -93,9 +95,11 @@ const ReviewList = (props) => {
 
 
   return (
-    <div>
-      <label>Ratings & Reviews</label>
-      <SortBar totalReviews={totalReviews} getSortData={getSortData} />
+    <div className='main'>
+      <div className='title-sortbar'>
+        <label>Ratings & Reviews</label>
+        <SortBar totalReviews={totalReviews} getSortData={getSortData} />
+      </div>
       <div className='review-list'>
         <Reviews data={currentReviews} />
       </div>

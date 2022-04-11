@@ -1,9 +1,6 @@
 .review-tile {
   margin: 20px;
-  border-radius: 8px;
-  border-color: black;
-  border-width: 1px;
-  border-style: solid;
+  border: 2px solid #000;
   min-height: 170px;
   width: auto;
 }

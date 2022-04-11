@@ -3,7 +3,7 @@ import React from 'react';
 
 const SortBar = (props) => {
 
-  const handleClick = async (event) => {
+  const handleClick = (event) => {
     console.log(event.target.value)
     if (event.target.value) {
       props.getSortData(event.target.value);

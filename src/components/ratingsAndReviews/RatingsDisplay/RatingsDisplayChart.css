@@ -20,3 +20,14 @@
 
 }
 
+.poor {
+  margin-right: 7em;
+  font-size: small;
+}
+.great {
+  font-size: small;
+}
+
+.characteristics-chart {
+  align-content: right;
+}

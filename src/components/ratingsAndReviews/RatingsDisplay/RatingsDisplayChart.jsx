@@ -3,12 +3,10 @@ import React, { useEffect } from 'react';
 import './RatingsDisplayChart.css';
 
 const RatingsDisplayChart = (props) => {
-
   let ratings = []
   for (let i in props.metaData) {
     ratings.push(+props.metaData[i]);
   }
-
 
   const getTotalRating = (arr) => {
     return arr.reduce((a, b) => {
