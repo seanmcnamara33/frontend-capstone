@@ -29,7 +29,7 @@ const AddPhotos = ({handlePhotos}) => {
 }
 
 
-const AddAnswer = () =>{
+const AddAnswer = ({handleAnswerModal}) =>{
   const [values, setValues] = useState({
     body: '',
     name: '',
@@ -59,6 +59,7 @@ const AddAnswer = () =>{
           headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY }
         });
       }
+      handleAnswerModal();
     } catch (err) {
       console.log('POST ANSWER', err);
     }

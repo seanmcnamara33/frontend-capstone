@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Search from './search/Search';
 import QuestionsList from './questions/QuestionList';
 import 'whatwg-fetch';
-import { Main } from './Styles';
+import { Main, Title } from './Styles';
 
 const QuestionsAnswers = ({id}) => {
   const [questions, setQuestions] = useState([]);
@@ -45,6 +45,7 @@ const QuestionsAnswers = ({id}) => {
 
   return (
     <Main>
+      <Title>Questions & Answers</Title>
       <Search filterQuestions={filterQuestions} />
       <QuestionsList
         productId={id}

@@ -4,7 +4,6 @@ import RatingsDisplayChart from './RatingsDisplayChart.jsx';
 import 'whatwg-fetch';
 
 const RatingsDisplay = (props) => {
-
   const [ratingsData, setRatingsData] = useState([]);
 
   useEffect(() => {
@@ -14,7 +13,6 @@ const RatingsDisplay = (props) => {
     })
       .then((response) => {
         response.json().then((results) => {
-          // console.log('success', results)
           setRatingsData(results);
         });
       })
@@ -22,8 +20,6 @@ const RatingsDisplay = (props) => {
         console.log('failed load Ratings GET');
       });
   }, [])
-
-  // console.log(ratingsData)
 
   return (
     <>
@@ -33,4 +29,3 @@ const RatingsDisplay = (props) => {
 };
 
 export default RatingsDisplay;
-
