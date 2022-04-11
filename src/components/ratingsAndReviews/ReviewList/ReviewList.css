@@ -1,0 +1,17 @@
+.review-list {
+  scroll-behavior: smooth;
+  max-height: 500px;
+  overflow: auto;
+  border: 2px solid #000;
+  margin: 1em;
+}
+
+.main {
+  border: 2px solid #000;
+  margin: 1em;
+  overflow: auto;
+}
+
+.title-sortbar {
+  margin: 1em;
+}

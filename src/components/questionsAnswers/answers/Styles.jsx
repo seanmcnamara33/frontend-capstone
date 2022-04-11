@@ -19,3 +19,12 @@ export const Thumbnail = styled.img.attrs(props=>({
   border-radius: 20px;
   margin: 5px;
 `;
+
+export const FormInner = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 0.5em;
+`

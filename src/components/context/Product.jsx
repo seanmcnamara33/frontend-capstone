@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, {createContext, useState, useEffect, useRef} from 'react';
 import {fakeSession} from '../common/helpers';
+import 'whatwg-fetch';
 
 export const ProductContext = createContext({
   product: {},
@@ -13,16 +14,22 @@ export const ProductContext = createContext({
 export const ProductProvider = props => {
   const [currentItem, setCurrentItem] = useState({});
   const [productId, setProductId] = useState('');
+  const [questionId, setQuestionId] = useState(0);
   const session = useRef();
 
-  const checkSession = () => {
-    let s = localStorage.getItem('session');
+  const checkSession = (s) => {
+    // let s = sessionStorage.getItem('session');
     return s === session.current;
   }
 
   const createSession = () => {
-    session.current = fakeSession();
-    localStorage.setItem('session', session.current);
+    let s = sessionStorage.getItem('session');
+    session.current = s;
+
+    if (!s) {
+      session.current = fakeSession();
+      sessionStorage.setItem('session', session.current);
+    }
   }
 
   const getFirstItem = () => {
@@ -38,13 +45,19 @@ export const ProductProvider = props => {
       });
   };
 
+  const handleQuestionId = id =>{
+    setQuestionId(id)
+  }
+
 
   const value = {
     currentItem,
     productId,
     checkSession,
     createSession,
-    getFirstItem
+    getFirstItem,
+    questionId,
+    handleQuestionId
   }
 
   return (

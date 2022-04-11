@@ -5,7 +5,7 @@ import Overview from './productOverview/productInfo/Overview.jsx';
 import RelatedList from './relatedProducts/related/RelatedList.jsx';
 import OutfitList from './relatedProducts/outfit/OutfitList.jsx';
 import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
-import ReviewList from './ratingsAndReviews/ReviewList.jsx';
+import ReviewList from './ratingsAndReviews/ReviewList/ReviewList.jsx';
 import { NavBar } from './AppStyles.jsx';
 import { ProductContext } from './context/Product';
 
@@ -13,10 +13,9 @@ const App = () => {
   const {currentItem, productId, getFirstItem, createSession} = useContext(ProductContext);
 
   useEffect(() => {
-    console.log('MOUNTED');
     getFirstItem();
     createSession();
-    return () => localStorage.clear();
+    return () => sessionStorage.clear();
   }, []);
 
   return (
@@ -26,7 +25,7 @@ const App = () => {
       <RelatedList currentItem={currentItem} id={productId}/>
       <OutfitList currentItem={currentItem} id={productId}/>
       <QuestionsAnswers id={productId} />
-      <ReviewList />
+      <ReviewList id={productId}/>
     </>
   )
 }

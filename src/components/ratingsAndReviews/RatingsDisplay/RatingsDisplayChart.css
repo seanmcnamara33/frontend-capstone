@@ -1,0 +1,33 @@
+.ratings-bar {
+  position: relative;
+  height: 15px;
+  width: 150px;
+  border: 1px solid;
+  background-color: gray;
+}
+
+.ratings-innerbar {
+  position: relative;
+  background-color: green;
+  height: 14px;
+  width: 100%;
+  border: 1px solid
+}
+
+.ratings {
+ padding-left: 3em;
+ font-size: small;
+
+}
+
+.poor {
+  margin-right: 7em;
+  font-size: small;
+}
+.great {
+  font-size: small;
+}
+
+.characteristics-chart {
+  align-content: right;
+}

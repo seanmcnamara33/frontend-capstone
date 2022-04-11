@@ -4,6 +4,7 @@ import {SearchInput} from './Styles';
 
 const Search = ({filterQuestions}) => (
   <SearchInput
+    data-testid="question-search"
     type="text"
     maxLength="60"
     placeholder="Have a Question? Search for answers..."
