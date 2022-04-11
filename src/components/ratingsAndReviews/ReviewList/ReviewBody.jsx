@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useState } from 'react';
+import './Reviews.css';
 
 
 const ReviewBody = (props) => {
@@ -27,14 +28,14 @@ const ReviewBody = (props) => {
   if (fullBody.length <= 250) {
     showBody = true;
     return (
-      <div>
+      <div className='review-body'>
         {Body}
       </div>
     )
   } else {
     showBody = false;
     return (
-      <div>
+      <div className='review-body'>
         {Body + '...'}
         {/* showless not functioning as expected */}
         <button type='button' onClick={handleClick}>{showBody === false ? 'Show More' : 'Show Less'}</button>

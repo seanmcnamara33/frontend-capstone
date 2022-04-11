@@ -1,8 +1,7 @@
-
 .review-tile {
   margin: 20px;
   border-radius: 8px;
-  border-color:black;
+  border-color: black;
   border-width: 1px;
   border-style: solid;
   min-height: 170px;
@@ -11,22 +10,27 @@
 
 .review-summary {
   font-weight: bold;
-  margin: 10px;
+  margin: 0 10px 0 10px;
 }
 
 .review-body {
- margin: 10px;
- min-height: 40px;
- width: 500px;
+  margin: 0 10px 0 10px;
+  min-height: 40px;
+  width: 500px;
 }
+
+
 
 .review-name {
   margin: 0 10px 0 5px;
 }
 
 .review-date {
-   margin: 0 0 10px 5px;
-   min-height: 20px;
-   width: 500px;
+  margin: 0 0 10px 5px;
+  min-height: 20px;
+  width: 500px;
 }
 
+.review-recommend {
+  margin: 0 0 10px 5px;
+}

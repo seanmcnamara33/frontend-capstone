@@ -5,7 +5,7 @@ import Overview from './productOverview/productInfo/Overview.jsx';
 import RelatedList from './relatedProducts/related/RelatedList.jsx';
 import OutfitList from './relatedProducts/outfit/OutfitList.jsx';
 import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
-import ReviewList from './ratingsAndReviews/ReviewList.jsx';
+import ReviewList from './ratingsAndReviews/ReviewList/ReviewList.jsx';
 import { NavBar } from './AppStyles.jsx';
 import { ProductContext } from './context/Product';
 

@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import RatingsDisplayChart from './RatingsDisplayChart.jsx';
-import StarsContainer from '../common/StarsContainer.jsx';
+import StarsContainer from '../../common/StarsContainer.jsx';
 import './RatingsDisplay.css';
 
 const RatingsDisplay = (props) => {
