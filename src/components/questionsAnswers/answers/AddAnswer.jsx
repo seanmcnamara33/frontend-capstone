@@ -1,10 +1,12 @@
 /* eslint-disable */
 import React, {useState, useRef, useEffect, useContext} from 'react';
-import useForm from '../../common/useForm';
-import { validateForm } from '../Validate';
-import {FormInner, Thumbnail, PhotoList} from './Styles';
+import 'whatwg-fetch';
 import { ProductContext } from '../../context/Product';
 
+import useForm from '../../common/useForm';
+import { validateForm } from '../Validate';
+
+import {FormInner, Thumbnail, PhotoList} from './Styles';
 
 const AddPhotos = ({handlePhotos}) => {
   const [photo, setPhoto] = useState('');

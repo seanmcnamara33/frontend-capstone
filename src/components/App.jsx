@@ -13,7 +13,7 @@ const App = () => {
   const {currentItem, productId, getFirstItem, createSession} = useContext(ProductContext);
 
   useEffect(() => {
-    getFirstItem();
+    // getFirstItem();
     createSession();
     return () => sessionStorage.clear();
   }, []);

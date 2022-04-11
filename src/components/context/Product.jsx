@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, {createContext, useState, useEffect, useRef} from 'react';
 import {fakeSession} from '../common/helpers';
+import 'whatwg-fetch';
 
 export const ProductContext = createContext({
   product: {},
@@ -47,6 +48,10 @@ export const ProductProvider = props => {
   const handleQuestionId = id =>{
     setQuestionId(id)
   }
+
+  useEffect(()=>{
+    getFirstItem();
+  })
 
   const value = {
     currentItem,

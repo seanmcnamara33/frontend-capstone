@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, {useState, useEffect, useContext} from 'react';
 import { ProductContext } from '../../context/Product';
+import 'whatwg-fetch';
 
 import AnswersList from '../answers/AnswersList';
 

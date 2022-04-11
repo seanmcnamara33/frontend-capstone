@@ -5,7 +5,7 @@ import { Modal, Content, Header } from '../../AppStyles';
 import { AiOutlineClose } from 'react-icons/ai';
 import AddQuestion from './AddQuestion';
 
-const QuestionModal = ({handleQuestionModal, questionModal, name, addQuestion}) => (
+const QuestionModal = ({handleQuestionModal, questionModal, item, addQuestion}) => (
   <Modal onClose={handleQuestionModal} show={questionModal}>
     <Content>
       <Header>
@@ -13,7 +13,7 @@ const QuestionModal = ({handleQuestionModal, questionModal, name, addQuestion}) 
           <h2>Ask A Question</h2>
           <button onClick={handleQuestionModal}><AiOutlineClose/></button>
         </FlexHeader>
-        <h3>About the {name}</h3>
+        <h3>About the {item.name}</h3>
       </Header>
       <AddQuestion addQuestion={addQuestion}/>
     </Content>

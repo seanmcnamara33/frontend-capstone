@@ -43,7 +43,7 @@ const Accordion = ({questions, height}) => {
       <AnswerModal
         answerModal={answerModal}
         handleAnswerModal={handleAnswerModal}
-        name={currentItem.name}
+        item={currentItem}
       />
     </>
   )

@@ -1,7 +1,10 @@
 /* eslint-disable */
 import React from 'react';
-import { Thumbnail, PhotoList } from './Styles.jsx';
+import 'whatwg-fetch';
+
 import { formatDate } from '../../common/helpers';
+
+import { Thumbnail, PhotoList } from './Styles.jsx';
 
 const Answer = ({id, answer}) => {
   // /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/
