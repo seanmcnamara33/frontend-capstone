@@ -4,6 +4,7 @@ import './Reviews.css';
 import { formatDate } from '../../common/helpers.js';
 import ReviewPhotos from './ReviewPhotos.jsx';
 import ReviewBody from './ReviewBody.jsx';
+import 'whatwg-fetch';
 
 
 const Reviews = (props) => {

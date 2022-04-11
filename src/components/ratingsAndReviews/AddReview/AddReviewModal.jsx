@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './AddReviewModal.css';
 import AddCharacteristics from './AddCharacteristics.jsx';
 import AddStarRating from './AddStarRating.jsx';
+import 'whatwg-fetch';
 
 
 const AddReviewModal = (props) => {

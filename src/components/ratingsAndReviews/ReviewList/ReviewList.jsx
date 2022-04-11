@@ -5,6 +5,7 @@ import AddReview from '../AddReview/AddReview.jsx';
 import RatingsDisplay from '../RatingsDisplay/RatingsDisplay.jsx';
 import SortBar from '../SortBar/SortBar.jsx';
 import './ReviewList.css';
+import 'whatwg-fetch';
 
 
 const ReviewList = (props) => {

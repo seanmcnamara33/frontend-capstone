@@ -49,9 +49,6 @@ export const ProductProvider = props => {
     setQuestionId(id)
   }
 
-  useEffect(()=>{
-    getFirstItem();
-  })
 
   const value = {
     currentItem,
