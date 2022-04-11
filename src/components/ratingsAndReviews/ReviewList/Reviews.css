@@ -1,0 +1,33 @@
+.review-tile {
+  margin: 20px;
+  border: 2px solid #000;
+  min-height: 170px;
+  width: auto;
+}
+
+.review-summary {
+  font-weight: bold;
+  margin: 0 10px 0 10px;
+}
+
+.review-body {
+  margin: 0 10px 0 10px;
+  min-height: 40px;
+  width: 500px;
+}
+
+
+
+.review-name {
+  margin: 0 10px 0 5px;
+}
+
+.review-date {
+  margin: 0 0 10px 5px;
+  min-height: 20px;
+  width: 500px;
+}
+
+.review-recommend {
+  margin: 0 0 10px 5px;
+}
