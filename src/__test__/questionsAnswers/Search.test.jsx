@@ -2,7 +2,6 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { screen, render, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 
 import Search from '../../components/questionsAnswers/search/Search.jsx';
 

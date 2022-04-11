@@ -49,7 +49,6 @@ export const ProductProvider = props => {
     setQuestionId(id)
   }
 
-
   const value = {
     currentItem,
     productId,
