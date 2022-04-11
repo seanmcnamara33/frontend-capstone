@@ -41,6 +41,7 @@ const ImageGallery = ({currentStyle, currentView, onImageClick, currentImage}) =
     useEffect(() => {
       getCurrentImage();
     }, [])
+
   return (
     <ImageGalleryComponent className='image-gallery-component'>
       <ThumbnailCarousel photosArray={photosArray} onThumbnailImageClick={onThumbnailImageClick} currentStylePhotoIndex={currentStylePhotoIndex}/>

@@ -124,3 +124,12 @@ body {
   font-weight: bold;
   font-family:'Roboto', sans-serif;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

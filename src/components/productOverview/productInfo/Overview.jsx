@@ -24,6 +24,7 @@ const Overview = ({currentItem}) => {
   const [cart, setCart] = useState([]);
   const [currentImage, setCurrentImage] = useState('');
   const [currentPrice, setCurrentPrice] = useState(0);
+  const [fade, setFade] = useState(false);
   const selectRef = useRef();
 
   const getFirstStyle = (productId) => {
@@ -85,6 +86,7 @@ const Overview = ({currentItem}) => {
   };
 
   const onImageClick = (image) => {
+    setFade(true);
     setCurrentImage(image);
     setView('expanded');
   }

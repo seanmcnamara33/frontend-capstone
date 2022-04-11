@@ -29,8 +29,8 @@ const StarsContainer = ({ currentItem, onReviewLinkClick, starsAndReviews }) => 
             var amt = (i - rating) * -100;
             return (
               <MergeStar>
-                <FirstStarPortion key={`star${i}`} style={{background: `linear-gradient(to right, rgb(222, 99, 23) ${amt}%, transparent ${amt}%)`, backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>{String.fromCharCode(0x2605)}</FirstStarPortion>
-                <SecondStarPortion key={`star${i}`}>{String.fromCharCode(0x2606)}</SecondStarPortion>
+                <FirstStarPortion key={`first-star-portion${i}`} style={{background: `linear-gradient(to right, rgb(222, 99, 23) ${amt}%, transparent ${amt}%)`, backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>{String.fromCharCode(0x2605)}</FirstStarPortion>
+                <SecondStarPortion key={`second-star-portion${i}`}>{String.fromCharCode(0x2606)}</SecondStarPortion>
               </MergeStar>
             )
           } else {
@@ -48,9 +48,9 @@ const StarsContainer = ({ currentItem, onReviewLinkClick, starsAndReviews }) => 
           } else if (rating - i < 1 && rating - i > 0) {
             var amt = (i - rating) * -100;
             return (
-              <MergeStar>
-                <FirstStarPortion key={`star${i}`} style={{background: `linear-gradient(to right, rgb(222, 99, 23) ${amt}%, transparent ${amt}%)`, backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>{String.fromCharCode(0x2605)}</FirstStarPortion>
-                <SecondStarPortion key={`star${i}`}>{String.fromCharCode(0x2606)}</SecondStarPortion>
+              <MergeStar key={`merge-star`}>
+                <FirstStarPortion key={`first-star-portion${i}`} style={{background: `linear-gradient(to right, rgb(222, 99, 23) ${amt}%, transparent ${amt}%)`, backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>{String.fromCharCode(0x2605)}</FirstStarPortion>
+                <SecondStarPortion key={`second-star-portion${i}`}>{String.fromCharCode(0x2606)}</SecondStarPortion>
               </MergeStar>
             )
           } else {

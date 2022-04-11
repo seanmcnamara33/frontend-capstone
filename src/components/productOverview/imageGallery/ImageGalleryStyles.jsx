@@ -38,6 +38,7 @@ export const Image = styled.img `
   left: 40px;
   border-radius: 3px;
   cursor: zoom-in;
+  animation: fadeIn 200ms linear;
 `;
 
 // Thumbnail Carousel Styles
