@@ -16,8 +16,6 @@ const useForm = (values, setValues, callback, validate) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(validate(values))
-    console.log(values, errors);
     setErrors(validate(values))
     setSendIt(true);
   }

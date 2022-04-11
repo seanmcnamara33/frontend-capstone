@@ -7,13 +7,11 @@ const RatingsDisplayChart = (props) => {
   for (let i in props.metaData) {
     ratings.push(+props.metaData[i]);
   }
-
   const getTotalRating = (arr) => {
     return arr.reduce((a, b) => {
       return (a + b);
     })
   }
-
   useEffect(() => {
     if(ratings.length > 0)
     props.setTotalReviews(getTotalRating(ratings))
