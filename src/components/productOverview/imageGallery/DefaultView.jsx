@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {DefaultGallery, Image} from './ImageGalleryStyles.jsx';
 
@@ -17,3 +17,6 @@ const DefaultView = ({image, onGalleryButtonClick, currentView, onImageClick}) =
 }
 
 export default DefaultView;
+
+// const [fade, setFade] = useState(false);
+// onAnimationEnd={setFade(true)}
