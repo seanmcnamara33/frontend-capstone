@@ -1,6 +1,11 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import 'whatwg-fetch';
+import StarsContainer from '../../common/StarsContainer.jsx';
+
+
+// -------------------STYLES------------------- //
 
 const CardStyle = styled.div`
   display: flex;
@@ -48,8 +53,6 @@ const CategoryStyle = styled.div`
   font-weight: small;
 `;
 
-
-
 const NameStyle = styled.div`
   display: flex;
   align-self: center;
@@ -57,7 +60,10 @@ const NameStyle = styled.div`
   font-weight: bold;
 `;
 
-const OutfitCard = ({ outfit, deleteClick }) => {
+
+// ------------------COMPONENT------------------ //
+
+const OutfitCard = ({ outfit, deleteClick, currentItem }) => {
   const [style, setStyle] = useState([]);
   const [image, setImage] = useState('');
 
@@ -85,6 +91,7 @@ const OutfitCard = ({ outfit, deleteClick }) => {
       </InnerDiv>
       <NameStyle className="outfit-name">{outfit.name}</NameStyle>
       { style.sale_price ? <div className="price">was ${style.original_price} now ${style.sale_price}</div> : <div className="price">${style.original_price}</div>}
+      <StarsContainer currentItem={currentItem} starsAndReviews={false}/>
     </CardStyle>
   )
 }

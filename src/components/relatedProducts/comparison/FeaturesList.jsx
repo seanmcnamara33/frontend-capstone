@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 
-const FeaturesList = ({ features, relatedFeatures }) => {
+// ------------------COMPONENT------------------ //
+
+const FeaturesList = ({ features, relatedFeatures, main, related }) => {
   const [allFeatures, setAllFeatures] = useState([]);
   const [uniq, setUniq] = useState([]);
   const [total, setTotal] = useState({});
@@ -43,14 +45,19 @@ const FeaturesList = ({ features, relatedFeatures }) => {
 
   return (
     <div>
-      <table>
+      <table bgcolor="yellow" width="auto">
+        <tr bgcolor="magenta">
+          <th>{main}</th>
+          <th>Features</th>
+          <th>{related}</th>
+        </tr>
         {uniq.map(feature => {
           return (
-              <tr>
-                {total[feature][0] ? <td>{total[feature][0]}</td> : <td>null</td>}
-                <td>{feature}</td>
-                {total[feature][1] ? <td>{total[feature][1]}</td> : <td>null</td>}
-              </tr>
+            <tr>
+              <td>{total[feature][0]}</td>
+              <td>{feature}</td>
+              <td>{total[feature][1]}</td>
+            </tr>
           )
         })}
       </table>

@@ -107,7 +107,7 @@ const OutfitList = ({ currentItem }) => {
         {outfits.length > 0 && display.slice(begin, end).map((outfit, index) => {
           return (
             <li key={index}>
-              <OutfitCard outfit={outfit} deleteClick={deleteClick}/>
+              <OutfitCard currentItem={currentItem} outfit={outfit} deleteClick={deleteClick}/>
             </li>
           )
         })}

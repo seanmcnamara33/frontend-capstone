@@ -2,6 +2,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import RelatedProductCard from './RelatedProductCard.jsx';
+import 'whatwg-fetch';
+
+
+// -------------------STYLES------------------- //
 
 const HeaderStyle = styled.h2`
   display: flex;
@@ -41,6 +45,9 @@ const ButtonRight = styled.button`
   width: 50px;
   border-radius: 100%;
 `;
+
+
+// ------------------COMPONENT------------------ //
 
 const RelatedList = ({ currentItem, id }) => {
   const [relatedProds, setRelatedProds] = useState([]);
