@@ -98,21 +98,27 @@ const ReviewList = (props) => {
   return (
     <div className='main' id='ratings-and-reviews'>
       <div className='title-sortbar'>
-        <label>Ratings & Reviews</label>
-        <SortBar totalReviews={totalReviews} getSortData={getSortData} />
-      </div>
-      <div className='review-list'>
-        <Reviews data={currentReviews} />
-      </div>
-      <div>
-        {showMoreReviewsBtn ? <button type='button' onClick={handleClick}> More Reviews</button> : null}
+        <div className='review-list'>
+          <label>Ratings & Reviews</label>
+          <SortBar totalReviews={totalReviews} getSortData={getSortData} />
+          <Reviews data={currentReviews} />
+          <div className='review-list-btn'>
+            {showMoreReviewsBtn ? <button type='button' onClick={handleClick}> More Reviews</button> : null}
+            <AddReview id={props.id} metaData={metaData} />
+          </div>
+        </div>
+
+        <div className='ratings-breakdown'>
+          <label>Ratings Breakdown</label>
+          <RatingsDisplay setTotalReviews={setTotalReviews} metaData={metaData} />
+        </div>
       </div>
 
-
-      <AddReview id={props.id} metaData={metaData} />
-      <label>Ratings Breakdown</label>
-      <RatingsDisplay setTotalReviews={setTotalReviews} metaData={metaData} />
     </div>
+
+
+
+
   )
 };
 
