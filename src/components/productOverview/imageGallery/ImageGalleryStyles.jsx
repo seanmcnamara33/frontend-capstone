@@ -29,19 +29,6 @@ export const DefaultGallery = styled.div`
   width: 75%;
 `;
 
-// export const Image = styled.img `
-//   object-fit: contain;
-//   max-height: 100%;
-//   max-width: 75%;
-//   position: relative;
-//   box-shadow: 0 0 5px black;
-//   left: 40px;
-//   border-radius: 3px;
-//   cursor: zoom-in;
-//   animation: fadeIn 200ms linear;
-// `;
-
-
 // Thumbnail Carousel Styles
 export const ThumbnailContainer = styled.div `
   height: 0;
