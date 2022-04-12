@@ -4,36 +4,32 @@ import './Reviews.css';
 import { formatDate } from '../../common/helpers.js';
 import ReviewPhotos from './ReviewPhotos.jsx';
 import ReviewBody from './ReviewBody.jsx';
-import 'whatwg-fetch';
+
 
 
 const Reviews = (props) => {
   return (
     props.data.map((review) => {
+      // const [helpfulness, setHelpfulness] = useState(review.helpfulness);
 
       const handleYesClick = () => {
         event.preventDefault();
-        fetch((`${process.env.API_URI}/reviews/:review_id/helpful/?review_id=${review.review_id}`, {
+        fetch((`${process.env.API_URI}/reviews/${review.review_id}/helpful`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
             Authorization: process.env.API_KEY
-          },
-          body: JSON.stringify(
-            {
-              'helpfulness': review.helpfulness + 1
-            }
-          )
+          }
         })).then((response) => {
-          console.log('success yes')
+          console.log('success helpfulness')
+          // setHelpfulness(review.helpfulness + 1)
         }).catch((err) => {
           console.log(err)
         })
       }
 
       const handleReportClick = () => {
-        event.preventDefault();
-        fetch((`${process.env.API_URI}/reviews/:review_id/helpful/?review_id=${review.review_id}`, {
+        fetch((`${process.env.API_URI}/reviews/${review.review_id}/report`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -71,4 +67,3 @@ const Reviews = (props) => {
 export default Reviews;
 
 
-{/* <a href="#">Yes</a> ({answer.helpfulness}) | <a href="#">{answer.reported ? 'NO':'report'} */ }

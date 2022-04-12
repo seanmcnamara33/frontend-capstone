@@ -1,7 +1,7 @@
 .review-tile {
   margin: 20px;
   border: 2px solid #000;
-  min-height: 170px;
+  min-height: auto;
   width: auto;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .review-body {
-  margin: 0 10px 0 10px;
+  margin: 10px 10px 0 10px;
   min-height: 40px;
   width: 500px;
 }

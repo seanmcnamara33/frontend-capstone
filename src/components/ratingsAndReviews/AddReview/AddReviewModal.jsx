@@ -11,7 +11,12 @@ const AddReviewModal = (props) => {
     return null;
   }
 
-  const [reviewForm, setReviewForm] = useState({ body: '', photos: [], photosUrl: [] });
+  const [reviewForm, setReviewForm] = useState({
+    body: '',
+    photos: [],
+    photosUrl: [],
+    cloudinary:[]
+  });
 
   const handleCharacteristicsChange = (key, value) => {
     setReviewForm({ ...reviewForm, characteristics: { ...reviewForm.characteristics, [key]: value } })
@@ -51,8 +56,7 @@ const AddReviewModal = (props) => {
           'recommend': reviewForm.recommend,
           'name': reviewForm.name,
           'email': reviewForm.email,
-          'photos': ['https://unsplash.com/photos/Y3qbZDYpIfE'],
-          //API requires array of text URLS, do we need image hosting platform?
+          'photos': reviewForm.cloudinary,
           'characteristics': newCharacteristics(reviewForm.characteristics)
         }
       )
@@ -63,6 +67,27 @@ const AddReviewModal = (props) => {
       console.log('failed post', err);
     })
   }
+
+    const uploadImage = (file) => {
+      const formData = new FormData()
+      formData.append("file", file)
+      formData.append("upload_preset", "opg24kab")
+      formData.append("cloud_name", "dmxv1avcr")
+
+      fetch(`https://api.cloudinary.com/v1_1/dmxv1avcr/image/upload`, {
+        method: 'POST',
+        body: formData
+      }).then(response => response.json())
+      .then((data) => {
+        console.log(data.url)
+        handleReviewFormChange('cloudinary', [...reviewForm.cloudinary, data.url])
+        console.log(reviewForm)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
+
 
   useEffect(() => {
     const lastAddedPhoto = reviewForm.photos[reviewForm.photos.length - 1];
@@ -98,10 +123,14 @@ const AddReviewModal = (props) => {
             <input required type='text' minLength='50' maxLength='1000' max placeholder='Body' className='body-style' value={reviewForm.body} onChange={(event) => { handleReviewFormChange('body', event.target.value) }}></input>
             <label>Character Count: {reviewForm.body.length}</label>
           </div>
+
           {reviewForm.photos.length > 4 ? null : <input type='file' accept='image/jpeg, image/png' onChange={(event) => {
             handleReviewFormChange('photos', [...reviewForm.photos, event.target.files[0]]);
+            uploadImage(event.target.files[0])
           }}></input>}
-          {reviewForm.photosUrl.map((photo) => (<img src={photo}></img>))}
+
+          {reviewForm.photosUrl.map((photo) => (<img className='modal-images' src={photo}></img>))}
+
 
 
           <button type='submit'>Submit</button>
@@ -116,3 +145,14 @@ const AddReviewModal = (props) => {
 };
 
 export default AddReviewModal;
+
+// var cl = new cloudinary.Cloudinary({cloud_name: "dmxv1avcr", secure: true});
+// cloudinary.v2.uploader.upload("https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
+//   { public_id: "olympic_flag" },
+//   function(error, result) {console.log(result); });
+
+//   https://api.cloudinary.com/v1_1/dmxv1avcr/upload
+
+// {reviewForm.photos.length > 4 ? null : <input type='file' accept='image/jpeg, image/png' onChange={(event) => {
+//   handleReviewFormChange('photos', [...reviewForm.photos, event.target.files[0]]);
+// }}></input>}
