@@ -24,6 +24,7 @@ const RatingsDisplay = (props) => {
   }
 
 
+
   return (
     <>
       <div>
