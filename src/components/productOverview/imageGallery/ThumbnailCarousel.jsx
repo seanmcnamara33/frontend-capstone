@@ -23,13 +23,13 @@ const ThumbnailCarousel = ({photosArray, onThumbnailImageClick, currentStylePhot
       {currentThumbnails.map((photo, i) => {
         if (photo.thumbnail_url === photosArray[currentStylePhotoIndex].thumbnail_url) {
           return (
-          <SelectedContainer key={i} className>
-            <SelectedThumbnail id={i + count} key={`selectedThumb${i}`} src={photo.thumbnail_url} onClick={(event) => onThumbnailImageClick(event)}></SelectedThumbnail>
+          <SelectedContainer key={photo.thumbnail_url}>
+            <SelectedThumbnail id={i + count} src={photo.thumbnail_url} alt='selected style thumbnail image' onClick={(event) => onThumbnailImageClick(event)}></SelectedThumbnail>
             <SelectedThumbnailUnderline></SelectedThumbnailUnderline>
           </SelectedContainer>
           );
         }
-        return <Thumbnail id={i + count} src={photo.thumbnail_url} key={`thumb${i}`} onClick={(event) => onThumbnailImageClick(event)}></Thumbnail>
+        return <Thumbnail id={i + count} src={photo.thumbnail_url} alt='style thumbnail image' key={photo.thumbnail_url} onClick={(event) => onThumbnailImageClick(event)}></Thumbnail>
       })}
       <button style={{all: 'unset'}} className='image-down' onClick={(event) => onThumbnailButtonClick(event)}>{String.fromCharCode(0x2304)}</button>
     </ThumbnailContainer>

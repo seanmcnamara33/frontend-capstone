@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-// Styles View Styles
-
-// Style Selector Styles
-
 // Styles Row Styles
 export const StyleCircleRow = styled.div`
   display: flex;
