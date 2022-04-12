@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {BsCheck2Circle} from 'react-icons/bs';
 import {StyleCircleRow, StyleCircle, StyleCircleSelected} from './StyleSelectorStyles.jsx';
