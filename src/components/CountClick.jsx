@@ -9,13 +9,11 @@ const CountClick = ({children}) => {
 
   const sendClick = async (obj) => {
     try {
-      const res = await fetch(`${process.env.API_URI}/interactions`, {
+      await fetch(`${process.env.API_URI}/interactions`, {
         method: 'POST',
         body: obj,
         headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY }
       })
-      const result = await res.text();
-      console.log(result);
     } catch (err) {
       console.log('CLICK ERR', err);
     }
@@ -27,7 +25,6 @@ const CountClick = ({children}) => {
         let body = JSON.stringify({
           element: e.target.localName, time: new Date().toISOString(), widget: arr[i-1].id
         })
-        console.log(body);
         sendClick(body);
       }
     })

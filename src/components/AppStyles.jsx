@@ -58,5 +58,9 @@ export const MainBtn = styled.button(props=>({
     background: '#fff',
     color: 'rgb(59, 167, 184)',
     'box-shadow': '0 0 5px rgb(59, 167, 184)'
+  },
+  '&:active' : {
+    'box-shadow': '0 0 5px rgb(222, 99, 23)',
+    color: 'rgb(222, 99, 23)'
   }
 }))

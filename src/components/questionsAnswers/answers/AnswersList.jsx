@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { AnswerList } from './Styles';
 import {AiOutlineClose} from 'react-icons/ai';
 import Answer from './Answer.jsx';
-
+import {MainBtn} from '../../AppStyles';
 
 const AnswersList = ({id, answers}) => {
   const [display, setDisplay] = useState(false);
@@ -35,9 +35,9 @@ const AnswersList = ({id, answers}) => {
             ))}
           {filterAnswers.length > 2 &&
             <li>
-              <button
+              <MainBtn
                 onClick={()=>setDisplay(!display)}
-              >Show More Answers</button>
+              >Show More Answers</MainBtn>
             </li>
           }
         </AnswerList>

@@ -21,4 +21,10 @@ export const FlexHeader = styled.div`
 
 export const StyledLink = styled.a`
   text-decoration: underline;
-`
+  &:hover {
+    color: rgb(222, 99, 23)
+  }
+  &:active {
+    color: rgb(59, 167, 184)
+  }
+  `

@@ -33,5 +33,5 @@ export const Item = styled.div`
   margin: 5px;
   padding: 5px;
   border: 1px solid #000;
-  border-radius: 20px;
+  border-radius: 10px;
 `;
