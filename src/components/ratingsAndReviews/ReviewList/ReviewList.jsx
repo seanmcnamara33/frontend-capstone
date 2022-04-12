@@ -96,7 +96,7 @@ const ReviewList = (props) => {
 
 
   return (
-    <div className='main'>
+    <div className='main' id='ratings-and-reviews'>
       <div className='title-sortbar'>
         <label>Ratings & Reviews</label>
         <SortBar totalReviews={totalReviews} getSortData={getSortData} />
