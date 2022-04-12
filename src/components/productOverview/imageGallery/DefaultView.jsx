@@ -8,7 +8,7 @@ const DefaultView = ({image, onGalleryButtonClick, currentView, onImageClick}) =
     return (
       <DefaultGallery>
         <button className='image-left' onClick={(event) => onGalleryButtonClick(event)}>{String.fromCharCode(0x2B05)}</button>
-        <Image src={image.url} onClick={() => onImageClick(image)}></Image>
+        <img className='default-img' src={image.url} onClick={() => onImageClick(image)}></img>
         <button className='image-right' onClick={(event) => onGalleryButtonClick(event)}>{String.fromCharCode(0x2B95)}</button>
       </DefaultGallery>
     )
@@ -17,6 +17,3 @@ const DefaultView = ({image, onGalleryButtonClick, currentView, onImageClick}) =
 }
 
 export default DefaultView;
-
-// const [fade, setFade] = useState(false);
-// onAnimationEnd={setFade(true)}

@@ -17,6 +17,7 @@ const ImageGallery = ({currentStyle, currentView, onImageClick, currentImage}) =
       photosArray[0].url = placeholder;
     }
     const [currentStylePhotoIndex, setStyleIndex] = useState(0);
+    const [isInTransition, setTransition] = useState(false);
     const getCurrentImage = () => {
       for (let i = 0; i < photosArray.length; i++) {
         if (currentImage.url === photosArray[i].url) {
@@ -45,7 +46,7 @@ const ImageGallery = ({currentStyle, currentView, onImageClick, currentImage}) =
   return (
     <ImageGalleryComponent className='image-gallery-component'>
       <ThumbnailCarousel photosArray={photosArray} onThumbnailImageClick={onThumbnailImageClick} currentStylePhotoIndex={currentStylePhotoIndex}/>
-      <DefaultView currentView={currentView} image={photosArray[currentStylePhotoIndex]} onGalleryButtonClick={onGalleryButtonClick} onImageClick={onImageClick}/>
+      <DefaultView photosArray={photosArray} currentStylePhotoIndex={currentStylePhotoIndex} currentView={currentView} image={photosArray[currentStylePhotoIndex]} onGalleryButtonClick={onGalleryButtonClick} onImageClick={onImageClick}/>
     </ImageGalleryComponent>
   );
   }
