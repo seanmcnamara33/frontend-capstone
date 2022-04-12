@@ -66,10 +66,9 @@ const StarsContainer = ({ currentItem, onReviewLinkClick, starsAndReviews, singl
     }
   } else {
     useEffect(() => {
-      if (singleReview) {
-        setRating(singleRating)
-      }
-    }, [singleReview])
+      setRating(singleRating)
+    }, [singleReview]);
+
     return (
       <StarsAndReviews>
       {stars.map((star, i) => {
