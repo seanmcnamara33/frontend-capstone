@@ -46,3 +46,17 @@ export const Content = styled.div`
   border: 2px solid #000;
   border-radius: 20px;
 `
+
+export const MainBtn = styled.button(props=>({
+  border: '1px solid #000',
+  'border-radius': '5px',
+  background: 'rgb(59, 167, 184)',
+  color: '#fff',
+  padding: '5px',
+  margin: '5px',
+  '&:hover' : {
+    background: '#fff',
+    color: 'rgb(59, 167, 184)',
+    'box-shadow': '0 0 5px rgb(59, 167, 184)'
+  }
+}))

@@ -8,7 +8,8 @@ const CountClick = ({children}) => {
   const [clicks, setClicks] = useState([]);
   // {count: 0, time: '', module}
   const handleClick = e => {
-    console.log(e.target, children);
+    // children.map(child=>console.log(child.type.name))
+    console.log(window)
     if(e.target) {
       setClicks([
         ...clicks,

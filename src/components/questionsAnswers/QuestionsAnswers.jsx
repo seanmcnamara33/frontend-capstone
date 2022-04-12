@@ -44,7 +44,7 @@ const QuestionsAnswers = ({id}) => {
   }
 
   return (
-    <Main>
+    <Main id="questions-answers">
       <Title>Questions & Answers</Title>
       <Search filterQuestions={filterQuestions} />
       <QuestionsList

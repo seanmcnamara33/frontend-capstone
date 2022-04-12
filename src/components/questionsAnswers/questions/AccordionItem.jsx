@@ -6,7 +6,8 @@ import 'whatwg-fetch';
 import AnswersList from '../answers/AnswersList';
 
 import {IoMdArrowDropdown, IoMdArrowDropup} from 'react-icons/io';
-import {Question, FlexHeader} from './Styles';
+import {Question, FlexHeader, Item} from './Styles';
+import {StyledLink} from '../Styles';
 
 const AccordionItem = ({question, handleAnswerModal, filterReported}) => {
   const {checkSession, productId} = useContext(ProductContext);
@@ -45,16 +46,18 @@ const AccordionItem = ({question, handleAnswerModal, filterReported}) => {
   }
 
   return (
-    <div>
-      <div >
+    <Item>
+      <div>
         <Question>
           <FlexHeader onClick={()=>setIsActive(!isActive)}>
             {isActive ?  <IoMdArrowDropup/> : <IoMdArrowDropdown/>}
             <h3>Q: {question.question_body}</h3>
           </FlexHeader>
           <div>
-            Helpful? {disableYes && <a onClick={upVoteQuestion}>Yes</a>}
-            <span>({helpful})</span> | <a onClick={()=>handleAnswerModal(question.question_id)}>Add Answer</a> | <a onClick={reportQuestion}>Report</a>
+            Helpful? {disableYes && <StyledLink onClick={upVoteQuestion}>Yes</StyledLink>} {' '}
+            <span>({helpful})</span> | {' '}
+            <StyledLink onClick={()=>handleAnswerModal(question.question_id)}>Add Answer</StyledLink> | {' '}
+            <StyledLink onClick={reportQuestion}>Report</StyledLink>
           </div>
         </Question>
       </div>
@@ -67,7 +70,7 @@ const AccordionItem = ({question, handleAnswerModal, filterReported}) => {
             />
           </div>
       }
-    </div>
+    </Item>
   )
 }
 

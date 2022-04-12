@@ -3,5 +3,5 @@ import styled from 'styled-components';
 
 export const SearchInput = styled.input`
   padding: 5px;
-  margin: 0.5em 0;
+  margin: 1.5em 0;
 `;
