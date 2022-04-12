@@ -21,7 +21,6 @@ const CountClick = ({children}) => {
     }
   }
 
-
   const handleClick = e => {
     e.path.forEach(( ele, i, arr )=>{
       if (ele.id === 'root' && arr[i-1]?.id) {
