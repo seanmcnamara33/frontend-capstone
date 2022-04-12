@@ -9,6 +9,11 @@ export const Main = styled.div`
   flex-flow: column;
 `;
 
+export const Title = styled.h2`
+  margin: 0;
+  padding: 0;
+`;
+
 export const FlexHeader = styled.div`
   display: flex;
   justify-content: center;

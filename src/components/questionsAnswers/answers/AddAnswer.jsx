@@ -2,34 +2,13 @@
 import React, {useState, useRef, useEffect, useContext} from 'react';
 import 'whatwg-fetch';
 import { ProductContext } from '../../context/Product';
-
+import AddPhotos from '../../common/AddPhotos';
 import useForm from '../../common/useForm';
 import { validateForm } from '../Validate';
 
 import {FormInner, Thumbnail, PhotoList} from './Styles';
 
-const AddPhotos = ({handlePhotos}) => {
-  const [photo, setPhoto] = useState('');
-
-  const handleChange = e =>{
-    setPhoto(e.target.value);
-  }
-
-  const addPhoto = () => {
-    handlePhotos(photo);
-    setPhoto('');
-  }
-
-  return (
-    <div>
-      <input type="text" name="photo" value={photo} onChange={handleChange} />
-      <button type="button" onClick={addPhoto}>Upload</button>
-    </div>
-  )
-}
-
-
-const AddAnswer = () =>{
+const AddAnswer = ({handleAnswerModal}) =>{
   const [values, setValues] = useState({
     body: '',
     name: '',
@@ -49,8 +28,6 @@ const AddAnswer = () =>{
   }
 
   const finalSubmit = async () => {
-    console.log(values, questionId)
-    // POST /qa/questions/:question_id/answers
     try {
       if (questionId) {
         await fetch(`${process.env.API_URI}/qa/questions/${questionId}/answers`,{
@@ -59,6 +36,7 @@ const AddAnswer = () =>{
           headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY }
         });
       }
+      handleAnswerModal();
     } catch (err) {
       console.log('POST ANSWER', err);
     }
