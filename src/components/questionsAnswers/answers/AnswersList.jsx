@@ -16,8 +16,7 @@ const AnswersList = ({id, answers}) => {
   }, [answers, filterAnswers]);
 
   const filterReported = answer_id => {
-    let filtered = filterAnswers.filter(([id])=>id!==answer_id);
-    console.log(filtered)
+    let filtered = filterAnswers.filter(([id])=>parseInt(id)!==answer_id);
     setFilterAnswers(filtered);
   }
 
