@@ -54,6 +54,31 @@ const ReviewList = (props) => {
 
   }, [props.id])
 
+  const sortReviews = (sortFactor, reviewsObj) => {
+    let reviews = reviewsObj;
+
+    if (sortFactor === 'newest') {
+      reviews.sort((a, b) => {
+        let dateA = new Date(a.date);
+        let dateB = new Date(b.date);
+        return dateB - dateA;
+      })
+    }
+    if (sortFactor === 'helpful') {
+      reviews.sort((a, b) => {
+        return b.helpfulness - a.helpfulness;
+      })
+    }
+    if (sortFactor === 'relevant') {
+      reviews.sort((a, b) => {
+        let dateA = new Date(a.date);
+        let dateB = new Date(b.date);
+        return dateB - dateA || b.helpfulness - a.helpfulness;
+      })
+    }
+    return reviews;
+  }
+
 
   const getSortData = (sortFactor) => {
     fetch(`${process.env.API_URI}/reviews/?product_id=${props.id}&count=${currentReviews.length}&page=${pageCount}&sort=${sortFactor}`, {
@@ -62,8 +87,10 @@ const ReviewList = (props) => {
     })
       .then((response) => {
         response.json().then((results) => {
-          setCurrentReviews([...currentReviews, ...results.results]);
-          console.log(currentReviews)
+
+          // setCurrentReviews([...results.results]);
+          setCurrentReviews(sortReviews(sortFactor, results.results));
+          console.log(currentReviews, sortFactor)
         });
       })
       .catch((err) => {

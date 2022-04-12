@@ -13,7 +13,7 @@ const SortBar = (props) => {
   return (
     <div>
       <label> {props.totalReviews} reviews, sorted by </label>
-      <select onClick={handleClick} >
+      <select onChange={handleClick} >
         <option value="relevant">Relevant</option>
         <option value="helpful">Helpful</option>
         <option value="newest">Newest</option>
