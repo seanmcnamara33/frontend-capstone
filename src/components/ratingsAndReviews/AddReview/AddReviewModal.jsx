@@ -68,44 +68,69 @@ const AddReviewModal = (props) => {
     })
   }
 
-  const uploadImage = async (file) => {
-    const formData = new FormData();
-    formData.append("file", file)
-    formData.append("upload_preset", process.env.UPLOAD_PRESET);
-    formData.append("cloud_name", process.env.CLOUD_NAME);
+    const uploadImage = (file) => {
+      const formData = new FormData()
+      formData.append("file", file)
+      formData.append("upload_preset", "opg24kab")
+      formData.append("cloud_name", "dmxv1avcr")
 
-    fetch(`https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`, {
-      method: 'POST',
-      body: formData
-    }).then(response => response.json())
+      fetch(`https://api.cloudinary.com/v1_1/dmxv1avcr/image/upload`, {
+        method: 'POST',
+        body: formData
+      }).then(response => response.json())
       .then((data) => {
-      handleReviewFormChange('cloudinary', [...reviewForm.cloudinary, data.url])
-    })
-     .catch((err) => {
-      console.log(err)
-    })
-
-    // try {
-    //   let body = await fetch(`https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`, {
-    //     method: 'POST',
-    //     body: formData
-    //   })
-    //   let response = await body.json();
-    //   if (response) {
-    //     console.log('82', response.url)
-    //     handleReviewFormChange('cloudinary', [...reviewForm.cloudinary, response.url])
-    //     console.log('84', reviewForm)
-    //   };
-    // } catch (err) {console.log(err)}
- };
+        console.log(data.url)
+        handleReviewFormChange('cloudinary', [...reviewForm.cloudinary, data.url])
+        console.log(reviewForm)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
 
 
-useEffect(() => {
-  const lastAddedPhoto = reviewForm.photos[reviewForm.photos.length - 1];
-  if (lastAddedPhoto) {
-    handleReviewFormChange('photosUrl', [...reviewForm.photosUrl, URL.createObjectURL(lastAddedPhoto)]);
-  }
-}, [reviewForm.photos.length]);
+  useEffect(() => {
+    const lastAddedPhoto = reviewForm.photos[reviewForm.photos.length - 1];
+    if (lastAddedPhoto) {
+      handleReviewFormChange('photosUrl', [...reviewForm.photosUrl, URL.createObjectURL(lastAddedPhoto)]);
+    }
+  }, [reviewForm.photos.length]);
+
+
+  return (
+    <>
+      <div className='modal-styles'>
+        <form type='submit' onSubmit={handleSubmit}>
+          <label>Add New Review!</label>
+
+          <AddStarRating handleRatingChange={handleRatingChange} />
+
+          <div className='reccomend-style' onChange={(event) => { event.target.value === 'yes' ? handleReviewFormChange('recommend', true) : handleReviewFormChange('recommend', false) }}>
+            <p>Do you reccomend this product?</p>
+            <input type='radio' name='recommend' value='yes'></input>
+            <label>Yes</label>
+            <input type='radio' name='recommend' value='no'></input>
+            <label>No</label>
+          </div>
+
+          <AddCharacteristics handleCharacteristicsChange={handleCharacteristicsChange} metaData={props.metaData} />
+
+          <input required placeholder='Nickname' onChange={(event) => { handleReviewFormChange('name', event.target.value) }}></input>
+          <input required type='email' placeholder='Email' onChange={(event) => { handleReviewFormChange('email', event.target.value) }}></input>
+          <input required placeholder='Example: Best purchase ever!' className='summary-style' maxLength='60' value={reviewForm.summary} onChange={(event) => { handleReviewFormChange('summary', event.target.value) }}></input>
+
+          <div>
+            <input required type='text' minLength='50' maxLength='1000' max placeholder='Body' className='body-style' value={reviewForm.body} onChange={(event) => { handleReviewFormChange('body', event.target.value) }}></input>
+            <label>Character Count: {reviewForm.body.length}</label>
+          </div>
+
+          {reviewForm.photos.length > 4 ? null : <input type='file' accept='image/jpeg, image/png' onChange={(event) => {
+            handleReviewFormChange('photos', [...reviewForm.photos, event.target.files[0]]);
+            uploadImage(event.target.files[0])
+          }}></input>}
+
+          {reviewForm.photosUrl.map((photo) => (<img className='modal-images' src={photo}></img>))}
+
 
 
 return (
@@ -154,3 +179,14 @@ return (
 };
 
 export default AddReviewModal;
+
+// var cl = new cloudinary.Cloudinary({cloud_name: "dmxv1avcr", secure: true});
+// cloudinary.v2.uploader.upload("https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
+//   { public_id: "olympic_flag" },
+//   function(error, result) {console.log(result); });
+
+//   https://api.cloudinary.com/v1_1/dmxv1avcr/upload
+
+// {reviewForm.photos.length > 4 ? null : <input type='file' accept='image/jpeg, image/png' onChange={(event) => {
+//   handleReviewFormChange('photos', [...reviewForm.photos, event.target.files[0]]);
+// }}></input>}
