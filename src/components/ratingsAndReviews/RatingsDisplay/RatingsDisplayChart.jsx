@@ -22,7 +22,7 @@ const RatingsDisplayChart = (props) => {
 
     ratings.map((value, index) => {
       return (
-        <div  key={index}>
+        <div key={index}>
           <label> {index + 1} Stars <span className='ratings'> {value} total reviews</span></label>
           <div className='ratings-bar'>
             <div className='ratings-innerbar' style={{ width: Math.round(value / getTotalRating(ratings) * 100) + '%' }}>

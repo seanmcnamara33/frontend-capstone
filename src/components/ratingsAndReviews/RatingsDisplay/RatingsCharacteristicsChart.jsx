@@ -23,8 +23,8 @@ const RatingsCharacteristicsChart = (props) => {
             <div>
               <a className='poor'>Poor</a> <a className='great'>Great</a>
               <div className='ratings-bar'>
-                <div className='ratings-innerbar'
-                style={{width: Math.round(+item[key]*20) + '%'}}>
+                <div className='ratings-inner-icon'
+                style={{marginLeft: Math.round(+item[key]*20) + '%'}}>
                 </div>
               </div>
             </div>
