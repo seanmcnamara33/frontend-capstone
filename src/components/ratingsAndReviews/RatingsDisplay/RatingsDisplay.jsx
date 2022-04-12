@@ -44,7 +44,7 @@ const RatingsDisplay = (props) => {
     <div>
       <h1 className='ratings-star'>
         {Math.round(getAvgRating(props)*2)/2}
-        <span><StarsContainer currentItem={currentItem} starsAndReviews={false}/></span>
+        <span><StarsContainer currentItem={currentItem} starsAndReviews={false} singleReview={false}/></span>
       </h1>
       <div className='review-recommend'>
         {Math.round(getRecValue(props))}% of reviews recommend this product
