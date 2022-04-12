@@ -29,17 +29,18 @@ export const DefaultGallery = styled.div`
   width: 75%;
 `;
 
-export const Image = styled.img `
-  min-height: 100%;
-  min-width: 75%;
-  max-height: 100%;
-  max-width: 75%;
-  position: relative;
-  box-shadow: 0 0 5px black;
-  left: 40px;
-  border-radius: 3px;
-  cursor: zoom-in;
-`;
+// export const Image = styled.img `
+//   object-fit: contain;
+//   max-height: 100%;
+//   max-width: 75%;
+//   position: relative;
+//   box-shadow: 0 0 5px black;
+//   left: 40px;
+//   border-radius: 3px;
+//   cursor: zoom-in;
+//   animation: fadeIn 200ms linear;
+// `;
+
 
 // Thumbnail Carousel Styles
 export const ThumbnailContainer = styled.div `
@@ -50,15 +51,15 @@ export const ThumbnailContainer = styled.div `
   align-items: center;
   justify-content: space-between;
   position: relative;
-  top: -240px;
+  top: -255px;
   left: 85px;
 `;
 
 export const Thumbnail = styled.img `
-  min-height: 60px;
-  min-width: 60px;
-  max-height: 60px;
-  max-width: 60px;
+  min-height: 55px;
+  min-width: 55px;
+  max-height: 55px;
+  max-width: 55px;
   opacity: 70%;
   border: 1px solid black;
   box-shadow: -0px 0px 3px black;
@@ -72,10 +73,10 @@ export const SelectedContainer = styled.div`
 `;
 
 export const SelectedThumbnail = styled.img `
-  min-height: 60px;
-  min-width: 60px;
-  max-height: 60px;
-  max-width: 60px;
+  min-height: 55px;
+  min-width: 55px;
+  max-height: 55px;
+  max-width: 55px;
   border: 1px solid rgb(222, 99, 23);
   box-shadow: -0px 0px 3px rgb(222, 99, 23);
   border-radius: 3px;
@@ -85,7 +86,7 @@ export const SelectedThumbnail = styled.img `
 
 export const SelectedThumbnailUnderline = styled.div `
   height: 3px;
-  width: 60px;
+  width: 55px;
   border-bottom: 3px solid rgb(222, 99, 23);
   box-shadow: -1px 1px 1px rgb(222, 99, 23);
   border-radius: 3px;
@@ -108,6 +109,7 @@ export const EntireExpandedView = styled.div`
 export const ExpandedContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   padding-top: 10px;
   padding-left: 60px;
@@ -145,9 +147,9 @@ export const ZoomedContainer = styled.div`
 `;
 
 export const ExpandedImage = styled.img`
-  object-fit: fill;
-  width: 50%;
-  height: 100%;
+  object-fit: contain;
+  max-width: 75%;
+  max-height: 95%;
   border-radius: 3px;
   box-shadow: 0 0 5px black;
   overflow: hidden;

@@ -68,15 +68,11 @@ body {
   margin-top: 0;
 }
 
-.price {
-  font-weight: bold;
-}
-
 .restore-default {
   all: unset;
   position: relative;
   color: rgb(222, 99, 23);
-  top: -235px;
+  top: -210px;
   left: -65px;
   font-size: large;
   font-weight: bold;
@@ -107,4 +103,61 @@ body {
   right: -48px;
   top: -68px
 }
+
+.price {
+  display: flex;
+}
+
+.sale-price {
+  color: red;
+  font-weight: bold;
+  font-family:'Roboto', sans-serif;
+}
+
+.original-price {
+  text-decoration: line-through;
+  font-family: 'Roboto', sans-serif;
+  margin-right: 5px;
+}
+
+.original-price-no-sale {
+  font-weight: bold;
+  font-family:'Roboto', sans-serif;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0
+  }
+}
+
+.hidden-img {
+  display: none;
+}
+
+.default-img {
+  object-fit: contain;
+  max-height: 100%;
+  max-width: 75%;
+  position: relative;
+  box-shadow: 0 0 5px black;
+  left: 40px;
+  border-radius: 3px;
+  cursor: zoom-in;
+  animation-duration: 500ms;
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+};
 
