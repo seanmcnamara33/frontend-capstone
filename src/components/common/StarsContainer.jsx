@@ -1,4 +1,3 @@
-
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import 'whatwg-fetch';
@@ -68,7 +67,6 @@ const StarsContainer = ({ currentItem, onReviewLinkClick, starsAndReviews, singl
     useEffect(() => {
       setRating(singleRating)
     }, [singleReview]);
-
     return (
       <StarsAndReviews>
       {stars.map((star, i) => {
