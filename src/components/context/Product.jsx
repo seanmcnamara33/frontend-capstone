@@ -6,6 +6,7 @@ import 'whatwg-fetch';
 export const ProductContext = createContext({
   product: {},
   productId: '',
+  // setCurrentItem: ()=>{},
   getFirstItem: ()=>{}
 });
 
@@ -34,7 +35,9 @@ export const ProductProvider = props => {
 
   const value = {
     currentItem,
+    setCurrentItem,
     productId,
+    setProductId,
     getFirstItem,
     questionId,
     handleQuestionId
