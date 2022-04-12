@@ -8,12 +8,14 @@
 .review-summary {
   font-weight: bold;
   margin: 0 10px 0 10px;
+  width: auto;
 }
 
 .review-body {
   margin: 10px 10px 0 10px;
   min-height: 40px;
-  width: 500px;
+  width: auto;
+  overflow-wrap: break-word;
 }
 
 

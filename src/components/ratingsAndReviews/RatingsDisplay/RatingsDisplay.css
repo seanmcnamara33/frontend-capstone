@@ -1,3 +1,8 @@
 .review-recommend {
   font-size: small;
 }
+
+.ratings-star {
+  margin-left: 0;
+  font-size: xx-large;
+}
