@@ -18,10 +18,13 @@ const Accordion = ({questions, height}) => {
     }
   },[questions, filterableQuestions])
 
-  const handleAnswerModal = id => {
-    setAnswerModal(!answerModal)
-    handleQuestionId(id);
+  const handleAnswerModal = (id = 0) => {
+    setAnswerModal(!answerModal);
+    if (id !== 0) {
+      handleQuestionId(id);
+    }
   }
+
   const filterReported = id => {
     let filtered = filterableQuestions.filter(q=>q.question_id!==id);
     setFilterableQuestions(filtered);

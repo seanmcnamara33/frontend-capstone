@@ -11,15 +11,19 @@ const AddToCart = ({currentStyle, currentSize, onAddToCartClick, onAddToCartClic
     }
   }
   sizes = Array.from(sizes);
-  if (!Object.keys(currentSize).length) {
-    return (
-      <AddToCartButton onClick={() => onAddToCartClickNoSize()}>Add To Bag {String.fromCharCode(0xFF0B)}</AddToCartButton>
-    )
-  } else if (sizes.length) {
-    return (
-      <AddToCartButton onClick={() => onAddToCartClick()}>Add To Bag {String.fromCharCode(0xFF0B)}</AddToCartButton>
-    )
+  if (Object.keys(currentSize).length) {
+    if (sizes.length) {
+      return (
+        <AddToCartButton onClick={() => onAddToCartClick()}>Add To Bag {String.fromCharCode(0xFF0B)}</AddToCartButton>
+      )
+    } else {
+      return (
+        <AddToCartButton disabled={true}>Add To Bag {String.fromCharCode(0xFF0B)}</AddToCartButton>
+      )
+    }
   }
-  return null;
+  return (
+    <AddToCartButton onClick={() => onAddToCartClickNoSize(sizes)}>Add To Bag {String.fromCharCode(0xFF0B)}</AddToCartButton>
+  )
 }
 export default AddToCart;

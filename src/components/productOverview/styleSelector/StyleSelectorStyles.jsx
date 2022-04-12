@@ -57,6 +57,9 @@ export const SizeDiv = styled.div`
 // Select Quantity Styles
 export const QuantityDiv = styled.div`
   align-self: end;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
   width: 25%;
   padding:0.35em 1.2em;
   border:0.1em solid black;

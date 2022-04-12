@@ -23,6 +23,7 @@ const Overview = ({currentItem}) => {
   const [currentAmount, setAmount] = useState(0);
   const [cart, setCart] = useState([]);
   const [currentImage, setCurrentImage] = useState('');
+  const [currentPrice, setCurrentPrice] = useState(0);
   const selectRef = useRef();
 
   const getFirstStyle = (productId) => {
@@ -39,15 +40,11 @@ const Overview = ({currentItem}) => {
   };
 
   const onReviewLinkClick = () => {
-    // either have TIM add a ref using useRef to the reviews header, so that you can use scrollIntoView on the ref to get to it on click
-    // OR, have TIM add an id to the review parent div, which you can then referene with document.getElementById(), and then you can call [element].scrollIntoView() on that element
-    // you can also make it scroll smoothly, with scrollIntoView({behavior: 'smooth'})
-    console.log('onReviewLinkClick not ready yet!');
+    let ratingsAndReviews = document.getElementById('ratings-and-reviews');
+    ratingsAndReviews.scrollIntoView({behavior: 'smooth'});
   };
 
   const onStyleCircleClick = (event, index) => {
-    // should change styling of clicked circle - should highlight it/add a floating checkmark
-    // on click, they should also change the current image in the image gallery/carousel
     const newStyle = allStyles[index];
     setCurrentStyle(newStyle);
   };
@@ -60,8 +57,13 @@ const Overview = ({currentItem}) => {
         currentSku = currentStyle.skus[sku];
       }
     }
-    setSize(currentSku);
-    setAmount(1);
+    if (currentSku === undefined) {
+      setSize('out-of-stock')
+      setAmount(0)
+    } else {
+      setSize(currentSku);
+      setAmount(1);
+    }
   };
 
   const onQuantityChange = (event) => {
@@ -72,11 +74,14 @@ const Overview = ({currentItem}) => {
     for (let i = 0; i < currentAmount; i++) {
       cart.push(currentStyle);
     }
+    console.log(cart);
     setCart(cart);
   };
 
-  const onAddToCartClickNoSize = () => {
-    selectRef.current.focus();
+  const onAddToCartClickNoSize = (sizes) => {
+    if (sizes.length) {
+      selectRef.current.focus();
+    }
   };
 
   const onImageClick = (image) => {
@@ -90,24 +95,39 @@ const Overview = ({currentItem}) => {
   };
 
   useEffect(() => {
-    if (Object.keys(currentItem).length) {
+    if (currentItem !== undefined && Object.keys(currentItem).length) {
       getFirstStyle(currentItem.id);
     }
   }, [currentItem]);
 
+  useEffect(() => {
+    if (currentStyle !== undefined && Object.keys(currentStyle).length) {
+      if (Number(currentStyle.sale_price > 0)) {
+        setCurrentPrice(Number(currentStyle.sale_price));
+      } else {
+        setCurrentPrice(Number(currentStyle.original_price));
+      }
+    }
+  }, [currentStyle])
 
-  if (currentView === 'default') {
+  if (currentItem !== undefined && currentView === 'default' && Object.keys(currentItem).length) {
     return (
       <>
         <ProductOverview>
           <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
           <ProductInformation>
-            <StarsContainer currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} starsAndReviews={true}/>
+            <StarsContainer currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} starsAndReviews={true} singleReview={false}/>
             <CategoryContainer>
               <p className='category'>{currentItem.category}</p>
               <h2 className='product-name'>{currentItem.name}</h2>
             </CategoryContainer>
-            <p className='price'>${Math.round(currentStyle.original_price)}</p>
+            <div>{Number(currentStyle.sale_price) > 0 ?
+              <div className='price'>
+                <p className='original-price'>${Math.round(Number(currentStyle.original_price)).toString()}</p>
+                <p className='sale-price'>${Math.round(Number(currentStyle.sale_price)).toString()}</p>
+              </div> :
+              <p className='original-price-no-sale'>${Math.round(Number(currentStyle.original_price)).toString()}</p>}
+            </div>
             <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
             <StylesView currentStyle={currentStyle} allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
             <CartFeatures>
@@ -126,12 +146,13 @@ const Overview = ({currentItem}) => {
         </DescriptionContainer>
       </>
     );
-  }
+  } else if (currentView === 'expanded' && Object.keys(currentItem).length)
   return (
     <ProductOverview>
       <ExpandedView currentStyle={currentStyle} currentImage={currentImage} onRestoreDefaultClick={onRestoreDefaultClick}/>
     </ProductOverview>
-  );
+  )
+  return null;
 };
 
 export default Overview;

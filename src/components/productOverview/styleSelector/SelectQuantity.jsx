@@ -3,6 +3,7 @@ import React from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
 import {QuantityDiv} from './StyleSelectorStyles.jsx';
+import {IoIosArrowDown} from 'react-icons/io';
 
 const customStyles = {
   option: () => ({}),
@@ -22,13 +23,15 @@ const SelectQuantity = ({ currentSize, currentStyle, onQuantityChange }) => {
     }
     return (
       <QuantityDiv>
-        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={quantityList} styles={customStyles} placeholder='1'></Select>
+        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={quantityList} styles={customStyles} placeholder={<div style={{color: 'black'}}>1</div>}></Select>
+        <div><IoIosArrowDown/></div>
       </QuantityDiv>
     )
   }
   return(
     <QuantityDiv>
-      <Select  components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} styles={customStyles} className='select-quantity' isDisabled placeholder='-' ></Select>
+      <Select  components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} styles={customStyles} className='select-quantity' isDisabled placeholder={<div style={{color: 'black'}}>-</div>} ></Select>
+      <div><IoIosArrowDown/></div>
     </QuantityDiv>
   );
 };

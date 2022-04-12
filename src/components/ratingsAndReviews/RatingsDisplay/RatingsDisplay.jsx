@@ -25,7 +25,6 @@ const RatingsDisplay = (props) => {
     return recValue;
   }
 
-  // console.log(props.metaData)
 
   const getAvgRating = (props) => {
     let obj = props.metaData.ratings
