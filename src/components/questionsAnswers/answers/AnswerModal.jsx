@@ -15,7 +15,7 @@ const AnswerModal = ({handleAnswerModal, answerModal, item}) => (
         </FlexHeader>
         <h3>About the {item.name}</h3>
       </Header>
-      <AddAnswer />
+      <AddAnswer handleAnswerModal={handleAnswerModal} />
     </Content>
   </Modal>
 );

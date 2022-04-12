@@ -10,12 +10,10 @@ import { NavBar } from './AppStyles.jsx';
 import { ProductContext } from './context/Product';
 
 const App = () => {
-  const {currentItem, productId, getFirstItem, createSession} = useContext(ProductContext);
+  const {currentItem, productId, getFirstItem} = useContext(ProductContext);
 
   useEffect(() => {
     getFirstItem();
-    createSession();
-    return () => sessionStorage.clear();
   }, []);
 
   return (

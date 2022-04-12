@@ -15,22 +15,7 @@ export const ProductProvider = props => {
   const [currentItem, setCurrentItem] = useState({});
   const [productId, setProductId] = useState('');
   const [questionId, setQuestionId] = useState(0);
-  const session = useRef();
 
-  const checkSession = (s) => {
-    // let s = sessionStorage.getItem('session');
-    return s === session.current;
-  }
-
-  const createSession = () => {
-    let s = sessionStorage.getItem('session');
-    session.current = s;
-
-    if (!s) {
-      session.current = fakeSession();
-      sessionStorage.setItem('session', session.current);
-    }
-  }
 
   const getFirstItem = () => {
     fetch(`${process.env.API_URI}/products`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
@@ -49,12 +34,9 @@ export const ProductProvider = props => {
     setQuestionId(id)
   }
 
-
   const value = {
     currentItem,
     productId,
-    checkSession,
-    createSession,
     getFirstItem,
     questionId,
     handleQuestionId

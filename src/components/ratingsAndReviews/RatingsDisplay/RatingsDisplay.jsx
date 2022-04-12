@@ -23,7 +23,6 @@ const RatingsDisplay = (props) => {
     return recValue;
   }
 
-  // console.log(props.metaData)
 
 
   return (
