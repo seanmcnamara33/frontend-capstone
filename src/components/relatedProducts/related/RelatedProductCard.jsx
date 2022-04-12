@@ -71,7 +71,7 @@ const OriginalPrice = styled.div`
 // ------------------COMPONENT------------------ //
 
 const RelatedProductCard = ({ prod, currentItem, id }) => {
-  // const [prod, setProd] = useState({});
+  const [currentProduct, setCurrentProduct] = useState({});
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [style, setStyle] = useState([]);
@@ -84,7 +84,7 @@ const RelatedProductCard = ({ prod, currentItem, id }) => {
     fetch(`${process.env.API_URI}/products/${prod}`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
       .then((response) => {
         response.json().then(result => {
-          // setProd(result);
+          setCurrentProduct(result);
           setName(result.name);
           setCategory(result.category);
           setFeatures(result.features);
@@ -156,7 +156,7 @@ const RelatedProductCard = ({ prod, currentItem, id }) => {
       <CategoryStyle className="product-category">{category.toUpperCase()}</CategoryStyle>
       <NameStyle className="product-name">{name}</NameStyle>
       { style.sale_price ? <><SalePrice className="price">SALE ${style.sale_price}</SalePrice><OriginalPrice className="price">${style.original_price}</OriginalPrice></> : <div className="price">${style.original_price}</div>}
-      <StarsContainer currentItem={currentItem} starsAndReviews={false} onClick={console.log(prod)}/>
+      <StarsContainer currentItem={currentProduct} starsAndReviews={false}/>
     </CardStyle>
   );
 }
