@@ -38,6 +38,18 @@ const RatingsDisplay = (props) => {
     return totalStars/totalReviews
   }
 
+  const getAvgRating = (props) => {
+    let obj = props.metaData.ratings
+    let totalStars = 0;
+    let totalReviews = 0;
+
+    for (let i in obj) {
+      totalStars += (+i)*(+obj[i]);
+      totalReviews += (+obj[i])
+    }
+    return totalStars/totalReviews
+  }
+
 
   return (
     <>

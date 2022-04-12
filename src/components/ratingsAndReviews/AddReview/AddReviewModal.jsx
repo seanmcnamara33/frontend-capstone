@@ -154,14 +154,3 @@ return (
 };
 
 export default AddReviewModal;
-
-// var cl = new cloudinary.Cloudinary({cloud_name: "dmxv1avcr", secure: true});
-// cloudinary.v2.uploader.upload("https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
-//   { public_id: "olympic_flag" },
-//   function(error, result) {console.log(result); });
-
-//   https://api.cloudinary.com/v1_1/dmxv1avcr/upload
-
-// {reviewForm.photos.length > 4 ? null : <input type='file' accept='image/jpeg, image/png' onChange={(event) => {
-//   handleReviewFormChange('photos', [...reviewForm.photos, event.target.files[0]]);
-// }}></input>}
