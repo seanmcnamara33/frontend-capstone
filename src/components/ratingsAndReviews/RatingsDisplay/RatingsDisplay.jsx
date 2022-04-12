@@ -1,11 +1,13 @@
 /* eslint-disable */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import RatingsDisplayChart from './RatingsDisplayChart.jsx';
 import StarsContainer from '../../common/StarsContainer.jsx';
 import './RatingsDisplay.css';
 import RatingsCharacteristicsChart from './RatingsCharacteristicsChart';
+import {ProductContext} from '../../context/Product.jsx';
 
 const RatingsDisplay = (props) => {
+  const {currentItem} = useContext(ProductContext);
 
   const getRecValue = (props) => {
     let rec = props.metaData.recommended;
@@ -24,12 +26,26 @@ const RatingsDisplay = (props) => {
   }
 
 
+  const getAvgRating = (props) => {
+    let obj = props.metaData.ratings
+    let totalStars = 0;
+    let totalReviews = 0;
+
+    for (let i in obj) {
+      totalStars += (+i)*(+obj[i]);
+      totalReviews += (+obj[i])
+    }
+    return totalStars/totalReviews
+  }
+
 
   return (
     <>
-      <div>
-        {/* <StarsContainer /> */}
-      </div>
+    <div>
+      <h1 className='ratings-star'>
+        {Math.round(getAvgRating(props)*2)/2}
+        <span><StarsContainer currentItem={currentItem} starsAndReviews={false}/></span>
+      </h1>
       <div className='review-recommend'>
         {Math.round(getRecValue(props))}% of reviews recommend this product
       </div>
@@ -38,6 +54,7 @@ const RatingsDisplay = (props) => {
         metaData={props.metaData.ratings} />
       <RatingsCharacteristicsChart
         characteristics={props.metaData.characteristics} />
+    </div>
     </>
   );
 };
