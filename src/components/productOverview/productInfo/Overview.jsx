@@ -116,7 +116,7 @@ const Overview = ({currentItem}) => {
         <ProductOverview>
           <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
           <ProductInformation>
-            <StarsContainer currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} starsAndReviews={true}/>
+            <StarsContainer currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} starsAndReviews={true} singleReview={false}/>
             <CategoryContainer>
               <p className='category'>{currentItem.category}</p>
               <h2 className='product-name'>{currentItem.name}</h2>
