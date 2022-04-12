@@ -19,12 +19,12 @@ const App = () => {
 
   return (
     <CountClick>
-      <NavBar key="navbar">Kids Next Door</NavBar>
-      <Overview key="overview" currentItem={currentItem}/>
-      <RelatedList key="related-list" currentItem={currentItem} id={productId}/>
-      <OutfitList key="outfit-list" currentItem={currentItem} id={productId}/>
-      <QuestionsAnswers key="question-answers" id={productId} />
-      <ReviewList key="review-list" id={productId}/>
+      <NavBar>Kids Next Door</NavBar>
+      <Overview currentItem={currentItem}/>
+      <RelatedList currentItem={currentItem} id={productId}/>
+      <OutfitList currentItem={currentItem} id={productId}/>
+      <QuestionsAnswers id={productId} />
+      <ReviewList id={productId}/>
     </CountClick>
   )
 }

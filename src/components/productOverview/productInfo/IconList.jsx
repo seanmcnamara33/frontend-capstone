@@ -1,5 +1,4 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable react/function-component-definition */
+/* eslint-disable */
 import React from 'react';
 import { FaFacebook, FaPinterest, FaTwitter } from 'react-icons/fa';
 import styled from 'styled-components';
