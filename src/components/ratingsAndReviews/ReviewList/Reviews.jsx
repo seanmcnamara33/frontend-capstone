@@ -18,7 +18,7 @@ const Reviews = (props) => {
     props.data.map((review) => {
       return (
         <div className='review-tile' key={review.review_id}>
-          {/* <StarsContainer currentItem={currentItem} starsAndReviews={false}/> */}
+          <StarsContainer singleRating={review.rating} starsAndReviews={false} singleReview={true}/>
           <div className='review-summary'>{review.summary}</div>
           <div className='review-body'>
             <ReviewBody body={review.body} />
