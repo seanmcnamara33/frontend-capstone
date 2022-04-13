@@ -1,33 +1,41 @@
 .main {
   border: 2px solid #000;
   margin: 1em;
-  overflow: auto;
+  /* overflow: auto; */
   display: flex;
-  max-height: 70em;
-  width: auto;
-}
+  height: 35em;
 
-.review-list {
-  scroll-behavior: smooth;
-  max-height: 40em;
-  overflow: auto;
-  border: 2px solid #000;
-  margin: 1em;
-  width: 100%;
-  /* margin-left: 40%; */
-}
-
-.review-list-btn{
-  display: flex;
 }
 
 .title-sortbar {
   margin: 1em;
   display: flex;
   flex-direction: row-reverse;
+}
+
+.review-list {
+  max-height: 40em;
+  /* overflow: auto; */
+  /* border: 2px solid #000; */
+  margin: 1em;
+  height: max-content;
+  flex-grow: 2;
 
 }
 
-.ratings-breakdown {
+.reviews {
+  overflow: auto;
+  height: auto;
+}
 
+.review-list-btn {
+  display: flex;
+  position: relative;
+  top: -10px;
+}
+
+
+
+.ratings-breakdown {
+  flex-grow: 1;
 }

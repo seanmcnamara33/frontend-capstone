@@ -128,7 +128,9 @@ const ReviewList = (props) => {
         <div className='review-list'>
           <label>Ratings & Reviews</label>
           <SortBar totalReviews={totalReviews} getSortData={getSortData} />
-          <Reviews data={currentReviews} />
+          <div className='reviews'>
+            <Reviews data={currentReviews} />
+          </div>
           <div className='review-list-btn'>
             {showMoreReviewsBtn ? <button type='button' onClick={handleClick}> More Reviews</button> : null}
             <AddReview id={props.id} metaData={metaData} />

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useEffect } from 'react';
-import './RatingsDisplayChart.css';
+import './RatingsCharacteristicsChart.css';
 
 const RatingsCharacteristicsChart = (props) => {
 
@@ -18,11 +18,11 @@ const RatingsCharacteristicsChart = (props) => {
     getCharacteristics(props).map((item) => {
       for (let key in item) {
         return (
-          <div className='characteristics-chart' key={key}>
+          <div className='characteristics-chart' key={item[key]}>
             {key}
             <div>
               <a className='poor'>Poor</a> <a className='great'>Great</a>
-              <div className='ratings-bar'>
+              <div className='char-bar'>
                 <div className='ratings-inner-icon'
                 style={{marginLeft: Math.round(+item[key]*20) + '%'}}>
                 </div>
