@@ -26,7 +26,7 @@ const ReviewList = (props) => {
       let response = await body.json();
 
       if (response) {
-        setCurrentReviews([...currentReviews, ...response.results]);
+        setCurrentReviews([...response.results]);
         setPageCount(pageCount + 1);
       };
     } catch (err) { console.log(err) }
@@ -54,6 +54,31 @@ const ReviewList = (props) => {
 
   }, [props.id])
 
+  const sortReviews = (sortFactor, reviewsObj) => {
+    let reviews = reviewsObj;
+
+    if (sortFactor === 'newest') {
+      reviews.sort((a, b) => {
+        let dateA = new Date(a.date);
+        let dateB = new Date(b.date);
+        return dateB - dateA;
+      })
+    }
+    if (sortFactor === 'helpful') {
+      reviews.sort((a, b) => {
+        return b.helpfulness - a.helpfulness;
+      })
+    }
+    if (sortFactor === 'relevant') {
+      reviews.sort((a, b) => {
+        let dateA = new Date(a.date);
+        let dateB = new Date(b.date);
+        return dateB - dateA || b.helpfulness - a.helpfulness;
+      })
+    }
+    return reviews;
+  }
+
 
   const getSortData = (sortFactor) => {
     fetch(`${process.env.API_URI}/reviews/?product_id=${props.id}&count=${currentReviews.length}&page=${pageCount}&sort=${sortFactor}`, {
@@ -62,8 +87,7 @@ const ReviewList = (props) => {
     })
       .then((response) => {
         response.json().then((results) => {
-          setCurrentReviews([...currentReviews, ...results.results]);
-          console.log(currentReviews)
+          setCurrentReviews(sortReviews(sortFactor, results.results));
         });
       })
       .catch((err) => {
@@ -100,10 +124,14 @@ const ReviewList = (props) => {
       <div className='title-sortbar'>
         <div className='review-list'>
           <label>Ratings & Reviews</label>
-          <SortBar totalReviews={totalReviews} getSortData={getSortData} />
-          <Reviews data={currentReviews} />
+          <div>
+            <SortBar totalReviews={totalReviews} getSortData={getSortData} />
+          </div>
+          <div className='reviews'>
+            <Reviews data={currentReviews} />
+          </div>
           <div className='review-list-btn'>
-            {showMoreReviewsBtn ? <button type='button' onClick={handleClick}> More Reviews</button> : null}
+            {showMoreReviewsBtn ? <button type='button' className='showmore-btn' onClick={handleClick}> More Reviews</button> : null}
             <AddReview id={props.id} metaData={metaData} />
           </div>
         </div>

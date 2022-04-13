@@ -10,16 +10,16 @@ const ReviewHelpfulness = (props) => {
   }, [props.helpfulness])
 
 
-  const handleYesClick = () => {
+  const handleYesClick = (id) => {
     event.preventDefault();
-    fetch((`${process.env.API_URI}/reviews/:${props.review_id}/helpful`, {
+    console.log(id)
+    fetch(`${process.env.API_URI}/reviews/${id}/helpful`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         Authorization: process.env.API_KEY
       }
-    })).then((response) => {
-      console.log('success helpfulness')
+    }).then((response) => {
       setHelpfulness(helpfulness + 1)
     }).catch((err) => {
       console.log(err)
@@ -27,13 +27,13 @@ const ReviewHelpfulness = (props) => {
   }
 
   const handleReportClick = () => {
-    fetch((`${process.env.API_URI}/reviews/${props.review_id}/report`, {
+    fetch(`${process.env.API_URI}/reviews/${props.review_id}/report`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         Authorization: process.env.API_KEY
       }
-    })).then((response) => {
+    }).then((response) => {
       console.log('success report')
     }).catch((err) => {
       console.log(err)
@@ -42,11 +42,14 @@ const ReviewHelpfulness = (props) => {
 
 
 
-  return(
-    <>
-    By {props.reviewer_name}, {formatDate(props.date)} | Helpful? <a href="#" onClick={handleYesClick}>Yes</a>
-    ({helpfulness}) | <a href="#" onClick={handleReportClick}>{props.reported ? 'NO' : 'report'}</a>
-    </>
+  return (
+    <div>
+      By user: {props.name}
+      <div>
+        {formatDate(props.date)} | Helpful? <a href="#" onClick={() => handleYesClick(props.review_id)}>Yes</a>
+        ({helpfulness}) | <a href="#" onClick={handleReportClick}>{props.reported ? 'NO' : 'report'}</a>
+      </div>
+    </div>
   )
 
 }

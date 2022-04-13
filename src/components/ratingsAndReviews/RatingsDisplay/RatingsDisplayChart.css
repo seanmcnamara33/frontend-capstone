@@ -14,29 +14,9 @@
   border: 1px solid
 }
 
-.ratings-inner-icon {
-  position: relative;
-  width: 0;
-  height: 75%;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 10px solid rgb(2, 209, 2);
-}
-
 .ratings {
  padding-left: 3em;
  font-size: small;
 
 }
 
-.poor {
-  margin-right: 7em;
-  font-size: small;
-}
-.great {
-  font-size: small;
-}
-
-.characteristics-chart {
-  align-content: right;
-}

@@ -1,20 +1,16 @@
 .review-tile {
-  margin: 20px;
-  border: 2px solid #000;
+  margin: 10px 0 10px 0;
+  border: 1px solid #000;
+  border-radius: 10px;
   min-height: auto;
-  width: auto;
 }
 
 .review-summary {
   font-weight: bold;
-  margin: 0 10px 0 10px;
-  width: auto;
 }
 
 .review-body {
-  margin: 10px 10px 0 10px;
   min-height: 40px;
-  width: auto;
   overflow-wrap: break-word;
 }
 
@@ -25,9 +21,7 @@
 }
 
 .review-date {
-  margin: 0 0 10px 5px;
   min-height: 20px;
-  width: 500px;
 }
 
 .review-recommend {
