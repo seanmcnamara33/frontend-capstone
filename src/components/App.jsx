@@ -22,7 +22,7 @@ const App = () => {
       <Overview currentItem={currentItem}/>
       <RelatedList currentItem={currentItem} id={productId}/>
       <OutfitList currentItem={currentItem} id={productId}/>
-      <QuestionsAnswers id={productId} />
+      <QuestionsAnswers id={productId}/>
       <ReviewList id={productId}/>
     </>
   )

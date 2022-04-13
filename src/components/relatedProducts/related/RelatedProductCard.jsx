@@ -161,9 +161,9 @@ const RelatedProductCard = ({ prod, id }) => {
         <Comparison show={comparisonModal} close={close} name={name} currentItem={currentItem} id={id} relatedFeatures={features} mainFeatures={mainFeatures}/>
       }
       <CategoryStyle className="product-category">{category.toUpperCase()}</CategoryStyle>
-      <NameStyle className="product-name"  onClick={clickedCard}>{name}</NameStyle>
+      <NameStyle className="product-name" onClick={clickedCard}>{name}</NameStyle>
       { style.sale_price ? <><SalePrice className="price">SALE ${style.sale_price}</SalePrice><OriginalPrice className="price">${style.original_price}</OriginalPrice></> : <div className="price">${style.original_price}</div>}
-      <StarsContainer currentItem={currentProduct} starsAndReviews={false}/>
+      <StarsContainer currentItem={currentProduct} starsAndReviews={false} singleReview={false}/>
     </CardStyle>
   );
 }

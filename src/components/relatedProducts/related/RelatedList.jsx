@@ -53,14 +53,14 @@ const RelatedList = ({ currentItem, id }) => {
   const [relatedProds, setRelatedProds] = useState([]);
   const [begin, setBegin] = useState(0);
   const [end, setEnd] = useState(3);
-  const [display, setDisplay] = useState([]);
+  // const [display, setDisplay] = useState([]);
 
   const getRelatedProductsID = (productId) => {
     fetch(`${process.env.API_URI}/products/${productId}/related`, { method: 'GET', headers: { Authorization: process.env.API_KEY }})
       .then(response => response.json())
       .then(results => {
         setRelatedProds([...new Set(results)]);
-        setDisplay([...new Set(results)]);
+        // setDisplay([...new Set(results)]);
       })
       .catch((err) => console.log(`Error getting related products: ${err}`))
   }
@@ -97,7 +97,7 @@ const RelatedList = ({ currentItem, id }) => {
     <WidgetStyle>
       {begin > 0 && <ButtonLeft onClick={leftClick}>&laquo;</ButtonLeft>}
       <RelatedListStyle>
-        {display.slice(begin, end).map((prod, index) => {
+        {relatedProds.slice(begin, end).map((prod, index) => {
           return (
             <li key={prod}>
               <RelatedProductCard prod={prod} currentItem={currentItem} id={id}/>
