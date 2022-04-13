@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { Modal, Content, Header } from '../../AppStyles';
 import FeaturesList from './FeaturesList.jsx';
 
+
+// ------------------COMPONENT------------------ //
+
 const Comparison = ({ show, close, name, currentItem, id, relatedFeatures, mainFeatures }) => {
   return (
     <Modal show={show}>
@@ -11,9 +14,8 @@ const Comparison = ({ show, close, name, currentItem, id, relatedFeatures, mainF
         <Header>
           <button onClick={close}>x</button>
           <h3>Comparing</h3>
-          <p>{currentItem.name} &nbsp; Features &nbsp; {name}</p>
         </Header>
-        <FeaturesList features={mainFeatures} relatedFeatures={relatedFeatures}/>
+        <FeaturesList features={mainFeatures} relatedFeatures={relatedFeatures} main={currentItem.name} related={name}/>
       </Content>
     </Modal>
   )

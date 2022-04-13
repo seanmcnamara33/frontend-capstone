@@ -1,10 +1,15 @@
 /* eslint-disable */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import Comparison from '../comparison/Comparison.jsx';
-
+import 'whatwg-fetch';
+import StarsContainer from '../../common/StarsContainer.jsx';
+import { ProductContext } from '../../context/Product';
 
 const placeholder = 'https://images.unsplash.com/photo-1546213290-e1b492ab3eee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80';
+
+
+// -------------------STYLES------------------- //
 
 const CardStyle = styled.div`
   display: flex;
@@ -63,7 +68,11 @@ const OriginalPrice = styled.div`
   text-decoration: line-through;
 `;
 
-const RelatedProductCard = ({ prod, currentItem, id }) => {
+
+// ------------------COMPONENT------------------ //
+
+const RelatedProductCard = ({ prod, id }) => {
+  const [currentProduct, setCurrentProduct] = useState({});
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [style, setStyle] = useState([]);
@@ -71,11 +80,13 @@ const RelatedProductCard = ({ prod, currentItem, id }) => {
   const [features, setFeatures] = useState([]);
   const [mainFeatures, setMainFeatures] = useState([]);
   const [comparisonModal, setComparisonModal] = useState(false);
+  const {currentItem, setCurrentItem, setProductId} = useContext(ProductContext);
 
   const getProduct = () => {
     fetch(`${process.env.API_URI}/products/${prod}`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
       .then((response) => {
         response.json().then(result => {
+          setCurrentProduct(result);
           setName(result.name);
           setCategory(result.category);
           setFeatures(result.features);
@@ -124,6 +135,11 @@ const RelatedProductCard = ({ prod, currentItem, id }) => {
     setComparisonModal(false);
   }
 
+  const clickedCard = () => {
+    setCurrentItem(currentProduct);
+    setProductId(currentProduct.id);
+  }
+
 
   return (
     <CardStyle>
@@ -145,8 +161,9 @@ const RelatedProductCard = ({ prod, currentItem, id }) => {
         <Comparison show={comparisonModal} close={close} name={name} currentItem={currentItem} id={id} relatedFeatures={features} mainFeatures={mainFeatures}/>
       }
       <CategoryStyle className="product-category">{category.toUpperCase()}</CategoryStyle>
-      <NameStyle className="product-name">{name}</NameStyle>
+      <NameStyle className="product-name" onClick={clickedCard}>{name}</NameStyle>
       { style.sale_price ? <><SalePrice className="price">SALE ${style.sale_price}</SalePrice><OriginalPrice className="price">${style.original_price}</OriginalPrice></> : <div className="price">${style.original_price}</div>}
+      <StarsContainer currentItem={currentProduct} starsAndReviews={false} singleReview={false}/>
     </CardStyle>
   );
 }
