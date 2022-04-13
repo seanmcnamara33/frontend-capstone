@@ -7,6 +7,8 @@ import AnswersList from '../answers/AnswersList'
 import QuestionModal from './QuestionModal';
 import Accordion from './Accordion';
 
+import { MainBtn } from '../../AppStyles';
+
 const QuestionList = ({ questions, handleQuestionCount }) => {
   const { currentItem, productId } = useContext(ProductContext);
   const [questionModal, setQuestionModal] = useState(false);
@@ -42,9 +44,9 @@ const QuestionList = ({ questions, handleQuestionCount }) => {
         <Accordion questions={questions} height={height}/>
         {
           questions.length > 0 &&
-          <button onClick={moreQuestions}>Show More Questions</button>
+          <MainBtn onClick={moreQuestions}>Show More Questions</MainBtn>
         }
-        <button onClick={handleQuestionModal}>Add A Question</button>
+        <MainBtn onClick={handleQuestionModal}>Add A Question</MainBtn>
       </div>
       <QuestionModal
         handleQuestionModal={handleQuestionModal}

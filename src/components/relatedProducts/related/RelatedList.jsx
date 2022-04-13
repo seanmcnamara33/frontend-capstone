@@ -92,7 +92,7 @@ const RelatedList = ({ currentItem, id }) => {
   }
 
   return (
-    <div>
+    <div id="related-products">
     <HeaderStyle>Related Products</HeaderStyle>
     <WidgetStyle>
       {begin > 0 && <ButtonLeft onClick={leftClick}>&laquo;</ButtonLeft>}
