@@ -11,7 +11,6 @@ import SelectQuantity from '../styleSelector/SelectQuantity.jsx';
 import AddToCart from '../AddToCart/AddToCart.jsx';
 import ExpandedView from '../imageGallery/ExpandedView.jsx';
 import Select from 'react-select';
-import styled from 'styled-components';
 import 'whatwg-fetch';
 import {ProductOverview, ProductInformation, CategoryContainer, CartFeatures, AddToCartFeatures, StarButton, DescriptionContainer} from './ProductInfoStyles.jsx';
 

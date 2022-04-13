@@ -10,8 +10,8 @@ const QuestionsAnswers = () => {
   const [questions, setQuestions] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [questionCount, setQuestionCount] = useState(100);
-  const {productId} = useContext(ProductContext);
-  
+  const { productId } = useContext(ProductContext);
+
   useEffect(()=>{
     const loadQuestions = async product_id =>{
       try {
