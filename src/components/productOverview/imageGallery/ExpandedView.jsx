@@ -58,18 +58,18 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
     return(
       <EntireExpandedView>
         <ExpandedContainer>
-          <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B05)}</button>
           <ExpandedImage alt='expanded view of current image of currently selected style' src={expandedPhotosArray[currentStyleExpandedIndex].url} onClick={(event) => onExpandedImageClick(event)}></ExpandedImage>
-          <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B95)}</button>
-          <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>{String.fromCharCode(0x2311)}</button>
         </ExpandedContainer>
         <Icons>
+          <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B05)}</button>
           {icons.map((icon, index) => {
             if (index === currentStyleExpandedIndex) {
               return <SelectedIcon data-index={index} onClick={(event) => onIconClick(event)} key={expandedPhotosArray[index].url}>{String.fromCharCode(0x2B24)}</SelectedIcon>
             }
             return <Icon data-index={index} onClick={(event) => onIconClick(event)} key={expandedPhotosArray[index].url}>{String.fromCharCode(0x2B24)}</Icon>
           })}
+          <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B95)}</button>
+          <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>{String.fromCharCode(0x2311)}</button>
         </Icons>
       </EntireExpandedView>
     );

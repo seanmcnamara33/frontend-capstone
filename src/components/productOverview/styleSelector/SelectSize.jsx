@@ -29,7 +29,7 @@ const SelectSize = ({ openMenuOnFocus, selectRef, currentStyle, onSizeChange }) 
   if (sizes.length) {
     return (
       <SizeDiv>
-        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={options} ref={selectRef} openMenuOnFocus={true} styles={customStyles} onChange={(event) => onSizeChange(event)} placeholder={<div style={{color: 'black'}}>Select Size</div>}>
+        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={options} ref={selectRef} openMenuOnFocus={true} styles={customStyles} onChange={(event) => onSizeChange(event)} placeholder={<div style={{color: 'black'}}>Size</div>}>
         </Select>
         <div><IoIosArrowDown/></div>
       </SizeDiv>

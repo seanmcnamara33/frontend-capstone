@@ -29,35 +29,14 @@ export const CartFeatures = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
 `;
 
 export const AddToCartFeatures = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
-`;
-
-export const StarButton = styled.button`
-  all: unset;
-  width: 15%;
-  background-color: white;
-  padding:0.35em 1.2em;
-  border:0.1em solid black;
-  margin:0 0.3em 0.3em 0;
-  border-radius: 3px;
-  box-sizing: border-box;
-  box-shadow: 0 0 2px black;
-  text-decoration:none;
-  font-family:'Roboto',sans-serif;
-  font-weight:300;
-  text-align: center;
-  height: 100%;
-  &:hover {
-    box-shadow: 0 0 5px rgb(222, 99, 23);
-    color: rgb(222, 99, 23);
-  }
+  width: 80%;
 `;
 
 export const DescriptionContainer = styled.div`

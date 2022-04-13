@@ -4,42 +4,23 @@ import styled from 'styled-components';
 // Image Gallery Styles
 export const ImageGalleryComponent = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   box-sizing: border-box;
-  margin: 20px 0px 40px 20px;
-  height: 100%;
-  width: 65%;
-`;
-
-// Default View Styles
-export const DefaultGallery = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 60px;
-  padding-right: 60px;
   background-color: grey;
   box-shadow: 0 0 5px black;
   border-radius: 3px;
-  height: 80vh;
-  width: 75%;
+  margin: 20px 40px 40px 60px;
+  min-height: 100%;
+  width: 65%;
 `;
 
 // Thumbnail Carousel Styles
 export const ThumbnailContainer = styled.div `
-  height: 0;
-  width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  position: relative;
-  top: -255px;
-  left: 85px;
 `;
 
 export const Thumbnail = styled.img `
@@ -98,9 +79,6 @@ export const ExpandedContainer = styled.div`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  padding-top: 10px;
-  padding-left: 60px;
-  padding-right: 60px;
   width: 100%;
   height: 80vh;
 `;
@@ -134,9 +112,9 @@ export const ZoomedContainer = styled.div`
 `;
 
 export const ExpandedImage = styled.img`
-  object-fit: contain;
+  object-fit: cover;
   max-width: 75%;
-  max-height: 95%;
+  height: 95%;
   border-radius: 3px;
   box-shadow: 0 0 5px black;
   overflow: hidden;
