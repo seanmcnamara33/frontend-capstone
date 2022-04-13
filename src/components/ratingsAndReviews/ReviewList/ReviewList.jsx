@@ -26,7 +26,7 @@ const ReviewList = (props) => {
       let response = await body.json();
 
       if (response) {
-        setCurrentReviews([...currentReviews, ...response.results]);
+        setCurrentReviews([...response.results]);
         setPageCount(pageCount + 1);
       };
     } catch (err) { console.log(err) }
