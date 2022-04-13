@@ -32,9 +32,6 @@ const FeaturesList = ({ features, relatedFeatures, main, related }) => {
 
   useEffect(() => {
     buildShared()
-  }, [features])
-
-  useEffect(() => {
     setAllFeatures([...features, ...relatedFeatures])
   }, [features])
 
@@ -45,8 +42,8 @@ const FeaturesList = ({ features, relatedFeatures, main, related }) => {
 
   return (
     <div>
-      <table bgcolor="yellow" width="auto">
-        <tr bgcolor="magenta">
+      <table>
+        <tr>
           <th>{main}</th>
           <th>Features</th>
           <th>{related}</th>
@@ -55,7 +52,7 @@ const FeaturesList = ({ features, relatedFeatures, main, related }) => {
           return (
             <tr>
               <td>{total[feature][0]}</td>
-              <td>{feature}</td>
+              <td style={{"font-weight": "bold"}}>{feature}</td>
               <td>{total[feature][1]}</td>
             </tr>
           )

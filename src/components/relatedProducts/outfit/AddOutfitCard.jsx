@@ -26,8 +26,6 @@ const ImageStyle = styled.img`
   height: 360px;
   max-width: 300px;
   min-width: 300px;
-  /* border-top-left-radius: 18px;
-  border-top-right-radius: 18px; */
   object-fit: cover;
 `;
 

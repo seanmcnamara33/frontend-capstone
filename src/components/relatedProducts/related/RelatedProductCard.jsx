@@ -31,8 +31,6 @@ const ImageStyle = styled.div`
   height: 350px;
   max-width: 300px;
   min-width: 300px;
-  /* border-top-left-radius: 18px;
-  border-top-right-radius: 18px; */
   background-position: center;
   background-size: cover;
 `;
