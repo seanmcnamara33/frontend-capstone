@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React, { useState } from 'react';
 import Select from 'react-select';
-import styled from 'styled-components';
 import {SizeDiv, SelectSizing} from './StyleSelectorStyles.jsx';
 import {IoIosArrowDown} from 'react-icons/io';
 

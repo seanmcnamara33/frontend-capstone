@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React, {useState, useEffect} from 'react';
-import styled from 'styled-components';
 import DefaultView from './DefaultView.jsx';
 import ThumbnailCarousel from './ThumbnailCarousel.jsx';
 import {ImageGalleryComponent} from './ImageGalleryStyles.jsx';

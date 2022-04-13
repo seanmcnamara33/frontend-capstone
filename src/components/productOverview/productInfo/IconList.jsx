@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React from 'react';
 import { FaFacebook, FaPinterest, FaTwitter } from 'react-icons/fa';
-import styled from 'styled-components';
 import {IconListContainer, Icon} from './ProductInfoStyles.jsx';
 
 const IconList = () => {

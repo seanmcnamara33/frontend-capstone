@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React, {useState} from 'react';
-import styled from 'styled-components';
 import {ThumbnailContainer, Thumbnail, SelectedContainer, SelectedThumbnail, SelectedThumbnailUnderline} from './ImageGalleryStyles.jsx';
 
 const ThumbnailCarousel = ({photosArray, onThumbnailImageClick, currentStylePhotoIndex}) => {
