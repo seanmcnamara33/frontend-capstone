@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React, {useState} from 'react';
-import styled from 'styled-components';
 import {DefaultGallery} from './ImageGalleryStyles.jsx';
 
 const DefaultView = ({image, onGalleryButtonClick, currentView, onImageClick}) => {

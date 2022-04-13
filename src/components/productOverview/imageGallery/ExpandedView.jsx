@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React, {useState, useEffect} from 'react';
-import styled from 'styled-components';
 import {EntireExpandedView, ExpandedContainer, ZoomedImage, ZoomedContainer, ExpandedImage, Icons, Icon, SelectedIcon} from './ImageGalleryStyles.jsx';
 
 const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {

@@ -28,6 +28,19 @@ export const StyleCircleSelected = styled.img`
   border-radius: 50%;
 `;
 
+export const SelectSizing = styled.div`
+  width: 80%;
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  text-align: start;
+`;
+
+export const SelectPlaceholder = styled.div`
+  color: black;
+`;
+
 // Select Size Styles
 export const SizeDiv = styled.div`
   -webkit-appearance: none;
@@ -36,10 +49,12 @@ export const SizeDiv = styled.div`
   align-items: flex-end;
   max-height: 100%;
   width: 60%;
-  padding:0.35em 1.2em;
+  background-color: white;
+  color: black;
+  padding:0.35em;
   border:0.1em solid black;
   margin:0 0.3em 0.3em 0;
-  border-radius: 3px;
+  border-radius: 10px;
   text-align: center;
   box-sizing: border-box;
   box-shadow: 0 0 2px black;
@@ -47,7 +62,7 @@ export const SizeDiv = styled.div`
   font-family:'Roboto',sans-serif;
   font-weight:300;
   &:hover {
-    box-shadow: 0 0 5px rgb(222, 99, 23);
+    box-shadow: 0 0 5px rgb(59, 167, 184);
   }
 `;
 
@@ -58,10 +73,10 @@ export const QuantityDiv = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   width: 35%;
-  padding:0.35em 1.2em;
+  padding:0.35em;
   border:0.1em solid black;
   margin:0 0.3em 0.3em 0;
-  border-radius: 3px;
+  border-radius: 10px;
   text-align: center;
   box-sizing: border-box;
   box-shadow: 0 0 2px black;
@@ -69,6 +84,6 @@ export const QuantityDiv = styled.div`
   font-family:'Roboto',sans-serif;
   font-weight:300;
   &:hover {
-    box-shadow: 0 0 5px rgb(222, 99, 23);
+    box-shadow: 0 0 5px rgb(59, 167, 184);
   }
 `;
