@@ -1,9 +1,10 @@
 .main {
   border: 2px solid #000;
   margin: 1em;
-  /* overflow: auto; */
+  overflow: auto;
   display: flex;
   height: 35em;
+  max-height: 35em;
 
 }
 
@@ -14,9 +15,9 @@
 }
 
 .review-list {
-  max-height: 40em;
-  /* overflow: auto; */
-  /* border: 2px solid #000; */
+  max-height: auto;
+  overflow: auto;
+  border: 2px solid #000;
   margin: 1em;
   height: max-content;
   flex-grow: 2;
