@@ -26,8 +26,6 @@ const ImageStyle = styled.img`
   height: 360px;
   max-width: 300px;
   min-width: 300px;
-  /* border-top-left-radius: 18px;
-  border-top-right-radius: 18px; */
   object-fit: cover;
 `;
 
@@ -38,7 +36,7 @@ const AddOutfitCard = ({ addOutfit }) => {
   return (
     <div>
       <CardStyle onClick={addOutfit}>
-        <ImageStyle src={plus}></ImageStyle>
+        <ImageStyle src={plus} alt="add outfit image"></ImageStyle>
         <p>Add current item to your outfits</p>
       </CardStyle>
     </div>

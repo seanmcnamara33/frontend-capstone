@@ -31,8 +31,6 @@ const ImageStyle = styled.div`
   height: 350px;
   max-width: 300px;
   min-width: 300px;
-  /* border-top-left-radius: 18px;
-  border-top-right-radius: 18px; */
   background-position: center;
   background-size: cover;
 `;
@@ -146,12 +144,12 @@ const RelatedProductCard = ({ prod, id }) => {
       {
         image ?
         <div>
-          <ImageStyle src={image}>
+          <ImageStyle src={image} alt="related card image">
             <IconStyle onClick={starClick}>&#11088;</IconStyle>
           </ImageStyle>
         </div> :
         <div>
-          <ImageStyle src={placeholder}>
+          <ImageStyle src={placeholder} alt="related card placeholder image">
             <IconStyle onClick={starClick}>&#11088;</IconStyle>
           </ImageStyle>
         </div>

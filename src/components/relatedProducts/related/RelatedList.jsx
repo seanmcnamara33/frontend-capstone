@@ -31,7 +31,6 @@ const RelatedListStyle = styled.ul`
 `;
 
 const ButtonLeft = styled.button`
-  /* background-image: linear-gradient(45deg, rgb(207, 106, 48) , blue); */
   border: none;
   height: 50px;
   width: 50px;
@@ -39,7 +38,6 @@ const ButtonLeft = styled.button`
 `;
 
 const ButtonRight = styled.button`
-  /* background-image: linear-gradient(45deg, blue, rgb(207, 106, 48)); */
   border: none;
   height: 50px;
   width: 50px;
@@ -53,14 +51,12 @@ const RelatedList = ({ currentItem, id }) => {
   const [relatedProds, setRelatedProds] = useState([]);
   const [begin, setBegin] = useState(0);
   const [end, setEnd] = useState(3);
-  // const [display, setDisplay] = useState([]);
 
   const getRelatedProductsID = (productId) => {
     fetch(`${process.env.API_URI}/products/${productId}/related`, { method: 'GET', headers: { Authorization: process.env.API_KEY }})
       .then(response => response.json())
       .then(results => {
-          setRelatedProds([...new Set(results)]);
-        // setDisplay([...new Set(results)]);
+        setRelatedProds([...new Set(results)]);
       })
       .catch((err) => console.log(`Error getting related products: ${err}`))
   }

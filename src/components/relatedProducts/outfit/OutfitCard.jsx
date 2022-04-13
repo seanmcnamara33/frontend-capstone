@@ -94,12 +94,12 @@ const OutfitCard = ({ outfit, deleteClick, currentItem }) => {
       {
         image ?
         <div>
-          <OutfitImageStyle src={image}>
+          <OutfitImageStyle src={image} alt="outfit card image">
             <IconStyle onClick={() => deleteClick(outfit.id)}>&#10060;</IconStyle>
           </OutfitImageStyle>
         </div> :
         <div>
-          <OutfitImageStyle src={placeholder}>
+          <OutfitImageStyle src={placeholder} alt="outfit card placeholder image">
             <IconStyle onClick={() => deleteClick(outfit.id)}>&#10060;</IconStyle>
           </OutfitImageStyle>
         </div>
