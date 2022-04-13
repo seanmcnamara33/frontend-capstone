@@ -5,6 +5,9 @@ import 'whatwg-fetch';
 import StarsContainer from '../../common/StarsContainer.jsx';
 
 
+const placeholder = 'https://images.unsplash.com/photo-1546213290-e1b492ab3eee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80';
+
+
 // -------------------STYLES------------------- //
 
 const CardStyle = styled.div`
@@ -22,6 +25,17 @@ const CardStyle = styled.div`
   font-family:'Roboto',sans-serif;
 `;
 
+const OutfitImageStyle = styled.div`
+  background-image: url(${props => props.src});
+  height: 350px;
+  max-width: 300px;
+  min-width: 300px;
+  /* border-top-left-radius: 18px;
+  border-top-right-radius: 18px; */
+  background-position: center;
+  background-size: cover;
+`;
+
 const ImageStyle = styled.img`
   height: 350px;
   max-width: 300px;
@@ -29,19 +43,11 @@ const ImageStyle = styled.img`
   object-fit: cover;
 `;
 
-const InnerDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  min-width: 300px;
-  justify-content: space-between;
-`;
-
 const IconStyle = styled.i`
-  /* position: absolute; */
-  align-self: end;
-  /* justify-content: end; */
+  display: flex;
+  justify-content: end;
   margin-right: 0.3em;
-  /* font-size: 30px; */
+  font-size: 30px;
 `;
 
 const CategoryStyle = styled.div`
@@ -67,8 +73,8 @@ const OutfitCard = ({ outfit, deleteClick, currentItem }) => {
   const [style, setStyle] = useState([]);
   const [image, setImage] = useState('');
 
-  const getStyle = () => {
-    fetch(`${process.env.API_URI}/products/${outfit.id}/styles`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
+  const getStyle = (ID) => {
+    fetch(`${process.env.API_URI}/products/${ID}/styles`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
       .then((response) => {
         response.json().then(result => {
           setStyle(result.results[0]);
@@ -78,20 +84,31 @@ const OutfitCard = ({ outfit, deleteClick, currentItem }) => {
   }
 
   useEffect(() => {
-    getStyle();
-  }, [])
+    if (outfit) {
+      getStyle(outfit.id);
+    }
+  }, [outfit])
 
   return (
     <CardStyle>
-      <ImageStyle src={image}></ImageStyle>
-      <InnerDiv>
-        <CategoryStyle className="outfit-category">{outfit.category.toUpperCase()}
-        </CategoryStyle>
-        <IconStyle onClick={() => deleteClick(outfit.id)}>&#10060;</IconStyle>
-      </InnerDiv>
+      {
+        image ?
+        <div>
+          <OutfitImageStyle src={image}>
+            <IconStyle onClick={() => deleteClick(outfit.id)}>&#10060;</IconStyle>
+          </OutfitImageStyle>
+        </div> :
+        <div>
+          <OutfitImageStyle src={placeholder}>
+            <IconStyle onClick={() => deleteClick(outfit.id)}>&#10060;</IconStyle>
+          </OutfitImageStyle>
+        </div>
+      }
+      <CategoryStyle className="outfit-category">{outfit.category.toUpperCase()}
+      </CategoryStyle>
       <NameStyle className="outfit-name">{outfit.name}</NameStyle>
       { style.sale_price ? <div className="price">was ${style.original_price} now ${style.sale_price}</div> : <div className="price">${style.original_price}</div>}
-      <StarsContainer currentItem={currentItem} starsAndReviews={false}/>
+      <StarsContainer currentItem={outfit} starsAndReviews={false} singleReview={false}/>
     </CardStyle>
   )
 }

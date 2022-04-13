@@ -12,6 +12,7 @@ const HeaderStyle = styled.h2`
   justify-content: center;
   font-family: 'Roboto', sans-serif;
   margin: none;
+  padding-top: 10px;
 `;
 
 const WidgetStyle = styled.div`
@@ -56,7 +57,7 @@ const OutfitList = ({ currentItem }) => {
   const [outfits, setOutfits] = useState([]);
   const [begin, setBegin] = useState(0);
   const [end, setEnd] = useState(2);
-  const [display, setDisplay] = useState([]);
+  // const [display, setDisplay] = useState([]);
 
   const addOutfit = () => {
     if (!outfits.includes(currentItem)) {
@@ -64,10 +65,10 @@ const OutfitList = ({ currentItem }) => {
         let temp = [...outfits, currentItem];
         return temp;
       })
-      setDisplay(display => {
-        let temp = [...display, currentItem];
-        return temp;
-      })
+      // setDisplay(display => {
+      //   let temp = [...display, currentItem];
+      //   return temp;
+      // })
     }
   }
 
@@ -94,7 +95,7 @@ const OutfitList = ({ currentItem }) => {
   const deleteClick = (outfitId) => {
     let newOutfits = outfits.filter(outfit => outfit.id !== outfitId)
     setOutfits(newOutfits)
-    setDisplay(newOutfits)
+    // setDisplay(newOutfits)
   }
 
   return (
@@ -104,7 +105,7 @@ const OutfitList = ({ currentItem }) => {
       <OutfitListStyle>
       <AddOutfitCard addOutfit={addOutfit}/>
       {begin > 0 && <ButtonLeft onClick={leftClick}>&laquo;</ButtonLeft>}
-        {outfits.length > 0 && display.slice(begin, end).map((outfit, index) => {
+        {outfits.length > 0 && outfits.slice(begin, end).map((outfit, index) => {
           return (
             <li key={index}>
               <OutfitCard currentItem={currentItem} outfit={outfit} deleteClick={deleteClick}/>
