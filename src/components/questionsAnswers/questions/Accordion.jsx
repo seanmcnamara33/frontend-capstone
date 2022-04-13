@@ -33,8 +33,8 @@ const Accordion = ({questions, height}) => {
   return (
     <>
       <List height={height ? '50vh' : '90%'}>
-        {filterableQuestions.length &&
-          filterableQuestions.map(question=>(
+        {questions.length &&
+          questions.map(question=>(
             <AccordionItem
               key={question.question_id}
               question={question}

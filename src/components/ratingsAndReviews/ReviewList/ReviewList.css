@@ -4,6 +4,7 @@
   overflow: auto;
   border: 2px solid #000;
   margin: 1em;
+  margin-left: 40%;
 }
 
 .main {
@@ -11,7 +12,14 @@
   margin: 1em;
   overflow: auto;
 }
+.review-list-btn{
+  display: flex;
+}
 
 .title-sortbar {
   margin: 1em;
 }
+
+/* .ratings-breakdown {
+
+} */

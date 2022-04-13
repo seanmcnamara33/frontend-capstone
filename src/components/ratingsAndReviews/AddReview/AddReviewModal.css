@@ -27,3 +27,11 @@
   min-width: 22.4em;
   min-height: 6em;
 }
+
+.modal-images {
+  height: 5em;
+  width: auto;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+}
