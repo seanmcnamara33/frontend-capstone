@@ -146,12 +146,12 @@ const RelatedProductCard = ({ prod, id }) => {
       {
         image ?
         <div>
-          <ImageStyle src={image}>
+          <ImageStyle src={image} alt="related card image">
             <IconStyle onClick={starClick}>&#11088;</IconStyle>
           </ImageStyle>
         </div> :
         <div>
-          <ImageStyle src={placeholder}>
+          <ImageStyle src={placeholder} alt="related card placeholder image">
             <IconStyle onClick={starClick}>&#11088;</IconStyle>
           </ImageStyle>
         </div>

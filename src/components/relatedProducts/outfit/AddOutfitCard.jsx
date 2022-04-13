@@ -38,7 +38,7 @@ const AddOutfitCard = ({ addOutfit }) => {
   return (
     <div>
       <CardStyle onClick={addOutfit}>
-        <ImageStyle src={plus}></ImageStyle>
+        <ImageStyle src={plus} alt="add outfit image"></ImageStyle>
         <p>Add current item to your outfits</p>
       </CardStyle>
     </div>
