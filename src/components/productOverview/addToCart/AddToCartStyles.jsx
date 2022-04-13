@@ -3,6 +3,9 @@ import styled from 'styled-components';
 // Add To Cart Styles
 export const AddToCartButton = styled.button`
   all: unset;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 100%;
   width: 100%;
   background-color: white;
