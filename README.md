@@ -1,4 +1,4 @@
-# Codename: Kids Next Door - Frontend Capstone
+# Codename: Kids Next Door - Atelier Shopping Experience
 
 ### Project Description
 
