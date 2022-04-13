@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import 'whatwg-fetch';
 import { getStars, calculateTotalReviewNumber, calculateAverage } from './helpers.js';
-import styled from 'styled-components';
 import {AllStars, StarsAndReviews, Star, ReviewLink, MergeStar, FirstStarPortion, SecondStarPortion} from './StarsContainerStyles.jsx';
 
 const StarsContainer = ({ currentItem, onReviewLinkClick, starsAndReviews, singleReview, singleRating }) => {

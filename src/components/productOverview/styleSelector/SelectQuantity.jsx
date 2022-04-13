@@ -1,14 +1,13 @@
 /* eslint-disable */
 import React from 'react';
 import Select from 'react-select';
-import styled from 'styled-components';
 import {QuantityDiv, SelectSizing} from './StyleSelectorStyles.jsx';
 import {IoIosArrowDown} from 'react-icons/io';
 
 const customStyles = {
   option: () => ({}),
   control: () => ({
-    textAlign: 'center',
+    textAlign: 'left',
   }),
 }
 

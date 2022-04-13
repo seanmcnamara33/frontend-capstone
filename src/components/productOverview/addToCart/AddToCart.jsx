@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React from 'react';
-import styled from 'styled-components';
 import {AddToCartButton} from './AddToCartStyles.jsx';
 
 const AddToCart = ({currentStyle, currentSize, onAddToCartClick, onAddToCartClickNoSize}) => {
