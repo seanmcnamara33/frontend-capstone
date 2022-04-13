@@ -20,6 +20,7 @@
   "homepage": "https://github.com/fec-kidsnextdoor/frontend-capstone#readme",
   "dependencies": {
     "axios": "^0.26.1",
+    "cloudinary-core": "^2.12.3",
     "cloudinary-react": "^1.7.2",
     "cloudinary-core": "^2.12.3",
     "dotenv": "^16.0.0",

@@ -11,7 +11,7 @@ const QuestionsAnswers = () => {
   const [filtered, setFiltered] = useState([]);
   const [questionCount, setQuestionCount] = useState(100);
   const {productId} = useContext(ProductContext);
-
+  
   useEffect(()=>{
     const loadQuestions = async product_id =>{
       try {
@@ -44,6 +44,7 @@ const QuestionsAnswers = () => {
     }
   }
 
+  // console.log(filtered, questions)
   return (
     <Main id="questions-answers">
       <Title>Questions & Answers</Title>
