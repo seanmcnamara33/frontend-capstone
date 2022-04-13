@@ -11,6 +11,7 @@ const ReviewHelpfulness = (props) => {
 
 
   const handleYesClick = (id) => {
+    event.preventDefault();
     console.log(id)
     fetch(`${process.env.API_URI}/reviews/${id}/helpful`, {
       method: 'PUT',
@@ -43,11 +44,14 @@ const ReviewHelpfulness = (props) => {
 
 
 
-  return(
-    <>
-    By {props.reviewer_name}, {formatDate(props.date)} | Helpful? <a href="#" onClick={()=> handleYesClick(props.review_id)}>Yes</a>
-    ({helpfulness}) | <a href="#" onClick={handleReportClick}>{props.reported ? 'NO' : 'report'}</a>
-    </>
+  return (
+    <div>
+      By user: {props.name}
+      <div>
+        {formatDate(props.date)} | Helpful? <a href="#" onClick={() => handleYesClick(props.review_id)}>Yes</a>
+        ({helpfulness}) | <a href="#" onClick={handleReportClick}>{props.reported ? 'NO' : 'report'}</a>
+      </div>
+    </div>
   )
 
 }
