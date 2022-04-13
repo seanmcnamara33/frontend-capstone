@@ -5,6 +5,7 @@ import { ProductContext } from '../../context/Product';
 import AddPhotos from '../../common/AddPhotos';
 import useForm from '../../common/useForm';
 import { validateForm } from '../Validate';
+import { MainBtn, FieldError } from '../../AppStyles'
 
 import {FormInner, Thumbnail, PhotoList} from './Styles';
 
@@ -53,37 +54,41 @@ const AddAnswer = ({handleAnswerModal}) =>{
           name="body"
           value={values.body}
           onChange={handleChange}
+          placeholder="Add you answer here"
         />
-        {errors.body && <p>{errors.body}</p>}
+        {errors.body && <FieldError>{errors.body}</FieldError>}
         <label htmlFor="">Nickname</label>
         <input
           type="text"
           name="name"
           value={values.name}
           onChange={handleChange}
+          placeholder="Example: jack543!"
         />
-        {errors.name && <p>{errors.name}</p>}
+        {errors.name && <FieldError>{errors.name}</FieldError>}
+        <p>For privacy reasons, do not use your full name or email address</p>
         <label htmlFor="">Email</label>
         <input
           type="text"
           name="email"
           values={values.email}
           onChange={handleChange}
+          placeholder="Example: jack@email.com"
         />
-        {errors.email && <p>{errors.email}</p>}
-
+        {errors.email && <FieldError>{errors.email}</FieldError>}
+        <p>For authentication reasons, you will not be emailed</p>
         <label htmlFor="">Upload Photos</label>
         {toggle ? <AddPhotos handlePhotos={handlePhotos}/> :
-          <button type="button" onClick={()=>setToggle(!toggle)}>Add Photos</button>
+          <MainBtn type="button" onClick={()=>setToggle(!toggle)}>Add Photos</MainBtn>
         }
         <PhotoList>
           {
-            values.photos.length>0 && values.photos.map(photo=>(
+            values.photos.length > 0 && values.photos.map(photo=>(
               <Thumbnail key={photo} photo={photo} />
             ))
           }
         </PhotoList>
-        <button>Add</button>
+        <MainBtn>Add</MainBtn>
       </FormInner>
     </form>
   )
