@@ -1,15 +1,15 @@
 /* eslint-disable */
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { ProductContext } from '../../context/Product';
 import 'whatwg-fetch';
 
 import AnswersList from '../answers/AnswersList';
 
-import {IoMdArrowDropdown, IoMdArrowDropup} from 'react-icons/io';
-import {Question, FlexHeader, Item} from './Styles';
-import {StyledLink} from '../Styles';
+import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
+import { Question, FlexHeader, Item, TitleWrap } from './Styles';
+import { StyledLink } from '../Styles';
 
-const AccordionItem = ({question, handleAnswerModal, filterReported}) => {
+const AccordionItem = ({ question, handleAnswerModal, filterReported }) => {
   const {checkSession, productId} = useContext(ProductContext);
   const [isActive, setIsActive] = useState(false);
   const [disableYes, setDisableYes] = useState(true);
@@ -19,7 +19,6 @@ const AccordionItem = ({question, handleAnswerModal, filterReported}) => {
   Object.entries(answers).sort((a,b)=>b[1].helpfulness-a[1].helpfulness);
 
   const upVoteQuestion = async () =>{
-    // PUT /qa/questions/:question_id/helpful
     try {
       await fetch(`${process.env.API_URI}/qa/questions/${question.question_id}/helpful`, {
         method: 'PUT',
@@ -33,7 +32,6 @@ const AccordionItem = ({question, handleAnswerModal, filterReported}) => {
   }
 
   const reportQuestion = async() => {
-    // PUT /qa/questions/:question_id/report
     try {
       await fetch(`${process.env.API_URI}/qa/questions/${question.question_id}/report`, {
         method: 'PUT',
@@ -51,7 +49,7 @@ const AccordionItem = ({question, handleAnswerModal, filterReported}) => {
         <Question>
           <FlexHeader onClick={()=>setIsActive(!isActive)}>
             {isActive ?  <IoMdArrowDropup/> : <IoMdArrowDropdown/>}
-            <h3>Q: {question.question_body}</h3>
+            <TitleWrap>Q: {question.question_body}</TitleWrap>
           </FlexHeader>
           <div>
             Helpful? {disableYes && <StyledLink onClick={upVoteQuestion}>Yes</StyledLink>} {' '}

@@ -1,13 +1,12 @@
 /* eslint-disable */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import 'whatwg-fetch';
 
 import { formatDate } from '../../common/helpers';
 
 import { Thumbnail, PhotoList } from './Styles.jsx';
 
-const Answer = ({id, answer, filterReported}) => {
-  // /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/
+const Answer = ({ id, answer, filterReported }) => {
   const [disableYes, setDisableYes] = useState(true);
   const [helpful, setHelpful] = useState(answer.helpfulness);
 
@@ -15,7 +14,6 @@ const Answer = ({id, answer, filterReported}) => {
     /(http)?s?:?/.test(url)
 
   const reportAnswer = async() => {
-    // PUT /qa/answers/:answer_id/report
     try {
       await fetch(`${process.env.API_URI}/qa/answers/${id}/report`, {
         method: 'PUT',
@@ -31,7 +29,6 @@ const Answer = ({id, answer, filterReported}) => {
   }
 
   const upVoteAnswer = async () => {
-    // PUT /qa/answers/:answer_id/helpful
     try {
       await fetch(`${process.env.API_URI}/qa/answers/${id}/helpful`,{
         method: 'PUT',

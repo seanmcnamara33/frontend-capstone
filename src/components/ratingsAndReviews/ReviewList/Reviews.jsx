@@ -13,7 +13,7 @@ import {ProductContext} from '../../context/Product.jsx';
 const Reviews = (props) => {
 
   const {currentItem} = useContext(ProductContext);
-
+  console.log(props.data)
   return (
     props.data.map((review) => {
       return (
