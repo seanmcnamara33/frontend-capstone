@@ -1,13 +1,13 @@
 /* eslint-disable */
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { ProductContext } from '../../context/Product';
 
 import AccordionItem from './AccordionItem';
 import AnswerModal from '../answers/AnswerModal';
 
-import {List} from './Styles';
+import { List } from './Styles';
 
-const Accordion = ({questions, height}) => {
+const Accordion = ({ questions, height }) => {
   const {currentItem, productId, handleQuestionId} = useContext(ProductContext);
   const [answerModal, setAnswerModal] = useState(false);
   const [filterableQuestions, setFilterableQuestions] = useState([]);
@@ -20,7 +20,7 @@ const Accordion = ({questions, height}) => {
   }
 
   const filterReported = id => {
-    let filtered = filterableQuestions.filter(q=>q.question_id!==id);
+    let filtered = questions.filter(q=>q.question_id!==id);
     setFilterableQuestions(filtered);
   }
 

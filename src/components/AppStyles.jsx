@@ -1,6 +1,6 @@
 /* eslint-disable */
 import styled from 'styled-components';
-// blue rgb(59, 167, 184)
+
 export const NavBar = styled.div`
   width: 100%;
   height: 3em;
@@ -64,3 +64,26 @@ export const MainBtn = styled.button(props=>({
     color: 'rgb(222, 99, 23)'
   }
 }))
+
+export const CloseBtn = styled.button(props=>({
+  border: '1px solid #000',
+  'border-radius': '5px',
+  background: '#fff',
+  color: '#000',
+  padding: '10px',
+  margin: '10px',
+  '&:hover' : {
+    background: '#000',
+    color: '#fff',
+    'box-shadow': '0 0 5px #000'
+  },
+  '&:active' : {
+    'box-shadow': '0 0 5px rgb(222, 99, 23)',
+    color: 'rgb(222, 99, 23)'
+  }
+}))
+
+export const FieldError = styled.p`
+  color: red;
+  font-weight: bold;
+`

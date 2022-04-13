@@ -35,3 +35,8 @@ export const Item = styled.div`
   border: 1px solid #000;
   border-radius: 10px;
 `;
+
+export const TitleWrap = styled.h3`
+  inline-size: 250px;
+  overflow: hidden;
+`

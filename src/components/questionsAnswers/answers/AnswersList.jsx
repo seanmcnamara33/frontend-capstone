@@ -1,11 +1,11 @@
 /* eslint-disable */
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnswerList } from './Styles';
-import {AiOutlineClose} from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
 import Answer from './Answer.jsx';
-import {MainBtn} from '../../AppStyles';
+import { MainBtn } from '../../AppStyles';
 
-const AnswersList = ({id, answers}) => {
+const AnswersList = ({ id, answers }) => {
   const [display, setDisplay] = useState(false);
   const [filterAnswers, setFilterAnswers] = useState([]);
 
