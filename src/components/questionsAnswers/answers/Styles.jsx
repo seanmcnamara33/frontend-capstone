@@ -17,7 +17,7 @@ export const Thumbnail = styled.img.attrs(props=>({
   height: 5em;
   width: 5em;
   border: 2px solid #ccc;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 5px;
 `;
 
