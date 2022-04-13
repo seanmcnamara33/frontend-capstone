@@ -13,7 +13,7 @@ const Comparison = ({ show, close, name, currentItem, id, relatedFeatures, mainF
       <Content>
         <Header>
           <button onClick={close} style={{'margin-top': '10px'}}>Close</button>
-          <h3>Comparing</h3>
+          <h2>Comparing</h2>
         </Header>
         <FeaturesList features={mainFeatures} relatedFeatures={relatedFeatures} main={currentItem.name} related={name}/>
       </Content>

@@ -43,17 +43,17 @@ const FeaturesList = ({ features, relatedFeatures, main, related }) => {
   return (
     <div>
       <table>
-        <tr>
-          <th>{main}</th>
-          <th>Features</th>
-          <th>{related}</th>
+        <tr style={{'font-size': '20px', 'text-align': 'center'}}>
+          <th style={{'border-right': '1px solid black', 'border-bottom': '1px solid black'}}>{main}</th>
+          <th style={{'border-right': '1px solid black', 'border-bottom': '1px solid black'}}>Features</th>
+          <th style={{'border-right': '1px solid black', 'border-bottom': '1px solid black'}}>{related}</th>
         </tr>
         {uniq.map(feature => {
           return (
             <tr>
-              <td>{total[feature][0]}</td>
-              <td style={{"font-weight": "bold"}}>{feature}</td>
-              <td>{total[feature][1]}</td>
+              <td style={{'border-right': '1px solid black', 'border-bottom': '1px solid black', 'text-align': 'right'}}>{total[feature][0]}</td>
+              <td style={{'font-weight': 'bold', 'border-right': '1px solid black', 'border-bottom': '1px solid black','text-align': 'center'}}>{feature}</td>
+              <td style={{'border-right': '1px solid black', 'border-bottom': '1px solid black'}}>{total[feature][1]}</td>
             </tr>
           )
         })}
