@@ -87,10 +87,7 @@ const ReviewList = (props) => {
     })
       .then((response) => {
         response.json().then((results) => {
-
-          // setCurrentReviews([...results.results]);
           setCurrentReviews(sortReviews(sortFactor, results.results));
-          console.log(currentReviews, sortFactor)
         });
       })
       .catch((err) => {

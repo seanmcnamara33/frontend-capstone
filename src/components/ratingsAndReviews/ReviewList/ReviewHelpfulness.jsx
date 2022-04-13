@@ -20,8 +20,6 @@ const ReviewHelpfulness = (props) => {
         Authorization: process.env.API_KEY
       }
     }).then((response) => {
-      console.log('success helpfulness', response)
-
       setHelpfulness(helpfulness + 1)
     }).catch((err) => {
       console.log(err)

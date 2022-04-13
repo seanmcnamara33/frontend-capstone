@@ -16,7 +16,6 @@ const Reviews = (props) => {
 
   return (
     props.data.map((review) => {
-      console.log(review)
       return (
         <div className='review-tile' key={review.review_id}>
           <StarsContainer singleRating={review.rating} starsAndReviews={false} singleReview={true} />
