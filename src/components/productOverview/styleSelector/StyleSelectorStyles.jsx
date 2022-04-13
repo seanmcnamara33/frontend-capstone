@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-// Styles View Styles
-
-// Style Selector Styles
-
 // Styles Row Styles
 export const StyleCircleRow = styled.div`
   display: flex;
@@ -36,9 +32,10 @@ export const StyleCircleSelected = styled.img`
 export const SizeDiv = styled.div`
   -webkit-appearance: none;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-end;
-  width: 50%;
+  max-height: 100%;
+  width: 60%;
   padding:0.35em 1.2em;
   border:0.1em solid black;
   margin:0 0.3em 0.3em 0;
@@ -58,9 +55,9 @@ export const SizeDiv = styled.div`
 export const QuantityDiv = styled.div`
   align-self: end;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-end;
-  width: 25%;
+  width: 35%;
   padding:0.35em 1.2em;
   border:0.1em solid black;
   margin:0 0.3em 0.3em 0;

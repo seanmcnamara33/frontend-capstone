@@ -30,7 +30,7 @@ const SelectQuantity = ({ currentSize, currentStyle, onQuantityChange }) => {
   }
   return(
     <QuantityDiv>
-      <Select  components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} styles={customStyles} className='select-quantity' isDisabled placeholder={<div style={{color: 'black'}}>-</div>} ></Select>
+      <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} styles={customStyles} className='select-quantity' isDisabled placeholder={<div style={{color: 'black'}}>-</div>}></Select>
       <div><IoIosArrowDown/></div>
     </QuantityDiv>
   );

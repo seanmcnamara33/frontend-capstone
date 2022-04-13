@@ -28,6 +28,7 @@ const ImageGallery = ({currentStyle, currentView, onImageClick, currentImage}) =
     }
     let onGalleryButtonClick = (event) => {
       var direction = event.target.classList[0];
+      console.log(direction);
       if (direction === 'image-left' && currentStylePhotoIndex !== 0) {
         setStyleIndex(currentStylePhotoIndex - 1);
       }
@@ -46,7 +47,9 @@ const ImageGallery = ({currentStyle, currentView, onImageClick, currentImage}) =
   return (
     <ImageGalleryComponent className='image-gallery-component'>
       <ThumbnailCarousel photosArray={photosArray} onThumbnailImageClick={onThumbnailImageClick} currentStylePhotoIndex={currentStylePhotoIndex}/>
-      <DefaultView photosArray={photosArray} currentStylePhotoIndex={currentStylePhotoIndex} currentView={currentView} image={photosArray[currentStylePhotoIndex]} onGalleryButtonClick={onGalleryButtonClick} onImageClick={onImageClick}/>
+      <button className='image-left' onClick={(event) => onGalleryButtonClick(event)}>{String.fromCharCode(0x2B05)}</button>
+      <DefaultView photosArray={photosArray} currentStylePhotoIndex={currentStylePhotoIndex} currentView={currentView} image={photosArray[currentStylePhotoIndex]} onImageClick={onImageClick}/>
+      <button className='image-right' onClick={(event) => onGalleryButtonClick(event)}>{String.fromCharCode(0x2B95)}</button>
     </ImageGalleryComponent>
   );
   }
