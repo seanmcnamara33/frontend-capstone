@@ -38,7 +38,6 @@ const RatingsDisplay = (props) => {
     return totalStars/totalReviews
   }
 
-
   return (
     <>
     <div>

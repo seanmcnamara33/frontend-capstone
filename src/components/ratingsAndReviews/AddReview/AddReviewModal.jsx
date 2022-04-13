@@ -124,6 +124,7 @@ return (
           <label>Character Count: {reviewForm.body.length}</label>
         </div>
 
+
         {reviewForm.photos.length > 4 ? null : <input type='file' accept='image/jpeg, image/png' onChange={(event) => {
           uploadImage(event.target.files[0]);
         }}></input>}
@@ -136,9 +137,6 @@ return (
       </label>
     </div>
   </>
-
-
-
 )
 };
 

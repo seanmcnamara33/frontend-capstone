@@ -2,10 +2,10 @@
 import styled from 'styled-components';
 
 export const List = styled.div(props => ({
-  border: '2px solid #000',
   height: props.height,
   overflow: 'auto',
-  'max-height': '50vh'
+  'max-height': '50vh',
+  'margin-top': '5px'
 }))
 
 export const Question = styled.div`
@@ -28,3 +28,10 @@ export const FlexHeader = styled.div`
   justify-content: center;
   align-items: center;
 `
+
+export const Item = styled.div`
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 10px;
+`;

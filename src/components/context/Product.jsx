@@ -6,7 +6,6 @@ import 'whatwg-fetch';
 export const ProductContext = createContext({
   product: {},
   productId: '',
-  // setCurrentItem: ()=>{},
   getFirstItem: ()=>{}
 });
 

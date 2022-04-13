@@ -12,12 +12,6 @@ const Accordion = ({questions, height}) => {
   const [answerModal, setAnswerModal] = useState(false);
   const [filterableQuestions, setFilterableQuestions] = useState([]);
 
-  useEffect(()=>{
-    if (filterableQuestions.length === 0 && questions) {
-      setFilterableQuestions(questions);
-    }
-  },[questions, filterableQuestions])
-
   const handleAnswerModal = (id = 0) => {
     setAnswerModal(!answerModal);
     if (id !== 0) {
@@ -33,7 +27,15 @@ const Accordion = ({questions, height}) => {
   return (
     <>
       <List height={height ? '50vh' : '90%'}>
-        {questions.length &&
+        {filterableQuestions.length > 0 ?
+          filterableQuestions.map(question=>(
+            <AccordionItem
+              key={question.question_id}
+              question={question}
+              handleAnswerModal={handleAnswerModal}
+              filterReported={filterReported}
+            />
+          )) :
           questions.map(question=>(
             <AccordionItem
               key={question.question_id}
@@ -41,7 +43,8 @@ const Accordion = ({questions, height}) => {
               handleAnswerModal={handleAnswerModal}
               filterReported={filterReported}
             />
-        ))}
+          ))
+        }
       </List>
       <AnswerModal
         answerModal={answerModal}
