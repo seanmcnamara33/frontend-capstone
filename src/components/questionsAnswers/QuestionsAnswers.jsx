@@ -12,9 +12,6 @@ const QuestionsAnswers = () => {
   const [questionCount, setQuestionCount] = useState(100);
   const {productId} = useContext(ProductContext);
 
-
-
-
   useEffect(()=>{
     const loadQuestions = async product_id =>{
       try {
@@ -43,20 +40,27 @@ const QuestionsAnswers = () => {
     if (input.length > 2 ) {
       setFiltered(questions.filter(item=>item.question_body.includes(input)))
     } else {
-      setFiltered(questions)
+      setFiltered([]);
     }
   }
 
-  // console.log(filtered, questions)
   return (
     <Main id="questions-answers">
       <Title>Questions & Answers</Title>
       <Search filterQuestions={filterQuestions} />
-      <QuestionsList
-        productId={productId}
-        questions={questions}
-        handleQuestionCount={handleQuestionCount}
-      />
+      {
+        filtered.length > 0 ?
+        <QuestionsList
+          productId={productId}
+          questions={filtered}
+          handleQuestionCount={handleQuestionCount}
+        /> :
+        <QuestionsList
+          productId={productId}
+          questions={questions}
+          handleQuestionCount={handleQuestionCount}
+        />
+      }
     </Main>
   )
 }
