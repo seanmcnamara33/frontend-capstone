@@ -112,7 +112,7 @@ const Overview = ({currentItem}) => {
   if (currentItem !== undefined && currentView === 'default' && Object.keys(currentItem).length) {
     return (
       <>
-        <ProductOverview>
+        <ProductOverview id="overview">
           <ImageGallery currentImage={currentImage} currentStyle={currentStyle} currentView={currentView} onImageClick={onImageClick}/>
           <ProductInformation>
             <StarsContainer currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} starsAndReviews={true} singleReview={false}/>
@@ -146,7 +146,7 @@ const Overview = ({currentItem}) => {
     );
   } else if (currentView === 'expanded' && Object.keys(currentItem).length)
   return (
-    <ProductOverview>
+    <ProductOverview id="overview">
       <ExpandedView currentStyle={currentStyle} currentImage={currentImage} onRestoreDefaultClick={onRestoreDefaultClick}/>
     </ProductOverview>
   )

@@ -5,23 +5,35 @@ import React, {useState, useEffect} from 'react';
 // module clicked
 
 const CountClick = ({children}) => {
-  const [clicks, setClicks] = useState([]);
-  // {count: 0, time: '', module}
-  const handleClick = e => {
-    console.log(e.target, children);
-    if(e.target) {
-      setClicks([
-        ...clicks,
-        {element: e.target, time: Date.now(), module: '' }
-      ]);
+  const [clicks, setClicks] = useState({});
+
+  const sendClick = async (obj) => {
+    try {
+      await fetch(`${process.env.API_URI}/interactions`, {
+        method: 'POST',
+        body: obj,
+        headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY }
+      })
+    } catch (err) {
+      console.log('CLICK ERR', err);
     }
+  }
+
+  const handleClick = e => {
+    e.path.forEach(( ele, i, arr )=>{
+      if (ele.id === 'root' && arr[i-1]?.id) {
+        let body = JSON.stringify({
+          element: e.target.localName, time: new Date().toISOString(), widget: arr[i-1].id
+        })
+        sendClick(body);
+      }
+    })
   }
 
   useEffect(()=>{
     window.addEventListener('click', handleClick);
     return ()=> window.removeEventListener('click', handleClick)
-  },[clicks])
-
+  },[]);
 
   return (
     <>

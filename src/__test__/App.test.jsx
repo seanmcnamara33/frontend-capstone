@@ -5,7 +5,7 @@ import { screen, render } from '@testing-library/react';
 import App from '../components/App.jsx';
 import {ProductProvider} from '../components/context/Product';
 
-test('App component to container', () => {
+test('App Navbar should render to container', () => {
   render(
     <ProductProvider>
       <App />

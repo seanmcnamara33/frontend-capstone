@@ -99,7 +99,7 @@ const OutfitList = ({ currentItem }) => {
   }
 
   return (
-    <div>
+    <div id="outfit-list">
     <HeaderStyle>Your Outfits</HeaderStyle>
     <WidgetStyle>
       <OutfitListStyle>

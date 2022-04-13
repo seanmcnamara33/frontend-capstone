@@ -11,7 +11,8 @@ export const PhotoList = styled.div`
 `
 
 export const Thumbnail = styled.img.attrs(props=>({
-  src: `${props.photo}`
+  src: `${props.photo}`,
+  alt: 'Current thumbnail of similar product'
 }))`
   height: 5em;
   width: 5em;
