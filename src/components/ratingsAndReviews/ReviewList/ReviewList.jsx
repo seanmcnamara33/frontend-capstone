@@ -127,12 +127,14 @@ const ReviewList = (props) => {
       <div className='title-sortbar'>
         <div className='review-list'>
           <label>Ratings & Reviews</label>
-          <SortBar totalReviews={totalReviews} getSortData={getSortData} />
+          <div>
+            <SortBar totalReviews={totalReviews} getSortData={getSortData} />
+          </div>
           <div className='reviews'>
             <Reviews data={currentReviews} />
           </div>
           <div className='review-list-btn'>
-            {showMoreReviewsBtn ? <button type='button' onClick={handleClick}> More Reviews</button> : null}
+            {showMoreReviewsBtn ? <button type='button' className='showmore-btn' onClick={handleClick}> More Reviews</button> : null}
             <AddReview id={props.id} metaData={metaData} />
           </div>
         </div>

@@ -5,10 +5,10 @@
   width: 100vw;
   height: 100vh;
   overflow: auto;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   /* justify-content: center;
   align-items: center;
   margin: auto; */
@@ -17,7 +17,7 @@
 .modal-header {
   background: rgb(222, 99, 23);
   color: white;
-  width:fit-content;
+  width: fit-content;
   border-radius: 20px;
   border: 2px solid #000;
   text-align: center;
@@ -38,7 +38,7 @@
 }
 
 .reccomend-style {
- margin: 10px 0 10px 0;
+  margin: 10px 0 10px 0;
 }
 
 .summary-style {
@@ -56,4 +56,18 @@
   border: 2px solid #ccc;
   border-radius: 5px;
   margin: 5px;
+}
+
+.add-btn {
+  border: 1px solid #000;
+  border-radius: 5px;
+  background: rgb(59, 167, 184);
+  color: #fff;
+  padding: 5px;
+  margin: 5px;
+}
+
+.add-btn:hover {
+  background: white;
+  color: rgb(59, 167, 184);
 }
