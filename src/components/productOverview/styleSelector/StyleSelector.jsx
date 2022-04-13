@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+import React from 'react';
 const StyleSelector = ({currentItem, currentStyle}) => {
   if (Object.keys(currentStyle).length) {
     return(

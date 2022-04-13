@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import 'whatwg-fetch';
 import { getStars, calculateTotalReviewNumber, calculateAverage } from './helpers.js';
 import styled from 'styled-components';
-import {StarsAndReviews, Star, ReviewLink, MergeStar, FirstStarPortion, SecondStarPortion} from './StarsContainerStyles.jsx';
+import {AllStars, StarsAndReviews, Star, ReviewLink, MergeStar, FirstStarPortion, SecondStarPortion} from './StarsContainerStyles.jsx';
 
 const StarsContainer = ({ currentItem, onReviewLinkClick, starsAndReviews, singleReview, singleRating }) => {
   const [rating, setRating] = useState(0);
@@ -22,41 +22,13 @@ const StarsContainer = ({ currentItem, onReviewLinkClick, starsAndReviews, singl
     if (reviewNum > 0 && starsAndReviews === false) {
       return (
         <StarsAndReviews>
-          {stars.map((star, i) => {
-            if (rating - i >= 1) {
-              return <Star key={`star${i}`}>{String.fromCharCode(0x2605)}</Star>
-            } else if (rating - i < 1 && rating - i > 0) {
-              var amt = (i - rating) * -100;
-              return (
-                <MergeStar>
-                  <FirstStarPortion key={`first-star-portion${i}`} style={{background: `linear-gradient(to right, rgb(222, 99, 23) ${amt}%, transparent ${amt}%)`, backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>{String.fromCharCode(0x2605)}</FirstStarPortion>
-                  <SecondStarPortion key={`second-star-portion${i}`}>{String.fromCharCode(0x2606)}</SecondStarPortion>
-                </MergeStar>
-              )
-            } else {
-              return <Star key={`star${i}`}>{String.fromCharCode(0x2606)}</Star>
-            }
-          })}
+          <AllStars rating={rating}></AllStars>
         </StarsAndReviews>
       );
     } else if (reviewNum > 0 && starsAndReviews === true) {
       return (
         <StarsAndReviews>
-          {stars.map((star, i) => {
-            if (rating - i >= 1) {
-              return <Star key={`star${i}`}>{String.fromCharCode(0x2605)}</Star>
-            } else if (rating - i < 1 && rating - i > 0) {
-              var amt = (i - rating) * -100;
-              return (
-                <MergeStar key={`merge-star`}>
-                  <FirstStarPortion key={`first-star-portion${i}`} style={{background: `linear-gradient(to right, rgb(222, 99, 23) ${amt}%, transparent ${amt}%)`, backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>{String.fromCharCode(0x2605)}</FirstStarPortion>
-                  <SecondStarPortion key={`second-star-portion${i}`}>{String.fromCharCode(0x2606)}</SecondStarPortion>
-                </MergeStar>
-              )
-            } else {
-              return <Star key={`star${i}`}>{String.fromCharCode(0x2606)}</Star>
-            }
-          })}
+          <AllStars rating={rating}></AllStars>
           <ReviewLink onClick={() =>  onReviewLinkClick() }>Read All {reviewNum} Reviews</ReviewLink>
         </StarsAndReviews>
       );
@@ -69,21 +41,7 @@ const StarsContainer = ({ currentItem, onReviewLinkClick, starsAndReviews, singl
     }, [singleReview]);
     return (
       <StarsAndReviews>
-      {stars.map((star, i) => {
-        if (rating - i >= 1) {
-          return <Star key={`star${i}`}>{String.fromCharCode(0x2605)}</Star>
-        } else if (rating - i < 1 && rating - i > 0) {
-          var amt = (i - rating) * -100;
-          return (
-            <MergeStar>
-              <FirstStarPortion key={`first-star-portion${i}`} style={{background: `linear-gradient(to right, rgb(222, 99, 23) ${amt}%, transparent ${amt}%)`, backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>{String.fromCharCode(0x2605)}</FirstStarPortion>
-              <SecondStarPortion key={`second-star-portion${i}`}>{String.fromCharCode(0x2606)}</SecondStarPortion>
-            </MergeStar>
-          )
-        } else {
-          return <Star key={`star${i}`}>{String.fromCharCode(0x2606)}</Star>
-        }
-      })}
+      <AllStars rating={rating}></AllStars>
     </StarsAndReviews>
     )
   }

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {BsCheck2Circle} from 'react-icons/bs';
 import {StyleCircleRow, StyleCircle, StyleCircleSelected} from './StyleSelectorStyles.jsx';
@@ -24,13 +24,13 @@ const StylesRow = ({ index, styleGroup, onStyleCircleClick, currentStyle }) => {
         }
         if (currentStyle.style_id === style.style_id) {
           return (
-            <div key={`selected-style${i}`}>
-              <StyleCircleSelected onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircleSelected>
+            <div key={style.style_id}>
+              <StyleCircleSelected alt='circular view of currently selected style thumbnail' onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircleSelected>
               <div className='circle-check'><BsCheck2Circle/></div>
             </div>
           )
         } else {
-          return <StyleCircle  key={`style${i}`} onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircle>
+          return <StyleCircle  alt='circular view of not-currently selected style thumbnail' key={style.style_id} onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircle>
         }
       })}
     </StyleCircleRow>

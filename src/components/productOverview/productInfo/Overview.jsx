@@ -74,7 +74,6 @@ const Overview = ({currentItem}) => {
     for (let i = 0; i < currentAmount; i++) {
       cart.push(currentStyle);
     }
-    console.log(cart);
     setCart(cart);
   };
 
@@ -136,7 +135,6 @@ const Overview = ({currentItem}) => {
             </CartFeatures>
             <AddToCartFeatures>
               <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
-              <StarButton>{String.fromCharCode(0x2606)}</StarButton>
             </AddToCartFeatures>
           </ProductInformation>
         </ProductOverview>
