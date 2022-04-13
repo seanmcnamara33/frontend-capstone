@@ -2,13 +2,13 @@
 import React from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
-import {QuantityDiv} from './StyleSelectorStyles.jsx';
+import {QuantityDiv, SelectSizing} from './StyleSelectorStyles.jsx';
 import {IoIosArrowDown} from 'react-icons/io';
 
 const customStyles = {
   option: () => ({}),
   control: () => ({
-    textAlign: 'center'
+    textAlign: 'center',
   }),
 }
 
@@ -23,14 +23,18 @@ const SelectQuantity = ({ currentSize, currentStyle, onQuantityChange }) => {
     }
     return (
       <QuantityDiv>
-        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={quantityList} styles={customStyles} placeholder={<div style={{color: 'black'}}>1</div>}></Select>
+        <SelectSizing>
+          <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null}} options={quantityList} styles={customStyles} placeholder={<div style={{color: 'black', textAlign: 'left'}}>1</div>}></Select>
+        </SelectSizing>
         <div><IoIosArrowDown/></div>
       </QuantityDiv>
     )
   }
   return(
     <QuantityDiv>
-      <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} styles={customStyles} className='select-quantity' isDisabled placeholder={<div style={{color: 'black'}}>-</div>}></Select>
+      <SelectSizing>
+        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} styles={customStyles} isDisabled placeholder={<div style={{color: 'black', textAlign: 'left'}}>-</div>}></Select>
+      </SelectSizing>
       <div><IoIosArrowDown/></div>
     </QuantityDiv>
   );

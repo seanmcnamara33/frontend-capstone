@@ -28,6 +28,15 @@ export const StyleCircleSelected = styled.img`
   border-radius: 50%;
 `;
 
+export const SelectSizing = styled.div`
+  width: 80%;
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  text-align: start;
+`;
+
 // Select Size Styles
 export const SizeDiv = styled.div`
   -webkit-appearance: none;
@@ -36,7 +45,7 @@ export const SizeDiv = styled.div`
   align-items: flex-end;
   max-height: 100%;
   width: 60%;
-  padding:0.35em 1.2em;
+  padding:0.35em;
   border:0.1em solid black;
   margin:0 0.3em 0.3em 0;
   border-radius: 3px;
@@ -58,7 +67,7 @@ export const QuantityDiv = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   width: 35%;
-  padding:0.35em 1.2em;
+  padding:0.35em;
   border:0.1em solid black;
   margin:0 0.3em 0.3em 0;
   border-radius: 3px;
