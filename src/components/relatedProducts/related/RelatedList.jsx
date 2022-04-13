@@ -59,7 +59,7 @@ const RelatedList = ({ currentItem, id }) => {
     fetch(`${process.env.API_URI}/products/${productId}/related`, { method: 'GET', headers: { Authorization: process.env.API_KEY }})
       .then(response => response.json())
       .then(results => {
-        setRelatedProds([...new Set(results)]);
+          setRelatedProds([...new Set(results)]);
         // setDisplay([...new Set(results)]);
       })
       .catch((err) => console.log(`Error getting related products: ${err}`))
