@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useState } from 'react';
 import Select from 'react-select';
-import {SizeDiv, SelectSizing} from './StyleSelectorStyles.jsx';
+import {SizeDiv, SelectSizing, SelectPlaceholder} from './StyleSelectorStyles.jsx';
 import {IoIosArrowDown} from 'react-icons/io';
 
 const customStyles = {
@@ -28,7 +28,7 @@ const SelectSize = ({ openMenuOnFocus, selectRef, currentStyle, onSizeChange }) 
     return (
       <SizeDiv>
         <SelectSizing>
-          <Select  components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null}} options={options} ref={selectRef} openMenuOnFocus={true} styles={customStyles} onChange={(event) => onSizeChange(event)} placeholder={<div style={{color: 'black'}}>Size</div>}>
+          <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null}} options={options} ref={selectRef} openMenuOnFocus={true} styles={customStyles} onChange={(event) => onSizeChange(event)} placeholder={<SelectPlaceholder>Size</SelectPlaceholder>}>
           </Select>
         </SelectSizing>
         <div><IoIosArrowDown/></div>
@@ -38,7 +38,7 @@ const SelectSize = ({ openMenuOnFocus, selectRef, currentStyle, onSizeChange }) 
   return(
     <SizeDiv>
       <SelectSizing>
-        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={{value: '', label: ''}}  styles={customStyles} isDisabled placeholder={<div style={{color: 'black'}}>Out of Stock</div>}></Select>
+        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={{value: '', label: ''}}  styles={customStyles} isDisabled placeholder={<SelectPlaceholder>Out of Stock</SelectPlaceholder>}></Select>
       </SelectSizing>
       <div><IoIosArrowDown/></div>
     </SizeDiv>
