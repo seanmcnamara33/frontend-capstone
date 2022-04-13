@@ -12,14 +12,16 @@ const ReviewHelpfulness = (props) => {
 
   const handleYesClick = () => {
     event.preventDefault();
-    fetch((`${process.env.API_URI}/reviews/:${props.review_id}/helpful`, {
+    console.log(props.review_id)
+    fetch((`${process.env.API_URI}/reviews/${props.review_id}/helpful`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         Authorization: process.env.API_KEY
       }
     })).then((response) => {
-      console.log('success helpfulness')
+      console.log('success helpfulness', response)
+
       setHelpfulness(helpfulness + 1)
     }).catch((err) => {
       console.log(err)

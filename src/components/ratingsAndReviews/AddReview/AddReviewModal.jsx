@@ -84,19 +84,6 @@ const AddReviewModal = (props) => {
      .catch((err) => {
       console.log(err)
     })
-
-    // try {
-    //   let body = await fetch(`https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`, {
-    //     method: 'POST',
-    //     body: formData
-    //   })
-    //   let response = await body.json();
-    //   if (response) {
-    //     console.log('82', response.url)
-    //     handleReviewFormChange('cloudinary', [...reviewForm.cloudinary, response.url])
-    //     console.log('84', reviewForm)
-    //   };
-    // } catch (err) {console.log(err)}
  };
 
 
@@ -111,32 +98,33 @@ useEffect(() => {
 return (
   <>
     <div className='modal-styles'>
-      <form type='submit' onSubmit={handleSubmit}>
-        <label>Add New Review!</label>
+    <label className='modal-header'>Add New Review!
+      <form type='submit' className='modal-content' onSubmit={handleSubmit}>
+
 
         <AddStarRating handleRatingChange={handleRatingChange} />
 
         <div className='reccomend-style' onChange={(event) => { event.target.value === 'yes' ? handleReviewFormChange('recommend', true) : handleReviewFormChange('recommend', false) }}>
-          <p>Do you reccomend this product?</p>
+          <div>Do you reccomend this product?</div>
           <input type='radio' name='recommend' value='yes'></input>
           <label>Yes</label>
           <input type='radio' name='recommend' value='no'></input>
           <label>No</label>
         </div>
-
+        <div>
         <AddCharacteristics handleCharacteristicsChange={handleCharacteristicsChange} metaData={props.metaData} />
+        </div>
 
         <input required placeholder='Nickname' onChange={(event) => { handleReviewFormChange('name', event.target.value) }}></input>
         <input required type='email' placeholder='Email' onChange={(event) => { handleReviewFormChange('email', event.target.value) }}></input>
         <input required placeholder='Example: Best purchase ever!' className='summary-style' maxLength='60' value={reviewForm.summary} onChange={(event) => { handleReviewFormChange('summary', event.target.value) }}></input>
 
         <div>
-          <input required type='text' minLength='50' maxLength='1000' max placeholder='Body' className='body-style' value={reviewForm.body} onChange={(event) => { handleReviewFormChange('body', event.target.value) }}></input>
+          <textarea required type='text' minLength='50' maxLength='1000' max placeholder='Body' className='body-style' value={reviewForm.body} onChange={(event) => { handleReviewFormChange('body', event.target.value) }}></textarea><br></br>
           <label>Character Count: {reviewForm.body.length}</label>
         </div>
 
         {reviewForm.photos.length > 4 ? null : <input type='file' accept='image/jpeg, image/png' onChange={(event) => {
-          // handleReviewFormChange('photos', [...reviewForm.photos, event.target.files[0]]);
           uploadImage(event.target.files[0]);
         }}></input>}
 
@@ -145,6 +133,7 @@ return (
         <button type='submit'>Submit</button>
         <button onClick={props.onClose}> Close </button>
       </form>
+      </label>
     </div>
   </>
 
