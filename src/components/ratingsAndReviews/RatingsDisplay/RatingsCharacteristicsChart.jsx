@@ -4,6 +4,13 @@ import './RatingsCharacteristicsChart.css';
 
 const RatingsCharacteristicsChart = (props) => {
 
+  const gradeData = {
+    'Fit': ['Poor', 'Great'],
+    'Length': ['Bad', 'Good'],
+    'Comfort': ['Poor', 'Excellent'],
+    'Quality': ['Low', 'High']
+  }
+
   const getCharacteristics = (props) => {
     let characteristics = [];
     for (let i in props.characteristics) {
@@ -21,7 +28,7 @@ const RatingsCharacteristicsChart = (props) => {
           <div className='characteristics-chart' key={item[key]}>
             {key}
             <div>
-              <a className='poor'>Poor</a> <a className='great'>Great</a>
+              <a className='bad-tag'>{gradeData[key][0]}</a> <a className='good-tag'>{gradeData[key][1]}</a>
               <div className='char-bar'>
                 <div className='ratings-inner-icon'
                 style={{marginLeft: Math.round(+item[key]*20) + '%'}}>

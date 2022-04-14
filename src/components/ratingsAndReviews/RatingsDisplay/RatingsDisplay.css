@@ -1,8 +1,28 @@
-.review-recommend {
+
+.ratings-display {
+  margin: 0 10px 0 0;
+  width: 18em;
+}
+.rating-recommend {
   font-size: small;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .ratings-star {
-  margin-left: 0;
+  margin: 1em .5em 1em .5em;
+
   font-size: xx-large;
+  text-align: center;
+}
+
+.star {
+  float: right;
+}
+
+.rating {
+  max-width: 2em;
+  font-size: 50px;
+  direction: rtl;
+
 }
