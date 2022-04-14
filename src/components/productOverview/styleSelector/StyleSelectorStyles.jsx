@@ -10,6 +10,7 @@ export const StyleCircleRow = styled.div`
 `;
 
 export const StyleCircle = styled.img`
+  object-fit: cover;
   height: 60px;
   width: 60px;
   opacity: 70%;
@@ -20,6 +21,7 @@ export const StyleCircle = styled.img`
 `;
 
 export const StyleCircleSelected = styled.img`
+  object-fit: cover;
   height: 60px;
   width: 60px;
   margin-right: 10px;
@@ -47,7 +49,7 @@ export const SizeDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  max-height: 100%;
+  height: 40px;
   width: 60%;
   background-color: white;
   color: black;
@@ -72,6 +74,7 @@ export const QuantityDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  height: 40px;
   width: 35%;
   padding:0.35em;
   border:0.1em solid black;
