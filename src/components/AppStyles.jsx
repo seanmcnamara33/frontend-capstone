@@ -6,7 +6,6 @@ export const NavBar = styled.div`
   height: 3em;
   background: rgba(222, 99, 23, .8);
   color: rgb(248, 249, 250);
-  margin: 0 60px 0 60px;
   padding-left: 20px;
   display: inline-block;
   line-height: 3em;
