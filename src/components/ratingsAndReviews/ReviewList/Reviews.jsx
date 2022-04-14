@@ -23,7 +23,9 @@ const Reviews = (props) => {
           <div className='review-body'>
             <ReviewBody body={review.body} />
           </div>
+          <div className='review-photos'>
           <ReviewPhotos data={review.photos} />
+          </div>
           <div className='review-name'>
             <ReviewHelpfulness
               name={review.reviewer_name}

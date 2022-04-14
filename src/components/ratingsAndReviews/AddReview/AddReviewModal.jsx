@@ -129,7 +129,9 @@ return (
           uploadImage(event.target.files[0]);
         }}></input>}
 
+        <div className='photo-form'>
         {reviewForm.cloudinary.map((photo) => (<img className='modal-images' src={photo}></img>))}
+        </div>
 
         <button type='submit'>Submit</button>
         <button onClick={props.onClose}> Close </button>
