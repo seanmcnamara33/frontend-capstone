@@ -43,20 +43,24 @@ const FeaturesList = ({ features, relatedFeatures, main, related }) => {
   return (
     <div>
       <table>
-        <tr style={{'font-size': '20px', 'text-align': 'center'}}>
-          <th style={{'border-right': '1px solid black', 'border-bottom': '1px solid black'}}>{main}</th>
-          <th style={{'border-right': '1px solid black', 'border-bottom': '1px solid black'}}>Features</th>
-          <th style={{'border-right': '1px solid black', 'border-bottom': '1px solid black'}}>{related}</th>
-        </tr>
+        <thead>
+          <tr style={{'fontSize': '20px', 'textAlign': 'center'}}>
+            <th style={{'borderRight': '1px solid black', 'borderBottom': '1px solid black'}}>{main}</th>
+            <th style={{'borderRight': '1px solid black', 'borderBottom': '1px solid black'}}>Features</th>
+            <th style={{'borderRight': '1px solid black', 'borderBottom': '1px solid black'}}>{related}</th>
+          </tr>
+        </thead>
+        <tbody>
         {uniq.map(feature => {
           return (
-            <tr>
-              <td style={{'border-right': '1px solid black', 'border-bottom': '1px solid black', 'text-align': 'right'}}>{total[feature][0]}</td>
-              <td style={{'font-weight': 'bold', 'border-right': '1px solid black', 'border-bottom': '1px solid black','text-align': 'center'}}>{feature}</td>
-              <td style={{'border-right': '1px solid black', 'border-bottom': '1px solid black'}}>{total[feature][1]}</td>
+            <tr key={feature}>
+              <td style={{'borderRight': '1px solid black', 'borderBottom': '1px solid black', 'textAlign': 'right'}}>{total[feature][0]}</td>
+              <td style={{'fontWeight': 'bold', 'borderRight': '1px solid black', 'borderBottom': '1px solid black','textAlign': 'center'}}>{feature}</td>
+              <td style={{'borderRight': '1px solid black', 'borderBottom': '1px solid black'}}>{total[feature][1]}</td>
             </tr>
           )
         })}
+        </tbody>
       </table>
     </div>
   )
