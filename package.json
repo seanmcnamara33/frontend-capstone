@@ -4,7 +4,7 @@
   "description": "FEC",
   "main": "index.js",
   "scripts": {
-    "server": "npx nodemon --watch index.js",
+    "server": "npx nodemon --watch index.js && npx webpack --watch",
     "client": "npx webpack --watch",
     "test": "jest"
   },
@@ -20,7 +20,6 @@
   "homepage": "https://github.com/fec-kidsnextdoor/frontend-capstone#readme",
   "dependencies": {
     "axios": "^0.26.1",
-    "cloudinary-core": "^2.12.3",
     "cloudinary-react": "^1.7.2",
     "cloudinary-core": "^2.12.3",
     "dotenv": "^16.0.0",

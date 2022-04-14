@@ -20,7 +20,7 @@ const Accordion = ({ questions, height }) => {
   }
 
   const filterReported = id => {
-    let filtered = questions.filter(q=>q.question_id!==id);
+    let filtered = questions.filter( q => q.question_id !== id );
     setFilterableQuestions(filtered);
   }
 
