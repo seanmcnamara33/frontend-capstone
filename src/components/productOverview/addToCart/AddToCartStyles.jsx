@@ -8,7 +8,7 @@ export const AddToCartButton = styled.button`
   color: black;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
+  height: 40px;
   width: 100%;
   padding:0.35em 1.2em;
   border:0.1em solid black;
