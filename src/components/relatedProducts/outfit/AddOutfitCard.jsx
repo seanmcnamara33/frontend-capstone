@@ -13,13 +13,19 @@ const CardStyle = styled.div`
   height: auto;
   justify-content: end;
   align-items: center;
-  border: solid;
-  border-image: linear-gradient(45deg, rgb(207, 106, 48) , rgb(59, 167, 184));
-  border-image-slice: 1;
+  border: 2px solid rgb(207, 106, 48);
+  border-radius: 5px;
+  /* border: solid; */
+  /* border-image: linear-gradient(45deg, rgb(207, 106, 48) , rgb(59, 167, 184));
+  border-image-slice: 1; */
   margin-right: 10px;
   margin-left: 10px;
-  border-image-width: 2px;
+  /* border-image-width: 2px; */
   font-family:'Roboto',sans-serif;
+  &:hover {
+    border: 2px solid rgb(59, 167, 184);
+    box-shadow: 0 0 5px rgb(59, 167, 184);
+  }
 `;
 
 const ImageStyle = styled.img`
@@ -27,6 +33,8 @@ const ImageStyle = styled.img`
   max-width: 300px;
   min-width: 300px;
   object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 `;
 
 

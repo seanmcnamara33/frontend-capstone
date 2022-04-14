@@ -35,6 +35,10 @@ const ButtonLeft = styled.button`
   height: 50px;
   width: 50px;
   border-radius: 100%;
+  &:hover {
+    background-color: rgb(59, 167, 184);
+    box-shadow: 0 0 5px rgb(59, 167, 184);
+  }
 `;
 
 const ButtonRight = styled.button`
@@ -42,6 +46,10 @@ const ButtonRight = styled.button`
   height: 50px;
   width: 50px;
   border-radius: 100%;
+  &:hover {
+    background-color: rgb(59, 167, 184);
+    box-shadow: 0 0 5px rgb(59, 167, 184);
+  }
 `;
 
 
