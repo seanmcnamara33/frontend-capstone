@@ -18,6 +18,9 @@ export const StyleCircle = styled.img`
   border: 1px solid black;
   box-shadow: 0 0 3px black;
   border-radius: 50%;
+  &:hover {
+    box-shadow: 0 0 10px rgb(59, 167, 184);
+  }
 `;
 
 export const StyleCircleSelected = styled.img`
@@ -51,12 +54,12 @@ export const SizeDiv = styled.div`
   align-items: flex-end;
   height: 40px;
   width: 60%;
-  background-color: white;
+  background-color: rgb(248, 249, 250);
   color: black;
   padding:0.35em;
   border:0.1em solid black;
   margin:0 0.3em 0.3em 0;
-  border-radius: 10px;
+  border-radius: 5px;
   text-align: center;
   box-sizing: border-box;
   box-shadow: 0 0 2px black;
@@ -79,10 +82,11 @@ export const QuantityDiv = styled.div`
   padding:0.35em;
   border:0.1em solid black;
   margin:0 0.3em 0.3em 0;
-  border-radius: 10px;
+  border-radius: 5px;
   text-align: center;
   box-sizing: border-box;
   box-shadow: 0 0 2px black;
+  background-color: rgb(248, 249, 250);
   text-decoration:none;
   font-family:'Roboto',sans-serif;
   font-weight:300;
