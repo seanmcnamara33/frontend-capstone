@@ -12,6 +12,7 @@ export const ImageGalleryComponent = styled.div`
   border-radius: 10px;
   margin: 20px 40px 40px 60px;
   min-height: 100%;
+  max-height: 100%;
   width: 65%;
 `;
 
@@ -24,6 +25,7 @@ export const ThumbnailContainer = styled.div `
 `;
 
 export const Thumbnail = styled.img `
+  object-fit: cover;
   min-height: 55px;
   min-width: 55px;
   max-height: 55px;
@@ -41,6 +43,7 @@ export const SelectedContainer = styled.div`
 `;
 
 export const SelectedThumbnail = styled.img `
+  object-fit: cover;
   min-height: 55px;
   min-width: 55px;
   max-height: 55px;
@@ -85,13 +88,12 @@ export const ExpandedContainer = styled.div`
 
 export const ZoomedImage = styled.img`
   transform: scale(2.5);
-  object-fit: fill;
+  object-fit: contain;
   box-sizing: border-box;
   border-radius: 10px;
   box-shadow: 0 0 5px black;
-  height: 100%;
-  width: 50%;
-  border-radius: 3px;
+  max-height: 100%;
+  max-width: 100%;
   overflow: hidden;
   cursor: zoom-out;
 `;
@@ -112,9 +114,9 @@ export const ZoomedContainer = styled.div`
 `;
 
 export const ExpandedImage = styled.img`
-  object-fit: cover;
-  max-width: 75%;
-  height: 95%;
+  object-fit: contain;
+  max-width: 95%;
+  max-height: 95%;
   border-radius: 10px;
   box-shadow: 0 0 5px black;
   overflow: hidden;
