@@ -35,19 +35,25 @@ const OutfitListStyle = styled.ul`
 `;
 
 const ButtonLeft = styled.button`
-  /* background-image: linear-gradient(45deg, rgb(207, 106, 48) , blue); */
   border: none;
   height: 50px;
   width: 50px;
   border-radius: 100%;
+  &:hover {
+    background-color: rgb(59, 167, 184);
+    box-shadow: 0 0 5px rgb(59, 167, 184);
+  }
 `;
 
 const ButtonRight = styled.button`
-  /* background-image: linear-gradient(45deg, blue, rgb(207, 106, 48)); */
   border: none;
   height: 50px;
   width: 50px;
   border-radius: 100%;
+  &:hover {
+    background-color: rgb(59, 167, 184);
+    box-shadow: 0 0 5px rgb(59, 167, 184);
+  }
 `;
 
 
@@ -57,7 +63,6 @@ const OutfitList = ({ currentItem }) => {
   const [outfits, setOutfits] = useState([]);
   const [begin, setBegin] = useState(0);
   const [end, setEnd] = useState(2);
-  // const [display, setDisplay] = useState([]);
 
   const addOutfit = () => {
     if (!outfits.includes(currentItem)) {
@@ -65,10 +70,6 @@ const OutfitList = ({ currentItem }) => {
         let temp = [...outfits, currentItem];
         return temp;
       })
-      // setDisplay(display => {
-      //   let temp = [...display, currentItem];
-      //   return temp;
-      // })
     }
   }
 
@@ -95,7 +96,6 @@ const OutfitList = ({ currentItem }) => {
   const deleteClick = (outfitId) => {
     let newOutfits = outfits.filter(outfit => outfit.id !== outfitId)
     setOutfits(newOutfits)
-    // setDisplay(newOutfits)
   }
 
   return (

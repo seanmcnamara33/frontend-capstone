@@ -7,11 +7,12 @@ export const ImageGalleryComponent = styled.div`
   justify-content: space-evenly;
   align-items: center;
   box-sizing: border-box;
-  background-color: grey;
+  background-color: rgb(73, 80, 87);
   box-shadow: 0 0 5px black;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 20px 40px 40px 60px;
   min-height: 100%;
+  max-height: 100%;
   width: 65%;
 `;
 
@@ -24,6 +25,7 @@ export const ThumbnailContainer = styled.div `
 `;
 
 export const Thumbnail = styled.img `
+  object-fit: cover;
   min-height: 55px;
   min-width: 55px;
   max-height: 55px;
@@ -31,9 +33,13 @@ export const Thumbnail = styled.img `
   opacity: 70%;
   border: 1px solid black;
   box-shadow: -0px 0px 3px black;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 5px;
+  &:hover {
+    box-shadow: 0 0 5px rgb(59, 167, 184);
+  }
 `;
+
 export const SelectedContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,13 +47,14 @@ export const SelectedContainer = styled.div`
 `;
 
 export const SelectedThumbnail = styled.img `
+  object-fit: cover;
   min-height: 55px;
   min-width: 55px;
   max-height: 55px;
   max-width: 55px;
-  border: 1px solid rgb(222, 99, 23);
-  box-shadow: -0px 0px 3px rgb(222, 99, 23);
-  border-radius: 10px;
+  border: 1px solid rgba(222, 99, 23, .9);
+  box-shadow: -0px 0px 3px rgba(222, 99, 23, .9);
+  border-radius: 5px;
   margin: 5px;
   margin-bottom: 2px;
 `;
@@ -55,9 +62,9 @@ export const SelectedThumbnail = styled.img `
 export const SelectedThumbnailUnderline = styled.div `
   height: 3px;
   width: 55px;
-  border-bottom: 3px solid rgb(222, 99, 23);
-  box-shadow: -1px 1px 1px rgb(222, 99, 23);
-  border-radius: 10px;
+  border-bottom: 3px solid rgba(222, 99, 23, .9);
+  box-shadow: -1px 1px 1px rgba(222, 99, 23, .9);
+  border-radius: 5px;
   margin-bottom: 5px;
 `;
 
@@ -66,10 +73,10 @@ export const EntireExpandedView = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
-  background-color: grey;
+  background-color: rgb(73, 80, 87);
   justify-content: center;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 0 5px black;
   margin: 20px 60px 40px 60px;
 `;
@@ -85,13 +92,12 @@ export const ExpandedContainer = styled.div`
 
 export const ZoomedImage = styled.img`
   transform: scale(2.5);
-  object-fit: fill;
+  object-fit: contain;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 0 5px black;
-  height: 100%;
-  width: 50%;
-  border-radius: 3px;
+  max-height: 100%;
+  max-width: 100%;
   overflow: hidden;
   cursor: zoom-out;
 `;
@@ -102,8 +108,8 @@ export const ZoomedContainer = styled.div`
   align-items: center;
   box-sizing: border-box;
   box-shadow: 0 0 5px black;
-  border-radius: 10px;
-  background-color: grey;
+  border-radius: 5px;
+  background-color: rgb(73, 80, 87);
   padding: 60px;
   margin: 20px 60px 20px 60px;
   width: 100%;
@@ -112,13 +118,16 @@ export const ZoomedContainer = styled.div`
 `;
 
 export const ExpandedImage = styled.img`
-  object-fit: cover;
-  max-width: 75%;
-  height: 95%;
-  border-radius: 10px;
+  object-fit: contain;
+  max-width: 95%;
+  max-height: 95%;
+  border-radius: 5px;
   box-shadow: 0 0 5px black;
   overflow: hidden;
   cursor: crosshair;
+  &:hover {
+    box-shadow: 0 0 5px rgb(59, 167, 184);
+  }
 `;
 
 export const Icons = styled.div`
@@ -130,13 +139,13 @@ export const Icons = styled.div`
 `;
 
 export const Icon = styled.div`
-  color: white;
+  color: rgb(248, 249, 253);
   margin: 5px;
-  text-shadow: 0px 0px 2px rgb(222, 99, 23);
+  text-shadow: 0px 0px 2px rgba(222, 99, 23, .9);
   opacity: 50%;
   &:hover {
     opacity: 100%;
-    text-shadow: 0px 0px 5px rgb(222, 99, 23);
+    text-shadow: 0px 0px 5px rgba(222, 99, 23, .9);
   }
 `;
 

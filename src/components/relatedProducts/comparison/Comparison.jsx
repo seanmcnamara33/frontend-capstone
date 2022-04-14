@@ -12,8 +12,8 @@ const Comparison = ({ show, close, name, currentItem, id, relatedFeatures, mainF
     <Modal show={show}>
       <Content>
         <Header>
-          <button onClick={close}>x</button>
-          <h3>Comparing</h3>
+          <button onClick={close} style={{'margin-top': '10px'}}>Close</button>
+          <h2>Comparing</h2>
         </Header>
         <FeaturesList features={mainFeatures} relatedFeatures={relatedFeatures} main={currentItem.name} related={name}/>
       </Content>

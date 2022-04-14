@@ -17,13 +17,15 @@ const CardStyle = styled.div`
   height: auto;
   justify-content: end;
   align-items: center;
-  border: solid;
-  border-image: linear-gradient(45deg, rgb(207, 106, 48) , rgb(59, 167, 184));
-  border-image-slice: 1;
+  border: 2px solid rgb(207, 106, 48);
+  border-radius: 5px;
   margin-right: 10px;
   margin-left: 10px;
-  border-image-width: 2px;
   font-family:'Roboto',sans-serif;
+  &:hover {
+    border: 2px solid rgb(59, 167, 184);
+    box-shadow: 0 0 5px rgb(59, 167, 184);
+  }
 `;
 
 const ImageStyle = styled.div`
@@ -31,10 +33,10 @@ const ImageStyle = styled.div`
   height: 350px;
   max-width: 300px;
   min-width: 300px;
-  /* border-top-left-radius: 18px;
-  border-top-right-radius: 18px; */
   background-position: center;
   background-size: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 `;
 
 const IconStyle = styled.i`
@@ -42,6 +44,13 @@ const IconStyle = styled.i`
   justify-content: end;
   margin-right: 0.3em;
   font-size: 30px;
+`;
+
+const InnerDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  min-width: 300px;
+  justify-content: space-between;
 `;
 
 const CategoryStyle = styled.div`
@@ -146,12 +155,12 @@ const RelatedProductCard = ({ prod, id }) => {
       {
         image ?
         <div>
-          <ImageStyle src={image}>
+          <ImageStyle src={image} alt="related card image">
             <IconStyle onClick={starClick}>&#11088;</IconStyle>
           </ImageStyle>
         </div> :
         <div>
-          <ImageStyle src={placeholder}>
+          <ImageStyle src={placeholder} alt="related card placeholder image">
             <IconStyle onClick={starClick}>&#11088;</IconStyle>
           </ImageStyle>
         </div>
@@ -160,10 +169,12 @@ const RelatedProductCard = ({ prod, id }) => {
         comparisonModal &&
         <Comparison show={comparisonModal} close={close} name={name} currentItem={currentItem} id={id} relatedFeatures={features} mainFeatures={mainFeatures}/>
       }
-      <CategoryStyle className="product-category">{category.toUpperCase()}</CategoryStyle>
+      <InnerDiv onClick={clickedCard}>
+        <CategoryStyle className="product-category">{category.toUpperCase()}</CategoryStyle>
+        <StarsContainer currentItem={currentProduct} starsAndReviews={false} singleReview={false}/>
+      </InnerDiv>
       <NameStyle className="product-name" onClick={clickedCard}>{name}</NameStyle>
       { style.sale_price ? <><SalePrice className="price">SALE ${style.sale_price}</SalePrice><OriginalPrice className="price">${style.original_price}</OriginalPrice></> : <div className="price">${style.original_price}</div>}
-      <StarsContainer currentItem={currentProduct} starsAndReviews={false} singleReview={false}/>
     </CardStyle>
   );
 }

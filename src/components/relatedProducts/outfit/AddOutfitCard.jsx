@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { BsFillPlusCircleFill } from 'react-icons/bs';
 
 const plus = 'https://images.unsplash.com/photo-1560443794-1333caf35d20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80';
 
@@ -10,25 +11,36 @@ const plus = 'https://images.unsplash.com/photo-1560443794-1333caf35d20?ixlib=rb
 const CardStyle = styled.div`
   display: flex;
   flex-direction: column;
-  height: auto;
-  justify-content: end;
-  align-items: center;
-  border: solid;
-  border-image: linear-gradient(45deg, rgb(207, 106, 48) , rgb(59, 167, 184));
-  border-image-slice: 1;
-  margin-right: 10px;
-  margin-left: 10px;
-  border-image-width: 2px;
-  font-family:'Roboto',sans-serif;
-`;
-
-const ImageStyle = styled.img`
-  height: 360px;
+  height: 410.5px;
   max-width: 300px;
   min-width: 300px;
-  /* border-top-left-radius: 18px;
-  border-top-right-radius: 18px; */
-  object-fit: cover;
+  justify-content: end;
+  align-items: center;
+  border: 2px solid rgb(207, 106, 48);
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-family:'Roboto',sans-serif;
+  &:hover {
+    border: 2px solid rgb(59, 167, 184);
+    box-shadow: 0 0 5px rgb(59, 167, 184);
+  }
+`;
+
+const ImageStyle = styled.div`
+  height: inherit;
+  max-width: 300px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 125px;
+  color: rgb(207, 106, 48);
+  opacity: 90%;
+  &:hover {
+    color: rgb(59, 167, 184);
+  }
 `;
 
 
@@ -38,8 +50,9 @@ const AddOutfitCard = ({ addOutfit }) => {
   return (
     <div>
       <CardStyle onClick={addOutfit}>
-        <ImageStyle src={plus}></ImageStyle>
-        <p>Add current item to your outfits</p>
+        <ImageStyle alt="add outfit icon">
+          <BsFillPlusCircleFill/>
+        </ImageStyle>
       </CardStyle>
     </div>
   )
