@@ -8,6 +8,7 @@ import {ProductContext} from '../../context/Product.jsx';
 
 const RatingsDisplay = (props) => {
   const {currentItem} = useContext(ProductContext);
+  const [average, setAverage] = useState(0);
 
   const getRecValue = (props) => {
     let rec = props.metaData.recommended;
@@ -25,7 +26,6 @@ const RatingsDisplay = (props) => {
     return recValue;
   }
 
-
   const getAvgRating = (props) => {
     let obj = props.metaData.ratings
     let totalStars = 0;
@@ -38,11 +38,19 @@ const RatingsDisplay = (props) => {
     return totalStars/totalReviews
   }
 
+  useEffect(() => {
+    if (props.metaData.ratings) {
+      let avg = getAvgRating(props)
+      setAverage(avg)
+    }
+  }, [props])
+
+
   return (
     <>
     <div className='ratings-display'>
       <h1 className='ratings-star'>
-        <span className='rating'>{Math.round(getAvgRating(props)*2)/2}</span>
+        <span className='rating'>{Math.round(average*2)/2}</span>
         <span className='star'><StarsContainer currentItem={currentItem} starsAndReviews={false} singleReview={false}/></span>
       </h1>
       <div className='rating-recommend'>

@@ -24,13 +24,13 @@
 }
 
 .reviews {
-  height: 35em;
+  height: 100%;
+  max-height: 50vh;
   overflow: auto;
 }
 
 .review-list-btn {
   display: flex;
-  position: relative;
   top: -10px;
 }
 

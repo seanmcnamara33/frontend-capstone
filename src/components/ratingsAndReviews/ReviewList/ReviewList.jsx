@@ -10,7 +10,7 @@ import 'whatwg-fetch';
 
 const ReviewList = (props) => {
   const [currentReviews, setCurrentReviews] = useState([]);
-  const [metaData, setMetaData] = useState([]);
+  const [metaData, setMetaData] = useState({});
   const [totalReviews, setTotalReviews] = useState(0);
   const [pageCount, setPageCount] = useState(1);
   const [showMoreReviewsBtn, setShowMoreReviewsBtn] = useState(true);
@@ -47,12 +47,12 @@ const ReviewList = (props) => {
 
 
   useEffect(() => {
-    if (props.id !== '') {
+    if (props.id) {
       getReviewData(props.id);
       getMetaData(props.id)
     }
 
-  }, [props.id])
+  }, [props])
 
   const sortReviews = (sortFactor, reviewsObj) => {
     let reviews = reviewsObj;
@@ -91,7 +91,7 @@ const ReviewList = (props) => {
         });
       })
       .catch((err) => {
-        console.log('failed load GET');
+        console.log('failed load GET', err);
       });
   }
 
@@ -112,7 +112,7 @@ const ReviewList = (props) => {
         });
       })
       .catch((err) => {
-        console.log('failed load GET');
+        console.log('failed load GET', err);
       });
   }
 
