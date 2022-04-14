@@ -8,7 +8,7 @@ import StyleSelector from '../styleSelector/StyleSelector.jsx';
 import StylesView from '../styleSelector/StylesView.jsx';
 import SelectSize from '../styleSelector/SelectSize.jsx';
 import SelectQuantity from '../styleSelector/SelectQuantity.jsx';
-import AddToCart from '../AddToCart/AddToCart.jsx';
+import AddToCart from '../addToCart/AddToCart.jsx';
 import ExpandedView from '../imageGallery/ExpandedView.jsx';
 import Select from 'react-select';
 import 'whatwg-fetch';
