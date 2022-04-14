@@ -7,7 +7,7 @@
     "server": "npx nodemon --watch index.js",
     "client" : "npx webpack --config webpack.dev.js --watch",
     "build": "webpack --config webpack.prod.js",
-    "start:prod": "",
+    "start:prod": "node index.js",
     "test": "jest"
   },
   "repository": {
