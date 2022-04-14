@@ -79,67 +79,68 @@ const AddReviewModal = (props) => {
       body: formData
     }).then(response => response.json())
       .then((data) => {
-      handleReviewFormChange('cloudinary', [...reviewForm.cloudinary, data.url])
-    })
-     .catch((err) => {
-      console.log(err)
-    })
- };
+        handleReviewFormChange('cloudinary', [...reviewForm.cloudinary, data.url])
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  };
 
 
-useEffect(() => {
-  const lastAddedPhoto = reviewForm.photos[reviewForm.photos.length - 1];
-  if (lastAddedPhoto) {
-    handleReviewFormChange('photosUrl', [...reviewForm.photosUrl, URL.createObjectURL(lastAddedPhoto)]);
-  }
-}, [reviewForm.photos.length]);
+  useEffect(() => {
+    const lastAddedPhoto = reviewForm.photos[reviewForm.photos.length - 1];
+    if (lastAddedPhoto) {
+      handleReviewFormChange('photosUrl', [...reviewForm.photosUrl, URL.createObjectURL(lastAddedPhoto)]);
+    }
+  }, [reviewForm.photos.length]);
 
 
-return (
-  <>
-    <div className='modal-styles'>
-    <label className='modal-header'>Add New Review!
-      <form type='submit' className='modal-content' onSubmit={handleSubmit}>
+  return (
+    <>
+      <div className='modal-styles'>
+        <label className='modal-header'>Add New Review!
+          <form type='submit' className='modal-content' onSubmit={handleSubmit}>
 
 
-        <AddStarRating handleRatingChange={handleRatingChange} />
+            <AddStarRating handleRatingChange={handleRatingChange} />
 
-        <div className='reccomend-style' onChange={(event) => { event.target.value === 'yes' ? handleReviewFormChange('recommend', true) : handleReviewFormChange('recommend', false) }}>
-          <div>Do you reccomend this product?</div>
-          <input type='radio' name='recommend' value='yes'></input>
-          <label>Yes</label>
-          <input type='radio' name='recommend' value='no'></input>
-          <label>No</label>
-        </div>
-        <div>
-        <AddCharacteristics handleCharacteristicsChange={handleCharacteristicsChange} metaData={props.metaData} />
-        </div>
+            <div className='reccomend-style' onChange={(event) => { event.target.value === 'yes' ? handleReviewFormChange('recommend', true) : handleReviewFormChange('recommend', false) }}>
+              <div>Do you reccomend this product?</div>
+              <input type='radio' name='recommend' value='yes'></input>
+              <label>Yes</label>
+              <input type='radio' name='recommend' value='no'></input>
+              <label>No</label>
+            </div>
+            <div>
+              <AddCharacteristics handleCharacteristicsChange={handleCharacteristicsChange} metaData={props.metaData} />
+            </div>
 
-        <input required placeholder='Nickname' onChange={(event) => { handleReviewFormChange('name', event.target.value) }}></input>
-        <input required type='email' placeholder='Email' onChange={(event) => { handleReviewFormChange('email', event.target.value) }}></input>
-        <input required placeholder='Example: Best purchase ever!' className='summary-style' maxLength='60' value={reviewForm.summary} onChange={(event) => { handleReviewFormChange('summary', event.target.value) }}></input>
+            <input required placeholder='Nickname' onChange={(event) => { handleReviewFormChange('name', event.target.value) }}></input>
+            <input required type='email' placeholder='Email' onChange={(event) => { handleReviewFormChange('email', event.target.value) }}></input>
+            <input required placeholder='Example: Best purchase ever!' className='summary-style' maxLength='60' value={reviewForm.summary} onChange={(event) => { handleReviewFormChange('summary', event.target.value) }}></input>
 
-        <div>
-          <textarea required type='text' minLength='50' maxLength='1000' max placeholder='Body' className='body-style' value={reviewForm.body} onChange={(event) => { handleReviewFormChange('body', event.target.value) }}></textarea><br></br>
-          <label>Character Count: {reviewForm.body.length}</label>
-        </div>
+            <div>
+              <textarea required type='text' minLength='50' maxLength='1000' max placeholder='Body' className='body-style' value={reviewForm.body} onChange={(event) => { handleReviewFormChange('body', event.target.value) }}></textarea><br></br>
+              <label>Character Count: {reviewForm.body.length}</label>
+            </div>
 
 
-        {reviewForm.photos.length > 4 ? null : <input type='file' accept='image/jpeg, image/png' onChange={(event) => {
-          uploadImage(event.target.files[0]);
-        }}></input>}
+            {reviewForm.photos.length > 4 ? null : <input type='file' accept='image/jpeg, image/png' onChange={(event) => {
+              uploadImage(event.target.files[0]);
+            }}></input>}
 
-        <div className='photo-form'>
-        {reviewForm.cloudinary.map((photo) => (<img className='modal-images' src={photo}></img>))}
-        </div>
-
-        <button type='submit'>Submit</button>
-        <button onClick={props.onClose}> Close </button>
-      </form>
-      </label>
-    </div>
-  </>
-)
+            <div className='photo-form'>
+              {reviewForm.cloudinary.map((photo) => (<img className='modal-images' src={photo}></img>))}
+            </div>
+            <div className='buttons'>
+              <button className='add-btn' type='submit'>Submit</button>
+              <button className='add-btn' onClick={props.onClose}> Close </button>
+            </div>
+          </form>
+        </label>
+      </div>
+    </>
+  )
 };
 
 export default AddReviewModal;

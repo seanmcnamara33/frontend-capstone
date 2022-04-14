@@ -70,6 +70,10 @@
   color: rgb(59, 167, 184);
 }
 
+.buttons {
+  display: flex
+}
+
 .photo-form{
   display:flex;
 }
