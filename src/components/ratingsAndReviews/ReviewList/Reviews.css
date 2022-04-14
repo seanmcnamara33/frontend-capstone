@@ -1,5 +1,6 @@
 .review-tile {
   margin: 10px 0 10px 0;
+  padding: 10px;
   border: 1px solid #000;
   border-radius: 10px;
   min-height: auto;
@@ -12,18 +13,21 @@
 .review-body {
   min-height: 40px;
   overflow-wrap: break-word;
+
 }
-
-
 
 .review-name {
   margin: 0 10px 0 5px;
 }
 
-.review-date {
-  min-height: 20px;
-}
-
 .review-recommend {
   margin: 0 0 10px 5px;
+  font-size: small;
+  font-style: italic;
+}
+
+.showMore-btn {
+  font-style: italic;
+  text-decoration: underline;
+  color: rgb(59, 167, 184);
 }

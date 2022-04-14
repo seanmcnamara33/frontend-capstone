@@ -44,8 +44,8 @@ const ReviewHelpfulness = (props) => {
 
   return (
     <div>
-      By user: {props.name}
-      <div>
+      <span style={{ "fontSize": "small" }}>by user: {props.name}</span>
+      <div style={{ "float": "right" }}>
         {formatDate(props.date)} | Helpful? <a href="#" onClick={() => handleYesClick(props.review_id)}>Yes</a>
         ({helpfulness}) | <a href="#" onClick={handleReportClick}>{props.reported ? 'NO' : 'report'}</a>
       </div>

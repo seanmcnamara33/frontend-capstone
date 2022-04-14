@@ -13,7 +13,7 @@ const ReviewBody = (props) => {
     }
   }
 
-  const [Body, setBody] = useState(fullBody.length <= 250 ? fullBody: shortBody);
+  const [Body, setBody] = useState(fullBody.length <= 250 ? fullBody : shortBody);
 
   const handleClick = () => {
     if (showBody === false) {
@@ -37,8 +37,7 @@ const ReviewBody = (props) => {
     return (
       <div className='review-body'>
         {Body + '...'}
-        {/* showless not functioning as expected */}
-        <button type='button' onClick={handleClick}>{showBody === false ? 'Show More' : 'Show Less'}</button>
+        <a className='showMore-btn' onClick={handleClick}>{showBody === false ? 'Show More' : 'Show Less'}</a>
       </div>
     )
   }

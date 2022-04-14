@@ -9,9 +9,7 @@
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.4);
-  /* justify-content: center;
-  align-items: center;
-  margin: auto; */
+  z-index: 1000;
 }
 
 .modal-header {
@@ -70,4 +68,8 @@
 .add-btn:hover {
   background: white;
   color: rgb(59, 167, 184);
+}
+
+.photo-form{
+  display:flex;
 }
