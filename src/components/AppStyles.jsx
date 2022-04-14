@@ -4,13 +4,13 @@ import styled from 'styled-components';
 export const NavBar = styled.div`
   width: 100%;
   height: 3em;
-  background: rgb(222, 99, 23);
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
+  background: rgba(222, 99, 23, .8);
+  color: rgb(248, 249, 250);
+  padding-left: 20px;
+  display: inline-block;
+  line-height: 3em;
   font-size: 24px;
+  box-shadow: 0 0 5px black;
 `;
 
 export const Modal = styled.div(props=>({

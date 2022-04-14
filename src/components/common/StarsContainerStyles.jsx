@@ -18,11 +18,11 @@ export const MergeStar = styled.div`
 `;
 
 export const AllStars = styled.div`
-  color: rgb(222, 99, 23);
+  color: rgba(222, 99, 23, .8);
   &:before {
     content: "★★★★★";
     letter-spacing: 3px;
-    background: linear-gradient(90deg, rgb(222, 99, 23) ${(props) => (props.rating / 5) * 100}%, grey ${(props) => (props.rating / 5) * 100}%);
+    background: linear-gradient(90deg, rgba(222, 99, 23, .8) ${(props) => (props.rating / 5) * 100}%, rgba(73, 80, 87, .8) ${(props) => (props.rating / 5) * 100}%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
