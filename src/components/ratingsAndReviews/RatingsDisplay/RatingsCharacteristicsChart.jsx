@@ -1,8 +1,10 @@
 /* eslint-disable */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './RatingsCharacteristicsChart.css';
 
 const RatingsCharacteristicsChart = (props) => {
+  const [characteristics, setCharacteristics] = useState([]);
+  const [chars, setChars] = useState([]);
 
   const gradeData = {
     'Fit': ['Poor', 'Great'],
@@ -11,34 +13,38 @@ const RatingsCharacteristicsChart = (props) => {
     'Quality': ['Low', 'High']
   }
 
-  const getCharacteristics = (props) => {
+  const getCharacteristics = (p) => {
     let characteristics = [];
-    for (let i in props.characteristics) {
-      let temp = {};
-      temp[i] = props.characteristics[i].value
+    let temp = {};
+    for (let key in p.characteristics) {
+      temp[key] = [key, p.characteristics[key].value, gradeData[key][0], gradeData[key][1]]
       characteristics.push(temp)
     }
-    return characteristics;
+    setChars(temp)
   }
 
+  useEffect(() => {
+    if (props.characteristics) {
+      getCharacteristics(props);
+    }
+  }, [props])
+
   return (
-    getCharacteristics(props).map((item) => {
-      for (let key in item) {
-        return (
-          <div className='characteristics-chart' key={item[key]}>
-            {key}
-            <div>
-              <a className='bad-tag'>{gradeData[key][0]}</a> <a className='good-tag'>{gradeData[key][1]}</a>
-              <div className='char-bar'>
-                <div className='ratings-inner-icon'
-                style={{marginLeft: Math.round(+item[key]*20) + '%'}}>
-                </div>
+    <>
+      {Object.values(chars).length && Object.values(chars).map(([name, avg, bad, good]) => (
+        <div className='characteristics-chart' key={`${name} ${avg}`}>
+          {name}
+          <div>
+            <a className='bad-tag'>{bad}</a> <a className='good-tag'>{good}</a>
+            <div className='char-bar'>
+              <div className='ratings-inner-icon'
+                style={{ marginLeft: Math.round(+avg * 20) + '%' }}>
               </div>
             </div>
           </div>
-        )
-      }
-    })
+        </div>
+      ))}
+    </>
   )
 
 
