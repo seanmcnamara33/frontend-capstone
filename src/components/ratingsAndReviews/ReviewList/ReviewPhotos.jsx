@@ -11,7 +11,7 @@ const ReviewPhotos = (props) => {
       const handleClick = () => { isOpen ? setIsOpen(false) : setIsOpen(true); }
 
       return (
-        <div key={photo} className={isOpen ? 'modal' : null}>
+        <div key={photo.id} className={isOpen ? 'modal' : null}>
           <img className={isOpen ? 'large-photo' : 'small-photo'} src={photo.url} onClick={handleClick}></img>
         </div>
       )
