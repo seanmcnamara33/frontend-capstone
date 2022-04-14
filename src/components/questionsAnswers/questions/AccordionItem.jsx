@@ -16,7 +16,7 @@ const AccordionItem = ({ question, handleAnswerModal, filterReported }) => {
   const [helpful, setHelpful] = useState(question.question_helpfulness)
 
   const sortAnswers = answers =>
-  Object.entries(answers).sort((a,b)=>b[1].helpfulness-a[1].helpfulness);
+    Object.entries(answers).sort((a,b) => b[1].helpfulness - a[1].helpfulness );
 
   const upVoteQuestion = async () =>{
     try {
@@ -47,14 +47,14 @@ const AccordionItem = ({ question, handleAnswerModal, filterReported }) => {
     <Item>
       <div>
         <Question>
-          <FlexHeader onClick={()=>setIsActive(!isActive)}>
+          <FlexHeader onClick={ () => setIsActive(!isActive) }>
             {isActive ?  <IoMdArrowDropup/> : <IoMdArrowDropdown/>}
             <TitleWrap>Q: {question.question_body}</TitleWrap>
           </FlexHeader>
           <div>
             Helpful? {disableYes && <StyledLink onClick={upVoteQuestion}>Yes</StyledLink>} {' '}
             <span>({helpful})</span> | {' '}
-            <StyledLink onClick={()=>handleAnswerModal(question.question_id)}>Add Answer</StyledLink> | {' '}
+            <StyledLink onClick={ () => handleAnswerModal(question.question_id) }>Add Answer</StyledLink> | {' '}
             <StyledLink onClick={reportQuestion}>Report</StyledLink>
           </div>
         </Question>

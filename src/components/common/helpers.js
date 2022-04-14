@@ -29,14 +29,3 @@ export const getStars = async (productId) => {
     return values;
   }
 };
-
-// nums 48 - 57, caps 65-90, lower 97-122
-const random = n => Math.floor((Math.random() * n)+1);
-const rangeRandom = (min, max) => Math.floor(((Math.random() * (max-min))+1)+min);
-export const fakeSession = () =>
-  [...Array(14).fill(0)].map(item=>{
-     let r = random(3);
-     if (r === 1) return String.fromCharCode(rangeRandom(48, 57))
-     else if (r === 2) return String.fromCharCode(rangeRandom(65, 90))
-     else if (r === 3) return String.fromCharCode(rangeRandom(97, 122))
-   }).join('')

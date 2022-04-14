@@ -87,3 +87,8 @@ export const FieldError = styled.p`
   color: red;
   font-weight: bold;
 `
+
+export const Dark = styled.div(props=>({
+  background: props.dark ? 'rgba(0, 0, 0, 0.8)' : 'rgb(248, 249, 250)',
+  color: props.dark ? '#FFF': '#000'
+}))
