@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react';
 import './RatingsCharacteristicsChart.css';
 
 const RatingsCharacteristicsChart = (props) => {
-  const [characteristics, setCharacteristics] = useState([]);
+  // const [characteristics, setCharacteristics] = useState([]);
   const [chars, setChars] = useState([]);
 
   const gradeData = {
+    'Size': ['Poor', 'Great'],
+    'Width': ['Bad', 'Good'],
     'Fit': ['Poor', 'Great'],
     'Length': ['Bad', 'Good'],
     'Comfort': ['Poor', 'Excellent'],
