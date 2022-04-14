@@ -23,7 +23,7 @@ const App = () => {
       <CountClick>
         <NavBar>
           Kids Next Door
-          <button onClick={()=>setDark(!dark)}>{dark ? 'light mode' : 'dark mode'}</button>
+          <button className='dark-mode-btn' onClick={()=>setDark(!dark)}>{dark ? 'light mode' : 'dark mode'}</button>
         </NavBar>
         <Overview currentItem={currentItem}/>
         <RelatedList currentItem={currentItem} id={productId}/>

@@ -27,7 +27,6 @@ const ImageGallery = ({currentStyle, currentView, onImageClick, currentImage}) =
     }
     let onGalleryButtonClick = (event) => {
       var direction = event.target.classList[0];
-      console.log(direction);
       if (direction === 'image-left' && currentStylePhotoIndex !== 0) {
         setStyleIndex(currentStylePhotoIndex - 1);
       }

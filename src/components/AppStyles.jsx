@@ -7,8 +7,10 @@ export const NavBar = styled.div`
   background: rgba(222, 99, 23, .8);
   color: rgb(248, 249, 250);
   padding-left: 20px;
-  display: inline-block;
-  line-height: 3em;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 24px;
   box-shadow: 0 0 5px black;
 `;
