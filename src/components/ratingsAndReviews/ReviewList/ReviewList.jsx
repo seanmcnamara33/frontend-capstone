@@ -135,13 +135,11 @@ const ReviewList = (props) => {
             <AddReview id={props.id} metaData={metaData} />
           </div>
         </div>
-
         <div className='ratings-breakdown'>
           <label>Ratings Breakdown</label>
           <RatingsDisplay setTotalReviews={setTotalReviews} metaData={metaData} />
         </div>
       </div>
-
     </div>
 
 
