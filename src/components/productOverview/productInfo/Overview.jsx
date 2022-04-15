@@ -10,9 +10,12 @@ import SelectSize from '../styleSelector/SelectSize.jsx';
 import SelectQuantity from '../styleSelector/SelectQuantity.jsx';
 import AddToCart from '../addToCart/AddToCart.jsx';
 import ExpandedView from '../imageGallery/ExpandedView.jsx';
+import CartModal from '../addToCart/CartModal.jsx';
 import Select from 'react-select';
+import {AiOutlineShopping} from 'react-icons/ai';
+import {getStyles, addToCart, getCart} from '../../common/helpers.js';
 import 'whatwg-fetch';
-import {ProductOverview, ProductInformation, CategoryContainer, CartFeatures, AddToCartFeatures, StarButton, DescriptionContainer} from './ProductInfoStyles.jsx';
+import {ProductOverview, ProductInformation, CategoryContainer, CartFeatures, AddToCartFeatures, StarButton, DescriptionContainer, Price, SalePrice, OriginalPrice, OriginalPriceNoSale, Category, ProductName, CartIcon} from './ProductInfoStyles.jsx';
 
 const Overview = ({currentItem}) => {
   const [currentView, setView] = useState('default');
@@ -23,19 +26,14 @@ const Overview = ({currentItem}) => {
   const [currentImage, setCurrentImage] = useState('');
   const [currentPrice, setCurrentPrice] = useState(0);
   const [currentSku, setCurrentSku] = useState(0);
+  const [show, setShow] = useState(false);
+  const [cartContents, setCartContents] = useState([]);
   const selectRef = useRef();
 
-  const getFirstStyle = (productId) => {
-    fetch(`${process.env.API_URI}/products/${productId}/styles`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
-      .then((response) => {
-        response.json().then((result) => {
-          setCurrentStyle(result.results[0]);
-          setAllStyles(result.results);
-        });
-      })
-      .catch((err) => {
-        console.log(`Error found in getFirstStyle: ${err}`);
-      });
+  const getFirstStyle = async (productId) => {
+    let result = await getStyles(productId);
+    setCurrentStyle(result.results[0]);
+    setAllStyles(result.results);
   };
 
   const onReviewLinkClick = () => {
@@ -71,18 +69,29 @@ const Overview = ({currentItem}) => {
     setAmount(event.value);
   };
 
-  const onAddToCartClick = async () => {
-    try {
-      let body = JSON.stringify({sku_id: currentSku, quantity: currentAmount});
-      var response = await fetch('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/cart', {
-        method: 'POST',
-        body: body,
-        headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY }}
-      );
-      console.log(response);
-    } catch(err) {
-      console.log(`error in onAddToCartClick: ${err}`)
+  const onCartButtonClick = async () => {
+    let result = await getCart();
+    setShow(true);
+    setCartContents(result);
+  };
+
+  const onModalClose = async () => {
+    setShow(false);
+  };
+
+  const onRemoveItemButtonClick = async (event) => {
+    const sku = event.target.dataset.sku;
+    const newCart = Array.from(cartContents);
+    for (let i = 0; i < newCart.length; i++) {
+      if (newCart[i].sku_id.toString() === sku) {
+        newCart.splice(i, 1);
+      }
     }
+    setCartContents(newCart);
+  };
+
+  const onAddToCartClick = async () => {
+    let result = await addToCart(currentSku);
   };
 
   const onAddToCartClickNoSize = (sizes) => {
@@ -125,15 +134,15 @@ const Overview = ({currentItem}) => {
           <ProductInformation>
             <StarsContainer currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} starsAndReviews={true} singleReview={false}/>
             <CategoryContainer>
-              <p className='category'>{currentItem.category}</p>
-              <h2 className='product-name'>{currentItem.name}</h2>
+              <Category>{currentItem.category}</Category>
+              <ProductName>{currentItem.name}</ProductName>
             </CategoryContainer>
             <div>{Number(currentStyle.sale_price) > 0 ?
-              <div className='price'>
-                <p className='original-price'>${Math.round(Number(currentStyle.original_price)).toString()}</p>
-                <p className='sale-price'>${Math.round(Number(currentStyle.sale_price)).toString()}</p>
-              </div> :
-              <p className='original-price-no-sale'>${Math.round(Number(currentStyle.original_price)).toString()}</p>}
+              <Price>
+                <OriginalPrice>${Math.round(Number(currentStyle.original_price)).toString()}</OriginalPrice>
+                <SalePrice>${Math.round(Number(currentStyle.sale_price)).toString()}</SalePrice>
+              </Price> :
+              <OriginalPriceNoSale>${Math.round(Number(currentStyle.original_price)).toString()}</OriginalPriceNoSale>}
             </div>
             <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
             <StylesView currentStyle={currentStyle} allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
@@ -143,6 +152,8 @@ const Overview = ({currentItem}) => {
             </CartFeatures>
             <AddToCartFeatures>
               <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
+              <CartIcon onClick={() => onCartButtonClick()}><AiOutlineShopping size='35px'/></CartIcon>
+              <CartModal onRemoveItemButtonClick={onRemoveItemButtonClick} cartContents={cartContents} show={show} onModalClose={onModalClose}></CartModal>
             </AddToCartFeatures>
           </ProductInformation>
         </ProductOverview>

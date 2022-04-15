@@ -6,7 +6,7 @@ import RelatedList from './relatedProducts/related/RelatedList.jsx';
 import OutfitList from './relatedProducts/outfit/OutfitList.jsx';
 import QuestionsAnswers from './questionsAnswers/QuestionsAnswers.jsx';
 import ReviewList from './ratingsAndReviews/ReviewList/ReviewList.jsx';
-import { NavBar, Dark } from './AppStyles.jsx';
+import { NavBar, Dark, DarkModeBtn } from './AppStyles.jsx';
 import { ProductContext } from './context/Product';
 import CountClick from './CountClick';
 
@@ -23,7 +23,7 @@ const App = () => {
       <CountClick>
         <NavBar>
           Kids Next Door
-          <button className='dark-mode-btn' onClick={()=>setDark(!dark)}>{dark ? 'light mode' : 'dark mode'}</button>
+          <DarkModeBtn onClick={()=>setDark(!dark)}>{dark ? 'light mode' : 'dark mode'}</DarkModeBtn>
         </NavBar>
         <Overview currentItem={currentItem}/>
         <RelatedList currentItem={currentItem} id={productId}/>

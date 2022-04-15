@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, {createContext, useState, useEffect, useRef} from 'react';
-import {fakeSession} from '../common/helpers';
+import {fakeSession, getItems} from '../common/helpers';
 import 'whatwg-fetch';
 
 export const ProductContext = createContext({
@@ -14,19 +14,11 @@ export const ProductProvider = props => {
   const [productId, setProductId] = useState('');
   const [questionId, setQuestionId] = useState(0);
 
-
-  const getFirstItem = () => {
-    fetch(`${process.env.API_URI}/products`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
-      .then((response) => {
-        response.json().then((results) => {
-          setCurrentItem(results[0]);
-          setProductId(results[0].id);
-        });
-      })
-      .catch((err) => {
-        console.log(`Error found in getFirstItem: ${err}`);
-      });
-  };
+  const getFirstItem = async () => {
+    const results = await getItems();
+    setCurrentItem(results[0]);
+    setProductId(results[0].id);
+  }
 
   const handleQuestionId = id =>{
     setQuestionId(id)

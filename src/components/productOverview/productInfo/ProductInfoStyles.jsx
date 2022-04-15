@@ -36,6 +36,7 @@ export const AddToCartFeatures = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 80%;
 `;
 
@@ -74,4 +75,39 @@ export const IconListContainer = styled.div`
 
 export const Icon = styled.div`
   margin: 5px;
+`;
+
+export const Price = styled.div `
+  display: flex;
+`
+
+export const SalePrice = styled.p `
+  color: red;
+  font-weight: bold;
+  font-family:'Roboto', sans-serif;
+`
+
+export const OriginalPrice = styled.p `
+  text-decoration: line-through;
+  font-family: 'Roboto', sans-serif;
+  margin-right: 5px;
+`
+
+export const OriginalPriceNoSale = styled.p `
+  font-weight: bold;
+  font-family:'Roboto', sans-serif;
+`
+export const Category = styled.p `
+  margin-bottom: 0;
+`
+
+export const ProductName = styled.h2 `
+  margin-top: 0;
+`
+
+export const CartIcon = styled.button `
+  all: unset;
+  &:hover {
+    color: rgb(59, 167, 184);
+  }
 `;
