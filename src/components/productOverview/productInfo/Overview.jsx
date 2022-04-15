@@ -27,6 +27,7 @@ const Overview = ({currentItem}) => {
   const [currentPrice, setCurrentPrice] = useState(0);
   const [currentSku, setCurrentSku] = useState(0);
   const [show, setShow] = useState(false);
+  const [cartContents, setCartContents] = useState([]);
   const selectRef = useRef();
 
   const getFirstStyle = async (productId) => {
@@ -71,16 +72,27 @@ const Overview = ({currentItem}) => {
   const onCartButtonClick = async () => {
     let result = await getCart();
     setShow(true);
-    console.log(result);
+    setCartContents(result);
   };
 
   const onModalClose = async () => {
     setShow(false);
   };
 
+  const onRemoveItemButtonClick = async (event) => {
+    const sku = event.target.dataset.sku;
+    const newCart = Array.from(cartContents);
+    for (let i = 0; i < newCart.length; i++) {
+      if (newCart[i].sku_id.toString() === sku) {
+        newCart.splice(i, 1);
+      }
+    }
+    setCartContents(newCart);
+  };
+
   const onAddToCartClick = async () => {
-    let result = await addToCart(currentSku, currentSize.size, currentAmount);
-  }
+    let result = await addToCart(currentSku);
+  };
 
   const onAddToCartClickNoSize = (sizes) => {
     if (sizes.length) {
@@ -141,7 +153,7 @@ const Overview = ({currentItem}) => {
             <AddToCartFeatures>
               <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
               <CartIcon onClick={() => onCartButtonClick()}><AiOutlineShopping size='35px'/></CartIcon>
-              <CartModal show={show} onModalClose={onModalClose}></CartModal>
+              <CartModal onRemoveItemButtonClick={onRemoveItemButtonClick} cartContents={cartContents} show={show} onModalClose={onModalClose}></CartModal>
             </AddToCartFeatures>
           </ProductInformation>
         </ProductOverview>

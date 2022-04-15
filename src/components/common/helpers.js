@@ -42,11 +42,10 @@ export const getStyles = async (productId) => {
   }
 };
 
-export const addToCart = async (sku, size, qty) => {
+export const addToCart = async (sku) => {
   try {
     var num = Number(sku);
-    var string = qty.toString();
-    let body = JSON.stringify({sku_id: num, size: size, count: string});
+    let body = JSON.stringify({sku_id: num});
     var response = await fetch('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/cart', {
       method: 'POST',
       body: body,
