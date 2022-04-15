@@ -56,6 +56,9 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
   if (!zoomed) {
     return(
       <EntireExpandedView>
+        <div style={{display: 'flex', justifyContent: 'flex-end', height: 'min-content'}}>
+          <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>{String.fromCharCode(0x2311)}</button>
+        </div>
         <ExpandedContainer>
           <ExpandedImage alt='expanded view of current image of currently selected style' src={expandedPhotosArray[currentStyleExpandedIndex].url} onClick={(event) => onExpandedImageClick(event)}></ExpandedImage>
         </ExpandedContainer>
@@ -68,7 +71,6 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
             return <Icon data-index={index} onClick={(event) => onIconClick(event)} key={expandedPhotosArray[index].url}>{String.fromCharCode(0x2B24)}</Icon>
           })}
           <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B95)}</button>
-          <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>{String.fromCharCode(0x2311)}</button>
         </Icons>
       </EntireExpandedView>
     );

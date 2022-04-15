@@ -20,9 +20,9 @@ const Overview = ({currentItem}) => {
   const [allStyles, setAllStyles] = useState([]);
   const [currentSize, setSize] = useState({});
   const [currentAmount, setAmount] = useState(0);
-  const [cart, setCart] = useState([]);
   const [currentImage, setCurrentImage] = useState('');
   const [currentPrice, setCurrentPrice] = useState(0);
+  const [currentSku, setCurrentSku] = useState(0);
   const selectRef = useRef();
 
   const getFirstStyle = (productId) => {
@@ -51,9 +51,11 @@ const Overview = ({currentItem}) => {
   const onSizeChange = (event) => {
     const size = event.value;
     let currentSku;
+    let currentSkuValue;
     for (let sku in currentStyle.skus) {
       if (currentStyle.skus[sku].size === size) {
         currentSku = currentStyle.skus[sku];
+        setCurrentSku(sku);
       }
     }
     if (currentSku === undefined) {
@@ -66,14 +68,21 @@ const Overview = ({currentItem}) => {
   };
 
   const onQuantityChange = (event) => {
-    setAmount(event.target.value);
+    setAmount(event.value);
   };
 
-  const onAddToCartClick = () => {
-    for (let i = 0; i < currentAmount; i++) {
-      cart.push(currentStyle);
+  const onAddToCartClick = async () => {
+    try {
+      let body = JSON.stringify({sku_id: currentSku, quantity: currentAmount});
+      var response = await fetch('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/cart', {
+        method: 'POST',
+        body: body,
+        headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY }}
+      );
+      console.log(response);
+    } catch(err) {
+      console.log(`error in onAddToCartClick: ${err}`)
     }
-    setCart(cart);
   };
 
   const onAddToCartClickNoSize = (sizes) => {
@@ -85,7 +94,7 @@ const Overview = ({currentItem}) => {
   const onImageClick = (image) => {
     setCurrentImage(image);
     setView('expanded');
-  }
+  };
 
   const onRestoreDefaultClick = (image) => {
     setCurrentImage(image);

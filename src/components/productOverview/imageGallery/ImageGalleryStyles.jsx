@@ -120,7 +120,7 @@ export const ZoomedContainer = styled.div`
 export const ExpandedImage = styled.img`
   object-fit: contain;
   max-width: 95%;
-  max-height: 95%;
+  max-height: 100%;
   border-radius: 5px;
   box-shadow: 0 0 5px black;
   overflow: hidden;
