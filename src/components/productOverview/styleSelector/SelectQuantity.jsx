@@ -23,7 +23,7 @@ const SelectQuantity = ({ currentSize, currentStyle, onQuantityChange }) => {
     return (
       <QuantityDiv>
         <SelectSizing>
-          <Select onChange={event => onQuantityChange(event)} components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null}} options={quantityList} styles={customStyles} placeholder={<div style={{color: 'black', textAlign: 'left'}}>1</div>}></Select>
+          <Select isSearchable={false} onChange={event => onQuantityChange(event)} components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null}} options={quantityList} styles={customStyles} placeholder={<div style={{color: 'black', textAlign: 'left'}}>1</div>}></Select>
         </SelectSizing>
         <div><IoIosArrowDown/></div>
       </QuantityDiv>
@@ -32,7 +32,7 @@ const SelectQuantity = ({ currentSize, currentStyle, onQuantityChange }) => {
   return(
     <QuantityDiv>
       <SelectSizing>
-        <Select onChange={event => onQuantityChange(event)} components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} styles={customStyles} isDisabled placeholder={<div style={{color: 'black', textAlign: 'left'}}>-</div>}></Select>
+        <Select isSearchable={false} onChange={event => onQuantityChange(event)} components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} styles={customStyles} isDisabled placeholder={<div style={{color: 'black', textAlign: 'left'}}>-</div>}></Select>
       </SelectSizing>
       <div><IoIosArrowDown/></div>
     </QuantityDiv>

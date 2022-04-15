@@ -233,3 +233,13 @@ export const RestoreDefault = styled.button `
     text-shadow: 0 0 5px rgb(59, 167, 184);
   }
 `
+
+export const ThumbnailButton = styled.button `
+  all: unset;
+  font-size: x-large;
+  &:hover {
+    text-shadow: 0 0 5px rgb(59, 167, 184);
+  }
+`
+
+
