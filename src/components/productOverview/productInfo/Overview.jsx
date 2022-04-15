@@ -12,7 +12,7 @@ import AddToCart from '../addToCart/AddToCart.jsx';
 import ExpandedView from '../imageGallery/ExpandedView.jsx';
 import Select from 'react-select';
 import 'whatwg-fetch';
-import {ProductOverview, ProductInformation, CategoryContainer, CartFeatures, AddToCartFeatures, StarButton, DescriptionContainer} from './ProductInfoStyles.jsx';
+import {ProductOverview, ProductInformation, CategoryContainer, CartFeatures, AddToCartFeatures, StarButton, DescriptionContainer, Price, SalePrice, OriginalPrice, OriginalPriceNoSale, Category, ProductName} from './ProductInfoStyles.jsx';
 
 const Overview = ({currentItem}) => {
   const [currentView, setView] = useState('default');
@@ -125,15 +125,15 @@ const Overview = ({currentItem}) => {
           <ProductInformation>
             <StarsContainer currentItem={currentItem} onReviewLinkClick={onReviewLinkClick} starsAndReviews={true} singleReview={false}/>
             <CategoryContainer>
-              <p className='category'>{currentItem.category}</p>
-              <h2 className='product-name'>{currentItem.name}</h2>
+              <Category>{currentItem.category}</Category>
+              <ProductName>{currentItem.name}</ProductName>
             </CategoryContainer>
             <div>{Number(currentStyle.sale_price) > 0 ?
-              <div className='price'>
-                <p className='original-price'>${Math.round(Number(currentStyle.original_price)).toString()}</p>
-                <p className='sale-price'>${Math.round(Number(currentStyle.sale_price)).toString()}</p>
-              </div> :
-              <p className='original-price-no-sale'>${Math.round(Number(currentStyle.original_price)).toString()}</p>}
+              <Price>
+                <OriginalPrice>${Math.round(Number(currentStyle.original_price)).toString()}</OriginalPrice>
+                <SalePrice>${Math.round(Number(currentStyle.sale_price)).toString()}</SalePrice>
+              </Price> :
+              <OriginalPriceNoSale>${Math.round(Number(currentStyle.original_price)).toString()}</OriginalPriceNoSale>}
             </div>
             <StyleSelector currentItem={currentItem} currentStyle={currentStyle} />
             <StylesView currentStyle={currentStyle} allStyles={allStyles} onStyleCircleClick={onStyleCircleClick} />
