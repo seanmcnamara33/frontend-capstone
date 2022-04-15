@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import DefaultView from './DefaultView.jsx';
 import ThumbnailCarousel from './ThumbnailCarousel.jsx';
-import {ImageGalleryComponent} from './ImageGalleryStyles.jsx';
+import {ImageGalleryComponent, ImageLeft, ImageRight} from './ImageGalleryStyles.jsx';
 
 const placeholder = 'https://images.unsplash.com/photo-1546213290-e1b492ab3eee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80';
 
@@ -26,11 +26,11 @@ const ImageGallery = ({currentStyle, currentView, onImageClick, currentImage}) =
       }
     }
     let onGalleryButtonClick = (event) => {
-      var direction = event.target.classList[0];
-      if (direction === 'image-left' && currentStylePhotoIndex !== 0) {
+      var direction = event.target.dataset.direction;
+      if (direction === 'left' && currentStylePhotoIndex !== 0) {
         setStyleIndex(currentStylePhotoIndex - 1);
       }
-      else if (direction === 'image-right' && currentStylePhotoIndex !== photosArray.length - 1) {
+      else if (direction === 'right' && currentStylePhotoIndex !== photosArray.length - 1) {
         setStyleIndex(currentStylePhotoIndex + 1);
       }
     }
@@ -45,9 +45,9 @@ const ImageGallery = ({currentStyle, currentView, onImageClick, currentImage}) =
   return (
     <ImageGalleryComponent className='image-gallery-component'>
       <ThumbnailCarousel photosArray={photosArray} onThumbnailImageClick={onThumbnailImageClick} currentStylePhotoIndex={currentStylePhotoIndex}/>
-      <button className='image-left' onClick={(event) => onGalleryButtonClick(event)}>{String.fromCharCode(0x2B05)}</button>
+      <ImageLeft data-direction='left' onClick={(event) => onGalleryButtonClick(event)}>{String.fromCharCode(0x2B05)}</ImageLeft>
       <DefaultView photosArray={photosArray} currentStylePhotoIndex={currentStylePhotoIndex} currentView={currentView} image={photosArray[currentStylePhotoIndex]} onImageClick={onImageClick}/>
-      <button className='image-right' onClick={(event) => onGalleryButtonClick(event)}>{String.fromCharCode(0x2B95)}</button>
+      <ImageRight data-direction='right' onClick={(event) => onGalleryButtonClick(event)}>{String.fromCharCode(0x2B95)}</ImageRight>
     </ImageGalleryComponent>
   );
   }

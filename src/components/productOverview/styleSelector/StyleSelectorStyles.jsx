@@ -94,3 +94,12 @@ export const QuantityDiv = styled.div`
     box-shadow: 0 0 5px rgb(59, 167, 184);
   }
 `;
+
+export const CircleCheck = styled.div `
+  height: 0;
+  width: 0;
+  position: relative;
+  color: rgb(222, 99, 23);
+  right: -48px;
+  top: -68px;
+`;

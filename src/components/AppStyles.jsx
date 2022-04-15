@@ -94,3 +94,28 @@ export const Dark = styled.div(props=>({
   background: props.dark ? 'rgba(0, 0, 0, 0.8)' : 'rgb(248, 249, 250)',
   color: props.dark ? '#FFF': '#000'
 }))
+
+export const DarkModeBtn = styled.div `
+  all: unset;
+  display: flex;
+  background-color: rgb(248, 249, 250);
+  color: black;
+  justify-content: space-between;
+  align-items: center;
+  font-size: small;
+  height: max-content;
+  width: max-content;
+  padding:0.35em 1.2em;
+  border:0.1em solid black;
+  margin:0 0.3em 0.3em 0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 0 2px black;
+  text-decoration:none;
+  text-align: center;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  &:hover {
+    box-shadow: 0 0 5px rgb(59, 167, 184);
+  }
+`
