@@ -11,9 +11,10 @@ import SelectQuantity from '../styleSelector/SelectQuantity.jsx';
 import AddToCart from '../addToCart/AddToCart.jsx';
 import ExpandedView from '../imageGallery/ExpandedView.jsx';
 import Select from 'react-select';
-import {getStyles, addToCart} from '../../common/helpers.js';
+import {AiOutlineShopping} from 'react-icons/ai';
+import {getStyles, addToCart, getCart} from '../../common/helpers.js';
 import 'whatwg-fetch';
-import {ProductOverview, ProductInformation, CategoryContainer, CartFeatures, AddToCartFeatures, StarButton, DescriptionContainer, Price, SalePrice, OriginalPrice, OriginalPriceNoSale, Category, ProductName} from './ProductInfoStyles.jsx';
+import {ProductOverview, ProductInformation, CategoryContainer, CartFeatures, AddToCartFeatures, StarButton, DescriptionContainer, Price, SalePrice, OriginalPrice, OriginalPriceNoSale, Category, ProductName, CartIcon} from './ProductInfoStyles.jsx';
 
 const Overview = ({currentItem}) => {
   const [currentView, setView] = useState('default');
@@ -63,6 +64,11 @@ const Overview = ({currentItem}) => {
 
   const onQuantityChange = (event) => {
     setAmount(event.value);
+  };
+
+  const onCartButtonClick = async () => {
+    let result = await getCart();
+    console.log(result);
   };
 
   const onAddToCartClick = async () => {
@@ -127,6 +133,7 @@ const Overview = ({currentItem}) => {
             </CartFeatures>
             <AddToCartFeatures>
               <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
+              <CartIcon onClick={() => onCartButtonClick()}><AiOutlineShopping size='35px'/></CartIcon>
             </AddToCartFeatures>
           </ProductInformation>
         </ProductOverview>
