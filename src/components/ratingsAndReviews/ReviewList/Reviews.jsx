@@ -17,7 +17,7 @@ const Reviews = (props) => {
   return (
     props.data.map((review) => {
       return (
-        <div className='review-tile' key={review.review_id}>
+        <div className='review-tile' key={review.review_id += review.reviewer_name}>
           <StarsContainer singleRating={review.rating} starsAndReviews={false} singleReview={true} />
           <div className='review-summary'>{review.summary}</div>
           <div className='review-body'>

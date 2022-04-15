@@ -56,6 +56,7 @@ const ReviewList = (props) => {
 
   const sortReviews = (sortFactor, reviewsObj) => {
     let reviews = reviewsObj;
+    console.log(sortFactor)
 
     if (sortFactor === 'newest') {
       reviews.sort((a, b) => {
