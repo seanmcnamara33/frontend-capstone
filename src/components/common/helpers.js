@@ -52,3 +52,13 @@ export const addToCart = async (sku, quantity) => {
     console.log(`error in addToCart: ${err}`)
   }
 };
+
+export const getItems =  async () => {
+  try {
+    const items =  await fetch(`${process.env.API_URI}/products`, { method: 'GET', headers: { Authorization: process.env.API_KEY } });
+    return await items.json();
+  } catch(err) {
+    console.log(`Error found in getItems: ${err}`);
+  }
+};
+
