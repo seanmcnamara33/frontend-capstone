@@ -71,23 +71,17 @@ body {
 
 .restore-default {
   all: unset;
-  position: relative;
-  left: 40px;
+  margin-right: 13px;
+  margin-top: 5px;
   color: rgba(222, 99, 23, .9);
-  font-size: large;
+  font-size: x-large;
   font-weight: bold;
   text-shadow: 0px 0px 1px black;
 }
 
 .restore-default:hover {
   text-shadow: 0 0 5px rgb(59, 167, 184);
-};
-
-.partly-filled-star {
-  overflow: hidden;
-  background-clip: text;
-  -webkit-background-clip: text;
-};
+}
 
 .cart-features {
   display: flex;

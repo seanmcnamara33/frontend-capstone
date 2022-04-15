@@ -40,8 +40,8 @@ const StarsContainer = ({ currentItem, onReviewLinkClick, starsAndReviews, singl
     }, [singleReview]);
     return (
       <StarsAndReviews>
-      <AllStars rating={rating}></AllStars>
-    </StarsAndReviews>
+        <AllStars rating={rating}></AllStars>
+      </StarsAndReviews>
     )
   }
 }
