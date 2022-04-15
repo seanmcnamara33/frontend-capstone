@@ -10,6 +10,7 @@ import SelectSize from '../styleSelector/SelectSize.jsx';
 import SelectQuantity from '../styleSelector/SelectQuantity.jsx';
 import AddToCart from '../addToCart/AddToCart.jsx';
 import ExpandedView from '../imageGallery/ExpandedView.jsx';
+import CartModal from '../addToCart/CartModal.jsx';
 import Select from 'react-select';
 import {AiOutlineShopping} from 'react-icons/ai';
 import {getStyles, addToCart, getCart} from '../../common/helpers.js';
@@ -25,6 +26,7 @@ const Overview = ({currentItem}) => {
   const [currentImage, setCurrentImage] = useState('');
   const [currentPrice, setCurrentPrice] = useState(0);
   const [currentSku, setCurrentSku] = useState(0);
+  const [show, setShow] = useState(false);
   const selectRef = useRef();
 
   const getFirstStyle = async (productId) => {
@@ -68,7 +70,12 @@ const Overview = ({currentItem}) => {
 
   const onCartButtonClick = async () => {
     let result = await getCart();
+    setShow(true);
     console.log(result);
+  };
+
+  const onModalClose = async () => {
+    setShow(false);
   };
 
   const onAddToCartClick = async () => {
@@ -134,6 +141,7 @@ const Overview = ({currentItem}) => {
             <AddToCartFeatures>
               <AddToCart currentStyle={currentStyle} currentSize={currentSize} currentAmount={currentAmount} onAddToCartClickNoSize={onAddToCartClickNoSize} onAddToCartClick={onAddToCartClick} />
               <CartIcon onClick={() => onCartButtonClick()}><AiOutlineShopping size='35px'/></CartIcon>
+              <CartModal show={show} onModalClose={onModalClose}></CartModal>
             </AddToCartFeatures>
           </ProductInformation>
         </ProductOverview>
