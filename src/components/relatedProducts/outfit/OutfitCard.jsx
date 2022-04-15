@@ -71,26 +71,7 @@ const NameStyle = styled.div`
 
 // ------------------COMPONENT------------------ //
 
-const OutfitCard = ({ outfit, deleteClick, currentItem }) => {
-  const [style, setStyle] = useState([]);
-  const [image, setImage] = useState('');
-
-  const getStyle = (ID) => {
-    fetch(`${process.env.API_URI}/products/${ID}/styles`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
-      .then((response) => {
-        response.json().then(result => {
-          setStyle(result.results[0]);
-          setImage(result.results[0].photos[0].thumbnail_url);
-        })
-      })
-  }
-
-  useEffect(() => {
-    if (outfit) {
-      getStyle(outfit.id);
-    }
-  }, [outfit])
-
+const OutfitCard = ({ outfit, deleteClick, currentItem, image, ogPrice, sale }) => {
   return (
     <CardStyle>
       {
@@ -111,7 +92,7 @@ const OutfitCard = ({ outfit, deleteClick, currentItem }) => {
         <StarsContainer currentItem={outfit} starsAndReviews={false} singleReview={false}/>
       </InnerDiv>
       <NameStyle className="outfit-name">{outfit.name}</NameStyle>
-      { style.sale_price ? <div className="price">was ${style.original_price} now ${style.sale_price}</div> : <div className="price">${style.original_price}</div>}
+      { sale ? <div className="price">was ${ogPrice} now ${sale}</div> : <div className="price">${ogPrice}</div>}
     </CardStyle>
   )
 }
