@@ -7,11 +7,14 @@ import {placeholder} from '../../common/helpers.js';
 
 const ImageGallery = ({currentStyle, currentView, onImageClick, currentImage}) => {
   if (Object.keys(currentStyle).length) {
-    const photosArray = currentStyle.photos;
-    if (photosArray[0].thumbnail_url === null ) {
+    const photosArray = currentStyle.photos || [];
+    if (!photosArray.length) {
+      photosArray.push({url: placeholder, thumbnail_url: placeholder})
+    }
+    if (photosArray[0].thumbnail_url === undefined || photosArray[0].thumbnail_url === null) {
       photosArray[0].thumbnail_url = placeholder;
     }
-    if (photosArray[0].url === null) {
+    if (photosArray[0].url === undefined || photosArray[0].url === null) {
       photosArray[0].url = placeholder;
     }
     const [currentStylePhotoIndex, setStyleIndex] = useState(0);
