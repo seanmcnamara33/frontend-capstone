@@ -8,7 +8,7 @@ const RatingsCharacteristicsChart = (props) => {
 
   const gradeData = {
     'Size': ['Small', 'Perfect','Big'],
-    'Width': ['Narrow', 'Perfect', 'Wide'],
+    'Width': ['Tight', 'Perfect', 'Wide'],
     'Fit': ['Tight', 'Perfect',  'Baggy'],
     'Length': ['Short', 'Perfect', 'Long'],
     'Comfort': ['Poor', 'Excellent'],
