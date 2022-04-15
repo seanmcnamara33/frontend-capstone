@@ -66,8 +66,7 @@ const Overview = ({currentItem}) => {
   };
 
   const onAddToCartClick = async () => {
-    let result = await addToCart(currentSku, currentAmount);
-    console.log(result);
+    let result = await addToCart(currentSku, currentSize.size, currentAmount);
   }
 
   const onAddToCartClickNoSize = (sizes) => {
