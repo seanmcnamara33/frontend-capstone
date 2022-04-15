@@ -67,3 +67,12 @@ export const getItems =  async () => {
   }
 };
 
+export const getCart = async () => {
+  try {
+    const cart = await fetch('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/cart', { method: 'GET', headers: { Authorization: process.env.API_KEY }})
+    return await cart.json();
+  } catch(err) {
+    console.log(`Error found in getCart: ${err}`);
+  }
+};
+

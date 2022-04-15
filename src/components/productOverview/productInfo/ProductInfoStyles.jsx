@@ -36,6 +36,7 @@ export const AddToCartFeatures = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 80%;
 `;
 
@@ -103,3 +104,10 @@ export const Category = styled.p `
 export const ProductName = styled.h2 `
   margin-top: 0;
 `
+
+export const CartIcon = styled.button `
+  all: unset;
+  &:hover {
+    color: rgb(59, 167, 184);
+  }
+`;
