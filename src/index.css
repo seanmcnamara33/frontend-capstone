@@ -81,13 +81,7 @@ body {
 
 .restore-default:hover {
   text-shadow: 0 0 5px rgb(59, 167, 184);
-};
-
-.partly-filled-star {
-  overflow: hidden;
-  background-clip: text;
-  -webkit-background-clip: text;
-};
+}
 
 .cart-features {
   display: flex;
