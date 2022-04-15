@@ -32,7 +32,7 @@ const CountClick = ({children}) => {
 
   useEffect(()=>{
     window.addEventListener('click', handleClick);
-    return ()=> window.removeEventListener('click', handleClick)
+    return ()=> window.removeEventListener('click', handleClick);
   },[]);
 
   return (

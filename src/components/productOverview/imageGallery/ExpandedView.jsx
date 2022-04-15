@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, {useState, useEffect} from 'react';
-import {EntireExpandedView, ExpandedContainer, ZoomedImage, ZoomedContainer, ExpandedImage, Icons, Icon, SelectedIcon} from './ImageGalleryStyles.jsx';
+import {EntireExpandedView, ExpandedContainer, ZoomedImage, ZoomedContainer, ExpandedImage, Icons, Icon, SelectedIcon, ExpandedImageRight, ExpandedImageLeft, RestoreDefault} from './ImageGalleryStyles.jsx';
 
 const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
   const expandedPhotosArray = currentStyle.photos;
@@ -18,9 +18,9 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
   }
 
   const onExpandedButtonClick = (event) => {
-    if (currentStyleExpandedIndex !== expandedPhotosArray.length - 1 && event.target.classList[0] === 'expanded-image-right') {
+    if (currentStyleExpandedIndex !== expandedPhotosArray.length - 1 && event.target.dataset.direction === 'right') {
       setExpandedStyleIndex(currentStyleExpandedIndex + 1);
-    } else if (currentStyleExpandedIndex !== 0 && event.target.classList[0] === 'expanded-image-left') {
+    } else if (currentStyleExpandedIndex !== 0 && event.target.dataset.direction === 'left') {
       setExpandedStyleIndex(currentStyleExpandedIndex - 1);
     }
   }
@@ -57,20 +57,20 @@ const ExpandedView = ({currentStyle, currentImage, onRestoreDefaultClick}) => {
     return(
       <EntireExpandedView>
         <div style={{display: 'flex', justifyContent: 'flex-end', height: 'min-content'}}>
-          <button className='restore-default' onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>{String.fromCharCode(0x2311)}</button>
+          <RestoreDefault onClick={() => onRestoreDefaultClick(expandedPhotosArray[currentStyleExpandedIndex])}>{String.fromCharCode(0x2311)}</RestoreDefault>
         </div>
         <ExpandedContainer>
           <ExpandedImage alt='expanded view of current image of currently selected style' src={expandedPhotosArray[currentStyleExpandedIndex].url} onClick={(event) => onExpandedImageClick(event)}></ExpandedImage>
         </ExpandedContainer>
         <Icons>
-          <button className='expanded-image-left' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B05)}</button>
+          <ExpandedImageLeft data-direction='left' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B05)}</ExpandedImageLeft>
           {icons.map((icon, index) => {
             if (index === currentStyleExpandedIndex) {
               return <SelectedIcon data-index={index} onClick={(event) => onIconClick(event)} key={expandedPhotosArray[index].url}>{String.fromCharCode(0x2B24)}</SelectedIcon>
             }
             return <Icon data-index={index} onClick={(event) => onIconClick(event)} key={expandedPhotosArray[index].url}>{String.fromCharCode(0x2B24)}</Icon>
           })}
-          <button className='expanded-image-right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B95)}</button>
+          <ExpandedImageRight data-direction='right' onClick={(event) => onExpandedButtonClick(event)}>{String.fromCharCode(0x2B95)}</ExpandedImageRight>
         </Icons>
       </EntireExpandedView>
     );

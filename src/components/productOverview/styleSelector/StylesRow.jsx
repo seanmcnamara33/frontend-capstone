@@ -1,9 +1,8 @@
 /* eslint-disable */
 import React from 'react';
 import {BsCheck2Circle} from 'react-icons/bs';
-import {StyleCircleRow, StyleCircle, StyleCircleSelected} from './StyleSelectorStyles.jsx';
-
-const placeholder = 'https://images.unsplash.com/photo-1546213290-e1b492ab3eee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80';
+import {StyleCircleRow, StyleCircle, StyleCircleSelected, CircleCheck} from './StyleSelectorStyles.jsx';
+import {placeholder} from '../../common/helpers.js';
 
 const StylesRow = ({ index, styleGroup, onStyleCircleClick, currentStyle }) => {
   let trueStyleIndex;
@@ -25,7 +24,7 @@ const StylesRow = ({ index, styleGroup, onStyleCircleClick, currentStyle }) => {
           return (
             <div key={style.style_id}>
               <StyleCircleSelected alt='circular view of currently selected style thumbnail' onClick={(event) => onStyleCircleClick(event, trueStyleIndex + i)} className='style-circle' src={style.photos[0].thumbnail_url}></StyleCircleSelected>
-              <div className='circle-check'><BsCheck2Circle/></div>
+              <CircleCheck><BsCheck2Circle/></CircleCheck>
             </div>
           )
         } else {

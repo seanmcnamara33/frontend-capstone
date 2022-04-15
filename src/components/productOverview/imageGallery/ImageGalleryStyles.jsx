@@ -16,6 +16,23 @@ export const ImageGalleryComponent = styled.div`
   width: 65%;
 `;
 
+export const DefaultImg = styled.img `
+  object-fit: contain;
+  overflow: hidden;
+  max-height: 80vh;
+  max-width: 70%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px black;
+  border-radius: 10px;
+  cursor: zoom-in;
+  animation-duration: 500ms;
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  &:hover {
+    box-shadow: 0 0 5px rgb(59, 167, 184);
+  }
+`
 // Thumbnail Carousel Styles
 export const ThumbnailContainer = styled.div `
   display: flex;
@@ -157,3 +174,72 @@ export const SelectedIcon = styled.div`
     text-shadow: 0px 0px 5px white;
   }
 `;
+
+export const ImageLeft = styled.button`
+  all: unset;
+  color: rgba(222, 99, 23, .8);
+  font-size: large;
+  font-weight: bold;
+  text-shadow: 0px 0px 1px black;
+  &:hover {
+    text-shadow: 0 0 5px rgb(59, 167, 184);
+  }
+`
+
+export const ImageRight = styled.button`
+  all: unset;
+  color: rgba(222, 99, 23, .9);
+  font-size: large;
+  font-weight: bold;
+  text-shadow: 0px 0px 1px black;
+  &:hover {
+    text-shadow: 0 0 5px rgb(59, 167, 184);
+  }
+`
+
+export const ExpandedImageLeft = styled.button`
+  all: unset;
+  margin-right: 10px;
+  color: rgba(222, 99, 23, .9);
+  font-size: large;
+  font-weight: bold;
+  text-shadow: 0px 0px 1px black;
+  &:hover {
+    text-shadow: 0 0 5px rgb(59, 167, 184);
+  }
+`
+
+export const ExpandedImageRight = styled.button`
+  all: unset;
+  color: rgba(222, 99, 23, .9);
+  margin-left: 10px;
+  font-size: large;
+  font-weight: bold;
+  text-shadow: 0px 0px 1px black;
+  &:hover {
+    text-shadow: 0 0 5px rgb(59, 167, 184);
+  }
+`
+
+export const RestoreDefault = styled.button `
+  all: unset;
+  margin-right: 13px;
+  margin-top: 5px;
+  color: rgba(222, 99, 23, .9);
+  font-size: x-large;
+  font-weight: bold;
+  text-shadow: 0px 0px 1px black;
+  &:hover {
+    text-shadow: 0 0 5px rgb(59, 167, 184);
+  }
+`
+
+export const ThumbnailButton = styled.button `
+  all: unset;
+  font-size: x-large;
+  &:hover {
+    text-shadow: 0 0 5px rgb(59, 167, 184);
+  }
+`
+
+

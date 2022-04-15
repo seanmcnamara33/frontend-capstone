@@ -49,4 +49,5 @@ const AddQuestion = ({ addQuestion }) => {
     </form>
   );
 }
+
 export default AddQuestion;

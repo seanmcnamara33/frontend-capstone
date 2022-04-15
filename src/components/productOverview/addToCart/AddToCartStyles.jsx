@@ -25,3 +25,26 @@ export const AddToCartButton = styled.button`
     color: rgb(59, 167, 184);
   }
 `;
+
+export const Item = styled.div `
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+`;
+
+export const ItemName = styled.div `
+  margin: 5px;
+`;
+
+export const ItemCount = styled.div `
+  margin: 5px;
+`;
+
+export const RemoveItemButton = styled.button `
+  all: unset;
+  &:hover {
+    color: rgb(222, 99, 23);
+  }
+`;
