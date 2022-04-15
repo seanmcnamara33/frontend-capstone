@@ -28,7 +28,7 @@ const SelectSize = ({ openMenuOnFocus, selectRef, currentStyle, onSizeChange }) 
     return (
       <SizeDiv>
         <SelectSizing>
-          <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null}} options={options} ref={selectRef} openMenuOnFocus={true} styles={customStyles} onChange={(event) => onSizeChange(event)} placeholder={<SelectPlaceholder>Size</SelectPlaceholder>}>
+          <Select isSearchable={false} components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null}} options={options} ref={selectRef} openMenuOnFocus={true} styles={customStyles} onChange={(event) => onSizeChange(event)} placeholder={<SelectPlaceholder>Size</SelectPlaceholder>}>
           </Select>
         </SelectSizing>
         <div><IoIosArrowDown/></div>
@@ -38,7 +38,7 @@ const SelectSize = ({ openMenuOnFocus, selectRef, currentStyle, onSizeChange }) 
   return(
     <SizeDiv>
       <SelectSizing>
-        <Select components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={{value: '', label: ''}}  styles={customStyles} isDisabled placeholder={<SelectPlaceholder>Out of Stock</SelectPlaceholder>}></Select>
+        <Select isSearchable={false} components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }} options={{value: '', label: ''}}  styles={customStyles} isDisabled placeholder={<SelectPlaceholder>Out of Stock</SelectPlaceholder>}></Select>
       </SelectSizing>
       <div><IoIosArrowDown/></div>
     </SizeDiv>

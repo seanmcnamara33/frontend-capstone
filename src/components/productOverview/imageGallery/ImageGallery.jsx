@@ -3,8 +3,7 @@ import React, {useState, useEffect} from 'react';
 import DefaultView from './DefaultView.jsx';
 import ThumbnailCarousel from './ThumbnailCarousel.jsx';
 import {ImageGalleryComponent, ImageLeft, ImageRight} from './ImageGalleryStyles.jsx';
-
-const placeholder = 'https://images.unsplash.com/photo-1546213290-e1b492ab3eee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80';
+import {placeholder} from '../../common/helpers.js';
 
 const ImageGallery = ({currentStyle, currentView, onImageClick, currentImage}) => {
   if (Object.keys(currentStyle).length) {
