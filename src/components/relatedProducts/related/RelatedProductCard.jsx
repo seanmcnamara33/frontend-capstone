@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import styled from 'styled-components';
 import Comparison from '../comparison/Comparison.jsx';
 import 'whatwg-fetch';
@@ -80,61 +80,16 @@ const OriginalPrice = styled.div`
 
 // ------------------COMPONENT------------------ //
 
-const RelatedProductCard = ({ prod, id }) => {
-  const [currentProduct, setCurrentProduct] = useState({});
-  const [name, setName] = useState('');
-  const [category, setCategory] = useState('');
-  const [style, setStyle] = useState([]);
-  const [image, setImage] = useState('');
-  const [features, setFeatures] = useState([]);
-  const [mainFeatures, setMainFeatures] = useState([]);
+const RelatedProductCard = ({ product, style, currentItem, id, mainFeatures, image, ogPrice, category, sale, name }) => {
+  const {setCurrentItem, setProductId} = useContext(ProductContext);
   const [comparisonModal, setComparisonModal] = useState(false);
-  const {currentItem, setCurrentItem, setProductId} = useContext(ProductContext);
-
-  const getProduct = () => {
-    fetch(`${process.env.API_URI}/products/${prod}`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
-      .then((response) => {
-        response.json().then(result => {
-          setCurrentProduct(result);
-          setName(result.name);
-          setCategory(result.category);
-          setFeatures(result.features);
-        })
-      })
-  };
-
-  const getStyle = () => {
-    fetch(`${process.env.API_URI}/products/${prod}/styles`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
-      .then((response) => {
-        response.json().then(result => {
-          setStyle(result.results[0]);
-          setImage(result.results[0].photos[0].thumbnail_url);
-        })
-      })
-  }
-
-  const getFeatures = (id) => {
-    fetch(`${process.env.API_URI}/products/${id}`, {
-      method: 'GET',
-      headers: {
-        Authorization: process.env.API_KEY
-      }
-    })
-      .then(response => response.json())
-      .then(results => {
-        setMainFeatures(results.features);
-      })
-      .catch(err => console.log(`Error getting features: ${err}`))
-  }
-
+  const [currentProduct, setCurrentProduct] = useState({});
 
   useEffect(() => {
-    getProduct();
-    getStyle();
-    if (id) {
-      getFeatures(id);
+    if (product) {
+      setCurrentProduct(product);
     }
-  }, [id])
+  }, [product])
 
   const starClick = () => {
     setComparisonModal(true);
@@ -148,7 +103,6 @@ const RelatedProductCard = ({ prod, id }) => {
     setCurrentItem(currentProduct);
     setProductId(currentProduct.id);
   }
-
 
   return (
     <CardStyle>
@@ -167,14 +121,14 @@ const RelatedProductCard = ({ prod, id }) => {
       }
       {
         comparisonModal &&
-        <Comparison show={comparisonModal} close={close} name={name} currentItem={currentItem} id={id} relatedFeatures={features} mainFeatures={mainFeatures}/>
+        <Comparison show={comparisonModal} close={close} name={name} currentItem={currentItem} id={id} relatedFeatures={product.features} mainFeatures={mainFeatures}/>
       }
       <InnerDiv onClick={clickedCard}>
-        <CategoryStyle className="product-category">{category.toUpperCase()}</CategoryStyle>
+        <CategoryStyle className="product-category">{category}</CategoryStyle>
         <StarsContainer currentItem={currentProduct} starsAndReviews={false} singleReview={false}/>
       </InnerDiv>
       <NameStyle className="product-name" onClick={clickedCard}>{name}</NameStyle>
-      { style.sale_price ? <><SalePrice className="price">SALE ${style.sale_price}</SalePrice><OriginalPrice className="price">${style.original_price}</OriginalPrice></> : <div className="price">${style.original_price}</div>}
+      { sale ? <><SalePrice className="price">SALE ${sale}</SalePrice><OriginalPrice className="price">${ogPrice}</OriginalPrice></> : <div className="price">${ogPrice}</div>}
     </CardStyle>
   );
 }
