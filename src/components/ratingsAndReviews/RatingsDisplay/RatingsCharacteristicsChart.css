@@ -3,6 +3,10 @@
   margin: 10px 0 10px 0;
 }
 
+.characteristics {
+  width: 18em;
+}
+
 .char-bar {
   position: relative;
   height: 5px;
@@ -22,10 +26,15 @@
 }
 
 .bad-tag {
-  /* margin-right: 15em; */
   font-size: small;
 }
+
 .good-tag {
   font-size: small;
   float: right;
+}
+
+.ok-tag {
+  font-size: small;
+  margin: 0 0 0 7em;
 }
