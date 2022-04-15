@@ -29,3 +29,26 @@ export const getStars = async (productId) => {
     return values;
   }
 };
+
+export const getStyles = async (productId) => {
+  try {
+    let style = await fetch(`${process.env.API_URI}/products/${productId}/styles`, { method: 'GET', headers: { Authorization: process.env.API_KEY } });
+    return await style.json();
+  } catch(err) {
+    console.log(`Error in getStyles helper fucntion: ${err}`)
+  }
+};
+
+export const addToCart = async (sku, quantity) => {
+  try {
+    let body = JSON.stringify({sku_id: sku, quantity: quantity});
+    var response = await fetch('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/cart', {
+      method: 'POST',
+      body: body,
+      headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY }}
+    );
+    return response;
+  } catch(err) {
+    console.log(`error in addToCart: ${err}`)
+  }
+};

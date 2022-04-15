@@ -11,6 +11,7 @@ import SelectQuantity from '../styleSelector/SelectQuantity.jsx';
 import AddToCart from '../addToCart/AddToCart.jsx';
 import ExpandedView from '../imageGallery/ExpandedView.jsx';
 import Select from 'react-select';
+import {getStyles, addToCart} from '../../common/helpers.js';
 import 'whatwg-fetch';
 import {ProductOverview, ProductInformation, CategoryContainer, CartFeatures, AddToCartFeatures, StarButton, DescriptionContainer, Price, SalePrice, OriginalPrice, OriginalPriceNoSale, Category, ProductName} from './ProductInfoStyles.jsx';
 
@@ -25,17 +26,10 @@ const Overview = ({currentItem}) => {
   const [currentSku, setCurrentSku] = useState(0);
   const selectRef = useRef();
 
-  const getFirstStyle = (productId) => {
-    fetch(`${process.env.API_URI}/products/${productId}/styles`, { method: 'GET', headers: { Authorization: process.env.API_KEY } })
-      .then((response) => {
-        response.json().then((result) => {
-          setCurrentStyle(result.results[0]);
-          setAllStyles(result.results);
-        });
-      })
-      .catch((err) => {
-        console.log(`Error found in getFirstStyle: ${err}`);
-      });
+  const getFirstStyle = async (productId) => {
+    let result = await getStyles(productId);
+    setCurrentStyle(result.results[0]);
+    setAllStyles(result.results);
   };
 
   const onReviewLinkClick = () => {
@@ -72,18 +66,9 @@ const Overview = ({currentItem}) => {
   };
 
   const onAddToCartClick = async () => {
-    try {
-      let body = JSON.stringify({sku_id: currentSku, quantity: currentAmount});
-      var response = await fetch('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/cart', {
-        method: 'POST',
-        body: body,
-        headers: {'Content-Type': 'application/json', Authorization: process.env.API_KEY }}
-      );
-      console.log(response);
-    } catch(err) {
-      console.log(`error in onAddToCartClick: ${err}`)
-    }
-  };
+    let result = await addToCart(currentSku, currentAmount);
+    console.log(result);
+  }
 
   const onAddToCartClickNoSize = (sizes) => {
     if (sizes.length) {
