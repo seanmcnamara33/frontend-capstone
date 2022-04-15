@@ -23,7 +23,7 @@ const ThumbnailCarousel = ({photosArray, onThumbnailImageClick, currentStylePhot
     <ThumbnailContainer className='thumbnail-carousel'>
       <ThumbnailButton data-direction='up' onClick={(event) => onThumbnailButtonClick(event)}>{String.fromCharCode(0x02C4)}</ThumbnailButton>
       {currentThumbnails.map((photo, i) => {
-        if (checkPhotoUrl(photo.thumbnail_url) && photo.thumbnail_url === photosArray[currentStylePhotoIndex].thumbnail_url && photo !== undefined) {
+        if (photo !== undefined && checkPhotoUrl(photo.thumbnail_url) && photo.thumbnail_url === photosArray[currentStylePhotoIndex]?.thumbnail_url) {
           return (
           <SelectedContainer key={photo.thumbnail_url}>
             <SelectedThumbnail id={i + count} src={photo.thumbnail_url} alt='selected style thumbnail image' onClick={(event) => onThumbnailImageClick(event)}></SelectedThumbnail>
@@ -31,7 +31,7 @@ const ThumbnailCarousel = ({photosArray, onThumbnailImageClick, currentStylePhot
           </SelectedContainer>
           );
         }
-        if (checkPhotoUrl(photo.thumbnail_url) && photo !== undefined) {
+        if (photo !== undefined && checkPhotoUrl(photo.thumbnail_url)) {
           return <Thumbnail id={i + count} src={photo.thumbnail_url} alt='style thumbnail image' key={photo.thumbnail_url} onClick={(event) => onThumbnailImageClick(event)}></Thumbnail>
         }
       })}
