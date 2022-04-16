@@ -23,7 +23,6 @@ const ThumbnailCarousel = ({photosArray, onThumbnailImageClick, currentStylePhot
     <ThumbnailContainer className='thumbnail-carousel'>
       <ThumbnailButton data-direction='up' onClick={(event) => onThumbnailButtonClick(event)}>{String.fromCharCode(0x02C4)}</ThumbnailButton>
       {currentThumbnails.map((photo, i) => {
-        console.log(photo.thumbnail_url === photosArray[currentStylePhotoIndex].thumbnail_url);
         if (photo !== undefined && checkPhotoUrl(photo.thumbnail_url) && photo.thumbnail_url === photosArray[currentStylePhotoIndex]?.thumbnail_url) {
           return (
           <SelectedContainer key={photo.thumbnail_url}>
