@@ -6,6 +6,7 @@ add contents for each widget, gif/img of application, example.env
 To run our application:
 - Fork the repository and clone down to your local machine
 - Navigate to the root directory in your CLI: *frontend-capstone*
+- Copy the contents in `example.env` into a new file `.env` in the root directory and insert any necessary API keys
 - Run `npm install` to install all project dependencies
 - Run `npm run client` and `npm run server`
 - In your browser, open the application with this link: [http://localhost:3333](http://localhost:3333)
