@@ -7,7 +7,7 @@ import {placeholder} from '../../common/helpers.js';
 
 const ImageGallery = ({currentStyle, currentView, onImageClick, currentImage}) => {
   if (Object.keys(currentStyle).length) {
-    const photosArray = currentStyle.photos || [];
+    let photosArray = currentStyle.photos || [];
     if (!photosArray.length) {
       photosArray.push({url: placeholder, thumbnail_url: placeholder})
     }

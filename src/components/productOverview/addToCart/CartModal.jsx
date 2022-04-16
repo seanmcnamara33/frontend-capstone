@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Modal, Content, Header } from '../../AppStyles';
 import CartItem from './CartItem.jsx';
+import {CloseModalButton, ButtonContainer} from './AddToCartStyles.jsx';
 
 const CartModal = ({show, onModalClose, cartContents, onRemoveItemButtonClick}) => {
   if (show === true) {
@@ -10,7 +11,9 @@ const CartModal = ({show, onModalClose, cartContents, onRemoveItemButtonClick}) 
       <Modal show={show}>
         <Content>
           <Header>
-            <button onClick={() => onModalClose()} style={{'marginTop': '10px'}}>Close</button>
+            <ButtonContainer>
+              <CloseModalButton onClick={() => onModalClose()}>{String.fromCharCode(0x2715)}</CloseModalButton>
+            </ButtonContainer>
             <h2>Cart</h2>
           </Header>
           {cartContents.map((item, index) => {
