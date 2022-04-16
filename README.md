@@ -1,4 +1,6 @@
 # Project Atelier - An Online Shopping Experience
+
+add contents for each widget, gif/img of application 
 ### Setup
 ---
 To run our application:
@@ -13,7 +15,7 @@ In this project, the team built a single page web application that reflects an e
 
 ### Tech Stack
 ---
-- React
+- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 - Styled-Components
 - Babel Webpack
 - Jest
