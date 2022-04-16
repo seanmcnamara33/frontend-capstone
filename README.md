@@ -6,7 +6,7 @@ To run our application:
 - Navigate to the root directory in your CLI: *frontend-capstone*
 - Run `npm install` to install all project dependencies
 - Run `npm run client` and `npm run server`
-- In your browser, open the application [http://localhost:3333]
+- In your browser, open the application [http://localhost:3333](http://localhost:3333)
 ### Project Description
 ---
 In this project, the team built a single page web application that reflects an e-commerce shopping experience. The team was given an API that served imperfect data and handled it with frontend technologies to develop a dynamic user experience.
