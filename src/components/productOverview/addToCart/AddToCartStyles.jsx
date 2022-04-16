@@ -48,3 +48,19 @@ export const RemoveItemButton = styled.button `
     color: rgb(222, 99, 23);
   }
 `;
+
+export const CloseModalButton = styled.button `
+  all: unset;
+  margin-top: 10px;
+  color: black;
+  &:hover {
+    text-shadow: 0 0 3px rgb(59, 167, 184);
+  }
+`;
+
+export const ButtonContainer = styled.div `
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
+`;

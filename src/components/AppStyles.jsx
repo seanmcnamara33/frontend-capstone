@@ -30,34 +30,34 @@ export const Modal = styled.div(props=>({
 }))
 
 export const Header = styled.div`
-  background: rgb(222, 99, 23);
-  color: white;
+  background: rgba(222, 99, 23, .8);
+  color: (248, 249, 250);
   width: 100%;
-  border-radius: 20px 20px 0 0;
+  border-radius: 10px 10px 0 0;
   text-align: center;
 `
 
 export const Content = styled.div`
-  background: #ccc;
-  width: 500px;
+  background: rgb(248, 249, 250);
+  width: 600px;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
   margin: auto;
   border: 2px solid #000;
-  border-radius: 20px;
+  border-radius: 10px;
 `
 
 export const MainBtn = styled.button(props=>({
   border: '1px solid #000',
   'border-radius': '5px',
   background: 'rgb(59, 167, 184)',
-  color: '#fff',
+  color: 'rgb(248, 249, 250)',
   padding: '5px',
   margin: '5px',
   '&:hover' : {
-    background: '#fff',
+    background: 'rgb(248, 249, 250)',
     color: 'rgb(59, 167, 184)',
     'box-shadow': '0 0 5px rgb(59, 167, 184)'
   },
@@ -70,13 +70,13 @@ export const MainBtn = styled.button(props=>({
 export const CloseBtn = styled.button(props=>({
   border: '1px solid #000',
   'border-radius': '5px',
-  background: '#fff',
+  background: 'rgb(248, 249, 250)',
   color: '#000',
   padding: '10px',
   margin: '10px',
   '&:hover' : {
     background: '#000',
-    color: '#fff',
+    color: 'rgb(248, 249, 250)',
     'box-shadow': '0 0 5px #000'
   },
   '&:active' : {
