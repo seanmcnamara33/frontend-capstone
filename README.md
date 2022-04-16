@@ -1,4 +1,4 @@
-# Project Atelier —— An Online Shopping Experience
+# Project Atelier - An Online Shopping Experience
 ### Setup
 ---
 To run our application:
