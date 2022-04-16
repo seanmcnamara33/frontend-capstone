@@ -1,6 +1,6 @@
 # Project Atelier - An Online Shopping Experience
 
-add contents for each widget, gif/img of application 
+add contents for each widget, gif/img of application, example.env
 ### Setup
 ---
 To run our application:
