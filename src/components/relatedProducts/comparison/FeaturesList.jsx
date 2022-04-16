@@ -42,23 +42,33 @@ const FeaturesList = ({ features, relatedFeatures, main, related }) => {
 
   return (
     <div>
-      <table>
+      <table style={{'width': '99%', 'margin': '0px auto', 'align': 'center', 'padding': '10px'}}>
         <thead>
           <tr style={{'fontSize': '20px', 'textAlign': 'center'}}>
             <th style={{'borderRight': '1px solid black', 'borderBottom': '1px solid black'}}>{main}</th>
-            <th style={{'borderRight': '1px solid black', 'borderBottom': '1px solid black'}}>Features</th>
-            <th style={{'borderRight': '1px solid black', 'borderBottom': '1px solid black'}}>{related}</th>
+            <th style={{'borderRight': '1px solid black', 'borderBottom': '1px solid black', 'width': '200px'}}>Features</th>
+            <th style={{'borderBottom': '1px solid black'}}>{related}</th>
           </tr>
         </thead>
         <tbody>
-        {uniq.map(feature => {
-          return (
-            <tr key={feature}>
-              <td style={{'borderRight': '1px solid black', 'borderBottom': '1px solid black', 'textAlign': 'right'}}>{total[feature][0]}</td>
-              <td style={{'fontWeight': 'bold', 'borderRight': '1px solid black', 'borderBottom': '1px solid black','textAlign': 'center'}}>{feature}</td>
-              <td style={{'borderRight': '1px solid black', 'borderBottom': '1px solid black'}}>{total[feature][1]}</td>
-            </tr>
-          )
+        {uniq.map((feature, i) => {
+          if (i === uniq.length - 1) {
+            return (
+              <tr key={feature}>
+                <td style={{'borderRight': '1px solid black', 'textAlign': 'center'}}>{total[feature][0]}</td>
+                <td style={{'fontWeight': 'bold', 'borderRight': '1px solid black', 'textAlign': 'center'}}>{feature}</td>
+                <td style={{'textAlign': 'center'}}>{total[feature][1]}</td>
+              </tr>
+            )
+          } else {
+            return (
+              <tr key={feature}>
+                <td style={{'borderRight': '1px solid black', 'borderBottom': '1px solid black', 'textAlign': 'center'}}>{total[feature][0]}</td>
+                <td style={{'fontWeight': 'bold', 'borderRight': '1px solid black', 'borderBottom': '1px solid black','textAlign': 'center'}}>{feature}</td>
+                <td style={{'borderBottom': '1px solid black', 'textAlign': 'center'}}>{total[feature][1]}</td>
+              </tr>
+            )
+          }
         })}
         </tbody>
       </table>

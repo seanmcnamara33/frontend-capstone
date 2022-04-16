@@ -4,6 +4,7 @@ import { formatDate } from '../../common/helpers.js';
 
 const ReviewHelpfulness = (props) => {
   const [helpfulness, setHelpfulness] = useState(props.helpfulness);
+  const [showYes, setShowYes] = useState(true);
 
   useEffect(() => {
     setHelpfulness(props.helpfulness)
@@ -12,7 +13,6 @@ const ReviewHelpfulness = (props) => {
 
   const handleYesClick = (id) => {
     event.preventDefault();
-    console.log(id)
     fetch(`${process.env.API_URI}/reviews/${id}/helpful`, {
       method: 'PUT',
       headers: {
@@ -21,6 +21,7 @@ const ReviewHelpfulness = (props) => {
       }
     }).then((response) => {
       setHelpfulness(helpfulness + 1)
+      setShowYes(false);
     }).catch((err) => {
       console.log(err)
     })
@@ -46,7 +47,7 @@ const ReviewHelpfulness = (props) => {
     <div>
       <span style={{ "fontSize": "small" }}>by user: {props.name}</span>
       <div style={{ "float": "right" }}>
-        {formatDate(props.date)} | Helpful? <a href="#" onClick={() => handleYesClick(props.review_id)}>Yes</a>
+        {formatDate(props.date)} | Helpful? <a href="#" onClick={() => handleYesClick(props.review_id)}>{showYes ? 'Yes' : null}</a>
         ({helpfulness}) | <a href="#" onClick={handleReportClick}>{props.reported ? 'NO' : 'report'}</a>
       </div>
     </div>
